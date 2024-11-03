@@ -4,7 +4,17 @@
 
 @section('content')
 <div class="devshare">
-    <p>DevShare</p>
+    <div>
+        <span>La Web Perfecta Para</span>
+    </div>
+    <div>
+        <span>Equipos De Desarrollo</span>
+    </div>
+    <p>
+        DevShare es tu solución integral para una colaboración activa. 
+        Con una interfaz amigable y distintas funcionalidades te ofrecemos 
+        un entorno 
+    </p>
 </div>
 <div class="presentacion">
     <div class="text">

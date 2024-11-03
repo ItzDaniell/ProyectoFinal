@@ -75,6 +75,7 @@ a{
 }
 .devshare{
     display: flex;
+    flex-direction: column;
     font-weight:300;
     padding-top: 100px;
     justify-content: center;
