@@ -17,13 +17,13 @@
     </p>
     <a href="#" class="boton">Comienza Ahora</a>
 </div>
-<div class="presentacion">
-    <div class="text">
+<div class="seccion-rev">
+    <div class="texto">
         <div class="info">
             <h2>La Mejor Manera De</h2>
             <h1>Publicar</h1>
             <h2>Tu Conocimiento</h2>
-            <div class="parrafo">
+            <div class="seccion-parrafo">
                 <p>Nuestra plataforma te permite publicar contenido de forma rápida y sencilla,
                     alcanzando a personas interesadas en tus áreas de especialización.</p>
             </div>
@@ -32,32 +32,48 @@
             </div>
         </div>
     </div>
-    <div class="presentacion-img">
-        <img class="" src="Diseno-sin-titulo.png" alt="">
+    <div class="seccion-img">
+        <img class="" src="https://img.freepik.com/vector-gratis/plantilla-publicacion-instagram-notificaciones_23-2147819529.jpg" alt="">
     </div>
 </div>
-<div class="ventajas">
-    <div class="text">
+<div class="ventajas-section">
+    <div class="texto">
         <div class="info">
             <h2>Ventajas de Usar</h2>
             <h1>DevShare</h1>
-            <div class="parrafo">
-                <p>DevShare es la solución ideal para equipos de desarrollo que 
-                    buscan mejorar la colaboración y la eficiencia.</p>
+            <div class="seccion-parrafo">
+                <p>DevShare es la solución ideal para equipos de desarrollo que buscan mejorar la colaboración y la eficiencia.</p>
             </div>
         </div>
     </div>
     <div class="contenedor-ventajas">
-        <div class="ventajas">
-            <img class="" src="Diseno-sin-titulo.png" alt="">
-            <p></p>
+        <div class="ventaja">
+            <img src="Diseno-sin-titulo.png" alt="Colaboración Mutua">
+            <p>Colaboración</p>
+            <p>Mutua</p>
         </div>
-        <div class="ventajas">
-            <img class="" src="Diseno-sin-titulo.png" alt="">
+        <div class="ventaja">
+            <img src="Diseno-sin-titulo.png" alt="Acceso Multiplataforma">
+            <p>Acceso</p>
+            <p>Multiplataforma</p>
         </div>
-        <div class="ventajas">
-            <img class="" src="Diseno-sin-titulo.png" alt="">
+        <div class="ventaja">
+            <img src="Diseno-sin-titulo.png" alt="Soporte Técnico">
+            <p>Soporte</p> 
+            <p>Técnico</p>
         </div>
+    </div>
+</div>
+<div class="carrousel">
+    <div class="carrousel-text">
+        <h2>Funciones que Ofrece</h2>
+        <h1>DevShare</h1>
+    </div>
+    <div class="grande">
+        <img src="#" alt="Imagen 1" class="img">
+        <img src="#" alt="Imagen 2" class="img">
+        <img src="#" alt="Imagen 3" class="img">
+        <img src="#" alt="Imagen 4" class="img">
     </div>
 </div>
 @endsection
