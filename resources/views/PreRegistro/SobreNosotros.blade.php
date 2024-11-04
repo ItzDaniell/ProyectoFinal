@@ -3,7 +3,7 @@
 @section('title','Sobre Nosotros')
     
 @section('content')
-    <div class="devshare">
+    <div class="principal">
         <div>
             <h1>Sobre</h1>
             <h1>Nosotros</h1>
@@ -58,6 +58,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 @endsection

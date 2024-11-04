@@ -3,7 +3,7 @@
 @section('title', 'Inicio')
 
 @section('content')
-<div class="devshare">
+<div class="principal">
     <div>
         <h1>La Web Perfecta Para</h1>
     </div>
@@ -17,7 +17,7 @@
     </p>
     <a href="#" class="boton">Comienza Ahora</a>
 </div>
-<div class="seccion-rev">
+<div class="seccion">
     <div class="texto">
         <div class="info">
             <h2>La Mejor Manera De</h2>
