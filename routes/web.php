@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostInicioSesionController;
 use App\Http\Controllers\PreRegistrationController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,12 +14,22 @@ Route::get('/Contactanos', [PreRegistrationController::class, 'Contactanos'])->n
 Route::get('/SobreNosotros', [PreRegistrationController::class, 'SobreNosotros'])->name('SobreNosotros');
 Route::get('/FAQ', [PreRegistrationController::class, 'FAQ'])->name('FAQ');
 
+/*PostInicio*/
+Route::get('/Home', [PostInicioSesionController::class, 'Home'])->name('Home');
+Route::get('/Noticias', [PostInicioSesionController::class, 'Noticias'])->name('Noticias');
+Route::get('/Conferencias', [PostInicioSesionController::class, 'Conferencias'])->name('Conferencias');
+Route::get('/Configuracion', [PostInicioSesionController::class, 'ConfiguracionPerfil'])->name('Configuracion');
+Route::get('/Configuracion/Seguridad', [PostInicioSesionController::class, 'ConfiguracionSeguridad'])->name('ConfiguracionSeguridad');
+Route::get('/Configuracion/SesionesActivas', [PostInicioSesionController::class, 'ConfiguracionSesionesActivas'])->name('ConfiguracionSesionesActivas');
+Route::get('/Configuracion/EliminarCuenta', [PostInicioSesionController::class, 'ConfiguracionEliminarCuenta'])->name('ConfiguracionEliminarCuenta');
+Route::get('/PerfilUsuario', [PostInicioSesionController::class, 'PerfilUsuario'])->name('PerfilUsuario');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/Home', function () {
+        return view('PostRegistro.Home');
+    })->name('Home');
 });
