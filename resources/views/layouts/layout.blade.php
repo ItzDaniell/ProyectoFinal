@@ -270,9 +270,9 @@
                   @auth
                   <li><a href="{{ url('Home') }}">Dashboard</a></li>
                 @else
-                  <li><a href="{{ route('login') }}">Iniciar Sesión</a></li>
+                  <li><a href="{{ route('IniciarSesion') }}">Iniciar Sesión</a></li>
                   @if (Route::has('register'))
-                    <li><a href="{{ route('register') }}">Registrarse</a></li>
+                    <li><a href="{{ route('Registrarse') }}">Registrarse</a></li>
                   @endif
                   @endauth
                 @endif
@@ -293,8 +293,8 @@
           </div>
           <div class="footer-right">
             <ul>
-              <li><a href="#">Crear Cuenta</a></li>
-              <li><a href="#">Iniciar Sesión</a></li>
+              <li><a href="{{ route('Registrarse') }}">Registrarse</a></li>
+              <li><a href="{{ route('IniciarSesion') }}">Iniciar Sesión</a></li>
             </ul>
           </div>
         </div>

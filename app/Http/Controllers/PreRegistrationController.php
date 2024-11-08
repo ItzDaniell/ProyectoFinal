@@ -18,4 +18,10 @@ class PreRegistrationController extends Controller
     public function SobreNosotros(){
         return view('PreRegistro.SobreNosotros');
     }
+    public function IniciarSesion(){
+        return view('PreRegistro.IniciarSesion');
+    }
+    public function Registrarse(){
+        return view('PreRegistro.Registrarse');
+    }
 }

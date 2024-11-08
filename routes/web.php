@@ -13,6 +13,8 @@ Route::get('/', [PreRegistrationController::class, 'index'])->name('Index');
 Route::get('/Contactanos', [PreRegistrationController::class, 'Contactanos'])->name('Contactanos');
 Route::get('/SobreNosotros', [PreRegistrationController::class, 'SobreNosotros'])->name('SobreNosotros');
 Route::get('/FAQ', [PreRegistrationController::class, 'FAQ'])->name('FAQ');
+Route::get('/IniciarSesion', [PreRegistrationController::class, 'IniciarSesion'])->name('IniciarSesion');
+Route::get('/Registrarse', [PreRegistrationController::class, 'Registrarse'])->name('Registrarse');
 
 /*PostInicio*/
 Route::get('/Home', [PostInicioSesionController::class, 'Home'])->name('Home');
