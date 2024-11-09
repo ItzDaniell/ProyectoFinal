@@ -14,7 +14,8 @@ Route::get('/Contactanos', [PreRegistrationController::class, 'Contactanos'])->n
 Route::get('/SobreNosotros', [PreRegistrationController::class, 'SobreNosotros'])->name('SobreNosotros');
 Route::get('/FAQ', [PreRegistrationController::class, 'FAQ'])->name('FAQ');
 Route::get('/IniciarSesion', [PreRegistrationController::class, 'IniciarSesion'])->name('IniciarSesion');
-Route::get('/Registrarse', [PreRegistrationController::class, 'Registrarse'])->name('Registrarse');
+Route::get('/Registrarse', [PreRegistrationController::class, 'Registrarse'])->name(name: 'Registrarse');
+Route::get('/OlvidasteContraseña', [PreRegistrationController::class, 'OlvidasteContrasena'])->name('OlvidasteContraseña');
 
 /*PostInicio*/
 Route::get('/Home', [PostInicioSesionController::class, 'Home'])->name('Home');

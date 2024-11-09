@@ -22,6 +22,9 @@ class PreRegistrationController extends Controller
         return view('PreRegistro.IniciarSesion');
     }
     public function Registrarse(){
-        return view('PreRegistro.Registrarse');
+        return view('PreRegistro.CrearCuenta');
+    }
+    public function OlvidasteContrasena(){
+        return view('PreRegistro.OlvidasteContrasena');
     }
 }

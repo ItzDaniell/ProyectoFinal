@@ -21,9 +21,6 @@
       }
       /*Barra de Navegación*/
       .header{
-        position: sticky;
-        top: 0px;
-        left: 0px;
           background-color: #F3AF31;
           display: flex;
           justify-content: flex-end;
