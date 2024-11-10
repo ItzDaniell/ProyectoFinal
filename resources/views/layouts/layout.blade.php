@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <style>
     @import url('https://fonts.googleapis.com/css2?family=AR+One+Sans:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
       * {
@@ -13,8 +15,9 @@
           font-family: "AR One sans", sans-serif;
           font-size: 17px;
       }
-      body {
-          background-color: white;
+      body{
+        display: flex;
+        flex-direction: column;
       }
       a{
           text-decoration: none;
@@ -159,29 +162,32 @@
       }
       /*Boton animado*/
       .boton{
-          width: 160px;
-          height:50px;
-          color: #ffffff;
-          background: #000000;
-          font-size: 18px;
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: 0.5s;
-      }
-      .boton{
-          box-shadow: 0px 0px 0 #F3AF31;
-      }
-      .boton:hover{
-          box-shadow: 8px 10px 0 #F3AF31;
-      }
-      /*Contenedor del Boton*/
-      .enlace{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-      }
+            width: auto;
+            height: auto;
+            padding-left: 24px;
+            padding-right: 24px;
+            padding-top: 8px;
+            padding-bottom: 8px;  
+            color: #ffffff;
+            background: #000000;
+            font-size: 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.5s;
+        }
+        .boton{
+            box-shadow: 0px 0px 0 #F3AF31;
+        }
+        .boton:hover{
+            box-shadow: 8px 10px 0 #F3AF31;
+        }
+        .enlace{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
       /*Contenedor de Ventajas (cambios)*/ /*Laptop ok,  Pc ?, Celular ?*/
       .ventajas-section{
           display: flex;
@@ -195,60 +201,108 @@
           align-items: center;
           text-align: center;
       }
-      .ventaja{
-          padding-bottom: 50px;
-      }
-      /*Carrousel de Funciones*/
-      .carrousel{
-          display: flex;
-          flex-direction: column;
-      }
-      .carrousel-text{
-          width: 30%;
-      }
-      /*Footer*/
-      .footer {
-      background-color: #1a1a1a;
-      color: white;
-      padding: 20px 0;
-      }
-      .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 20px;
-      }
-      .footer h3 {
-      color: white;
-      margin-bottom: 15px;
-      }
-      .footer ul {
-      list-style: none;
-      padding: 0;
-      }
-      .footer li {
-      margin-bottom: 10px;
-      }
-      .footer a {
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      }
-      .footer a:hover {
-      color: #F3AF31;
-      }
-      .footer-bottom {
-      text-align: center;
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid #333;
-      }
-      .footer-bottom p {
-      margin: 0;
-      font-size: 0.9em;
-      color: #666;
-      }
+    .ventaja{
+    padding-bottom: 50px;
+    }
+    /*Carrousel de Funciones*/
+    .carrousel{
+    display: flex;
+    flex-direction: column;
+    }
+    .carrousel-text{
+    width: 30%;
+    }
+    /*Footer*/
+    .footer {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 20px 0;
+    }
+    .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    }
+    .footer h3 {
+    color: white;
+    margin-bottom: 15px;
+    }
+    .footer ul {
+    list-style: none;
+    padding: 0;
+    }
+    .footer li {
+    margin-bottom: 10px;
+    }
+    .footer a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    }
+    .footer a:hover {
+    color: #F3AF31;
+    }
+    .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    }
+    .footer-bottom p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #666;
+    }
+    /*Formulario de Ingreso y Registro*/
+    .container-form{
+        display: flex;
+        align-content: center;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        height: 87vh;
+    }
+    .container-info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 90%;
+        max-width: 450px;
+    }
+    .container-info h1{
+        width: 90%;
+        max-width: 450px;
+        font-size: 48px;
+        text-align: center;
+    }
+    .container-info span{
+        width: 90%;
+        max-width: 450px;
+        text-align: center;
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    .form-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        max-width: 450px;
+    }
+    .form-container h1{
+        width: 90%;
+        max-width: 450px;
+        font-size: 28px;
+        text-align: center;
+        padding-bottom: 15px;
+    }
+    .form-group{
+
+    }
+
     </style>
     <title>DevShare - @yield('title')</title>
 </head>

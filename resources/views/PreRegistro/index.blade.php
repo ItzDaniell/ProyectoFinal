@@ -20,8 +20,7 @@
 <div class="seccion">
     <div class="texto">
         <div class="info">
-            <h2>La Mejor Manera De</h2>
-            <h1>Publicar</h1>
+            <h1>Publica</h1>
             <h2>Tu Conocimiento</h2>
             <div class="seccion-parrafo">
                 <p>Nuestra plataforma te permite publicar contenido de forma rápida y sencilla,
