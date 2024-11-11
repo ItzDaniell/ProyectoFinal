@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('noticias', function (Blueprint $table) {
-            $table->id('id_noticia');
+        Schema::create('conferencias', function (Blueprint $table) {
+            $table->id('id_conferencia');
+            $table->foreign('id_ponente')->references('id_ponente')->on('ponentes');
             $table->foreign('id_categoria')->references('id_categoria')->on('categorias');
             $table->string('titulo', 150);
-            $table->string('autor', 150);
-            $table->string('descripcion', 300);
+            $table->string('descripcion',300);
+            $table->integer('tiempo');
+            $table->date('fecha_inicio');
             $table->string('imagen', 300);
             $table->string('URL', 300);
             $table->string('estado', 100);
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('noticias');
+        Schema::dropIfExists('conferencias');
     }
 };

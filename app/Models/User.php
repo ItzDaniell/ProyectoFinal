@@ -66,4 +66,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function publicaciones(){
+        return $this->hasMany('App\Models\Publicacion', 'id_usuario', 'id');
+    }
 }

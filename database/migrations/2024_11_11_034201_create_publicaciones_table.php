@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('noticias', function (Blueprint $table) {
-            $table->id('id_noticia');
+        Schema::create('publicaciones', function (Blueprint $table) {
+            $table->id('id_publicacion');
+            $table->foreign('id_usuario')->references('id')->on('user');
             $table->foreign('id_categoria')->references('id_categoria')->on('categorias');
-            $table->string('titulo', 150);
-            $table->string('autor', 150);
-            $table->string('descripcion', 300);
-            $table->string('imagen', 300);
-            $table->string('URL', 300);
+            $table->string('titulo', 100);
+            $table->string('descripcion', 300)->nullable();
+            $table->string('imagen', 300)->nullable();
             $table->string('estado', 100);
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('noticias');
+        Schema::dropIfExists('publicaciones');
     }
 };
