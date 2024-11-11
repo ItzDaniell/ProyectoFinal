@@ -9,20 +9,24 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('conferencias', function (Blueprint $table) {
-            $table->id('id_conferencia');
-            $table->foreign('id_ponente')->references('id_ponente')->on('ponentes');
-            $table->foreign('id_categoria')->references('id_categoria')->on('categorias');
+            $table->bigIncrements('id_conferencia');
             $table->string('titulo', 150);
-            $table->string('descripcion',300);
+            $table->string('descripcion', 300);
             $table->integer('tiempo');
             $table->date('fecha_inicio');
             $table->string('imagen', 300);
             $table->string('URL', 300);
             $table->string('estado', 100);
             $table->timestamps();
+    
+            // Asegúrate de agregar la columna id_ponente
+            $table->unsignedBigInteger('id_ponente');
+    
+            // Luego, agrega la clave foránea
+            $table->foreign('id_ponente')->references('id_ponente')->on('ponentes');
         });
     }
 

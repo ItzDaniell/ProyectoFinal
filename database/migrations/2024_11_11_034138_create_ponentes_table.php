@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('ponentes', function (Blueprint $table) {
             $table->id('id_ponente');
             $table->string('nombres', 100);
-            $table->string('email', 300);
+            $table->string('email', 255)->unique();  // Longitud 255 y único
             $table->string('biografia', 300);
-            $table->string('foto', 300);
+            $table->string('foto', 300);  // Puedes reducirlo si la foto es solo una URL
             $table->string('estado', 100);
             $table->timestamps();
         });

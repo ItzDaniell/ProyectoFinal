@@ -9,18 +9,21 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
         Schema::create('noticias', function (Blueprint $table) {
-            $table->id('id_noticia');
-            $table->foreign('id_categoria')->references('id_categoria')->on('categorias');
+            $table->bigIncrements('id_noticia');
             $table->string('titulo', 150);
             $table->string('autor', 150);
             $table->string('descripcion', 300);
             $table->string('imagen', 300);
             $table->string('URL', 300);
             $table->string('estado', 100);
+            $table->unsignedBigInteger('id_categoria'); // Agregar esta línea para la columna id_categoria
             $table->timestamps();
+    
+            // Agregar la clave foránea
+            $table->foreign('id_categoria')->references('id_categoria')->on('categorias');
         });
     }
 
