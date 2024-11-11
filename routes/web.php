@@ -27,6 +27,9 @@ Route::get('/Configuracion/SesionesActivas', [PostInicioSesionController::class,
 Route::get('/Configuracion/EliminarCuenta', [PostInicioSesionController::class, 'ConfiguracionEliminarCuenta'])->name('ConfiguracionEliminarCuenta');
 Route::get('/PerfilUsuario', [PostInicioSesionController::class, 'PerfilUsuario'])->name('PerfilUsuario');
 
+/*Conferencias*/
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
