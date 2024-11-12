@@ -9,10 +9,12 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('conferencias', function (Blueprint $table) {
-            $table->bigIncrements('id_conferencia');
+            $table->id('id_conferencia');
+            $table->foreign('id_ponente')->references('id_ponente')->on('ponentes');
+            $table->foreign('id_categoria')->references('id_categoria')->on('categorias');
             $table->string('titulo', 150);
             $table->string('descripcion', 300);
             $table->integer('tiempo');
@@ -21,12 +23,6 @@ return new class extends Migration
             $table->string('URL', 300);
             $table->string('estado', 100);
             $table->timestamps();
-    
-            // Asegúrate de agregar la columna id_ponente
-            $table->unsignedBigInteger('id_ponente');
-    
-            // Luego, agrega la clave foránea
-            $table->foreign('id_ponente')->references('id_ponente')->on('ponentes');
         });
     }
 

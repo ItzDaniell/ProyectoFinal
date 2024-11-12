@@ -156,19 +156,16 @@
             flex-grow: 1;
             text-decoration: none;
         }
-
         .sidebar-configuracion .divider {
             border-bottom: 1px solid #222;
             margin: 20px 0;
             width: 100%;
         }
-
         .sidebar-configuracion .link:hover {
             background: #1f252d;
             color: #fff;
             border-radius: 5px;
         }
-
         .sidebar-configuracion .link:hover a {
             color: #fff;
         }
@@ -203,7 +200,6 @@
             font-size: 20px;
             font-weight: bold;
         }
-
         .boton{
             width: auto;
             height: auto;
@@ -230,6 +226,55 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+        /*Noticias*/
+        .contenedor-noticias{
+            position: relative;
+            display: grid;
+            justify-content: space-around;
+            align-content: flex-start;
+            top: 0px;
+            left: 250px;
+            width: calc(100% - 250px);
+            height: 100vh;
+            overflow: hidden;
+            overflow-y: auto;
+        }
+        .contenedor-encabezado{
+            display: flex;
+            align-items: center;
+            justify-content:space-between;
+            max-width:100%;
+            height: 80px;
+        }
+        .contenedor-encabezado .opciones{
+            display: flex;
+            align-items: center;
+            height: 80px;
+            padding-right: 20px;
+        }
+        .opciones ion-icon{
+            display: inline-block;
+            width: 28px;
+            height: 28px;
+            margin-left: 20px;
+        }
+        .noticias{
+            display: grid;
+            justify-content: center;
+        }
+        .primera-noticia{
+            display: flex;
+            width: auto;
+            max-width: 800px;
+            justify-content: space-between;
+        }
+        .imagen-primera-noticia img{
+            width: auto;
+            max-width: 400px;
+            height: auto;
+            max-height: 300px;
+
         }
     </style>
     <title>DevShare - @yield('title')</title>
@@ -272,10 +317,26 @@
                     <ion-icon name="person-circle-outline"></ion-icon>
                     <a href="{{ route('PerfilUsuario') }}">Perfil</a>
                 </button>
-                <button class="link">
+                <button type="menu" class="link" onclick="toggleMenu()">
                     <ion-icon name="menu-outline"></ion-icon>
-                    <a href="#">Menú</a>
+                    <span>Menú</span>
                 </button>
+                <div id="menu" style="display: none;">
+                    <!-- Aquí van las opciones del menú -->
+                    <ul>
+                        <li><a href="#">Opción 1</a></li>
+                        <li><a href="#">Opción 2</a></li>
+                        <li><a href="#">Opción 3</a></li>
+                        <li><a href="#">Opción 4</a></li>
+                    </ul>
+                </div>
+                <script>
+                function toggleMenu() {
+                    var menu = document.getElementById('menu');
+                    // Alterna entre mostrar u ocultar el menú
+                    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+                }
+            </script>
             </div>
         </div>
     </div>
