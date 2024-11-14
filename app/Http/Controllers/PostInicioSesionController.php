@@ -7,27 +7,27 @@ use Illuminate\Http\Request;
 class PostInicioSesionController extends Controller
 {
     public function Home(){
-        return view('PostRegistro.Home');
+        return view('PostInicioSesion.Home');
     }
     public function Noticias(){
-        return view('PostRegistro.Noticias');
+        return view('PostInicioSesion.Noticias');
     }
     public function Conferencias(){
-        return view('PostRegistro.Conferencias');
+        return view('PostInicioSesion.Conferencias');
     }
     public function ConfiguracionPerfil(){
-        return view('PostRegistro.ConfiguracionPerfil');
+        return view('PostInicioSesion.ConfiguracionPerfil');
     }
     public function ConfiguracionSeguridad(){
-        return view('PostRegistro.ConfiguracionSeguridad');
+        return view('PostInicioSesion.ConfiguracionSeguridad');
     }
     public function ConfiguracionSesionesActivas(){
-        return view('PostRegistro.ConfiguracionSesionesActivas');
+        return view('PostInicioSesion.ConfiguracionSesionesActivas');
     }
     public function ConfiguracionEliminarCuenta(){
-        return view('PostRegistro.ConfiguracionEliminarCuenta');
+        return view('PostInicioSesion.ConfiguracionEliminarCuenta');
     }
     public function PerfilUsuario(){
-        return view('PostRegistro.PerfilUsuario');
+        return view('PostInicioSesion.PerfilUsuario');
     }
 }

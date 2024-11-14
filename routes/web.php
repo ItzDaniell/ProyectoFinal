@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostInicioSesionController;
+use App\Http\Controllers\PreInicioSesionController;
 use App\Http\Controllers\PreRegistrationController;
 use Illuminate\Support\Facades\Route;
 
@@ -9,13 +10,13 @@ use Illuminate\Support\Facades\Route;
 });
 */
 
-Route::get('/', [PreRegistrationController::class, 'index'])->name('Index');
-Route::get('/Contactanos', [PreRegistrationController::class, 'Contactanos'])->name('Contactanos');
-Route::get('/SobreNosotros', [PreRegistrationController::class, 'SobreNosotros'])->name('SobreNosotros');
-Route::get('/FAQ', [PreRegistrationController::class, 'FAQ'])->name('FAQ');
-Route::get('/IniciarSesion', [PreRegistrationController::class, 'IniciarSesion'])->name('IniciarSesion');
-Route::get('/Registrarse', [PreRegistrationController::class, 'Registrarse'])->name(name: 'Registrarse');
-Route::get('/OlvidasteContraseña', [PreRegistrationController::class, 'OlvidasteContrasena'])->name('OlvidasteContraseña');
+Route::get('/', [PreInicioSesionController::class, 'Bienvenida'])->name('Bienvenida');
+Route::get('/Contactanos', [PreInicioSesionController::class, 'Contactanos'])->name('Contactanos');
+Route::get('/SobreNosotros', [PreInicioSesionController::class, 'SobreNosotros'])->name('SobreNosotros');
+Route::get('/FAQ', [PreInicioSesionController::class, 'FAQ'])->name('FAQ');
+Route::get('/IniciarSesion', [PreInicioSesionController::class, 'IniciarSesion'])->name('IniciarSesion');
+Route::get('/Registrarse', [PreInicioSesionController::class, 'Registrarse'])->name(name: 'Registrarse');
+Route::get('/OlvidasteContraseña', [PreInicioSesionController::class, 'OlvidasteContrasena'])->name('OlvidasteContraseña');
 
 /*PostInicio*/
 Route::get('/Home', [PostInicioSesionController::class, 'Home'])->name('Home');
@@ -38,4 +39,6 @@ Route::middleware([
     Route::get('/Home', function () {
         return view('PostRegistro.Home');
     })->name('Home');
+    
+
 });
