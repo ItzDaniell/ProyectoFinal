@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\PostInicioSesionController;
 use App\Http\Controllers\PreInicioSesionController;
-use App\Http\Controllers\PreRegistrationController;
 use Illuminate\Support\Facades\Route;
 
 /*Route::get('/', function () {
@@ -14,21 +13,9 @@ Route::get('/', [PreInicioSesionController::class, 'Bienvenida'])->name('Bienven
 Route::get('/Contactanos', [PreInicioSesionController::class, 'Contactanos'])->name('Contactanos');
 Route::get('/SobreNosotros', [PreInicioSesionController::class, 'SobreNosotros'])->name('SobreNosotros');
 Route::get('/FAQ', [PreInicioSesionController::class, 'FAQ'])->name('FAQ');
-Route::get('/IniciarSesion', [PreInicioSesionController::class, 'IniciarSesion'])->name('IniciarSesion');
 Route::get('/Registrarse', [PreInicioSesionController::class, 'Registrarse'])->name(name: 'Registrarse');
 Route::get('/OlvidasteContraseña', [PreInicioSesionController::class, 'OlvidasteContrasena'])->name('OlvidasteContraseña');
 
-/*PostInicio*/
-Route::get('/Home', [PostInicioSesionController::class, 'Home'])->name('Home');
-Route::get('/Noticias', [PostInicioSesionController::class, 'Noticias'])->name('Noticias');
-Route::get('/Conferencias', [PostInicioSesionController::class, 'Conferencias'])->name('Conferencias');
-Route::get('/Configuracion', [PostInicioSesionController::class, 'ConfiguracionPerfil'])->name('Configuracion');
-Route::get('/Configuracion/Seguridad', [PostInicioSesionController::class, 'ConfiguracionSeguridad'])->name('ConfiguracionSeguridad');
-Route::get('/Configuracion/SesionesActivas', [PostInicioSesionController::class, 'ConfiguracionSesionesActivas'])->name('ConfiguracionSesionesActivas');
-Route::get('/Configuracion/EliminarCuenta', [PostInicioSesionController::class, 'ConfiguracionEliminarCuenta'])->name('ConfiguracionEliminarCuenta');
-Route::get('/PerfilUsuario', [PostInicioSesionController::class, 'PerfilUsuario'])->name('PerfilUsuario');
-
-/*Conferencias*/
 
 
 Route::middleware([
@@ -36,9 +23,12 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/Home', function () {
-        return view('PostRegistro.Home');
-    })->name('Home');
-    
-
+    Route::get('/Home', [PostInicioSesionController::class, 'Home'])->name('Home');
+    Route::get('/Noticias', [PostInicioSesionController::class, 'Noticias'])->name('Noticias');
+    Route::get('/Conferencias', [PostInicioSesionController::class, 'Conferencias'])->name('Conferencias');
+    Route::get('/Configuracion', [PostInicioSesionController::class, 'ConfiguracionPerfil'])->name('Configuracion');
+    Route::get('/Configuracion/Seguridad', [PostInicioSesionController::class, 'ConfiguracionSeguridad'])->name('ConfiguracionSeguridad');
+    Route::get('/Configuracion/SesionesActivas', [PostInicioSesionController::class, 'ConfiguracionSesionesActivas'])->name('ConfiguracionSesionesActivas');
+    Route::get('/Configuracion/EliminarCuenta', [PostInicioSesionController::class, 'ConfiguracionEliminarCuenta'])->name('ConfiguracionEliminarCuenta');
+    Route::get('/PerfilUsuario', [PostInicioSesionController::class, 'PerfilUsuario'])->name('PerfilUsuario');
 });

@@ -14,7 +14,7 @@
         <div class="w-full md:w-1/2 bg-yellow-500 text-white p-6 md:p-8 rounded-lg flex flex-col items-center justify-center text-center">
             <h1 class="text-3xl font-bold mb-4">¡Hola!</h1>
             <p class="mb-6">Regístrate con tus datos personales para disfrutar de todo el contenido de nuestra plataforma. Si ya tienes una cuenta registrada, inicia sesión.</p>
-            <a href="{{ route('IniciarSesion') }}" class="bg-white text-yellow-500 py-2 px-4 rounded hover:bg-yellow-600 hover:text-white transition">Iniciar Sesión</a>
+            <a href="{{ route('login') }}" class="bg-white text-yellow-500 py-2 px-4 rounded hover:bg-yellow-600 hover:text-white transition">Iniciar Sesión</a>
         </div>
 
         <!-- Formulario de registro -->

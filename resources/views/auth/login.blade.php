@@ -1,48 +1,62 @@
-<x-guest-layout>
-    <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
-        </x-slot>
+@extends('layouts.layout')
 
-        <x-validation-errors class="mb-4" />
+@section('title', 'Iniciar Sesión')
 
-        @session('status')
-            <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
+@section('content')
+<div class="flex justify-center items-center min-h-screen bg-gray-100 p-4 mt-24">
+    <div class="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6 md:p-8 flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-8">
+        <div class="w-full md:w-1/2 bg-yellow-500 text-white p-6 md:p-8 rounded-lg flex flex-col items-center justify-center text-center">
+            <h1 class="text-3xl font-bold mb-4">¡Bienvenido!</h1>
+            <p class="mb-6">Ingresa tus datos personales para ingresar a la plataforma. Si no tienes registrada una cuenta, ¡Hazlo Ahora!</p>
+            <a href="{{ route('Registrarse') }}" class="bg-white text-yellow-500 py-2 px-4 rounded hover:bg-yellow-600 hover:text-white transition">Registrarse</a>
+        </div>
+
+        <div class="w-full md:w-1/2">
+            <h1 class="text-3xl font-bold text-gray-800 mb-6">Iniciar Sesión</h1>
+
+            @session('status')
+            <div class="bg-green-100 text-green-700 p-4 rounded mb-4">
                 {{ $value }}
             </div>
-        @endsession
+            @endsession
 
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
+            <x-validation-errors class="mb-4" />
 
-            <div>
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            </div>
+            <form method="POST" action="{{ route('login') }}" class="space-y-4">
+                @csrf
 
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
-            </div>
+                <div>
+                    <label for="email" class="block text-gray-700">Email</label>
+                    <div class="flex items-center border border-gray-300 rounded px-3 py-2">
+                        <input id="email" type="email" name="email" class="flex-1 outline-none" required autofocus autocomplete="username">
+                        <ion-icon name="mail-outline" class="text-gray-500 ml-2"></ion-icon>
+                    </div>
+                </div>
 
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-checkbox id="remember_me" name="remember" />
-                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
-                </label>
-            </div>
+                <div>
+                    <label for="password" class="block text-gray-700">Contraseña</label>
+                    <div class="flex items-center border border-gray-300 rounded px-3 py-2">
+                        <input id="password" type="password" name="password" class="flex-1 outline-none" required autocomplete="current-password">
+                        <ion-icon name="key-outline" class="text-gray-500 ml-2"></ion-icon>
+                    </div>
+                </div>
 
-            <div class="flex items-center justify-end mt-4">
+                <div class="flex items-center mt-4">
+                    <input type="checkbox" id="remember_me" name="remember" class="mr-2 rounded border-gray-300">
+                    <label for="remember_me" class="text-sm text-gray-700">Mantener la sesión activa</label>
+                </div>
+
+                <div class="mt-6">
+                    <button type="submit" class="w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition">Iniciar Sesión</button>
+                </div>
+
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
+                <p class="mt-4 text-center text-gray-600">
+                    <a href="{{ route('OlvidasteContraseña') }}" class="text-blue-500 underline">¿Olvidaste tu Contraseña?</a>
+                </p>
                 @endif
-
-                <x-button class="ms-4">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-authentication-card>
-</x-guest-layout>
+            </form>
+        </div>
+    </div>
+</div>
+@endsection

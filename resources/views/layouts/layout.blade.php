@@ -138,7 +138,7 @@
                                         <a href="{{ url('Home') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Pagina Principal</a>
                                         <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Cerra Sesión</a>
                                         @else
-                                        <a href="{{ route('IniciarSesion') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Iniciar Sesión</a>
+                                        <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Iniciar Sesión</a>
                                         @if (Route::has('register'))
                                         <a href="{{ route('Registrarse') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Registrarse</a>
                                         @endif
@@ -177,7 +177,7 @@
                             <a href="{{ url('Home') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Pagina Principal</a>
                             <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Cerrar Sesión</a>
                             @else
-                            <a href="{{ route('IniciarSesion') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Iniciar Sesión</a>
+                            <a href="{{ route('login') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Iniciar Sesión</a>
                             @if (Route::has('register'))
                             <a href="{{ route('Registrarse') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Registrarse</a>
                             @endif
@@ -204,7 +204,7 @@
           <div class="footer-right">
             <ul>
               <li><a href="{{ route('Registrarse') }}">Registrarse</a></li>
-              <li><a href="{{ route('IniciarSesion') }}">Iniciar Sesión</a></li>
+              <li><a href="{{ route('login') }}">Iniciar Sesión</a></li>
             </ul>
           </div>
         </div>
