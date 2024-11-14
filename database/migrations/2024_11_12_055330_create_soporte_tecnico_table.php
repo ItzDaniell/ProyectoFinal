@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('soporte_tecnico', function (Blueprint $table) {
             $table->id('id_soporte');
-            $table->string('nombre_soporte',150);
-            $table->string('correo_soporte',300);
-            $table->string('estado_soporte',100);
+            $table->string('nombre_sop',45);
+            $table->string('correo_sop',45);
+            $table->string('estado_sop',45);
             $table->timestamps();
         });
     }

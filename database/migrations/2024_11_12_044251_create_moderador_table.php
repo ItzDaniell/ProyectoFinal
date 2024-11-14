@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('moderadores', function (Blueprint $table) {
+        Schema::create('moderador', function (Blueprint $table) {
             $table->id('id_moderador');
-            $table->string('nombre_moderador',150);
-            $table->string('correo_moderador',300);
-            $table->string('estado_moderador',100);
+            $table->string('Nombre_mo',100);
+            $table->string('correo_mo',100);
+            $table->string('estado_mo',45);
             $table->timestamps();
         });
     }

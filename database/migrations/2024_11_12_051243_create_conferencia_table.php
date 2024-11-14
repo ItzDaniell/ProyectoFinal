@@ -11,16 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('conferencias', function (Blueprint $table) {
+        Schema::create('conferencia', function (Blueprint $table) {
             $table->id('id_conferencia');
-            $table->foreign('id_ponente')->references('id_ponente')->on('ponentes');
-            $table->foreign('id_categoria')->references('id_categoria')->on('categorias');
-            $table->string('titulo',150);
-            $table->string('descripcion',300);
-            $table->time('tiempo');
+            $table->unsignedBigInteger('id_ponente');
+            $table->string('titulo_con',45);
+            $table->string('descripcion_con',45);
+            $table->string('tipo_con',45);
+            $table->time('tiempo_con');
             $table->date('fecha_inicio');
-            $table->string('url',300);
+            $table->string('url_con',300);
+            $table->string('conferenciacol',45);
             $table->timestamps();
+
+            $table->foreign('id_ponente')->references('id_ponente')->on('ponente');
         });
     }
 

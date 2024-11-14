@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('revision_reportes', function (Blueprint $table) {
+        Schema::create('revision_reporte', function (Blueprint $table) {
             $table->id('id_revision');
-            $table->foreign('id_moderador')->references('id_moderador')->on('moderadores');
-            $table->foreign('id_reporte')->references('id_reporte')->on('reportes');
-            $table->string('accion',150);
+            $table->unsignedBigInteger('id_reporte');
+            $table->unsignedBigInteger('id_moderador');
+            $table->string('accion',45);
             $table->string('comentario',300);
             $table->timestamps();
+
+            $table->foreign('id_moderador')->references('id_moderador')->on('moderador');
+            $table->foreign('id_reporte')->references('id_reporte')->on('reporte');
         });
     }
 
