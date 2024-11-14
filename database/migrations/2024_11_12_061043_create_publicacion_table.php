@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('publicacion', function (Blueprint $table) {
+        Schema::create('publicaciones', function (Blueprint $table) {
             $table->id('id_publicacion');
-            $table->unsignedBigInteger('id_users');
-            $table->string('titulo_pu',45);
-            $table->string('tipo_pu',45);
-            $table->string('descripcion_pu',45);
-            $table->string('estado_pu',45);
+            $table->foreign('id_usuario')->references('id')->on('users');
+            $table->foreign('id_categoria')->references('id_categoria')->on('categoria');
+            $table->string('titulo',150);
+            $table->string('descripcion',300);
+            $table->string('imagen', 300);
             $table->timestamps();
-
-            $table->foreign('id_users')->references('id_users')->on('users');
         });
     }
 

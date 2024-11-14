@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('atencion_solicitud', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_soporte');
-            $table->unsignedBigInteger('id_solicitudes');
+            $table->foreign('id_soporte')->references('id_soporte')->on('soporte_tecnico');
+            $table->foreign('id_solicitud')->references('id_solucitud')->on('solicitudes');
             $table->string('respuesta',300);
             $table->timestamps();
         });

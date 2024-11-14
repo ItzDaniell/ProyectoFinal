@@ -22,145 +22,7 @@
       a{
           text-decoration: none;
       }
-      /*Barra de Navegación*/
-      .header{
-          background-color: #F3AF31;
-          display: flex;
-          justify-content: flex-end;
-          align-items: center;
-          height: 70px;
-          padding: 5px 7%;
-      }
-      .header .logo{
-          display: flex;
-          cursor: pointer;
-          margin-right: auto;
-          align-items: center;
-      }
-      .header .logo img{
-          height: 50px;
-          width: auto;
-          padding-right: 10px;
-          transition: all 0.3s;
-      }
-      .header .logo img:hover{
-          transform: scale(1.2);
-      }
-      .header .logo a{
-          color: white;
-          vertical-align: auto;
-      }
-      .nav-links li {
-          list-style: none;
-      }
-      .header .nav-links li{
-          display: inline-block;
-          padding: 0 15px;
-          transition: all 0.3s;
-      }
-      .nav-links a{
-          color: white;
-      }
-      .header .nav-links li:hover{
-          transform: scale(1.1);
-      }
-      .header .nav-links a:hover{
-          color: #212121;
-      }
-      .link-user button{
-          border:none;
-          background: white;
-          color: #212121;
-          padding: 9px 12px;
-          border-radius: 15px;
-          cursor: pointer;
-          transition: all 0.3s ease 0s;
-      }
-      .link-user button:hover{
-          background:#212121;
-          color: white;
-          transform: scale(1.1);
-      }
-      .link-user a{
-          padding-left: 15px;
-      }
-      /*Titulo de la pagina*/
-      .principal{
-          display: flex;
-          flex-direction: column;
-          text-align: center;
-          padding-top: 20px;
-          justify-content: center;
-          align-items: center;
-          height: 590px;
-      }
-      .principal h1{
-          font-size: 60px;
-      }
-      .principal p{
-          width: auto;
-          max-width: 700px;
-          padding-top: 50px;
-          text-align: center;
-          padding-bottom: 50px;
-          margin-left: 20px;
-          margin-right: 20px;
-      }
-      /*Contenedor de Presentacion (cambios)*/ /*Laptop ok,  Pc ?, Celular ?*/
-      .seccion{
-          display: flex;
-          padding-top: 30px;
-          padding-bottom: 20px;
-          flex-wrap: wrap;
-
-      }
-      .texto{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-      }
-      .texto h2{
-          font-size: 40px;
-      }
-      .texto h1{
-          font-size: 64px;
-      }
-      .seccion-img{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding-top: 30px;
-      }
-      .seccion img{
-          width: 400px;
-          height: 450px;
-          border-radius: 15px;
-      }
-      .seccion-parrafo{
-          padding-top:20px;
-          padding-bottom: 30px;
-          width: 400px;
-      }
-      .seccion-img-ns img{
-          width: 400px;
-          height: 250px;
-      }
-      .seccion-rev{
-          display: flex;
-          flex-wrap: wrap-reverse;
-          padding-top: 50px;
-          padding-bottom: 50px;
-      }
-      .seccion-equipo{
-          display: flex;
-          flex-direction: column;
-          flex-wrap: wrap;
-      }
-      .seccion-texto{
-          display: flex;
-          align-items: center;
-      }
-      /*Boton animado*/
+      
       .boton{
             width: auto;
             height: auto;
@@ -188,23 +50,8 @@
             justify-content: center;
             align-items: center;
         }
-      /*Contenedor de Ventajas (cambios)*/ /*Laptop ok,  Pc ?, Celular ?*/
-      .ventajas-section{
-          display: flex;
-          padding-top: 50px;
-          flex-wrap: wrap;
-      }
-      .contenedor-ventajas{
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-around;
-          align-items: center;
-          text-align: center;
-      }
-    .ventaja{
-    padding-bottom: 50px;
-    }
-    /*Carrousel de Funciones*/
+
+
     .carrousel{
     display: flex;
     flex-direction: column;
@@ -212,7 +59,7 @@
     .carrousel-text{
     width: 30%;
     }
-    /*Footer*/
+
     .footer {
     background-color: #1a1a1a;
     color: white;
@@ -255,80 +102,92 @@
     font-size: 0.9em;
     color: #666;
     }
-    /*Formulario de Ingreso y Registro*/
-    .container-form{
-        display: flex;
-        align-content: center;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-        height: 87vh;
-    }
-    .container-info{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 90%;
-        max-width: 450px;
-    }
-    .container-info h1{
-        width: 90%;
-        max-width: 450px;
-        font-size: 48px;
-        text-align: center;
-    }
-    .container-info span{
-        width: 90%;
-        max-width: 450px;
-        text-align: center;
-        padding-top: 25px;
-        padding-bottom: 25px;
-    }
-    .form-container{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        width: 90%;
-        max-width: 450px;
-    }
-    .form-container h1{
-        width: 90%;
-        max-width: 450px;
-        font-size: 28px;
-        text-align: center;
-        padding-bottom: 15px;
-    }
-    .form-group{
 
-    }
 
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
     <title>DevShare - @yield('title')</title>
 </head>
 <body>
-    <header class="header">
-        <div class="logo">
-            <a href="index.html"><img src="unknown-1.png" alt="DevShare"></a>
-            <a href="{{ route('Index') }}">DevShare</a>
+    <header>
+        <div>
+            <nav x-data="{ open: false }" @keydown.window.escape="open = false" class="bg-gray-800 w-full z-50 md:fixed">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between h-16">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <img class="h-8 w-8" src="/img/logos/workflow-mark-on-dark.svg" alt="" />
+                            </div>
+                            <!-- Menú desktop -->
+                            <div class="hidden md:block">
+                                <div class="ml-10 flex items-baseline">
+                                    <a href="{{ route('Bienvenida') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Inicio</a>
+                                    <a href="{{ route('Contactanos') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Contactanos</a>
+                                    <a href="{{ route('SobreNosotros') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Sobre Nosotros</a>
+                                    <a href="{{ route('FAQ') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">FAQ</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden md:block">
+                            <div class="ml-4 flex items-center md:ml-6">
+                                <div @click.away="open = false" class="ml-3 relative" x-data="{ open: false }">
+                                    <div>
+                                        @if (Route::has('login'))
+                                        @auth
+                                        <a href="{{ url('Home') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Pagina Principal</a>
+                                        <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Cerra Sesión</a>
+                                        @else
+                                        <a href="{{ route('IniciarSesion') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Iniciar Sesión</a>
+                                        @if (Route::has('register'))
+                                        <a href="{{ route('Registrarse') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Registrarse</a>
+                                        @endif
+                                        @endauth
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Botón móvil -->
+                        <div class="-mr-2 flex md:hidden">
+                            <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
+                                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                    <path :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                    <path :class="{'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Menú móvil modificado -->
+                <div 
+                    :class="{'translate-x-0': open, '-translate-x-full': !open}"
+                    class="md:hidden fixed inset-0 transform transition-transform duration-200 ease-in-out bg-gray-800"
+                    style="top: 64px;"
+                >
+                    <div class="px-2 pt-2 pb-3 sm:px-3 h-full flex flex-col">
+                        <a href="{{ route('Bienvenida') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Inicio</a>
+                        <a href="{{ route('SobreNosotros') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Sobre Nosotros</a>
+                        <a href="{{ route('Contactanos') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Contactanos</a>
+                        <a href="{{ route('FAQ') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">FAQ</a>
+                        
+                        <div class="mt-auto border-t border-gray-700 pt-4 pb-3">
+                            @if (Route::has('login'))
+                            @auth
+                            <a href="{{ url('Home') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Pagina Principal</a>
+                            <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Cerrar Sesión</a>
+                            @else
+                            <a href="{{ route('IniciarSesion') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Iniciar Sesión</a>
+                            @if (Route::has('register'))
+                            <a href="{{ route('Registrarse') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Registrarse</a>
+                            @endif
+                            @endauth
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </nav>
         </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="{{ route('SobreNosotros') }}">Sobre Nosotros</a></li>
-                <li><a href="{{ route('Contactanos') }}">Contactanos</a></li>
-                <li><a href="{{ route('FAQ') }}">FAQ</a></li>
-                @if (Route::has('login'))
-                  @auth
-                  <li><a href="{{ url('Home') }}">Dashboard</a></li>
-                @else
-                  <li><a href="{{ route('IniciarSesion') }}">Iniciar Sesión</a></li>
-                  @if (Route::has('register'))
-                    <li><a href="{{ route('Registrarse') }}">Registrarse</a></li>
-                  @endif
-                  @endauth
-                @endif
-            </ul>
-        </nav>
     </header>
     @yield('content')
     <footer class="footer">
@@ -336,7 +195,7 @@
           <div class="footer-left">
             <h3>DevShare</h3>
             <ul>
-              <li><a href="{{ route('Index') }}">Inicio</a></li>
+              <li><a href="{{ route('Bienvenida') }}">Inicio</a></li>
               <li><a href="{{ route('Contactanos') }}">Contactanos</a></li>
               <li><a href="{{ route('SobreNosotros') }}">Sobre Nosotros</a></li>
               <li><a href="{{ route('FAQ') }}">Preguntas Frecuentes</a></li>

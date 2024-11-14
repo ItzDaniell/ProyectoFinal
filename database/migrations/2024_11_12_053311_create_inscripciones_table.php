@@ -13,12 +13,9 @@ return new class extends Migration
     {
         Schema::create('inscripciones', function (Blueprint $table) {
             $table->id('id_incripciones');
-            $table->unsignedBigInteger('id_users');
-            $table->unsignedBigInteger('id_conferencia');
+            $table->foreign('id_users')->references('id')->on('users');
+            $table->foreign('id_conferencia')->references('id_conferencia')->on('conferencias');
             $table->timestamps();
-
-            $table->foreign('id_users')->references('id_users')->on('users');
-            $table->foreign('id_conferencia')->references('id_conferencia')->on('conferencia');
         });
     }
 
