@@ -81,7 +81,7 @@
                 </div>
                 
                 <p class="mt-4 text-center text-gray-600">
-                    <a href="{{ route('IniciarSesion') }}" class="text-blue-500 underline">¿Ya estás registrado?</a>
+                    <a href="{{ route('login') }}" class="text-blue-500 underline">¿Ya estás registrado?</a>
                 </p>
             </form>
         </div>

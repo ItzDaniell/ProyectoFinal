@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('url',300);
             $table->string('estado',45);
             $table->timestamps();
-            $table->foreign('id_categoria')->references('id_categoria')->on('categoria');
+            $table->foreign('id_categoria')->references('id_categoria')->on('categorias');
         });
     }
 
