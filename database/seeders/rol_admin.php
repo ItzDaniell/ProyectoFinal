@@ -16,8 +16,9 @@ class rol_admin extends Seeder
     {
         User::create([
             'name' => 'Juan Daniel Rodriguez Ordoñez', // Nombre del usuario
-            'email' => 'juan@gmail.con', // Correo del usuario
+            'email' => 'juan@gmail.com', // Correo del usuario
             'password' => bcrypt('daniel8048'), // Contraseña encriptada
+            'rol' => 'Admin'
         ]);
         $adminUser = User::first(); // Encuentra al primer usuario en la base de datos
         if ($adminUser) {

@@ -4,6 +4,7 @@ use App\Http\Controllers\ConferenciaController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\PostInicioSesionController;
 use App\Http\Controllers\PreInicioSesionController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
@@ -42,3 +43,11 @@ Route::middleware(['auth', 'can:manage-news'])->group(function () {
 Route::middleware(['auth', 'can:manage-conferences'])->group(function () {
     Route::get('/conferencias/index', [ConferenciaController::class, 'index'])->name('conferencias.index');
 });
+
+Route::middleware(['auth', 'can:manage-users'])->group(function () {
+    Route::get('/usuarios/index', [UsuarioController::class, 'index'])->name('usuarios.index');
+});
+
+
+
+

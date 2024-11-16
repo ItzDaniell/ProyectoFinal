@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('fecha_inicio');
             $table->string('imagen', 300);
             $table->string('URL',300);
+            $table->string('estado', 100)->default('Activo');
             $table->timestamps();
             
             $table->foreign('id_categoria')->references('id_categoria')->on('categorias');

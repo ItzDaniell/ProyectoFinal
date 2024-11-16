@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('autor',100);
             $table->string('descripcion',300);
             $table->string('imagen',300);
-            $table->string('url',300);
-            $table->string('estado',45);
+            $table->string('URL',300);
+            $table->string('estado',100)->default('Activo');
             $table->timestamps();
             $table->foreign('id_categoria')->references('id_categoria')->on('categorias');
         });

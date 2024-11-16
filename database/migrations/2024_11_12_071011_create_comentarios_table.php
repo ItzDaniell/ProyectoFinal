@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_publicacion');
             $table->unsignedBigInteger('id_comentarista');
             $table->string('contenido',300);
-            $table->string('estado',100);
+            $table->string('estado',100)->default('Activo');
             $table->timestamps();
 
             $table->foreign('id_publicacion')->references('id_publicacion')->on('publicaciones');

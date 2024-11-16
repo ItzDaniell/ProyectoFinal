@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('titulo',150);
             $table->string('imagen', 300)->nullable();
             $table->string('descripcion',300)->nullable();
-            $table->string('estado',100);
+            $table->string('estado',100)->default('Activo');
             $table->timestamps();
 
             $table->foreign('id_categoria')->references('id_categoria')->on('categorias');

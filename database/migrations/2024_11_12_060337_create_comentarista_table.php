@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_comentarista');
             $table->string('nombres',150);
             $table->string('correo',300);
-            $table->string('estado',100);
+            $table->string('estado',100)->default('Activo');
             $table->timestamps();
         });
     }

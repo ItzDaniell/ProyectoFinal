@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_users');
             $table->string('tipo_solicitud',100);
             $table->string('descripcion',300);
-            $table->string('estado',100);
+            $table->string('estado',100)->default('Activo');
             $table->timestamps();
 
             $table->foreign('id_users')->references('id')->on('users');

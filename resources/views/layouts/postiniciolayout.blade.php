@@ -328,7 +328,7 @@
                     <div id="dropdownMenu" style="width: 270px;" class="absolute bottom-full mb-2 bg-gray-800 border border-gray-700 p-2 rounded hidden">
                         <ul class="space-y-2">
                             @if(auth()->user()->hasRole('Admin'))
-                            <a href="{{ route('noticias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                            <a href="{{ route('usuarios.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                                 <ion-icon name="settings-outline"></ion-icon>
                                 <span>Gestionar Usuarios</span>
                             </a>
@@ -340,7 +340,7 @@
                                 <ion-icon name="settings-outline"></ion-icon>
                                 <span>Gestionar Comentarios</span>
                             </a>
-                            <a href="{{ route('Configuracion') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                            <a href="{{ route('noticias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                                 <ion-icon name="settings-outline"></ion-icon>
                                 <span>Gestionar Noticias</span>
                             </a>

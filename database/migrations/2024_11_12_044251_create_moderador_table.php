@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_moderador');
             $table->string('nombres',100);
             $table->string('correo',100);
-            $table->string('estado',150);
+            $table->string('estado',150)->default('Activo');
             $table->timestamps();
         });
     }
