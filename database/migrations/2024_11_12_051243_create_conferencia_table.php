@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('descripcion',300);
             $table->time('tiempo');
             $table->date('fecha_inicio');
+            $table->string('imagen', 300);
             $table->string('URL',300);
             $table->timestamps();
             

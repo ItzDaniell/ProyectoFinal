@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_users');
             $table->unsignedBigInteger('id_categoria');
             $table->string('titulo',150);
-            $table->string('descripcion',300);
+            $table->string('imagen', 300)->nullable();
+            $table->string('descripcion',300)->nullable();
             $table->string('estado',100);
             $table->timestamps();
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categorias;
+use App\Models\Conferencia;
 use Illuminate\Http\Request;
 
 class ConferenciaController extends Controller
@@ -10,8 +12,9 @@ class ConferenciaController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+    {       
+        $conferencias = Conferencia::orderBy('id_conferencia')->paginate(10);
+        return view('conferencia.index', compact('conferencias'));
     }
 
     /**
@@ -19,7 +22,8 @@ class ConferenciaController extends Controller
      */
     public function create()
     {
-        //
+        $categorias = Categorias::all();
+        return view('conferencia.create', compact('categorias'));
     }
 
     /**

@@ -289,58 +289,82 @@
                 <span class="text-2xl font-semibold">DevShare</span>
             </div>
             <nav class="space-y-4 mt-4">
-                <a href="{{ route('Home') }}" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                <a href="{{ route('Home') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="home-outline"></ion-icon>
                     <span>Inicio</span>
                 </a>
-                <a href="" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                <a href="" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="search-outline"></ion-icon>
                     <span>Búsqueda</span>
                 </a>
-                <a href="{{ route('Noticias') }}" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                <a href="{{ route('Noticias') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="newspaper-outline"></ion-icon>
                     <span>Noticias</span>
                 </a>
-                <a href="{{ route('Conferencias') }}" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                <a href="{{ route('Conferencias') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="laptop-outline"></ion-icon>
                     <span>Conferencias</span>
                 </a>
-                <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="paper-plane-outline"></ion-icon>
                     <span>Mensajes</span>
                 </a>
-                <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="create-outline"></ion-icon>
                     <span>Crear</span>
                 </a>
                 <div class="border-t border-gray-700 mt-4 pt-4"></div>
-                <a href="{{ route('PerfilUsuario') }}" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                <a href="{{ route('PerfilUsuario') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="person-circle-outline"></ion-icon>
                     <span>Perfil</span>
                 </a>
                 <!-- Dropdown button -->
                 <div class="relative">
-                    <a onclick="toggleMenu()" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                    <a onclick="toggleMenu()" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                         <ion-icon name="menu-outline"></ion-icon>
                         <span>Menú</span>
                     </a>
                     <!-- Dropdown menu (posicionado hacia arriba) -->
-                    <div id="dropdownMenu" class="absolute bottom-full mb-2 w-full bg-gray-800 border border-gray-700 p-2 rounded hidden">
+                    <div id="dropdownMenu" style="width: 270px;" class="absolute bottom-full mb-2 bg-gray-800 border border-gray-700 p-2 rounded hidden">
                         <ul class="space-y-2">
                             @if(auth()->user()->hasRole('Admin'))
-                            <a href="{{ route('noticias.index') }}" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                            <a href="{{ route('noticias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                                <ion-icon name="settings-outline"></ion-icon>
+                                <span>Gestionar Usuarios</span>
+                            </a>
+                            <a href="{{ route('noticias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                                <ion-icon name="settings-outline"></ion-icon>
+                                <span>Gestionar Publicaciones</span>
+                            </a>
+                            <a href="{{ route('noticias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                                <ion-icon name="settings-outline"></ion-icon>
+                                <span>Gestionar Comentarios</span>
+                            </a>
+                            <a href="{{ route('Configuracion') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                                 <ion-icon name="settings-outline"></ion-icon>
                                 <span>Gestionar Noticias</span>
                             </a>
+                            <a href="{{ route('conferencias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                                <ion-icon name="settings-outline"></ion-icon>
+                                <span>Gestionar Conferencias</span>
+                            </a>
+                            <a href="{{ route('Configuracion') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                                <ion-icon name="settings-outline"></ion-icon>
+                                <span>Gestionar Reportes</span>
+                            </a>
+                            <a href="{{ route('Configuracion') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                                <ion-icon name="settings-outline"></ion-icon>
+                                <span>Gestionar Solicitudes</span>
+                            </a>
+                            <div class="border-t border-gray-700 pt-1 pb-1"></div>
                             @endif
-                            <a href="{{ route('Configuracion') }}" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                            <a href="{{ route('Configuracion') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                                 <ion-icon name="settings-outline"></ion-icon>
                                 <span>Configuración</span>
                             </a>
-                            <div class="border-t border-gray-700 pt-1 pb-1"></div>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <a href="" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded"><button type="submit" class="flex items-center space-x-2 hover:bg-gray-700 rounded">
+                                <a href="" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded"><button type="submit" class="flex items-center space-x-3 hover:bg-gray-700 rounded">
                                     <ion-icon name="log-out-outline"></ion-icon>
                                     <span>Cerrar Sesión</span>
                                 </button></a>
