@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('comentaristas', function (Blueprint $table) {
             $table->id('id_comentarista');
-            $table->string('nombres_comentarista',150);
-            $table->string('correo_comentarista',300);
-            $table->string('estado_comentarista',100);
+            $table->string('nombres',150);
+            $table->string('correo',300);
+            $table->string('estado',100);
             $table->timestamps();
         });
     }

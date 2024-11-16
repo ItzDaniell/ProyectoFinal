@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id('id_reporte');
             $table->unsignedBigInteger('id_users');
             $table->string('tipo',100);
-            $table->string('descripcion_reporte',300);
-            $table->string('estado_reporte',100);
+            $table->string('descripcione',300);
+            $table->string('estado',100);
             $table->timestamps();
 
             $table->foreign('id_users')->references('id')->on('users');

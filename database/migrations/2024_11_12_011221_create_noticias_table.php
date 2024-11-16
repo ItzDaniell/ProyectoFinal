@@ -16,7 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_categoria');
             $table->string('titulo',100);
             $table->string('autor',100);
-            $table->string('descripcion_noticias',300);
+            $table->string('descripcion',300);
+            $table->string('imagen',300);
             $table->string('url',300);
             $table->string('estado',45);
             $table->timestamps();

@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id('id_publicacion');
             $table->unsignedBigInteger('id_users');
             $table->unsignedBigInteger('id_categoria');
-            $table->string('titulo_publicacion',150);
-            $table->string('descripcion_publicacion',45);
-            $table->string('estado_publicacion',45);
+            $table->string('titulo',150);
+            $table->string('descripcion',300);
+            $table->string('estado',100);
             $table->timestamps();
 
             $table->foreign('id_categoria')->references('id_categoria')->on('categorias');

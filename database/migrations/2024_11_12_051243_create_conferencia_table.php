@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id('id_conferencia');
             $table->unsignedBigInteger('id_ponente');
             $table->unsignedBigInteger('id_categoria');
-            $table->string('titulo_conferencia',150);
-            $table->string('descripcion_conferencia',300);
-            $table->time('tiempo_conferencia');
+            $table->string('titulo',150);
+            $table->string('descripcion',300);
+            $table->time('tiempo');
             $table->date('fecha_inicio');
-            $table->string('url_conferencia',300);
+            $table->string('URL',300);
             $table->timestamps();
             
             $table->foreign('id_categoria')->references('id_categoria')->on('categorias');

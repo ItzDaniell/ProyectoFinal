@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id('id_comentario');
             $table->unsignedBigInteger('id_publicacion');
             $table->unsignedBigInteger('id_comentarista');
-            $table->string('contenido_come',300);
-            $table->string('estado_come',100);
+            $table->string('contenido',300);
+            $table->string('estado',100);
             $table->timestamps();
 
             $table->foreign('id_publicacion')->references('id_publicacion')->on('publicaciones');

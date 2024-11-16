@@ -282,67 +282,83 @@
     <title>DevShare - @yield('title')</title>
 </head>
 <body>
-<!-- Sidebar -->
-<div class="flex flex-col lg:flex-row">
-    <!-- Sidebar -->
-    <div class="bg-gray-800 text-white w-full lg:w-64 h-auto lg:h-screen p-4">
-        <div class="flex items-center justify-center h-16 border-b border-gray-700">
-            <span class="text-2xl font-semibold">DevShare</span>
-        </div>
-        <nav class="space-y-4 mt-4">
-            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
-                <ion-icon name="home-outline"></ion-icon>
-                <span>Inicio</span>
-            </a>
-            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
-                <ion-icon name="search-outline"></ion-icon>
-                <span>Búsqueda</span>
-            </a>
-            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
-                <ion-icon name="newspaper-outline"></ion-icon>
-                <span>Noticias</span>
-            </a>
-            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
-                <ion-icon name="laptop-outline"></ion-icon>
-                <span>Conferencias</span>
-            </a>
-            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
-                <ion-icon name="paper-plane-outline"></ion-icon>
-                <span>Mensajes</span>
-            </a>
-            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
-                <ion-icon name="create-outline"></ion-icon>
-                <span>Crear</span>
-            </a>
-            <div class="border-t border-gray-700 mt-4 pt-4"></div>
-            <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
-                <ion-icon name="person-circle-outline"></ion-icon>
-                <span>Perfil</span>
-            </a>
-            <!-- Dropdown button -->
-            <div class="relative">
-                <a onclick="toggleMenu()" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
-                    <ion-icon name="menu-outline"></ion-icon>
-                    <span>Menú</span>
-                </a>
-                <!-- Dropdown menu (posicionado hacia arriba) -->
-                <div id="dropdownMenu" class="absolute bottom-full mb-2 w-full bg-gray-800 border border-gray-700 p-2 rounded hidden">
-                    <ul class="space-y-2">
-                        <li><a href="#" class="block hover:bg-gray-700 p-2 rounded">Opción 1</a></li>
-                        <li><a href="#" class="block hover:bg-gray-700 p-2 rounded">Opción 2</a></li>
-                        <li><a href="#" class="block hover:bg-gray-700 p-2 rounded">Opción 3</a></li>
-                        <li><a href="#" class="block hover:bg-gray-700 p-2 rounded">Opción 4</a></li>
-                    </ul>
-                </div>
+    <div class="flex flex-col lg:flex-row">
+        <!-- Sidebar con ancho fijo -->
+        <div class="bg-gray-800 text-white w-64 h-screen p-4">
+            <div class="flex items-center justify-center h-16 border-b border-gray-700">
+                <span class="text-2xl font-semibold">DevShare</span>
             </div>
-        </nav>
+            <nav class="space-y-4 mt-4">
+                <a href="{{ route('Home') }}" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                    <ion-icon name="home-outline"></ion-icon>
+                    <span>Inicio</span>
+                </a>
+                <a href="" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                    <ion-icon name="search-outline"></ion-icon>
+                    <span>Búsqueda</span>
+                </a>
+                <a href="{{ route('Noticias') }}" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                    <ion-icon name="newspaper-outline"></ion-icon>
+                    <span>Noticias</span>
+                </a>
+                <a href="{{ route('Conferencias') }}" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                    <ion-icon name="laptop-outline"></ion-icon>
+                    <span>Conferencias</span>
+                </a>
+                <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                    <ion-icon name="paper-plane-outline"></ion-icon>
+                    <span>Mensajes</span>
+                </a>
+                <a href="#" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                    <ion-icon name="create-outline"></ion-icon>
+                    <span>Crear</span>
+                </a>
+                <div class="border-t border-gray-700 mt-4 pt-4"></div>
+                <a href="{{ route('PerfilUsuario') }}" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                    <ion-icon name="person-circle-outline"></ion-icon>
+                    <span>Perfil</span>
+                </a>
+                <!-- Dropdown button -->
+                <div class="relative">
+                    <a onclick="toggleMenu()" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                        <ion-icon name="menu-outline"></ion-icon>
+                        <span>Menú</span>
+                    </a>
+                    <!-- Dropdown menu (posicionado hacia arriba) -->
+                    <div id="dropdownMenu" class="absolute bottom-full mb-2 w-full bg-gray-800 border border-gray-700 p-2 rounded hidden">
+                        <ul class="space-y-2">
+                            @if(auth()->user()->hasRole('Admin'))
+                            <a href="{{ route('noticias.index') }}" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                                <ion-icon name="settings-outline"></ion-icon>
+                                <span>Gestionar Noticias</span>
+                            </a>
+                            @endif
+                            <a href="{{ route('Configuracion') }}" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded">
+                                <ion-icon name="settings-outline"></ion-icon>
+                                <span>Configuración</span>
+                            </a>
+                            <div class="border-t border-gray-700 pt-1 pb-1"></div>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <a href="" class="flex items-center space-x-2 hover:bg-gray-700 p-2 rounded"><button type="submit" class="flex items-center space-x-2 hover:bg-gray-700 rounded">
+                                    <ion-icon name="log-out-outline"></ion-icon>
+                                    <span>Cerrar Sesión</span>
+                                </button></a>
+                            </form>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <script>
+            function toggleMenu() {
+                const menu = document.getElementById('dropdownMenu');
+                menu.classList.toggle('hidden');
+            }
+        </script>
+        <div class="flex-1 bg-gray-100 p-4 overflow-y-auto h-screen">
+            @yield('content')
+        </div>
     </div>
-<script>
-    function toggleMenu() {
-        const menu = document.getElementById('dropdownMenu');
-        menu.classList.toggle('hidden');
-    }
-</script>
-@yield('content')
 </body>
 </html>

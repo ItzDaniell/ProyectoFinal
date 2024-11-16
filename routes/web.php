@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\PostInicioSesionController;
 use App\Http\Controllers\PreInicioSesionController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 /*Route::get('/', function () {
     return view('welcome');
@@ -15,7 +17,6 @@ Route::get('/SobreNosotros', [PreInicioSesionController::class, 'SobreNosotros']
 Route::get('/FAQ', [PreInicioSesionController::class, 'FAQ'])->name('FAQ');
 Route::get('/Registrarse', [PreInicioSesionController::class, 'Registrarse'])->name(name: 'Registrarse');
 Route::get('/OlvidasteContraseña', [PreInicioSesionController::class, 'OlvidasteContrasena'])->name('OlvidasteContraseña');
-
 
 
 Route::middleware([
@@ -31,4 +32,8 @@ Route::middleware([
     Route::get('/Configuracion/SesionesActivas', [PostInicioSesionController::class, 'ConfiguracionSesionesActivas'])->name('ConfiguracionSesionesActivas');
     Route::get('/Configuracion/EliminarCuenta', [PostInicioSesionController::class, 'ConfiguracionEliminarCuenta'])->name('ConfiguracionEliminarCuenta');
     Route::get('/PerfilUsuario', [PostInicioSesionController::class, 'PerfilUsuario'])->name('PerfilUsuario');
+});
+
+Route::middleware(['auth', 'can:manage-news'])->group(function () {
+    Route::get('/noticias/index', [NoticiaController::class, 'index'])->name('noticias.index');
 });
