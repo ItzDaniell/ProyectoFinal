@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ConferenciaController;
 use App\Http\Controllers\NoticiaController;
+use App\Http\Controllers\PonenteController;
 use App\Http\Controllers\PostInicioSesionController;
 use App\Http\Controllers\PreInicioSesionController;
 use App\Http\Controllers\UsuarioController;
@@ -38,10 +39,20 @@ Route::middleware([
 
 Route::middleware(['auth', 'can:manage-news'])->group(function () {
     Route::get('/noticias/index', [NoticiaController::class, 'index'])->name('noticias.index');
+    Route::get('/noticias/create', [NoticiaController::class, 'create'])->name('noticias.create');
+    Route::post('/noticias/create', [NoticiaController::class, 'store'])->name('noticias.store'); 
 });
 
 Route::middleware(['auth', 'can:manage-conferences'])->group(function () {
     Route::get('/conferencias/index', [ConferenciaController::class, 'index'])->name('conferencias.index');
+    
+
+
+    Route::get('/ponentes/index', [PonenteController::class, 'index'])->name('ponentes.index');
+    Route::get('/ponentes/create', [PonenteController::class, 'create'])->name('ponentes.create');
+    Route::post('/ponentes/create', [PonenteController::class, 'store'])->name('ponentes.store'); 
+    Route::get('/ponentes/{id_ponente}/edit', [PonenteController::class, 'edit'])->name('ponentes.edit');
+    Route::patch('/ponentes/{id_ponente}/edit', [PonenteController::class, 'update'])->name('ponentes.update');
 });
 
 Route::middleware(['auth', 'can:manage-users'])->group(function () {

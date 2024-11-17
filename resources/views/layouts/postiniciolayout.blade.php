@@ -18,82 +18,6 @@
             text-decoration: none;
             color: inherit;
         }
-
-        .sidebar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100vh;
-            background: #0f1010;
-            overflow: hidden;
-        }
-
-        .sidebar .wrapper {
-            width: 250px;
-            height: 100%;
-        }
-
-        .sidebar .logo {
-            padding: 24px 0;
-            background: #010102;
-            margin-bottom: 20px;
-        }
-
-        .sidebar .logo span {
-            width: 60px;
-            text-align: center;
-            display: block;
-        }
-
-        .sidebar .links {
-            padding: 0 5px;
-        }
-
-        .sidebar .link {
-            margin: 8px 0;
-            height: 50px;
-            color: #888;
-            display: flex;
-            align-items: center;
-            padding: 0 12px;
-            border: none;
-            background: none;
-            text-align: left;
-            width: 100%;
-            cursor: pointer;
-            transition: all 300ms ease-in-out;
-            font-size: 17px;
-        }
-
-        .sidebar .link ion-icon {
-            display: inline-block;
-            width: 22px;
-            height: 22px;
-            margin-right: 20px;
-        }
-
-        .sidebar .link a {
-            color: #888;
-            flex-grow: 1;
-            font-size: inherit;
-        }
-
-        .sidebar .divider {
-            border-bottom: 1px solid #222;
-            margin: 20px 0;
-            width: 100%;
-        }
-
-        .sidebar .link:hover {
-            background: #1f252d;
-            color: #fff;
-            border-radius: 5px;
-        }
-
-        .sidebar .link:hover a {
-            color: #fff;
-        }
         .sidebar-configuracion {
             position: absolute;
             top: 0px;
@@ -226,55 +150,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-        /*Noticias*/
-        .contenedor-noticias{
-            position: relative;
-            display: grid;
-            justify-content: space-around;
-            align-content: flex-start;
-            top: 0px;
-            left: 250px;
-            width: calc(100% - 250px);
-            height: 100vh;
-            overflow: hidden;
-            overflow-y: auto;
-        }
-        .contenedor-encabezado{
-            display: flex;
-            align-items: center;
-            justify-content:space-between;
-            max-width:100%;
-            height: 80px;
-        }
-        .contenedor-encabezado .opciones{
-            display: flex;
-            align-items: center;
-            height: 80px;
-            padding-right: 20px;
-        }
-        .opciones ion-icon{
-            display: inline-block;
-            width: 28px;
-            height: 28px;
-            margin-left: 20px;
-        }
-        .noticias{
-            display: grid;
-            justify-content: center;
-        }
-        .primera-noticia{
-            display: flex;
-            width: auto;
-            max-width: 800px;
-            justify-content: space-between;
-        }
-        .imagen-primera-noticia img{
-            width: auto;
-            max-width: 400px;
-            height: auto;
-            max-height: 300px;
-
         }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">

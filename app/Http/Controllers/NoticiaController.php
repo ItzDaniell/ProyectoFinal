@@ -23,7 +23,7 @@ class NoticiaController extends Controller
     public function create()
     {
         $categorias = Categorias::all();
-        return view('producto.create', compact('categorias'));
+        return view('noticia.create', compact('categorias'));
     }
 
     /**
@@ -36,12 +36,20 @@ class NoticiaController extends Controller
             'titulo' => 'required|max:150',
             'autor' => 'required|max:150',
             'descripcion' => 'required|max:300',
-            'imagen' => 'required|max:300',
-            'URL' => 'required|max:300',
-            'estado' => 'required'
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'URL' => 'nullable|url|max:300',
         ]);
-        Noticia::create($request->all());
-        return redirect()->route('noticia.index');
+    
+        // Procesar la carga del archivo de imagen si existe
+        $requestData = $request->all();
+        if ($request->hasFile('imagen')) {
+            $path = $request->file('imagen')->store('imagenes', 'public');
+            $requestData['imagen'] = $path;
+        }
+    
+        // Crear la noticia con los datos procesados
+        Noticia::create($requestData);
+        return redirect()->route('noticias.index')->with('success', 'Noticia agregada con éxito.');
     }
 
     /**
