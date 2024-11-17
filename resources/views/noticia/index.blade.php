@@ -26,12 +26,14 @@
                 <td class="px-4 py-2 border">{{ $noticia->autor }}</td>
                 <td class="px-4 py-2 border">{{ Str::limit($noticia->descripcion, 50) }}</td>
                 <td class="px-4 py-2 border">
-                    <img src="{{ asset($noticia->imagen) }}" alt="Imagen de la noticia" class="w-12 h-12 rounded-full">
+                    <a href="{{ asset('storage/' . $noticia->imagen) }}" target="_blank" class="text-blue-500 hover:underline">Ver Imagen</a>
                 </td>
-                <td class="px-4 py-2 border">{{ $noticia->URL }}</td>
+                <td class="px-4 py-2 border">
+                    <a href="{{ $noticia->URL }}" class="text-blue-500 hover:underline" target="_blank">Ver enlace</a>
+                </td>
                 <td class="px-4 py-2 border">{{ $noticia->estado }}</td>
                 <td class="px-4 py-2 border">
-                    <!-- Aquí puedes agregar botones de acción (editar, eliminar) si es necesario -->
+                    <a href="{{ route('noticias.edit', $noticia->id_noticia) }}" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600 text-sm mr-2">Editar</a>
                 </td>
             </tr>
             @endforeach

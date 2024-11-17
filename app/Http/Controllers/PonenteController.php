@@ -38,14 +38,13 @@ class PonenteController extends Controller
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     
-        // Procesar la carga del archivo de imagen si existe
+
         $requestData = $request->all();
         if ($request->hasFile('foto')) {
             $path = $request->file('foto')->store('imagenes', 'public');
             $requestData['foto'] = $path;
         }
     
-        // Crear la noticia con los datos procesados
         Ponente::create($requestData);
         return redirect()->route('ponentes.index')->with('success', 'Ponente agregado con éxito.');
     }
@@ -53,9 +52,10 @@ class PonenteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id_ponente)
     {
-
+        $ponente = Ponente::find($id_ponente);
+        return view('ponente.show', compact('ponente'));
     }
 
     /**
@@ -63,7 +63,7 @@ class PonenteController extends Controller
      */
     public function edit(string $id_ponente)
     {
-        $ponente = Ponente::find($id_ponente); // Correcto
+        $ponente = Ponente::find($id_ponente);
         return view('ponente.edit', compact('ponente'));
     }
 
@@ -83,28 +83,26 @@ class PonenteController extends Controller
     
         $requestData = $request->all();
     
-        // Manejo de la foto
         if ($request->hasFile('foto')) {
-            // Elimina la foto anterior si existe
-        if ($ponente->foto && Storage::exists('public/' . $ponente->foto)) {
-            Storage::delete('public/' . $ponente->foto);
-        }
-    
-            // Guarda la nueva foto
-            $path = $request->file('foto')->store('fotos', 'public');
-            $requestData['foto'] = $path;
-        }
-    
-        $ponente->update($requestData);
-    
-        return redirect()->route('ponentes.index')->with('success', 'Ponente actualizado con éxito.');
+
+            if ($ponente->foto && Storage::exists('public/' . $ponente->foto)) {
+                Storage::delete('public/' . $ponente->foto);
+            }
+                $path = $request->file('foto')->store('fotos', 'public');
+                $requestData['foto'] = $path;
+            }
+        
+            $ponente->update($requestData);
+        
+            return redirect()->route('ponentes.index')->with('success', 'Ponente actualizado con éxito.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id_ponente)
     {
-        //
+        Ponente::find($id_ponente)->delete();
+        return redirect()->route('ponentes.index');
     }
 }

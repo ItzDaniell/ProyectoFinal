@@ -20,17 +20,13 @@
         <label for="biografia" class="block text-sm font-medium text-gray-700">Biografía</label>
         <textarea name="biografia" rows="4" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1">{{ $ponente->biografia }}</textarea>
     </div>
-    
-    <div class="flex items-center space-x-10"> <!-- Aumenté el espacio horizontal -->
-        <div>
-            <label for="foto" class="block text-sm font-medium text-gray-700">Foto</label>
-            <input type="file" name="foto" accept="image/*" class="mt-1 block h-12 text-sm text-gray-500 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-4">
+
+    <div>
+        <label for="foto" class="block text-sm font-medium text-gray-700">Foto</label>
+        <input type="file" id="foto" name="foto" accept="image/*" class="mt-1 block w-full h-12 text-sm text-gray-500 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-4" onchange="previewImage(event)">
+        <div class="mt-4">
+            <img id="preview" src="{{ asset('storage/' . $ponente->foto) }}" alt="Foto del Ponente" class="w-32 h-32 object-cover border border-gray-300 rounded-full">
         </div>
-        @if ($ponente->foto)
-            <div class="ml-4"> <!-- Añadí un margen izquierdo adicional -->
-                <img src="{{ asset('storage/' . $ponente->foto) }}" alt="Foto del Ponente" class="w-24 h-24 rounded-full border border-gray-300">
-            </div>
-        @endif
     </div>
     
     <div class="flex space-x-4">
@@ -38,5 +34,31 @@
         <button type="reset" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Limpiar</button>
         <a href="{{ route('ponentes.index') }}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Regresar</a>
     </div>
+
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById('preview');
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "#";
+                preview.classList.add('hidden');
+            }
+        }
+    
+        function clearPreview() {
+            const preview = document.getElementById('preview');
+            preview.src = "#";
+            preview.classList.add('hidden');
+            document.getElementById('foto').value = ""; // Limpia el campo de archivo
+        }
+    </script>
 </form>
 @endsection

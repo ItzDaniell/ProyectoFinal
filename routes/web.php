@@ -40,7 +40,9 @@ Route::middleware([
 Route::middleware(['auth', 'can:manage-news'])->group(function () {
     Route::get('/noticias/index', [NoticiaController::class, 'index'])->name('noticias.index');
     Route::get('/noticias/create', [NoticiaController::class, 'create'])->name('noticias.create');
-    Route::post('/noticias/create', [NoticiaController::class, 'store'])->name('noticias.store'); 
+    Route::post('/noticias/create', [NoticiaController::class, 'store'])->name('noticias.store');
+    Route::get('/noticias/{id}/edit', [NoticiaController::class, 'edit'])->name('noticias.edit');
+    Route::patch('/noticias/{id}/edit', [NoticiaController::class, 'update'])->name('noticias.update');
 });
 
 Route::middleware(['auth', 'can:manage-conferences'])->group(function () {
@@ -51,8 +53,10 @@ Route::middleware(['auth', 'can:manage-conferences'])->group(function () {
     Route::get('/ponentes/index', [PonenteController::class, 'index'])->name('ponentes.index');
     Route::get('/ponentes/create', [PonenteController::class, 'create'])->name('ponentes.create');
     Route::post('/ponentes/create', [PonenteController::class, 'store'])->name('ponentes.store'); 
-    Route::get('/ponentes/{id_ponente}/edit', [PonenteController::class, 'edit'])->name('ponentes.edit');
-    Route::patch('/ponentes/{id_ponente}/edit', [PonenteController::class, 'update'])->name('ponentes.update');
+    Route::get('/ponentes/{id}/edit', [PonenteController::class, 'edit'])->name('ponentes.edit');
+    Route::patch('/ponentes/{id}/edit', [PonenteController::class, 'update'])->name('ponentes.update');
+    Route::get('/ponentes/{id}', [PonenteController::class, 'show'])->name('ponentes.show');
+   // Route::delete('/ponentes/{id}', [PonenteController::class, 'destroy'])->name('ponentes.destroy');//
 });
 
 Route::middleware(['auth', 'can:manage-users'])->group(function () {

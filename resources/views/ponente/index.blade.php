@@ -23,19 +23,20 @@
             <tr class="hover:bg-gray-100">
                 <td class="px-4 py-2 border">{{ $ponente->nombres }}</td>
                 <td class="px-4 py-2 border">{{ $ponente->correo }}</td>
-                <td class="px-4 py-2 border">{{ Str::limit($ponente->biografia, 50) }}</td>
+                <td class="px-4 py-2 border">{{ Str::limit($ponente->biografia, 30) }}</td>
                 <td class="px-4 py-2 border">
                     <img src="{{ asset($ponente->foto) }}" alt="Foto del ponente" class="w-12 h-12 rounded-full">
                 </td>
                 <td class="px-4 py-2 border">
-                    <a href="{{ route('ponentes.edit', $ponente->id_ponente) }}" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600 text-sm">Editar</a>
-                    {{--
-                    <form action="{{ route('ponentes.destroy', $ponente->id) }}" method="POST" class="inline">
+                    <a href="{{ route('ponentes.edit', $ponente->id_ponente) }}" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600 text-sm mr-2">Editar</a>
+                    <a href="{{ route('ponentes.show', $ponente->id_ponente) }}" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600 text-sm">Ver</a>
+                {{-- 
+                 <form action="{{ route('ponentes.destroy', $ponente->id_ponente) }}" method="POST" class="inline">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 text-sm">Eliminar</button>
                     </form>
-                    --}}
+                --}}
                 </td>
             </tr>             
             @endforeach

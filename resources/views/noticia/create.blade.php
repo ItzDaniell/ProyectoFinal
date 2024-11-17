@@ -21,14 +21,17 @@
     
     <div>
         <label for="imagen" class="block text-sm font-medium text-gray-700">Imagen</label>
-        <input type="file" name="imagen" accept="image/*" class="mt-1 block w-full h-12 text-sm text-gray-500 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-4">
+        <input type="file" id="imagen" name="imagen" accept="image/*" class="mt-1 block w-full h-12 text-sm text-gray-500 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-4" onchange="previewImage(event)">
+        <div class="mt-4">
+            <img id="preview" src="#" alt="Imagen de la Noticia" class="hidden w-64 h-64 object-cover border border-gray-300">
+        </div>
     </div>
     
     <div>
         <label for="url" class="block text-sm font-medium text-gray-700">URL</label>
         <input type="url" name="URL" class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1">
     </div>
-    
+
     <div>
         <label for="categoria" class="block text-sm font-medium text-gray-700">Categoría</label>
         <select name="id_categoria" required class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1">
@@ -42,6 +45,33 @@
     <div class="flex space-x-4">
         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>
         <button type="reset" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Limpiar</button>
+        <a href="{{ route('noticias.index') }}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Regresar</a>
     </div>
+    
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const preview = document.getElementById('preview');
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "#";
+                preview.classList.add('hidden');
+            }
+        }
+    
+        function clearPreview() {
+            const preview = document.getElementById('preview');
+            preview.src = "#";
+            preview.classList.add('hidden');
+            document.getElementById('imagen').value = "";
+        }
+    </script>
 </form>
 @endsection
