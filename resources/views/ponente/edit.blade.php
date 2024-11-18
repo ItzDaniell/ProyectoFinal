@@ -5,7 +5,17 @@
 <form action="{{ route('ponentes.update', $ponente->id_ponente) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
     @csrf
     @method('PATCH')
-    
+
+    @if ($errors->any())
+        <div class="bg-red-100 text-red-700 p-4 mb-4 rounded">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div>
         <label for="nombres" class="block text-sm font-medium text-gray-700">Nombres</label>
         <input type="text" name="nombres" required value="{{ $ponente->nombres }}" class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1">

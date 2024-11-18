@@ -16,10 +16,10 @@ return new class extends Migration
             $table->unsignedBigInteger('id_ponente');
             $table->unsignedBigInteger('id_categoria');
             $table->string('titulo',150);
-            $table->string('descripcion',300);
+            $table->string('descripcion',2048);
             $table->time('tiempo');
             $table->date('fecha_inicio');
-            $table->string('imagen', 300);
+            $table->string('imagen', 2048);
             $table->string('URL',300);
             $table->string('estado', 100)->default('Activo');
             $table->timestamps();

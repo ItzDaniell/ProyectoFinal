@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('moderadores', function (Blueprint $table) {
             $table->id('id_moderador');
             $table->string('nombres',100);
-            $table->string('correo',100);
+            $table->string('correo',300);
             $table->string('estado',150)->default('Activo');
             $table->timestamps();
         });

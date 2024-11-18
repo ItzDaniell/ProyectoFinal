@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id('id_revision');
             $table->unsignedBigInteger('id_reporte');
             $table->unsignedBigInteger('id_moderador');
-            $table->string('accion',150);
-            $table->string('comentario',300);
+            $table->string('accion',300);
+            $table->string('comentario',2048);
             $table->timestamps();
 
             $table->foreign('id_moderador')->references('id_moderador')->on('moderadores');

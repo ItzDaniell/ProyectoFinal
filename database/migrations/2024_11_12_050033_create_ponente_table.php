@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('ponentes', function (Blueprint $table) {
             $table->id('id_ponente');
             $table->string('nombres',100);
-            $table->string('correo',100);
-            $table->string('biografia',300);
+            $table->string('correo',300);
+            $table->string('biografia',2048);
             $table->string('foto', 300);
+            $table->string('estado', 300)->default('Activo');
             $table->timestamps();
         });
     }

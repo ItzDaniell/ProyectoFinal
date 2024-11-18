@@ -233,6 +233,43 @@
                             </a>
                             <div class="border-t border-gray-700 pt-1 pb-1"></div>
                             @endif
+
+                            @if(auth()->user()->hasRole('Gestor de Conferencias'))
+                            <a href="{{ route('conferencias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                                <ion-icon name="settings-outline"></ion-icon>
+                                <span>Gestionar Conferencias</span>
+                            </a>
+                            <div class="border-t border-gray-700 pt-1 pb-1"></div>
+                            @endif
+
+                            @if(auth()->user()->hasRole('Moderador'))
+                            <a href="{{ route('Configuracion') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                                <ion-icon name="settings-outline"></ion-icon>
+                                <span>Gestionar Reportes</span>
+                            </a>
+                            <a href="{{ route('noticias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                                <ion-icon name="settings-outline"></ion-icon>
+                                <span>Gestionar Publicaciones</span>
+                            </a>
+                            <a href="{{ route('noticias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                                <ion-icon name="settings-outline"></ion-icon>
+                                <span>Gestionar Comentarios</span>
+                            </a>
+                            <div class="border-t border-gray-700 pt-1 pb-1"></div>
+                            @endif
+
+                            @if(auth()->user()->hasRole('Servicio Tecnico'))
+                            <a href="{{ route('noticias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                                <ion-icon name="settings-outline"></ion-icon>
+                                <span>Gestionar Noticias</span>
+                            </a>
+                            <a href="{{ route('Configuracion') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                                <ion-icon name="settings-outline"></ion-icon>
+                                <span>Gestionar Solicitudes</span>
+                            </a>
+                            <div class="border-t border-gray-700 pt-1 pb-1"></div>
+                            @endif
+
                             <a href="{{ route('Configuracion') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                                 <ion-icon name="settings-outline"></ion-icon>
                                 <span>Configuración</span>

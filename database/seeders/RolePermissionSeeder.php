@@ -46,7 +46,7 @@ class RolePermissionSeeder extends Seeder
         $admin->givePermissionTo(['manage-comments', 'manage-publications', 'manage-reports', 'manage-conferences', 'manage-requests', 'manage-news', 'manage-users']);
         $moderator->givePermissionTo(['manage-comments', 'manage-publications', 'manage-reports', 'manage-users']);
         $conferenceManager->givePermissionTo('manage-conferences');
-        $techSupport->givePermissionTo('manage-requests');
+        $techSupport->givePermissionTo('manage-requests', 'manage-news');
         $company->givePermissionTo('post-promotions');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UsuarioController extends Controller
 {
@@ -45,7 +46,10 @@ class UsuarioController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $usuario = User::findOrFail($id);
+        $roles = Role::where('name', '!=', 'Admin')->pluck('name')->toArray();
+    
+        return view('usuario.edit', compact('usuario', 'roles'));
     }
 
     /**
@@ -53,7 +57,20 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $usuario = User::findOrFail($id);
+
+        $request->validate([
+            'rol' => 'required|exists:roles,name', // Asegúrate de que el rol exista en la tabla de roles
+            'estado' => 'required|in:Activo,Suspendido', // Valida que el estado tenga valores aceptados
+        ]);
+
+        $requestData = $request->all();
+        $usuario->update($requestData);
+
+        $rol = $request->rol;
+        $usuario->syncRoles($rol);
+
+        return redirect()->route('usuarios.index')->with('success', 'El rol del usuario ha sido actualizado correctamente.');
     }
 
     /**

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_categoria');
             $table->string('titulo',150);
             $table->string('imagen', 300)->nullable();
-            $table->string('descripcion',300)->nullable();
+            $table->string('descripcion',2048)->nullable();
             $table->string('estado',100)->default('Activo');
             $table->timestamps();
 

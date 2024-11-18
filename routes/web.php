@@ -61,6 +61,9 @@ Route::middleware(['auth', 'can:manage-conferences'])->group(function () {
 
 Route::middleware(['auth', 'can:manage-users'])->group(function () {
     Route::get('/usuarios/index', [UsuarioController::class, 'index'])->name('usuarios.index');
+    Route::get('/usuarios/{id}/edit', [UsuarioController::class, 'edit'])->name('usuarios.edit');
+    Route::patch('/usuarios/{id}/edit', [UsuarioController::class, 'update'])->name('usuarios.update');
+    Route::get('/usuarios/{id}', [UsuarioController::class, 'destroy'])->name('usuarios.destroy');
 });
 
 

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('atencion_solicitud', function (Blueprint $table) {
             $table->unsignedBigInteger('id_soporte');
             $table->unsignedBigInteger('id_solicitud');
-            $table->string('respuesta',300);
+            $table->string('respuesta',2048);
             $table->timestamps();
 
             $table->foreign('id_soporte')->references('id_soporte')->on('soporte_tecnico');

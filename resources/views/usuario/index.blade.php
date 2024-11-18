@@ -9,6 +9,7 @@
             <tr>
                 <th class="px-4 py-2 border">Nombre</th>
                 <th class="px-4 py-2 border">Correo Electrónico</th>
+                <th class="px-4 py-2 border">Foto de Perfil</th>
                 <th class="px-4 py-2 border">Estado</th>
                 <th class="px-4 py-2 border">Rol</th>
                 <th class="px-4 py-2 border">Acciones</th>
@@ -19,11 +20,14 @@
             <tr class="hover:bg-gray-100">
                 <td class="px-4 py-2 border">{{ $usuario->name }}</td>
                 <td class="px-4 py-2 border">{{ $usuario->email }}</td>
+                <td class="px-4 py-2 border">
+                    <a href="{{ asset('storage/' . $usuario->profile_photo_path) }}" target="_blank" class="text-blue-500 hover:underline">Ver Foto</a>
+                </td>
                 <td class="px-4 py-2 border">{{ $usuario->estado }}</td>
                 <td class="px-4 py-2 border">{{ $usuario->rol }}</td>
                 <td class="px-4 py-2 border">
-                    {{-- 
                     <a href="{{ route('usuarios.edit', $usuario->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 text-sm">Editar</a>
+                    {{-- 
                     <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST" class="inline">
                         @csrf
                         @method('DELETE')
