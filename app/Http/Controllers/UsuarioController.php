@@ -64,6 +64,7 @@ class UsuarioController extends Controller
         ]);
 
         $rol = $request->rol;
+        $usuario->update(['rol' => $request->input('rol')]);
         $usuario->syncRoles($rol);
 
         return redirect()->route('usuarios.index')->with('success', 'El rol del usuario ha sido actualizado correctamente.');
@@ -76,4 +77,17 @@ class UsuarioController extends Controller
     {
         //
     }
+    public function suspendUser($id)
+{
+    $usuario = User::find($id);
+    
+    if ($usuario) {
+        $usuario->suspended_until = now()->addDays(7); // Suspender por 7 días
+        $usuario->save();
+
+        return redirect()->back()->with('message', 'El usuario ha sido suspendido por 7 días.');
+    }
+
+    return redirect()->back()->with('error', 'Usuario no encontrado.');
+}
 }

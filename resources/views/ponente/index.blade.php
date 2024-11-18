@@ -25,7 +25,7 @@
                 <td class="px-4 py-2 border">{{ $ponente->correo }}</td>
                 <td class="px-4 py-2 border">{{ Str::limit($ponente->biografia, 30) }}</td>
                 <td class="px-4 py-2 border">
-                    <img src="{{ asset($ponente->foto) }}" alt="Foto del ponente" class="w-12 h-12 rounded-full">
+                    <a href="{{ asset('storage/' . $ponente->foto) }}" target="_blank" class="text-blue-500 hover:underline">Ver Foto</a>
                 </td>
                 <td class="px-4 py-2 border">
                     <a href="{{ route('ponentes.edit', $ponente->id_ponente) }}" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600 text-sm mr-2">Editar</a>
