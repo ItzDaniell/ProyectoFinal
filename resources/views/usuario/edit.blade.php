@@ -32,14 +32,15 @@
             <img id="preview" src="{{ asset('storage/' . $usuario->profile_photo_path) }}" alt="Foto del Usuario" class="w-32 h-32 object-cover border border-gray-300 rounded-full">
         </div>
     </div>
-
+    {{--
     <div>
         <label for="estado" class="block text-sm font-medium text-gray-700">Estado del Usuario</label>
         <select name="estado" id="estado" required class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1">
             <option value="Activo" {{ $usuario->estado == 'Activo' ? 'selected' : '' }}>Activo</option>
             <option value="Suspendido" {{ $usuario->estado == 'Suspendido' ? 'selected' : '' }}>Suspendido</option>
         </select>
-    </div>
+    </div> 
+    --}}
 
     <div>
         <label for="rol" class="block text-sm font-medium text-gray-700">Rol del Usuario</label>

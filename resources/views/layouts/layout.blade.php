@@ -51,59 +51,48 @@
             align-items: center;
         }
 
-
-    .carrousel{
-    display: flex;
-    flex-direction: column;
-    }
-    .carrousel-text{
-    width: 30%;
-    }
-
-    .footer {
-    background-color: #1a1a1a;
-    color: white;
-    padding: 20px 0;
-    }
-    .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    }
-    .footer h3 {
-    color: white;
-    margin-bottom: 15px;
-    }
-    .footer ul {
-    list-style: none;
-    padding: 0;
-    }
-    .footer li {
-    margin-bottom: 10px;
-    }
-    .footer a {
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    }
-    .footer a:hover {
-    color: #F3AF31;
-    }
-    .footer-bottom {
-    text-align: center;
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid #333;
-    }
-    .footer-bottom p {
-    margin: 0;
-    font-size: 0.9em;
-    color: #666;
-    }
-
-
+        .footer {
+        background-color: #1a1a1a;
+        color: white;
+        padding: 20px 0;
+        }
+        .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        }
+        .footer h3 {
+        color: white;
+        margin-bottom: 15px;
+        }
+        .footer ul {
+        list-style: none;
+        padding: 0;
+        }
+        .footer li {
+        margin-bottom: 10px;
+        }
+        .footer a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        }
+        .footer a:hover {
+        color: #F3AF31;
+        }
+        .footer-bottom {
+        text-align: center;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #333;
+        }
+        .footer-bottom p {
+        margin: 0;
+        font-size: 0.9em;
+        color: #666;
+        }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>

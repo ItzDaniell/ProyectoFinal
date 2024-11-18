@@ -73,4 +73,9 @@ class User extends Authenticatable
     public function publicaciones(){
         return $this->hasMany('App\Models\Publicacion', 'id_usuario', 'id');
     }
+
+    public function EstaSuspendido()
+    {
+        return $this->suspendido_hasta && now()->lessThan($this->suspendido_hasta);
+    }
 }

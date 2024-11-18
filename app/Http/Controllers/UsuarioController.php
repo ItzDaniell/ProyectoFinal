@@ -61,11 +61,7 @@ class UsuarioController extends Controller
 
         $request->validate([
             'rol' => 'required|exists:roles,name', // Asegúrate de que el rol exista en la tabla de roles
-            'estado' => 'required|in:Activo,Suspendido', // Valida que el estado tenga valores aceptados
         ]);
-
-        $requestData = $request->all();
-        $usuario->update($requestData);
 
         $rol = $request->rol;
         $usuario->syncRoles($rol);
