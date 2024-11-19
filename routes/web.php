@@ -7,6 +7,7 @@ use App\Http\Controllers\PostInicioSesionController;
 use App\Http\Controllers\PreInicioSesionController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
+use Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 /*Route::get('/', function () {
@@ -25,7 +26,7 @@ Route::get('/olvidaste-contraseña', [PreInicioSesionController::class, 'Olvidas
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
-    'verified',
+    'verified', ForbidBannedUser::class
 ])->group(function () {
     Route::get('/home', [PostInicioSesionController::class, 'Home'])->name('Home');
     Route::get('/noticias', [PostInicioSesionController::class, 'Noticias'])->name('Noticias');
@@ -63,7 +64,8 @@ Route::middleware(['auth', 'can:manage-users'])->group(function () {
     Route::get('/usuarios/index', [UsuarioController::class, 'index'])->name('usuarios.index');
     Route::get('/usuarios/{id}/edit', [UsuarioController::class, 'edit'])->name('usuarios.edit');
     Route::patch('/usuarios/{id}/edit', [UsuarioController::class, 'update'])->name('usuarios.update');
-    Route::get('/usuarios/{id}', [UsuarioController::class, 'destroy'])->name('usuarios.destroy');
+    Route::get('usuarios/{id}/ban', [UsuarioController::class, 'ban'])->name('usuarios.ban');
+    Route::post('usuarios/{id}/ban', [UsuarioController::class, 'banned'])->name('usuarios.banned');
 });
 
 

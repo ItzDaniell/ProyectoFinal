@@ -60,7 +60,7 @@ class UsuarioController extends Controller
         $usuario = User::findOrFail($id);
 
         $request->validate([
-            'rol' => 'required|exists:roles,name', // Asegúrate de que el rol exista en la tabla de roles
+            'rol' => 'required|exists:roles,name',
         ]);
 
         $rol = $request->rol;
@@ -77,17 +77,28 @@ class UsuarioController extends Controller
     {
         //
     }
-    public function suspendUser($id)
-{
-    $usuario = User::find($id);
-    
-    if ($usuario) {
-        $usuario->suspended_until = now()->addDays(7); // Suspender por 7 días
-        $usuario->save();
-
-        return redirect()->back()->with('message', 'El usuario ha sido suspendido por 7 días.');
+    public function ban(string $id)
+    {
+        $usuario = User::find($id);
+        return view('usuario.ban', compact('usuario'));
     }
 
-    return redirect()->back()->with('error', 'Usuario no encontrado.');
-}
+    public function banned(Request $request, string $id)
+    {
+        $usuario = User::findOrFail($id);
+
+        $tipo_ban = $request->ban_permanente == 1;
+        $comentario = $request->comment;
+
+        if ($tipo_ban){
+            $usuario->update(['estado' => 'Baneado Permanentemente']);
+            $usuario->ban(['comment' => $comentario ])->isPermanent();
+        }
+        else{
+            $usuario->update(['estado' => 'Baneado Temporalmente']);
+            $fecha_baneo = $request->input('fecha_baneo');
+            $usuario->ban(['expired_at' => $fecha_baneo, 'comment' => $comentario])->isTemporary();
+        }
+        return redirect()->route('usuarios.index');
+    }
 }

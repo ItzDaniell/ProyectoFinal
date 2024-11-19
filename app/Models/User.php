@@ -12,11 +12,14 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Cog\Contracts\Ban\Bannable as BannableInterface;
+use Cog\Laravel\Ban\Traits\Bannable;
 
-class User extends Authenticatable 
+class User extends Authenticatable implements BannableInterface
 {
     use HasRoles;
     use HasApiTokens;
+    use Bannable;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
