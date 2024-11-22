@@ -36,7 +36,7 @@
             </div>
         </div>
     </div>
-    <p class="text-sm text-gray-700 pb-5">Conferencias Activas : </p>
+    <p class="text-sm text-gray-700 pb-5">Conferencias Activas : {{ $conferencias->count() }} </p>
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="bg-gray-200 shadow-md rounded-lg overflow-hidden">
             <img src="https://via.placeholder.com/400x200" alt="SQL" class="w-full h-48 object-cover">

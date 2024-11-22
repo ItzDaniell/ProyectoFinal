@@ -14,7 +14,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = User::where('rol', '!=', 'Admin')->orderBy('id')->paginate(10);
+        $usuarios = User::where('rol', '!=', 'Administrador')->orderBy('id')->paginate(10);
         return view('usuario.index', compact('usuarios'));
     }
 

@@ -44,6 +44,8 @@ Route::middleware([
     Route::get('/configuracion/sesiones-activas', [PostInicioSesionController::class, 'ConfiguracionSesionesActivas'])->name('ConfiguracionSesionesActivas');
     Route::get('/configuracion/eliminar-cuenta', [PostInicioSesionController::class, 'ConfiguracionEliminarCuenta'])->name('ConfiguracionEliminarCuenta');
     Route::get('/perfil-usuario', [PostInicioSesionController::class, 'PerfilUsuario'])->name('PerfilUsuario');
+
+    Route::get('/{vista}/busqueda/{search?}', [PublicacionController::class, 'busquedaPublicacion'])->name('publicacion.busqueda');
     Route::post('/publicacion/store', [PublicacionController::class, 'store'])->name('publicacion.store');
 });
 
@@ -85,8 +87,11 @@ Route::middleware(['auth', 'can:manage-publications'])->group(function () {
     Route::patch('/publicacion/{id}/edit', [PublicacionController::class, 'update'])->name('publicacion.update');
 });
 
-Route::get('/categorias/index', [CategoriaController::class, 'index'])->name('categorias.index');
-Route::get('/categorias/create', [CategoriaController::class, 'create'])->name('categorias.create');
-Route::post('/categorias/create', [CategoriaController::class, 'store'])->name('categorias.store'); 
-Route::get('/categorias/{id}/edit', [CategoriaController::class, 'edit'])->name('categorias.edit');
-Route::patch('/categorias/{id}/edit', [CategoriaController::class, 'update'])->name('categorias.update');
+Route::middleware(['auth', 'can:manage-category'])->group(function () {
+    Route::get('/categorias/index', [CategoriaController::class, 'index'])->name('categorias.index');
+    Route::get('/categorias/create', [CategoriaController::class, 'create'])->name('categorias.create');
+    Route::post('/categorias/create', [CategoriaController::class, 'store'])->name('categorias.store'); 
+    Route::get('/categorias/{id}/edit', [CategoriaController::class, 'edit'])->name('categorias.edit');
+    Route::patch('/categorias/{id}/edit', [CategoriaController::class, 'update'])->name('categorias.update');
+});
+
