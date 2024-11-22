@@ -6,7 +6,9 @@ use App\Models\Categorias;
 use App\Models\Conferencia;
 use App\Models\Noticia;
 use App\Models\Publicacion;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostInicioSesionController extends Controller
 {
@@ -38,7 +40,7 @@ class PostInicioSesionController extends Controller
     public function ConfiguracionEliminarCuenta(){
         return view('PostInicioSesion.ConfiguracionEliminarCuenta');
     }
-    public function PerfilUsuario(){
-        return view('PostInicioSesion.PerfilUsuario');
+    public function PerfilUsuario($id = null){
+        return view('PostInicioSesion.PerfilUsuario', compact('usuario'));
     }
 }

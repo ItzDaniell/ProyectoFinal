@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BanController;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ConferenciaController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\PonenteController;
@@ -84,3 +85,8 @@ Route::middleware(['auth', 'can:manage-publications'])->group(function () {
     Route::patch('/publicacion/{id}/edit', [PublicacionController::class, 'update'])->name('publicacion.update');
 });
 
+Route::get('/categorias/index', [CategoriaController::class, 'index'])->name('categorias.index');
+Route::get('/categorias/create', [CategoriaController::class, 'create'])->name('categorias.create');
+Route::post('/categorias/create', [CategoriaController::class, 'store'])->name('categorias.store'); 
+Route::get('/categorias/{id}/edit', [CategoriaController::class, 'edit'])->name('categorias.edit');
+Route::patch('/categorias/{id}/edit', [CategoriaController::class, 'update'])->name('categorias.update');

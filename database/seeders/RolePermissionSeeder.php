@@ -34,6 +34,10 @@ class RolePermissionSeeder extends Seeder
         Permission::create(['name' => 'post-promotions']); // Publicación de promociones (rol empresa)
         Permission::create(['name' => 'manage-news']); // Control de noticias
         Permission::create(['name' => 'manage-users']); // Control de usuarios
+        Permission::create(['name' => 'manage-ponents']); // Control de usuarios
+        Permission::create(['name' => 'manage-category']); // Control de usuarios
+        Permission::create(['name' => 'manage-inscriptions']); // Control de usuarios
+        Permission::create(['name' => 'user']); // Usuario
 
         // Crear roles
         $admin = Role::create(['name' => 'Admin']);
@@ -41,12 +45,15 @@ class RolePermissionSeeder extends Seeder
         $conferenceManager = Role::create(['name' => 'Gestor de Conferencias']);
         $techSupport = Role::create(['name' => 'Servicio Tecnico']);
         $company = Role::create(['name' => 'Empresa']);
+        $user = Role::create(['name' => 'Usuario']);
+
 
         // Asignar permisos a cada rol
-        $admin->givePermissionTo(['manage-comments', 'manage-publications', 'manage-reports', 'manage-conferences', 'manage-requests', 'manage-news', 'manage-users']);
+        $admin->givePermissionTo(['manage-comments', 'manage-publications', 'manage-reports', 'manage-conferences', 'manage-requests', 'manage-news', 'manage-users', 'manage-category']);
         $moderator->givePermissionTo(['manage-comments', 'manage-publications', 'manage-reports', 'manage-users']);
-        $conferenceManager->givePermissionTo('manage-conferences');
-        $techSupport->givePermissionTo('manage-requests', 'manage-news');
+        $conferenceManager->givePermissionTo(['manage-conferences', 'manage-ponents', 'manage-inscriptions']);
+        $techSupport->givePermissionTo(['manage-requests', 'manage-news']);
         $company->givePermissionTo('post-promotions');
+        $user->givePermissionTo('user');
     }
 }

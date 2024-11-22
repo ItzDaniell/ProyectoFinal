@@ -39,19 +39,34 @@
     <!-- Noticia principal -->
     <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden mb-4">
         <div class="flex flex-col md:flex-row">
-            <img src="{{ asset('storage/' . $ultimaNoticia->imagen) }}" alt="Noticia Principal" class="w-full md:w-1/2 object-cover">
+            <!-- Imagen de la noticia -->
+            <img src="{{ asset('storage/' . $ultimaNoticia->imagen) }}" 
+                 alt="{{ $ultimaNoticia->titulo }}" 
+                 class="w-full h-80 md:w-1/2 object-cover">
+            
+            <!-- Contenido de la noticia -->
             <div class="p-4 md:w-1/2">
+                <!-- Título de la noticia -->
                 <h2 class="text-2xl font-bold mb-2">{{ $ultimaNoticia->titulo }}</h2>
-                <p class="text-gray-500 font-semibold mb-2">{{ $ultimaNoticia->categoria->descripcion}}</p>
+                
+                <!-- Categoría de la noticia -->
+                <p class="text-gray-500 font-semibold mb-2">{{ $ultimaNoticia->categoria->descripcion }}</p>
+                
+                <!-- Descripción de la noticia -->
                 <p class="text-gray-700 mb-4">{{ $ultimaNoticia->descripcion }}</p>
-                <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Ver Detalles</button>
+                
+                <!-- Botón para ver detalles -->
+                <a href="" 
+                   class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                    Ver Detalles
+                </a>
             </div>
         </div>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
     @foreach ($noticias as $noticia)
         <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden">
-            <img src="{{ asset('storage/' . $noticia->imagen) }}" alt="Noticia 1" class="w-full object-cover">
+            <img src="{{ asset('storage/' . $noticia->imagen) }}" alt="Noticia 1" class="w-full h-60 object-cover">
             <div class="p-4">
                 <h3 class="text-xl font-bold mb-2">{{ $noticia->titulo }}</h3>
                 <p class="text-gray-700 mb-4">{{ $noticia->categoria->descripcion }}</p>

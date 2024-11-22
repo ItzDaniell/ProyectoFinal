@@ -71,7 +71,10 @@
 
         <!-- Contenido del texto -->
         <div class="p-4">
-            <h3 class="text-lg font-bold">{{ $publicacion->categoria->descripcion }}</h3>
+            <h3 class="text-lg font-bold">{{ $publicacion->titulo}}</h3>
+            <p class="text-sm text-gray-600">
+                {{ $publicacion->categoria->descripcion }}
+            </p>
             <p class="text-sm text-gray-600">
                 {{ $publicacion->descripcion }}
             </p>

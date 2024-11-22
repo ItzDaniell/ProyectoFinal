@@ -5,7 +5,7 @@
 @section('content')
 <div class="flex-1 p-4">
     <div class="flex items-center justify-between mb-4">
-        <h1 class="text-3xl font-bold">Conferencias Virtuales</h1>
+        <h1 class="text-3xl font-bold">Conferencias</h1>
         <div class="flex space-x-4 relative">
             <!-- Icono de búsqueda -->
             <div class="relative">
@@ -36,6 +36,7 @@
             </div>
         </div>
     </div>
+    <p class="text-sm text-gray-700 pb-5">Conferencias Activas : </p>
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="bg-gray-200 shadow-md rounded-lg overflow-hidden">
             <img src="https://via.placeholder.com/400x200" alt="SQL" class="w-full h-48 object-cover">
@@ -48,27 +49,27 @@
             </div>
         </div>
     </div>
-<script>
-    // Funcionalidad para abrir y cerrar el dropdown de búsqueda
-    document.getElementById("searchIcon").addEventListener("click", function() {
-        const searchDropdown = document.getElementById("searchDropdown");
-        const busqueda = document.getElementById('busqueda')
-        searchDropdown.classList.toggle("hidden");
-        busqueda.textContent = "Buscar por Título de Publicación..."
-    });
+    <script>
+        // Funcionalidad para abrir y cerrar el dropdown de búsqueda
+        document.getElementById("searchIcon").addEventListener("click", function() {
+            const searchDropdown = document.getElementById("searchDropdown");
+            const busqueda = document.getElementById('busqueda')
+            searchDropdown.classList.toggle("hidden");
+            busqueda.textContent = "Buscar por Título de Publicación..."
+        });
 
-    // Funcionalidad para abrir y cerrar el dropdown de filtro
-    document.getElementById("filterIcon").addEventListener("click", function() {
-        const filterDropdown = document.getElementById("filterDropdown");
-        filterDropdown.classList.toggle("hidden");
-    });
+        // Funcionalidad para abrir y cerrar el dropdown de filtro
+        document.getElementById("filterIcon").addEventListener("click", function() {
+            const filterDropdown = document.getElementById("filterDropdown");
+            filterDropdown.classList.toggle("hidden");
+        });
 
-    // Cerrar dropdown al hacer clic fuera de los iconos
-    document.addEventListener("click", function(event) {
-        if (!event.target.closest(".flex")) {
-            document.getElementById("searchDropdown").classList.add("hidden");
-            document.getElementById("filterDropdown").classList.add("hidden");
-        }
-    });
-</script>
+        // Cerrar dropdown al hacer clic fuera de los iconos
+        document.addEventListener("click", function(event) {
+            if (!event.target.closest(".flex")) {
+                document.getElementById("searchDropdown").classList.add("hidden");
+                document.getElementById("filterDropdown").classList.add("hidden");
+            }
+        });
+    </script>
 @endsection

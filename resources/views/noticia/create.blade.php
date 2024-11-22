@@ -1,5 +1,7 @@
 @extends('layouts.postiniciolayout')
 
+@section('title', 'Agregar Noticia')
+
 @section('content')
 <h2 class="text-2xl font-bold mb-4">Agregar Noticia</h2>
 <form action="{{ route('noticias.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">

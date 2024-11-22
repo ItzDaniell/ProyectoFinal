@@ -211,9 +211,9 @@
                                 <ion-icon name="settings-outline"></ion-icon>
                                 <span>Gestionar Publicaciones</span>
                             </a>
-                            <a href="{{ route('noticias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                            <a href="{{ route('categorias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                                 <ion-icon name="settings-outline"></ion-icon>
-                                <span>Gestionar Comentarios</span>
+                                <span>Gestionar Categorias</span>
                             </a>
                             <a href="{{ route('noticias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                                 <ion-icon name="settings-outline"></ion-icon>
@@ -250,10 +250,6 @@
                             <a href="{{ route('publicacion.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                                 <ion-icon name="settings-outline"></ion-icon>
                                 <span>Gestionar Publicaciones</span>
-                            </a>
-                            <a href="{{ route('noticias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                <ion-icon name="settings-outline"></ion-icon>
-                                <span>Gestionar Comentarios</span>
                             </a>
                             <div class="border-t border-gray-700 pt-1 pb-1"></div>
                             @endif
