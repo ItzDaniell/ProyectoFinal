@@ -32,6 +32,7 @@ class User extends Authenticatable implements BannableInterface
      *
      * @var array<int, string>
      */
+    protected $primaryKey = 'id';
     protected $fillable = [
         'name',
         'email',
@@ -74,11 +75,6 @@ class User extends Authenticatable implements BannableInterface
         ];
     }
     public function publicaciones(){
-        return $this->hasMany('App\Models\Publicacion', 'id_usuario', 'id');
-    }
-
-    public function EstaSuspendido()
-    {
-        return $this->suspendido_hasta && now()->lessThan($this->suspendido_hasta);
+        return $this->hasMany('App\Models\Publicacion', 'id', 'id');
     }
 }

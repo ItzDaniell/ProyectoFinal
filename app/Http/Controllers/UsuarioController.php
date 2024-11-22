@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use LDAP\Result;
 use Spatie\Permission\Models\Role;
 
 class UsuarioController extends Controller
@@ -76,29 +77,5 @@ class UsuarioController extends Controller
     public function destroy(string $id)
     {
         //
-    }
-    public function ban(string $id)
-    {
-        $usuario = User::find($id);
-        return view('usuario.ban', compact('usuario'));
-    }
-
-    public function banned(Request $request, string $id)
-    {
-        $usuario = User::findOrFail($id);
-
-        $tipo_ban = $request->ban_permanente == 1;
-        $comentario = $request->comment;
-
-        if ($tipo_ban){
-            $usuario->update(['estado' => 'Baneado Permanentemente']);
-            $usuario->ban(['comment' => $comentario ])->isPermanent();
-        }
-        else{
-            $usuario->update(['estado' => 'Baneado Temporalmente']);
-            $fecha_baneo = $request->input('fecha_baneo');
-            $usuario->ban(['expired_at' => $fecha_baneo, 'comment' => $comentario])->isTemporary();
-        }
-        return redirect()->route('usuarios.index');
     }
 }

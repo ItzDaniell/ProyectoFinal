@@ -3,7 +3,16 @@
 @section('content')
 <h2>Agregar Noticia</h2>
 <form action="{{ route('noticias.store') }}" method="POST" enctype="multipart/form-data">
-@csrf
+    @csrf
+    @if ($errors->any())
+    <div class="bg-red-100 text-red-700 p-4 mb-4 rounded">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <label for="titulo">Título</label>
     <input type="text" name="titulo" required><br>
     

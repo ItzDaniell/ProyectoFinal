@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('publicaciones', function (Blueprint $table) {
             $table->id('id_publicacion');
-            $table->unsignedBigInteger('id_users');
+            $table->unsignedBigInteger('id');
             $table->unsignedBigInteger('id_categoria');
             $table->string('titulo',150);
-            $table->string('imagen', 300)->nullable();
+            $table->string('imagen', 2048)->nullable();
             $table->string('descripcion',2048)->nullable();
             $table->string('estado',100)->default('Activo');
             $table->timestamps();
 
             $table->foreign('id_categoria')->references('id_categoria')->on('categorias');
-            $table->foreign('id_users')->references('id')->on('users');
+            $table->foreign('id')->references('id')->on('users');
         });
     }
 

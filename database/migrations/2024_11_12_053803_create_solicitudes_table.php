@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('solicitudes', function (Blueprint $table) {
             $table->id('id_solicitud');
-            $table->unsignedBigInteger('id_users');
+            $table->unsignedBigInteger('id');
             $table->string('tipo_solicitud',100);
             $table->string('descripcion',2048);
             $table->string('estado',100)->default('Activo');
             $table->timestamps();
 
-            $table->foreign('id_users')->references('id')->on('users');
+            $table->foreign('id')->references('id')->on('users');
         });
     }
 

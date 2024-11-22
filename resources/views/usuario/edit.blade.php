@@ -7,7 +7,6 @@
 <form action="{{ route('usuarios.update', $usuario->id) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
     @csrf
     @method('PATCH')
-
     @if ($errors->any())
         <div class="bg-red-100 text-red-700 p-4 mb-4 rounded">
             <ul>
@@ -17,7 +16,6 @@
             </ul>
         </div>
     @endif
-
     <div>
         <label for="name" class="block text-sm font-medium text-gray-700">Nombres del Usuario</label>
         <input type="text" name="name" required value="{{ $usuario->name }}" class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1" readonly>
@@ -49,7 +47,6 @@
 
     <div class="flex space-x-4">
         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>
-        <button type="reset" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Limpiar</button>
         <a href="{{ route('usuarios.index') }}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Regresar</a>
     </div>
 

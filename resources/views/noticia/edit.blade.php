@@ -5,7 +5,6 @@
 <form action="{{ route('noticias.update', $noticia->id_noticia) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
     @csrf
     @method('PATCH')
-
     @if ($errors->any())
         <div class="bg-red-100 text-red-700 p-4 mb-4 rounded">
             <ul>
@@ -15,7 +14,6 @@
             </ul>
         </div>
     @endif
-
     <div>
         <label for="titulo" class="block text-sm font-medium text-gray-700">Titulo de la Noticia</label>
         <input type="text" name="titulo" required value="{{ $noticia->titulo }}" class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1">

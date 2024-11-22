@@ -184,7 +184,7 @@
                     <ion-icon name="paper-plane-outline"></ion-icon>
                     <span>Mensajes</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalButton">
                     <ion-icon name="create-outline"></ion-icon>
                     <span>Crear</span>
                 </a>
@@ -207,7 +207,7 @@
                                 <ion-icon name="settings-outline"></ion-icon>
                                 <span>Gestionar Usuarios</span>
                             </a>
-                            <a href="{{ route('noticias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                            <a href="{{ route('publicacion.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                                 <ion-icon name="settings-outline"></ion-icon>
                                 <span>Gestionar Publicaciones</span>
                             </a>
@@ -247,7 +247,7 @@
                                 <ion-icon name="settings-outline"></ion-icon>
                                 <span>Gestionar Reportes</span>
                             </a>
-                            <a href="{{ route('noticias.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                            <a href="{{ route('publicacion.index') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                                 <ion-icon name="settings-outline"></ion-icon>
                                 <span>Gestionar Publicaciones</span>
                             </a>
@@ -286,11 +286,93 @@
                 </div>
             </nav>
         </div>
+        <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 hidden overflow-y-auto">
+            <div class="flex items-center justify-center min-h-screen p-4">
+                <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl">
+                    <form action="{{ route('publicacion.store') }}" method="POST" enctype="multipart/form-data" class="mt-4">
+                        @csrf
+                        <!-- Encabezado -->
+                        <div class="flex justify-between items-center pb-4 border-b border-gray-300">
+                            <button type="reset" id="closeModalButton" class="text-gray-500 hover:text-gray-700">
+                                <ion-icon name="arrow-back-outline" size="large"></ion-icon>
+                            </button>
+                            <h2 class="text-2xl font-bold text-center">Crear Nueva Publicación</h2>
+                            <button type="submit" class="text-blue-600 font-medium hover:text-blue-800">
+                                Publicar
+                            </button>
+                        </div>
+        
+                        <!-- Contenido del modal -->
+                        <div class="flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-6 mt-6">
+                            <!-- Sección de imagen -->
+                            <div class="lg:w-1/3 flex-shrink-0">
+                                <label class="block text-gray-700 font-medium mb-2">Imagen</label>
+                                <div class="border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center h-60 sm:h-72 lg:h-80">
+                                    <div class="bg-gray-100 p-6 rounded-lg mb-4">
+                                        <ion-icon name="image-outline" class="text-6xl text-gray-400"></ion-icon>
+                                    </div>
+                                    <input type="file" name="imagen" class="hidden" id="imageInput" accept="image/*" />
+                                    <button type="button" onclick="document.getElementById('imageInput').click();" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                                        Seleccionar archivo
+                                    </button>
+                                    <p id="fileName" class="text-sm text-gray-500 mt-2 text-center">Ningún archivo seleccionado</p>
+                                </div>
+                            </div>
+        
+                            <!-- Sección de información -->
+                            <div class="lg:w-2/3">
+                                <label class="block text-gray-700 font-medium mb-2">Título</label>
+                                <input type="text" name="titulo" class="w-full p-3 border border-gray-300 rounded-lg mb-4" placeholder="Ingresa un título" required>
+        
+                                <label class="block text-gray-700 font-medium mb-2">Descripción</label>
+                                <textarea name="descripcion" rows="4" class="w-full p-3 border border-gray-300 rounded-lg mb-4" placeholder="Ingresa una descripción"></textarea>
+        
+                                <label class="block text-gray-700 font-medium mb-2">Categoría</label>
+                                <select name="id_categoria" class="w-full p-3 border border-gray-300 rounded-lg mb-4" required>
+                                    <option value="">[ SELECCIONE ]</option>
+                                    @foreach ($categorias as $categoria)
+                                        <option value="{{ $categoria->id_categoria }}">{{ $categoria->descripcion }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+            <!-- Scripts -->
+            <script>
+                const openModalButton = document.getElementById("openModalButton");
+                const closeModalButton = document.getElementById("closeModalButton");
+                const modal = document.getElementById("modal");
+                const imageInput = document.getElementById("imageInput");
+                const fileName = document.getElementById("fileName");
+            
+                openModalButton.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    modal.classList.remove("hidden");
+                });
+            
+                closeModalButton.addEventListener("click", () => {
+                    modal.classList.add("hidden");
+                    fileName.textContent = "Ningún archivo seleccionado";
+                });
+            
+                imageInput.addEventListener("change", (e) => {
+                    fileName.textContent = e.target.files[0]?.name || "Ningún archivo seleccionado";
+                });
+            </script>
+
         <script>
             function toggleMenu() {
                 const menu = document.getElementById('dropdownMenu');
                 menu.classList.toggle('hidden');
             }
+            window.addEventListener("click", (e) => {
+                if (e.target === modal) {
+                    menu.classList.add("hidden");
+                }
+            });
         </script>
         <div class="flex-1 bg-gray-100 p-4 overflow-y-auto h-screen">
             @yield('content')

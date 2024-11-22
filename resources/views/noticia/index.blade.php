@@ -33,7 +33,12 @@
                 </td>
                 <td class="px-4 py-2 border">{{ $noticia->estado }}</td>
                 <td class="px-4 py-2 border">
-                    <a href="{{ route('noticias.edit', $noticia->id_noticia) }}" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600 text-sm mr-2">Editar</a>
+                    <div class="flex justify-between gap-2">
+                        <a href="{{ route('noticias.edit', $noticia->id_noticia) }}" 
+                        class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 text-sm text-center">
+                            Editar
+                        </a>
+                    </div>
                 </td>
             </tr>
             @endforeach

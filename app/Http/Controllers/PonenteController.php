@@ -76,8 +76,8 @@ class PonenteController extends Controller
 
         $request->validate([
             'nombres' => 'required|max:100',
-            'correo' => 'required|email|max:100',
-            'biografia' => 'required|max:300',
+            'correo' => 'required|email|max:300',
+            'biografia' => 'required|max:2048',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
     

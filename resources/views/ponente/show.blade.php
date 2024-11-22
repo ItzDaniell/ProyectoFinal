@@ -1,5 +1,7 @@
 @extends('layouts.postiniciolayout')
 
+@section('title', 'Detalles del Ponente')
+
 @section('content')
     <h2 class="text-2xl font-bold mb-4">Detalle del Ponente</h2>
     <div class="space-y-4">

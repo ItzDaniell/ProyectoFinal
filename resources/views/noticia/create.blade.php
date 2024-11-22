@@ -4,6 +4,15 @@
 <h2 class="text-2xl font-bold mb-4">Agregar Noticia</h2>
 <form action="{{ route('noticias.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
     @csrf
+    @if ($errors->any())
+    <div class="bg-red-100 text-red-700 p-4 mb-4 rounded">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <div>
         <label for="titulo" class="block text-sm font-medium text-gray-700">Título</label>
         <input type="text" name="titulo" required class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1">
@@ -21,7 +30,7 @@
     
     <div>
         <label for="imagen" class="block text-sm font-medium text-gray-700">Imagen</label>
-        <input type="file" id="imagen" name="imagen" accept="image/*" class="mt-1 block w-full h-12 text-sm text-gray-500 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-4" onchange="previewImage(event)">
+        <input type="file" id="imagen" required name="imagen" accept="image/*" class="mt-1 block w-full h-12 text-sm text-gray-500 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-4" onchange="previewImage(event)">
         <div class="mt-4">
             <img id="preview" src="#" alt="Imagen de la Noticia" class="hidden w-64 h-64 object-cover border border-gray-300">
         </div>
@@ -29,7 +38,7 @@
     
     <div>
         <label for="url" class="block text-sm font-medium text-gray-700">URL</label>
-        <input type="url" name="URL" class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1">
+        <input type="url" name="URL" required class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1">
     </div>
 
     <div>

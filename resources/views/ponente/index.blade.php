@@ -28,15 +28,16 @@
                     <a href="{{ asset('storage/' . $ponente->foto) }}" target="_blank" class="text-blue-500 hover:underline">Ver Foto</a>
                 </td>
                 <td class="px-4 py-2 border">
-                    <a href="{{ route('ponentes.edit', $ponente->id_ponente) }}" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600 text-sm mr-2">Editar</a>
-                    <a href="{{ route('ponentes.show', $ponente->id_ponente) }}" class="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600 text-sm">Ver</a>
-                {{-- 
-                 <form action="{{ route('ponentes.destroy', $ponente->id_ponente) }}" method="POST" class="inline">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 text-sm">Eliminar</button>
-                    </form>
-                --}}
+                    <div class="flex justify-between gap-2">
+                        <a href="{{ route('ponentes.edit', $ponente->id_ponente) }}" 
+                           class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 text-sm text-center">
+                            Editar
+                        </a>
+                        <a href="{{ route('ponentes.show', $ponente->id_ponente) }}" 
+                           class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 text-sm text-center">
+                            Ver
+                        </a>
+                    </div>
                 </td>
             </tr>             
             @endforeach
