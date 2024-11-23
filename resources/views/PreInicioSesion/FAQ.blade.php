@@ -81,7 +81,7 @@
     <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
             <h3 class="text-2xl font-semibold text-gray-800 mb-2">¿No Resolviste tus Dudas?</h3>
-            <p class="text-gray-600 mb-2">Si tienes alguna otra consulta o necesitas ayuda, no dudes en ponerte en contacto con nuestro equipo de soporte. Estamos aquí para ayudarte.</p>
+            <p class="text-gray-600 mb-2">Si  tienes alguna otra consulta o necesitas ayuda, no dudes en ponerte en contacto con nuestro equipo de soporte. Estamos aquí para ayudarte.</p>
             <a href="{{ route('Contactanos') }}" class="border border-gray-800 text-gray-800 py-2 px-4 rounded hover:bg-gray-800 hover:text-white">Contactar</a>
         </div>
         <div>

@@ -16,26 +16,30 @@ class PublicacionController extends Controller
      */
     public function index(Request $request)
     {   
-        $busqueda = $request->input('busqueda', null);
+        $categorias = Categorias::all();
         $categoria = $request->input('categoria', null);
-        if ($busqueda)
-        {
-            $publicaciones = Publicacion::where('codigo', 'LIKE', '%' . $busqueda . '%')
-                    ->orderBy('id_publicacion')
-                    ->paginate(10);
-            return view('publicacion.index', compact('publicaciones'));
-        }elseif($categoria){
-            if ($categoria == 0){
+        $busqueda = $request->input('busqueda', null);
+        
+        if ($busqueda) {
+            $publicaciones = Publicacion::where('titulo', 'LIKE', '%' . $busqueda . '%')
+                ->orderBy('id_publicacion', 'desc')
+                ->paginate(10);
+            return view('publicacion.index', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
+        } elseif ($categoria) {
+            if ($categoria == '0') {
                 $publicaciones = Publicacion::orderBy('id_publicacion')->paginate(10);
-                return view('publicacion.index', compact('publicaciones'));  
-            }else{
-                $publicaciones = Publicacion::where('categoria_id', $categoria)->orderBy('id_publicacion')->paginate(10);
-                return view('publicacion.index', compact('publicaciones'));      
+            } else {
+                $publicaciones = Publicacion::join('categorias', 'publicaciones.id_categoria', '=', 'categorias.id_categoria')
+                    ->where('categorias.descripcion', $categoria)
+                    ->orderBy('id_publicacion', 'desc')
+                    ->select('publicaciones.*', 'categorias.descripcion as categoria_descripcion')
+                    ->paginate(10);
             }
-        }else{
-            $publicaciones = Publicacion::orderBy('id_publicacion')->paginate(10);
-            return view('publicacion.index', compact('publicaciones'));            
-        }
+            return view('publicacion.index', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
+        } else {
+            $publicaciones = Publicacion::orderBy('id_publicacion', 'desc')->paginate(10);
+            return view('publicacion.index', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
+        }  
     }
 
 
@@ -115,4 +119,5 @@ class PublicacionController extends Controller
     {
         //
     }
+
 }

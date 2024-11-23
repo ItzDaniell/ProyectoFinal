@@ -20,6 +20,7 @@ class PostInicioSesionController extends Controller
         
         if ($busqueda) {
             $publicaciones = Publicacion::where('titulo', 'LIKE', '%' . $busqueda . '%')
+                ->where('estado', 'Activo')
                 ->orderBy('id_publicacion', 'desc')
                 ->paginate(10);
             return view('PostInicioSesion.Home', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
@@ -29,13 +30,14 @@ class PostInicioSesionController extends Controller
             } else {
                 $publicaciones = Publicacion::join('categorias', 'publicaciones.id_categoria', '=', 'categorias.id_categoria')
                     ->where('categorias.descripcion', $categoria)
+                    ->where('estado', 'Activo')
                     ->orderBy('id_publicacion', 'desc')
                     ->select('publicaciones.*', 'categorias.descripcion as categoria_descripcion')
                     ->paginate(10);
             }
             return view('PostInicioSesion.Home', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
         } else {
-            $publicaciones = Publicacion::orderBy('id_publicacion', 'desc')->paginate(10);
+            $publicaciones = Publicacion::orderBy('id_publicacion', 'desc')->where('estado', 'Activo')->paginate(10);
             return view('PostInicioSesion.Home', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
         }        
     }
@@ -118,7 +120,4 @@ class PostInicioSesionController extends Controller
         $usuario = Auth::user();
         return view('PostInicioSesion.PerfilUsuario', compact('usuario'));
     }
-    
-    
-    
 }
