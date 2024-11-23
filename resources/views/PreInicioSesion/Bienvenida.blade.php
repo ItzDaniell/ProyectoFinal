@@ -15,18 +15,19 @@
     </header>
 
     <!-- Sección de publicación -->
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-      <div class="flex flex-col justify-center items-center md:items-start py-12 text-center md:text-left">
-        <h2 class="text-3xl font-semibold text-gray-800 mb-4">La Mejor Manera De</h2>
-        <h2 class="text-6xl font-semibold text-gray-800 mb-4">Publicar</h2>
-        <h2 class="text-3xl font-semibold text-gray-800 mb-7">Tu Conocimiento</h2>
-        <p class="text-gray-600 max-w-3xl ">Nuestra plataforma te permite publicar contenido</p>
-        <p class="text-gray-600 max-w-3xl ">de forma organizada, accesible, y destinado a personas</p>
-        <p class="text-gray-600 max-w-3xl ">interesadas en las áreas de especialización.</p>
-        <button class="border border-orange-500 text-orange-500 py-2 px-6 rounded hover:bg-orange-500 hover:text-white transition duration-200">Explorar Ahora</button>
+    <section class="grid grid-cols-0 md:grid-cols-2 gap mb-10 items-center">
+      <div class="flex flex-col justify-center items-center md:items-start py-200 text-center md-60">
+        <h2 class="text-3xl font-semibold text-gray-800 mb-2">La Mejor Manera De</h2>
+        <h2 class="text-6xl font-semibold text-gray-800 mb-2">Publicar</h2>
+        <h2 class="text-3xl font-semibold text-gray-800 mb-4">Tu Conocimiento</h2>
+        <p class="text-gray-600 max-w-3xl mb-1">Nuestra plataforma te permite publicar contenido</p>
+        <p class="text-gray-600 max-w-3xl mb-1">de forma organizada, accesible, y destinado a personas</p>
+        <p class="text-gray-600 max-w-3xl mb-4">interesadas en las áreas de especialización.</p>
+        <button class="border border-orange-500 text-orange-500 px-6 rounded hover:bg-orange-500 hover:text-white transition duration-200">Explorar Ahora</button>
       </div>
-      <div class="bg-gray-300 h-48 md:h-auto rounded-lg shadow-md"></div>
+      <img src="{{ asset('images/compar.jpg') }}" alt="compartir" class="rounded-lg shadow-lg w-90 h-80 object-cover mx-auto">
     </section>
+
 
     <!-- Sección de ventajas -->
     <section class="text-center mb-16">
