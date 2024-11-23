@@ -26,7 +26,7 @@
 
     <div>
         <label for="descripcion" class="block text-sm font-medium text-gray-700">Descripcion de la Noticia</label>
-        <textarea type="text" rows="4" name="descripcion" required value="{{ $noticia->descripcion }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1"></textarea>
+        <textarea type="text" rows="4" name="descripcion" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1">{{ $noticia->descripcion }} </textarea>
     </div>
 
     <div>

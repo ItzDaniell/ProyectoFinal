@@ -36,9 +36,9 @@ class NoticiaController extends Controller
             'id_categoria' => 'required',
             'titulo' => 'required|max:150',
             'autor' => 'required|max:150',
-            'descripcion' => 'required|max:300',
+            'descripcion' => 'required',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'URL' => 'nullable|url|max:300',
+            'URL' => 'nullable|url',
         ]);
     
         // Procesar la carga del archivo de imagen si existe
@@ -83,9 +83,9 @@ class NoticiaController extends Controller
             'id_categoria' => 'required',
             'titulo' => 'required|max:150',
             'autor' => 'required|max:150',
-            'descripcion' => 'required|max:300',
+            'descripcion' => 'required',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'URL' => 'nullable|url|max:300',
+            'URL' => 'nullable|url',
             'estado' => 'required'
         ]);
     

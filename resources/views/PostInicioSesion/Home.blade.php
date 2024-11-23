@@ -17,7 +17,6 @@
                     </form>
                 </div>
             </div>
-        
             <div class="relative">
                 <ion-icon name="funnel-outline" class="text-2xl cursor-pointer" id="filterIcon"></ion-icon>
                 <div id="filterDropdown" class="hidden absolute right-0 w-80 mt-2 bg-white shadow-lg rounded-lg p-4">
@@ -75,7 +74,6 @@
         </div>
         <div class="p-4 bg-gray-200 rounded-b-lg flex justify-center align-middle ">
             <button class="flex items-center align-middle space-x-2 text-gray-800 hover:text-gray-600 hover:bg-gray-300 px-3 py-2 rounded transition duration-200">
-                <ion-icon name="chatbox-outline"></ion-icon>
                 <span>Comentar Publicación</span>
             </button>
         </div>

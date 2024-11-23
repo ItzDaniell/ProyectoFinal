@@ -1,5 +1,7 @@
 @extends('layouts.postiniciolayout')
 
+@section('title', 'Lista de Conferencias')
+
 @section('content')
 <h2 class="text-2xl font-bold mb-4">Lista de Conferencias</h2>
 <div class="flex justify-between mb-4">

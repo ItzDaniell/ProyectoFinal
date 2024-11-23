@@ -20,7 +20,7 @@ class PostInicioSesionController extends Controller
         
         if ($busqueda) {
             $publicaciones = Publicacion::where('titulo', 'LIKE', '%' . $busqueda . '%')
-                ->orderBy('id_publicacion')
+                ->orderBy('id_publicacion', 'desc')
                 ->paginate(10);
             return view('PostInicioSesion.Home', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
         } elseif ($categoria) {
@@ -29,52 +29,77 @@ class PostInicioSesionController extends Controller
             } else {
                 $publicaciones = Publicacion::join('categorias', 'publicaciones.id_categoria', '=', 'categorias.id_categoria')
                     ->where('categorias.descripcion', $categoria)
-                    ->orderBy('id_publicacion')
+                    ->orderBy('id_publicacion', 'desc')
+                    ->select('publicaciones.*', 'categorias.descripcion as categoria_descripcion')
                     ->paginate(10);
             }
             return view('PostInicioSesion.Home', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
         } else {
-            $publicaciones = Publicacion::orderBy('id_publicacion')->paginate(10);
+            $publicaciones = Publicacion::orderBy('id_publicacion', 'desc')->paginate(10);
             return view('PostInicioSesion.Home', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
         }        
     }
+
     public function Noticias(Request $request){
         $categorias = Categorias::all();
         $categoria = $request->input('categoria', null);
         $busqueda = $request->input('busqueda', null);
-
+        
         if ($busqueda) {
             $noticias = Noticia::where('titulo', 'LIKE', '%' . $busqueda . '%')
-                    ->where('estado', 'Activo')
-                    ->orderBy('id_noticia')
-                    ->paginate(10);
-            $ultimaNoticia = Noticia::where('titulo', 'LIKE', '%' . $busqueda . '%')
-                                    ->where('estado', 'Activo')
-                                    ->latest()->first();
-            return view('PostInicioSesion.Home', compact('noticias', 'categorias', 'busqueda', 'categoria'));
-        }
-        elseif ($categoria) {
-            if ($categoria == '0') {
-                $publicaciones = Publicacion::orderBy('id_publicacion')->paginate(10);
-            } else {
-                $publicaciones = Publicacion::join('categorias', 'publicaciones.id_categoria', '=', 'categorias.id_categoria')
-                ->where('categorias.descripcion', $categoria)
-                ->orderBy('id_publicacion')
-                ->select('publicaciones.*', 'categorias.descripcion as categoria_descripcion')
+                ->where('estado', 'Activo')
+                ->orderBy('id_noticia', 'desc')
                 ->paginate(10);
+            return view('PostInicioSesion.Noticias', compact('noticias', 'categorias', 'busqueda', 'categoria'));
+        } elseif ($categoria) {
+            if ($categoria == '0') {
+                $noticias = Noticia::orderBy('id_noticia')->paginate(10);
+            } else {
+                $noticias = Noticia::join('categorias', 'noticias.id_categoria', '=', 'categorias.id_categoria')
+                            ->where('categorias.descripcion', $categoria)
+                            ->where('estado', 'Activo')
+                            ->orderBy('id_noticia', 'desc')
+                            ->select('noticias.*', 'categorias.descripcion as categoria_descripcion')
+                            ->paginate(10);
             }
-            return view('PostInicioSesion.Home', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
-        } 
-        else {
-            $noticias = Noticia::where('estado', 'Activo')->get();
-            $ultimaNoticia = Noticia::where('estado', 'Activo')->latest()->first();
-            return view('PostInicioSesion.Noticias', compact('noticias', 'categorias', 'ultimaNoticia'));
+            return view('PostInicioSesion.Noticias', compact('noticias', 'categorias', 'busqueda', 'categoria'));
+        } else {
+            $noticias = Noticia::orderBy('id_noticia', 'desc')->where('estado', 'Activo')->paginate(10);
+            return view('PostInicioSesion.Noticias', compact('noticias', 'categorias', 'busqueda', 'categoria'));
         }
     }
-    public function Conferencias(){
-        $conferencias = Conferencia::where('estado', 'Activo')->get();
+    public function DetalleNoticia($titulo)
+    {
+        $titulo = urldecode($titulo);
+        $noticia = Noticia::where('titulo', $titulo)->firstOrFail();
+        return view('PostInicioSesion.DetallesNoticia', compact('noticia'));
+    }
+
+    public function Conferencias(Request $request){
         $categorias = Categorias::all();
-        return view('PostInicioSesion.Conferencias', compact('conferencias', 'categorias'));
+        $categoria = $request->input('categoria', null);
+        $busqueda = $request->input('busqueda', null);
+        
+        if ($busqueda) {
+            $conferencias = Conferencia::where('titulo', 'LIKE', '%' . $busqueda . '%')
+                        ->orderBy('id_conferencia', 'desc')
+                        ->paginate(10);
+            return view('PostInicioSesion.Conferencias', compact('conferencias', 'categorias', 'busqueda', 'categoria'));
+        } elseif ($categoria) {
+            if ($categoria == '0') {
+                $noticias = Conferencia::orderBy('id_conferencia')->paginate(10);
+            } else {
+                $noticias = Conferencia::join('categorias', 'conferencias.id_categoria', '=', 'categorias.id_categoria')
+                            ->where('categorias.descripcion', $categoria)
+                            ->orderBy('id_conferencia', 'desc')
+                            ->select('conferencias.*', 'categorias.descripcion as categoria_descripcion')
+                            ->paginate(10);
+            }
+            return view('PostInicioSesion.Conferencias', compact('conferencias', 'categorias', 'busqueda', 'categoria'));
+        } else {
+            $noticias = Conferencia::orderBy('id_conferencia', 'desc')->paginate(10);
+            return view('PostInicioSesion.Conferencias', compact('conferencias', 'categorias', 'busqueda', 'categoria'));
+        }
     }
     public function ConfiguracionPerfil(){
         return view('PostInicioSesion.ConfiguracionPerfil');
