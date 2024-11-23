@@ -3,11 +3,11 @@
 @section('title', 'Contáctanos')
 
 @section('content')
-<div class="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-8">
+<div class="min-h-screen flex flex-col items-center justify-center bg-gray-50 pt-16 p-8">
     <!-- Encabezado -->
-    <div class="text-center mb-12">
-        <h1 class="text-6xl font-bold text-gray-800">Contáctanos</h1>
-        <p class="text-gray-600 mt-2">¿Necesitas asistencia técnica o deseas compartir tus comentarios? Estamos aquí para ayudarte.</p>
+    <div class="text-center mb-16 mt-12">
+        <h1 class="text-5xl font-extrabold text-black">Contáctanos</h1>
+        <p class="text-lg text-gray-700 mt-4">¿Necesitas asistencia técnica o deseas compartir tus comentarios? Estamos aquí para ayudarte.</p>
     </div>
 
     <!-- Contenedor principal -->
@@ -15,35 +15,35 @@
         <!-- Texto informativo a la izquierda -->
         <div class="flex flex-col justify-center space-y-6 text-gray-600">
             <p class="text-lg leading-relaxed">
-                Al enviar tu mensaje nos ayudas a seguir mejorando la experiencia de uso de los usuarios.
+                Al enviar tu mensaje, nos ayudas a seguir mejorando la experiencia de uso de los usuarios.
             </p>
         </div>
 
         <!-- Formulario de contacto -->
         <div class="bg-orange-400 p-8 rounded-lg shadow-lg">
             <!-- Título del formulario -->
-            <h2 class="text-2xl font-bold text-white mb-6">Envíanos un mensaje completando el formulario</h2>
+            <h2 class="text-2xl font-bold text-black mb-6">Envíanos un mensaje completando el formulario</h2>
             
             <!-- Formulario -->
-            <form action="#" method="POST" class="space-y-4">
+            <form action="{{ route('Contactanos.post') }}" method="POST" class="space-y-4">
                 @csrf
 
                 <!-- Campo de Nombres Completos -->
                 <div>
                     <input type="text" name="first_name" placeholder="Nombres Completos" 
-                        class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-300 text-gray-800">
+                        class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-300 text-gray-800" required>
                 </div>
 
                 <!-- Campo de Apellidos Completos -->
                 <div>
                     <input type="text" name="last_name" placeholder="Apellidos Completos" 
-                        class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-300 text-gray-800">
+                        class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-300 text-gray-800" required>
                 </div>
 
                 <!-- Campo de Correo Electrónico -->
                 <div>
                     <input type="email" name="email" placeholder="Correo Electrónico" 
-                        class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-300 text-gray-800">
+                        class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-300 text-gray-800" required>
                 </div>
 
                 <!-- Campo de Número de Celular -->
@@ -55,7 +55,7 @@
                 <!-- Campo de Mensaje -->
                 <div>
                     <textarea name="message" placeholder="Mensaje" rows="5" 
-                        class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-300 text-gray-800"></textarea>
+                        class="w-full p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-300 text-gray-800" required></textarea>
                 </div>
 
                 <!-- Botón de Enviar -->

@@ -20,6 +20,7 @@ use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 Route::get('/', [PreInicioSesionController::class, 'Bienvenida'])->name('Bienvenida');
 Route::get('/contactanos', [PreInicioSesionController::class, 'Contactanos'])->name('Contactanos');
+Route::post('/contactanos', [PreInicioSesionController::class, 'ProcesarContacto'])->name('Contactanos.post');
 Route::get('/sobre-nosotros', [PreInicioSesionController::class, 'SobreNosotros'])->name('SobreNosotros');
 Route::get('/FAQ', [PreInicioSesionController::class, 'FAQ'])->name('FAQ');
 Route::get('/registrarse', [PreInicioSesionController::class, 'Registrarse'])->name(name: 'Registrarse');
