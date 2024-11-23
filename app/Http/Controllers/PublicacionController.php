@@ -14,11 +14,30 @@ class PublicacionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $publicaciones = Publicacion::orderBy('id_publicacion')->paginate(10);
-        return view('publicacion.index', compact('publicaciones'));
+    public function index(Request $request)
+    {   
+        $busqueda = $request->input('busqueda', null);
+        $categoria = $request->input('categoria', null);
+        if ($busqueda)
+        {
+            $publicaciones = Publicacion::where('codigo', 'LIKE', '%' . $busqueda . '%')
+                    ->orderBy('id_publicacion')
+                    ->paginate(10);
+            return view('publicacion.index', compact('publicaciones'));
+        }elseif($categoria){
+            if ($categoria == 0){
+                $publicaciones = Publicacion::orderBy('id_publicacion')->paginate(10);
+                return view('publicacion.index', compact('publicaciones'));  
+            }else{
+                $publicaciones = Publicacion::where('categoria_id', $categoria)->orderBy('id_publicacion')->paginate(10);
+                return view('publicacion.index', compact('publicaciones'));      
+            }
+        }else{
+            $publicaciones = Publicacion::orderBy('id_publicacion')->paginate(10);
+            return view('publicacion.index', compact('publicaciones'));            
+        }
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -95,22 +114,5 @@ class PublicacionController extends Controller
     public function destroy(string $id)
     {
         //
-    }
-
-    public function busquedaPublicacion($vista, $search = null)
-    {
-        $publicaciones = $search 
-            ? Publicacion::where('titulo', 'like', '%' . $search . '%')->get()
-            : Publicacion::all();
-
-        if ($vista === 'home') {
-            return view('PostInicioSesion.Home', compact('publicaciones'));
-        } elseif ($vista === 'publicacion.index') {
-            return view('publicacion.index', compact('publicaciones'));
-        }
-    }
-    public function busquedaPorCategoria($vista, $categoria)
-    {
-        
     }
 }

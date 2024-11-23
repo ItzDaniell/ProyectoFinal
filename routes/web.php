@@ -36,15 +36,14 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified', ForbidBannedUser::class
 ])->group(function () {
-    Route::get('/home', [PostInicioSesionController::class, 'Home'])->name('Home');
-    Route::get('/noticias', [PostInicioSesionController::class, 'Noticias'])->name('Noticias');
+    Route::get('/home/{busqueda?}/{categoria?}', [PostInicioSesionController::class, 'Home'])->name('Home');
+    Route::get('/noticias/{busqueda?}/{categoria?}', [PostInicioSesionController::class, 'Noticias'])->name('Noticias');
     Route::get('/conferencias', [PostInicioSesionController::class, 'Conferencias'])->name('Conferencias');
     Route::get('/configuracion', [PostInicioSesionController::class, 'ConfiguracionPerfil'])->name('Configuracion');
     Route::get('/configuracion/seguridad', [PostInicioSesionController::class, 'ConfiguracionSeguridad'])->name('ConfiguracionSeguridad');
     Route::get('/configuracion/sesiones-activas', [PostInicioSesionController::class, 'ConfiguracionSesionesActivas'])->name('ConfiguracionSesionesActivas');
     Route::get('/configuracion/eliminar-cuenta', [PostInicioSesionController::class, 'ConfiguracionEliminarCuenta'])->name('ConfiguracionEliminarCuenta');
     Route::get('/perfil-usuario', [PostInicioSesionController::class, 'PerfilUsuario'])->name('PerfilUsuario');
-
     Route::post('/publicacion/store', [PublicacionController::class, 'store'])->name('publicacion.store');
 });
 
