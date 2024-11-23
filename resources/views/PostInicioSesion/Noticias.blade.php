@@ -47,7 +47,7 @@
             <div class="p-4 md:w-1/2">
                 <h2 class="text-2xl font-bold mb-2">{{ $ultimaNoticia->titulo }}</h2>
                 <p class="text-gray-500 font-semibold mb-2">{{ $ultimaNoticia->categoria->descripcion}}</p>
-                <p class="text-gray-700 mb-4">{{  Str::limit($ultimaNoticia->descripcion, 350)}}</p>
+                <p class="text-gray-700 mb-4">{{  Str::limit($ultimaNoticia->descripcion, 200)}}</p>
                 <a href="{{ route('DetalleNoticia', urlencode($ultimaNoticia->titulo)) }}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Ver Detalles</a>
             </div>
         </div>

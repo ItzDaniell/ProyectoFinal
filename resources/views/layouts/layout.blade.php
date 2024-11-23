@@ -106,7 +106,7 @@
                     <div class="flex items-center justify-between h-16">
                         <div class="flex items-center">
                             <div class="flex-shrink-0">
-                                <img class="h-8 w-8" src="/img/logos/workflow-mark-on-dark.svg" alt="" />
+                                <img src="{{ asset('images/devshare.png') }}" alt="grupo" class=" shadow-lg w-10 h-10">
                             </div>
                             <!-- Menú desktop -->
                             <div class="hidden md:block">

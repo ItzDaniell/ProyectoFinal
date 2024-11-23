@@ -174,7 +174,6 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
     <title>DevShare - @yield('title')</title>
 </head>
-
 <body>
     <div class="flex flex-col lg:flex-row">
         <!-- Sidebar con ancho fijo -->
@@ -366,7 +365,7 @@
                                     class="block text-gray-700 font-medium mb-2">Descripción</label>
                                 <textarea name="descripcion" id="descripcion" rows="4"
                                     class="w-full p-3 border border-gray-300 rounded-lg mb-4"
-                                    placeholder="Ingresa una descripción"></textarea>
+                                    placeholder="Ingresa una descripción" required></textarea>
 
                                 <label for="id_categoria" class="block text-gray-700 font-medium mb-2">Categoría</label>
                                 <select name="id_categoria" id="id_categoria"
