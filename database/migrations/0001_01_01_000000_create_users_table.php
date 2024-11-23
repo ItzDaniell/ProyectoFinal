@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('estado')->default('Activo');
             $table->string('rol')->default('Usuario');
+            $table->text('biografia')->nullable();
+            $table->text('presentacion')->nullable();
             $table->timestamps();
         });
 

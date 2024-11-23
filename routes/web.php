@@ -20,11 +20,11 @@ use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 Route::get('/', [PreInicioSesionController::class, 'Bienvenida'])->name('Bienvenida');
 Route::get('/contactanos', [PreInicioSesionController::class, 'Contactanos'])->name('Contactanos');
-Route::post('/contactanos', [PreInicioSesionController::class, 'ProcesarContacto'])->name('Contactanos.post');
 Route::get('/sobre-nosotros', [PreInicioSesionController::class, 'SobreNosotros'])->name('SobreNosotros');
 Route::get('/FAQ', [PreInicioSesionController::class, 'FAQ'])->name('FAQ');
 Route::get('/registrarse', [PreInicioSesionController::class, 'Registrarse'])->name(name: 'Registrarse');
 Route::get('/olvidaste-contraseña', [PreInicioSesionController::class, 'OlvidasteContrasena'])->name('OlvidasteContraseña');
+Route::put('/usuario/actualizarPerfil', [UsuarioController::class, 'actualizarPerfil'])->name('usuario.actualizarPerfil');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/usuario-baneado', [BanController::class, 'showBan'])->name('baneado.banned');
@@ -46,6 +46,7 @@ Route::middleware([
     Route::get('/configuracion/sesiones-activas', [PostInicioSesionController::class, 'ConfiguracionSesionesActivas'])->name('ConfiguracionSesionesActivas');
     Route::get('/configuracion/eliminar-cuenta', [PostInicioSesionController::class, 'ConfiguracionEliminarCuenta'])->name('ConfiguracionEliminarCuenta');
     Route::get('/perfil-usuario', [PostInicioSesionController::class, 'PerfilUsuario'])->name('PerfilUsuario');
+
     Route::post('/publicacion/store', [PublicacionController::class, 'store'])->name('publicacion.store');
 });
 
@@ -94,4 +95,3 @@ Route::middleware(['auth', 'can:manage-category'])->group(function () {
     Route::get('/Categorias/{id}/edit', [CategoriaController::class, 'edit'])->name('categorias.edit');
     Route::patch('/Categorias/{id}/edit', [CategoriaController::class, 'update'])->name('categorias.update');
 });
-

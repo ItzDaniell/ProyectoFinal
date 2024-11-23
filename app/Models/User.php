@@ -38,8 +38,11 @@ class User extends Authenticatable implements BannableInterface
         'email',
         'password',
         'estado',
-        'rol'
+        'rol',
+        'biografia',
+        'presentacion',
     ];
+    
 
     /**
      * The attributes that should be hidden for serialization.

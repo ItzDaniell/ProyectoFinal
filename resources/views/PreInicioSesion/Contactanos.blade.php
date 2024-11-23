@@ -5,9 +5,9 @@
 @section('content')
 <div class="min-h-screen flex flex-col items-center justify-center bg-gray-50 pt-16 p-8">
     <!-- Encabezado -->
-    <div class="text-center mb-50">
-        <h1 class="text-5xl font-extrabold text-black mt-8">Contáctanos</h1>
-        <p class="text-lg text-gray-700 mt-14">¿Necesitas asistencia técnica o deseas compartir tus comentarios? Estamos aquí para ayudarte.</p>
+    <div class="text-center mb-16 mt-12">
+        <h1 class="text-5xl font-extrabold text-black">Contáctanos</h1>
+        <p class="text-lg text-gray-700 mt-4">¿Necesitas asistencia técnica o deseas compartir tus comentarios? Estamos aquí para ayudarte.</p>
     </div>
 
     <!-- Contenedor principal -->
