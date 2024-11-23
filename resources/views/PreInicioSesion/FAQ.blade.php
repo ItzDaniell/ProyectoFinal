@@ -3,7 +3,7 @@
 @section('title','Preguntas Frecuentes')
 
 @section('content')
-<div class="container mx-auto p-50">
+<div class="container mx-auto p-40">
 
     <!-- Encabezado de Preguntas Frecuentes -->
     <header class="text-center my-10 flex flex-col items-center justify-center">

@@ -11,9 +11,8 @@
                 <ion-icon name="search-outline" class="text-2xl cursor-pointer" id="searchIcon"></ion-icon>
                 <div id="searchDropdown" class="hidden absolute right-0 w-96 mt-2 bg-white shadow-lg rounded-lg p-4">
                     <p class="text-sm pb-2">Buscar Publicación por título</p>
-                    <form action="" method="post" class="flex">
-                        @csrf
-                        <input id="search" type="text" placeholder="Buscar por Título..." class="w-full p-2 border rounded-md text-sm mr-4">
+                    <form action="{{ route('Home') }}" method="get" class="flex">
+                        <input name="busqueda" type="text" placeholder="Buscar por Título..." class="w-full p-2 border rounded-md text-sm mr-4">
                         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>
                     </form>
                 </div>
@@ -24,13 +23,12 @@
                 <div id="filterDropdown" class="hidden absolute right-0 w-80 mt-2 bg-white shadow-lg rounded-lg p-4">
                     <div class="flex flex-col space-y-2">
                         <p class="text-sm">Filtrar por Categoría</p>
-                        <form action="" method="post" class="flex flex-col space-y-3">
-                            @csrf
-                            <select name="id_categoria" class="p-2 border rounded-md text-sm">
-                                <option value="">[ SELECCIONE ]</option>
-                                <option value="Sin Filtro">Sin Filtro</option>
+                        <form action="{{ route('Home') }}" method="get" class="flex flex-col space-y-3">
+                            <select name="categoria" class="p-2 border rounded-md text-sm">
+                                <option value="0">[ SELECCIONE ]</option>
+                                <option value="0">Mostrar Todo</option>
                                 @foreach ($categorias as $categoria)
-                                    <option value="{{ $categoria->id_categoria }}">{{ $categoria->descripcion }}</option>
+                                    <option value="{{ $categoria->descripcion }}">{{ $categoria->descripcion }}</option>
                                 @endforeach
                             </select>
                             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>
@@ -40,7 +38,6 @@
             </div>
         </div>
     </div>
-
     @foreach ($publicaciones as $publicacion)
     <div class="max-w-lg mx-auto bg-gray-100 rounded-lg shadow-lg mb-6 mb-4">
         <div class="flex items-center justify-between p-4 bg-gray-200 rounded-t-lg">
