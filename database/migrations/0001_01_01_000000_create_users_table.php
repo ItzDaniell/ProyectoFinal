@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('estado')->default('Activo');
             $table->string('rol')->default('Usuario');
             $table->text('biografia')->nullable();
+            $table->text('presentacion')->nullable();
             $table->timestamps();
         });
 

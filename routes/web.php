@@ -24,6 +24,7 @@ Route::get('/sobre-nosotros', [PreInicioSesionController::class, 'SobreNosotros'
 Route::get('/FAQ', [PreInicioSesionController::class, 'FAQ'])->name('FAQ');
 Route::get('/registrarse', [PreInicioSesionController::class, 'Registrarse'])->name(name: 'Registrarse');
 Route::get('/olvidaste-contraseña', [PreInicioSesionController::class, 'OlvidasteContrasena'])->name('OlvidasteContraseña');
+Route::put('/usuario/actualizarPerfil', [UsuarioController::class, 'actualizarPerfil'])->name('usuario.actualizarPerfil');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/usuario-baneado', [BanController::class, 'showBan'])->name('baneado.banned');
@@ -93,4 +94,3 @@ Route::middleware(['auth', 'can:manage-category'])->group(function () {
     Route::get('/categorias/{id}/edit', [CategoriaController::class, 'edit'])->name('categorias.edit');
     Route::patch('/categorias/{id}/edit', [CategoriaController::class, 'update'])->name('categorias.update');
 });
-

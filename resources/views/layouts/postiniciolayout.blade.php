@@ -8,6 +8,7 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=AR+One+Sans:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
@@ -457,6 +458,19 @@
                         biografiaUpdateForm.classList.remove('hidden');
                     });
                 }
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const form = document.querySelector('form'); // Seleccionar el formulario
+                form.addEventListener('submit', function (event) {
+                    // Prevenir comportamiento por defecto para verificar el envío si es necesario
+                    setTimeout(() => {
+                        // Limpiar los campos después de un corto retardo
+                        document.getElementById('presentacion').value = '';
+                        document.getElementById('biografia').value = '';
+                    }, 100); // Ajustar el tiempo según sea necesario
+                });
             });
         </script>
         <div class="flex-1 bg-gray-100 p-4 overflow-y-auto h-screen">

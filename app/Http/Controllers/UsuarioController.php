@@ -81,23 +81,26 @@ class UsuarioController extends Controller
         //
     }
 
-    public function actualizarBiografia(Request $request)
+    public function actualizarPerfil(Request $request)
     {
-        /** @var User $usuario */
-        $usuario = Auth::user(); // Utilizando Auth para obtener el usuario autenticado
-        $usuario->biografia = $request->input('biografia');
-        $usuario->save();
-
-        return redirect()->back()->with('success', 'Biografía actualizada exitosamente.');
+        // Validar los datos
+        $request->validate([
+            'presentacion' => 'nullable|string|max:255',
+            'biografia' => 'nullable|string',
+        ]);
+    
+        // Obtener el usuario autenticado
+        $user = Auth::user();
+        $user->presentacion = $request->input('presentacion');
+        $user->biografia = $request->input('biografia');
+    
+        // Guardar los cambios
+        $user->save();
+    
+        // Redirigir con un mensaje de éxito
+        return redirect()->back()->with('success', true);
     }
-
-    public function eliminarBiografia()
-    {
-        /** @var User $usuario */
-        $usuario = Auth::user();
-        $usuario->biografia = null;
-        $usuario->save();
-
-        return redirect()->back()->with('success', 'Biografía eliminada exitosamente.');
-    }
+    
+    
+    
 }
