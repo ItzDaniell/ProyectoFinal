@@ -45,7 +45,6 @@ Route::middleware([
     Route::get('/configuracion/eliminar-cuenta', [PostInicioSesionController::class, 'ConfiguracionEliminarCuenta'])->name('ConfiguracionEliminarCuenta');
     Route::get('/perfil-usuario', [PostInicioSesionController::class, 'PerfilUsuario'])->name('PerfilUsuario');
 
-    Route::get('/{vista}/busqueda/{search?}', [PublicacionController::class, 'busquedaPublicacion'])->name('publicacion.busqueda');
     Route::post('/publicacion/store', [PublicacionController::class, 'store'])->name('publicacion.store');
 });
 

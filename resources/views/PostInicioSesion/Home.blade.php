@@ -11,7 +11,7 @@
                 <ion-icon name="search-outline" class="text-2xl cursor-pointer" id="searchIcon"></ion-icon>
                 <div id="searchDropdown" class="hidden absolute right-0 w-96 mt-2 bg-white shadow-lg rounded-lg p-4">
                     <p class="text-sm pb-2">Buscar Publicación por título</p>
-                    <form action="{{ route('publicacion.busqueda') }}" method="post" class="flex">
+                    <form action="" method="post" class="flex">
                         @csrf
                         <input id="search" type="text" placeholder="Buscar por Título..." class="w-full p-2 border rounded-md text-sm mr-4">
                         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>
