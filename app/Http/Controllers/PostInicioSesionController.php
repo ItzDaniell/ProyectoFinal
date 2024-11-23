@@ -75,32 +75,31 @@ class PostInicioSesionController extends Controller
         return view('PostInicioSesion.DetallesNoticia', compact('noticia'));
     }
 
-    public function Conferencias(Request $request){
-        $categorias = Categorias::all();
-        $categoria = $request->input('categoria', null);
-        $busqueda = $request->input('busqueda', null);
-        
+    public function Conferencias(Request $request)
+    {
+        $categorias = Categorias::all(); // Obtener todas las categorías
+        $categoria = $request->input('categoria', null); // Categoría seleccionada (o null si no hay)
+        $busqueda = $request->input('busqueda', null); // Término de búsqueda (o null si no hay)
+    
+        $query = Conferencia::query();
+    
         if ($busqueda) {
-            $conferencias = Conferencia::where('titulo', 'LIKE', '%' . $busqueda . '%')
-                        ->orderBy('id_conferencia', 'desc')
-                        ->paginate(10);
-            return view('PostInicioSesion.Conferencias', compact('conferencias', 'categorias', 'busqueda', 'categoria'));
-        } elseif ($categoria) {
-            if ($categoria == '0') {
-                $noticias = Conferencia::orderBy('id_conferencia')->paginate(10);
-            } else {
-                $noticias = Conferencia::join('categorias', 'conferencias.id_categoria', '=', 'categorias.id_categoria')
-                            ->where('categorias.descripcion', $categoria)
-                            ->orderBy('id_conferencia', 'desc')
-                            ->select('conferencias.*', 'categorias.descripcion as categoria_descripcion')
-                            ->paginate(10);
-            }
-            return view('PostInicioSesion.Conferencias', compact('conferencias', 'categorias', 'busqueda', 'categoria'));
-        } else {
-            $noticias = Conferencia::orderBy('id_conferencia', 'desc')->paginate(10);
-            return view('PostInicioSesion.Conferencias', compact('conferencias', 'categorias', 'busqueda', 'categoria'));
+            $query->where('titulo', 'LIKE', '%' . $busqueda . '%');
         }
+    
+        if ($categoria) {
+            if ($categoria != '0') { 
+                $query->whereHas('categoria', function ($q) use ($categoria) {
+                    $q->where('descripcion', $categoria);
+                });
+            }
+        }
+    
+        $conferencias = $query->orderBy('id_conferencia', 'desc')->paginate(10);
+    
+        return view('PostInicioSesion.Conferencias', compact('conferencias', 'categorias', 'busqueda', 'categoria'));
     }
+    
     public function ConfiguracionPerfil(){
         return view('PostInicioSesion.ConfiguracionPerfil');
     }
