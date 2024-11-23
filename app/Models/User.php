@@ -38,7 +38,8 @@ class User extends Authenticatable implements BannableInterface
         'email',
         'password',
         'estado',
-        'rol'
+        'rol',
+        'biografia',
     ];
 
     /**

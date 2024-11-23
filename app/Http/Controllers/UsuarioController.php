@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use LDAP\Result;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
+
 
 class UsuarioController extends Controller
 {
@@ -49,7 +51,7 @@ class UsuarioController extends Controller
     {
         $usuario = User::findOrFail($id);
         $roles = Role::where('name', '!=', 'Admin')->pluck('name')->toArray();
-    
+
         return view('usuario.edit', compact('usuario', 'roles'));
     }
 
@@ -77,5 +79,25 @@ class UsuarioController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function actualizarBiografia(Request $request)
+    {
+        /** @var User $usuario */
+        $usuario = Auth::user(); // Utilizando Auth para obtener el usuario autenticado
+        $usuario->biografia = $request->input('biografia');
+        $usuario->save();
+
+        return redirect()->back()->with('success', 'Biografía actualizada exitosamente.');
+    }
+
+    public function eliminarBiografia()
+    {
+        /** @var User $usuario */
+        $usuario = Auth::user();
+        $usuario->biografia = null;
+        $usuario->save();
+
+        return redirect()->back()->with('success', 'Biografía eliminada exitosamente.');
     }
 }

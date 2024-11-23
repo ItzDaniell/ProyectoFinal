@@ -20,7 +20,6 @@ use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 Route::get('/', [PreInicioSesionController::class, 'Bienvenida'])->name('Bienvenida');
 Route::get('/contactanos', [PreInicioSesionController::class, 'Contactanos'])->name('Contactanos');
-Route::post('/contactanos', [PreInicioSesionController::class, 'ProcesarContacto'])->name('Contactanos.post');
 Route::get('/sobre-nosotros', [PreInicioSesionController::class, 'SobreNosotros'])->name('SobreNosotros');
 Route::get('/FAQ', [PreInicioSesionController::class, 'FAQ'])->name('FAQ');
 Route::get('/registrarse', [PreInicioSesionController::class, 'Registrarse'])->name(name: 'Registrarse');
@@ -37,14 +36,15 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified', ForbidBannedUser::class
 ])->group(function () {
-    Route::get('/home/{busqueda?}/{categoria?}', [PostInicioSesionController::class, 'Home'])->name('Home');
-    Route::get('/noticias/{busqueda?}/{categoria?}', [PostInicioSesionController::class, 'Noticias'])->name('Noticias');
+    Route::get('/home', [PostInicioSesionController::class, 'Home'])->name('Home');
+    Route::get('/noticias', [PostInicioSesionController::class, 'Noticias'])->name('Noticias');
     Route::get('/conferencias', [PostInicioSesionController::class, 'Conferencias'])->name('Conferencias');
     Route::get('/configuracion', [PostInicioSesionController::class, 'ConfiguracionPerfil'])->name('Configuracion');
     Route::get('/configuracion/seguridad', [PostInicioSesionController::class, 'ConfiguracionSeguridad'])->name('ConfiguracionSeguridad');
     Route::get('/configuracion/sesiones-activas', [PostInicioSesionController::class, 'ConfiguracionSesionesActivas'])->name('ConfiguracionSesionesActivas');
     Route::get('/configuracion/eliminar-cuenta', [PostInicioSesionController::class, 'ConfiguracionEliminarCuenta'])->name('ConfiguracionEliminarCuenta');
     Route::get('/perfil-usuario', [PostInicioSesionController::class, 'PerfilUsuario'])->name('PerfilUsuario');
+
     Route::post('/publicacion/store', [PublicacionController::class, 'store'])->name('publicacion.store');
 });
 
