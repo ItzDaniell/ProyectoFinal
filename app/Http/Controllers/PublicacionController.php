@@ -7,6 +7,7 @@ use App\Models\Publicacion;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
 
 class PublicacionController extends Controller
 {
@@ -94,5 +95,22 @@ class PublicacionController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function busquedaPublicacion($vista, $search = null)
+    {
+        $publicaciones = $search 
+            ? Publicacion::where('titulo', 'like', '%' . $search . '%')->get()
+            : Publicacion::all();
+
+        if ($vista === 'home') {
+            return view('PostInicioSesion.Home', compact('publicaciones'));
+        } elseif ($vista === 'publicacion.index') {
+            return view('publicacion.index', compact('publicaciones'));
+        }
+    }
+    public function busquedaPorCategoria($vista, $categoria)
+    {
+        
     }
 }
