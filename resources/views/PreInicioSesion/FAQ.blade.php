@@ -3,7 +3,7 @@
 @section('title','Preguntas Frecuentes')
 
 @section('content')
-<div class="container mx-auto p-40">
+<div class="container mx-auto p-50">
 
     <!-- Encabezado de Preguntas Frecuentes -->
     <header class="text-center my-10 flex flex-col items-center justify-center">
@@ -82,10 +82,10 @@
         <div>
             <h3 class="text-2xl font-semibold text-gray-800 mb-2">¿No Resolviste tus Dudas?</h3>
             <p class="text-gray-600 mb-2">Si tienes alguna otra consulta o necesitas ayuda, no dudes en ponerte en contacto con nuestro equipo de soporte. Estamos aquí para ayudarte.</p>
-            <button class="border border-gray-800 text-gray-800 py-2 px-4 rounded hover:bg-gray-800 hover:text-white">Contactar</button>
+            <a href="{{ route('Contactanos') }}" class="border border-gray-800 text-gray-800 py-2 px-4 rounded hover:bg-gray-800 hover:text-white">Contactar</a>
         </div>
         <div>
-            <img src="{{ asset('images/tecs.png') }}" alt="Imagen de soporte" class="rounded-lg shadow-lg w-full h-120 object-cover">
+            <img src="{{ asset('images/contactanos.jpg') }}" alt="Imagen de soporte" class="rounded-lg shadow-lg w-full h-120 object-cover">
         </div>
     </section>
 
