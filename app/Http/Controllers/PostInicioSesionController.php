@@ -88,7 +88,13 @@ class PostInicioSesionController extends Controller
     public function ConfiguracionEliminarCuenta(){
         return view('PostInicioSesion.ConfiguracionEliminarCuenta');
     }
-    public function PerfilUsuario($id = null){
+
+    public function PerfilUsuario()
+    {
+        $usuario = Auth::user();
         return view('PostInicioSesion.PerfilUsuario', compact('usuario'));
     }
+    
+    
+    
 }
