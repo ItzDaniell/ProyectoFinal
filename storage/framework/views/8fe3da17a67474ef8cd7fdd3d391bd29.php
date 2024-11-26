@@ -9,18 +9,18 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
      <?php $__env->slot('title', null, []); ?> 
-        <?php echo e(__('Delete Account')); ?>
+        <?php echo e(__('Eliminar cuenta.')); ?>
 
      <?php $__env->endSlot(); ?>
 
      <?php $__env->slot('description', null, []); ?> 
-        <?php echo e(__('Permanently delete your account.')); ?>
+        <?php echo e(__('Eliminar tu cuenta de forma permanente.')); ?>
 
      <?php $__env->endSlot(); ?>
 
      <?php $__env->slot('content', null, []); ?> 
         <div class="max-w-xl text-sm text-gray-600 dark:text-gray-400">
-            <?php echo e(__('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.')); ?>
+            <?php echo e(__('Una vez que tu cuenta sea eliminada, todos sus recursos y datos serán eliminados de forma permanente. Antes de eliminar tu cuenta, por favor descarga cualquier dato o información que desees conservar.')); ?>
 
         </div>
 
@@ -35,7 +35,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['wire:click' => 'confirmUserDeletion','wire:loading.attr' => 'disabled']); ?>
-                <?php echo e(__('Delete Account')); ?>
+                <?php echo e(__('Eliminar cuenta.')); ?>
 
              <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

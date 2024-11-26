@@ -32,8 +32,8 @@
             {{ __('Guardado Exitoso') }}
         </x-action-message>
 
-        <x-button>
+        <button class="boton">
             {{ __('Guardar') }}
-        </x-button>
+        </button>
     </x-slot>
 </x-form-section>

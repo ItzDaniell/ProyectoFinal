@@ -82,26 +82,48 @@ class UsuarioController extends Controller
     }
 
     public function actualizarPerfil(Request $request)
-{
-    $request->validate([
-        'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-    ]);
+    {
+        // Validar los datos
+        $request->validate([
+            'presentacion' => 'nullable|string|max:255', // Presentación opcional, máximo 255 caracteres
+            'biografia' => 'nullable|string|max:1000',  // Biografía opcional, máximo 1000 caracteres
+        ]);
 
-    $user = Auth::user();
+        // Obtener el usuario autenticado
+        $user = Auth::user();
 
-    if ($request->hasFile('profile_photo')) {
-        // Subir la foto
-        $path = $request->file('profile_photo')->store('profile_photos', 'public');
+        // Actualizar los campos
+        $user->presentacion = $request->input('presentacion');
+        $user->biografia = $request->input('biografia');
+        $user->save();
 
-        // Actualizar las rutas en la base de datos
-        $user->profile_photo_path = $path; // Ruta relativa para el almacenamiento
-        $user->avatar = asset('storage/' . $path); // URL pública para la foto
+        // Redirigir con mensaje de éxito
+        return redirect()->back()->with('success', 'Tu perfil ha sido actualizado correctamente.');
     }
 
-    $user->save();
+    public function actualizarFoto(Request $request)
+    {
+        // Validar la foto subida
+        $request->validate([
+            'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Archivo opcional, solo imágenes, máximo 2 MB
+        ]);
 
-    return back()->with('success', 'Foto de perfil actualizada con éxito.');
-}
+        // Obtener el usuario autenticado
+        $user = Auth::user();
+
+        // Procesar la foto si fue subida
+        if ($request->hasFile('profile_photo')) {
+            $path = $request->file('profile_photo')->store('profile_photos', 'public');
+            $user->profile_photo_path = $path; // Guardar la ruta de la foto
+            $user->avatar = asset('storage/' . $path); // Generar la URL pública
+        }
+
+        // Guardar los cambios
+        $user->save();
+
+        // Redirigir con mensaje de éxito
+        return redirect()->back()->with('success', 'Foto de perfil actualizada correctamente.');
+    }   
 
 
 }
