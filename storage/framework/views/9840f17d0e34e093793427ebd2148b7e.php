@@ -1,8 +1,6 @@
-@extends('layouts.layout')
+<?php $__env->startSection('title', 'Inicio'); ?>
 
-@section('title', 'Inicio')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="min-h-screen flex items-center justify-center bg-gray-50 p-20">
   <div class="max-w-screen-2x20 mx-auto px-4">
 
@@ -25,7 +23,7 @@
         <p class="text-gray-600 max-w-3xl mb-5">interesadas en las áreas de especialización.</p>
       </div>
       <div class="flex justify-center mb-20">
-        <img src="{{ asset('images/compartir.jpg') }}" alt="compartir" class="rounded-lg shadow-lg w-full max-w-2xl h-auto object-cover">
+        <img src="<?php echo e(asset('images/compartir.jpg')); ?>" alt="compartir" class="rounded-lg shadow-lg w-full max-w-2xl h-auto object-cover">
       </div>
     </section>
 
@@ -37,15 +35,15 @@
           <p class="text-gray-600">DevShare es la solución ideal para equipos de desarrollo que buscan mejorar la colaboración y la eficiencia.</p>
         </div>
         <div class="flex flex-col items-center">
-          <img src="{{ asset('images/mano.png') }}" alt="mano" class="rounded-lg shadow-lg w-30 h-20 object-cover mx-40">
+          <img src="<?php echo e(asset('images/mano.png')); ?>" alt="mano" class="rounded-lg shadow-lg w-30 h-20 object-cover mx-40">
           <p class="text-orange-500 font-semibold">Colaboración Mutua</p>
         </div>
         <div class="flex flex-col items-center">
-          <img src="{{ asset('images/compu.png') }}" alt="compu" class="rounded-lg shadow-lg w-30 h-20 object-cover mx-40">
+          <img src="<?php echo e(asset('images/compu.png')); ?>" alt="compu" class="rounded-lg shadow-lg w-30 h-20 object-cover mx-40">
           <p class="text-orange-500 font-semibold">Acceso Multiplataforma</p>
         </div>
         <div class="flex flex-col items-center">
-          <img src="{{ asset('images/tecnico.png') }}" alt="tecnico" class="rounded-lg shadow-lg w-30 h-20 object-cover mx-40">
+          <img src="<?php echo e(asset('images/tecnico.png')); ?>" alt="tecnico" class="rounded-lg shadow-lg w-30 h-20 object-cover mx-40">
           <p class="text-orange-500 font-semibold">Soporte Técnico</p>
         </div>
       </div>
@@ -60,7 +58,7 @@
             <img src="/funcion1.jpg" alt="Función 1" class="rounded-lg shadow-md w-full max-w-md">
           </div>
           <div class="swiper-slide flex justify-center">
-            <img src="{{ asset('images/.jpg') }}" alt="Imagen de soporte" class="rounded-lg shadow-lg w-full h-120 object-cover">
+            <img src="<?php echo e(asset('images/.jpg')); ?>" alt="Imagen de soporte" class="rounded-lg shadow-lg w-full h-120 object-cover">
           </div>
         </div>
         <!-- Botones de navegación -->
@@ -74,14 +72,16 @@
       <div>
         <h3 class="text-2xl font-semibold text-gray-800 mb-4">¿Tienes algunas dudas?</h3>
         <p class="text-gray-600 mb-4">Si tienes alguna duda, accede a nuestra sección de soporte y consulta a los expertos.</p>
-        <a href="{{ route('Contactanos') }}" class="border border-gray-800 text-gray-800 py-2 px-4 rounded hover:bg-gray-800 hover:text-white">Contactar</a>
+        <a href="<?php echo e(route('Contactanos')); ?>" class="border border-gray-800 text-gray-800 py-2 px-4 rounded hover:bg-gray-800 hover:text-white">Contactar</a>
       </div>
       <div>
-        <img src="{{ asset('images/call.jpg') }}" alt="Imagen de callcenter" class="rounded-lg shadow-lg w-70 h-80 object-cover">
+        <img src="<?php echo e(asset('images/call.jpg')); ?>" alt="Imagen de callcenter" class="rounded-lg shadow-lg w-70 h-80 object-cover">
       </div>
     </section>
 
   </div>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\ItzDaniel\Desktop\PHP\ProyectoFinal\resources\views/PreInicioSesion/Bienvenida.blade.php ENDPATH**/ ?>
