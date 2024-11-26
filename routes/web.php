@@ -115,9 +115,7 @@ Route::get('/google-auth/redirect', function () {
 Route::get('/google-auth/callback', function () {
     $user_google = Socialite::driver('google')
         ->stateless()
-        ->setHttpClient(
-            new \GuzzleHttp\Client(['verify' => false])
-        )
+        ->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))
         ->user();
 
     $user = User::updateOrCreate([
