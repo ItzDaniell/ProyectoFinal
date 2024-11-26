@@ -41,6 +41,8 @@ class User extends Authenticatable implements BannableInterface
         'rol',
         'biografia',
         'presentacion',
+        'google_id',
+        'avatar',
     ];
     
 

@@ -11,7 +11,11 @@ use App\Http\Controllers\PublicacionController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 use Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser;
+use Laravel\Socialite\Facades\Socialite;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+
 
 /*Route::get('/', function () {
     return view('welcome');
@@ -98,3 +102,33 @@ Route::middleware(['auth', 'can:manage-category'])->group(function () {
 Route::get('/home/{busqueda?}/{categoria?}', [PostInicioSesionController::class, 'Home'])->name('Home');
     Route::get('/noticias/{busqueda?}/{categoria?}', [PostInicioSesionController::class, 'Noticias'])->name('Noticias');
     Route::get('/noticia/{titulo}', [PostInicioSesionController::class, 'DetalleNoticia'])->name('DetalleNoticia');
+
+Route::match(['post', 'put'], '/usuario/actualizar-perfil', [UsuarioController::class, 'actualizarPerfil'])->name('usuario.actualizarPerfil');
+
+
+//Google
+Route::get('/google-auth/redirect', function () {
+    // Redirige al usuario a Google para la autenticación
+    return Socialite::driver('google')->redirect();
+});
+
+Route::get('/google-auth/callback', function () {
+    $user_google = Socialite::driver('google')
+        ->stateless()
+        ->setHttpClient(
+            new \GuzzleHttp\Client(['verify' => false])
+        )
+        ->user();
+
+    $user = User::updateOrCreate([
+        'google_id' => $user_google->id,
+    ], [
+        'name' => $user_google->name,
+        'email' => $user_google->email,
+        'avatar' => $user_google->avatar,
+        'password' => bcrypt(str()->random(16)),
+    ]);
+
+    Auth::login($user);
+    return redirect('/home');
+});
