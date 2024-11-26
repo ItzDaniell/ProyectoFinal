@@ -104,7 +104,8 @@ Route::get('/home/{busqueda?}/{categoria?}', [PostInicioSesionController::class,
     Route::get('/noticia/{titulo}', [PostInicioSesionController::class, 'DetalleNoticia'])->name('DetalleNoticia');
 
 Route::match(['post', 'put'], '/usuario/actualizar-perfil', [UsuarioController::class, 'actualizarPerfil'])->name('usuario.actualizarPerfil');
-
+Route::post('/usuario/actualizar-foto-perfil', [UsuarioController::class, 'actualizarFotoPerfil'])->name('usuario.actualizarFotoPerfil');
+Route::put('/usuario/actualizar-perfil', [UsuarioController::class, 'actualizarPerfil'])->name('usuario.actualizarPerfil');
 
 //Google
 Route::get('/google-auth/redirect', function () {

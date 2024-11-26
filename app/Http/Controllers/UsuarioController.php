@@ -82,25 +82,26 @@ class UsuarioController extends Controller
     }
 
     public function actualizarPerfil(Request $request)
-    {
-        // Validar los datos
-        $request->validate([
-            'presentacion' => 'nullable|string|max:255',
-            'biografia' => 'nullable|string',
-        ]);
-    
-        // Obtener el usuario autenticado
-        $user = Auth::user();
-        $user->presentacion = $request->input('presentacion');
-        $user->biografia = $request->input('biografia');
-    
-        // Guardar los cambios
-        $user->save();
-    
-        // Redirigir con un mensaje de éxito
-        return redirect()->back()->with('success', true);
+{
+    $request->validate([
+        'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+    ]);
+
+    $user = Auth::user();
+
+    if ($request->hasFile('profile_photo')) {
+        // Subir la foto
+        $path = $request->file('profile_photo')->store('profile_photos', 'public');
+
+        // Actualizar las rutas en la base de datos
+        $user->profile_photo_path = $path; // Ruta relativa para el almacenamiento
+        $user->avatar = asset('storage/' . $path); // URL pública para la foto
     }
-    
-    
-    
+
+    $user->save();
+
+    return back()->with('success', 'Foto de perfil actualizada con éxito.');
+}
+
+
 }
