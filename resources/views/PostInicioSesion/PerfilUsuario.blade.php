@@ -37,8 +37,10 @@
                     <img class="w-full h-full object-cover" src="{{ asset('storage/' . $usuario->profile_photo_path) }}"
                         alt="Foto de perfil del usuario">
                 @else
-                    <img class="w-full h-full object-cover" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                        alt="Foto de perfil predeterminada">
+                    <img class="w-full h-full object-cover"
+                        src="{{ Auth::user()->avatar ?? 'https://cdn-icons-png.flaticon.com/512/149/149071.png' }}"
+                        alt="Foto de perfil">
+
                 @endif
             </div>
             <div>
