@@ -140,3 +140,10 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/administracion', function () {
     return view('PostInicioSesion.Administracion');
 })->middleware(['auth', 'verified'])->name('Administracion');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard'); // Asegúrate de crear la vista `resources/views/dashboard.blade.php`
+    })->name('dashboard');
+});
+
