@@ -107,12 +107,12 @@
 <?php endif; ?>
 <?php $component->withAttributes(['wire:model.live' => 'confirmingLogout']); ?>
              <?php $__env->slot('title', null, []); ?> 
-                <?php echo e(__('Log Out Other Browser Sessions')); ?>
+                <?php echo e(__('Cerrar Sesión en Otras Sesiones del Navegador')); ?>
 
              <?php $__env->endSlot(); ?>
 
              <?php $__env->slot('content', null, []); ?> 
-                <?php echo e(__('Please enter your password to confirm you would like to log out of your other browser sessions across all of your devices.')); ?>
+                <?php echo e(__('Por favor, ingresa tu contraseña para confirmar que deseas cerrar sesión en tus otras sesiones de navegador en todos tus dispositivos.')); ?>
 
 
                 <div class="mt-4" x-data="{}" x-on:confirming-logout-other-browser-sessions.window="setTimeout(() => $refs.password.focus(), 250)">
@@ -194,7 +194,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['class' => 'ms-3','wire:click' => 'logoutOtherBrowserSessions','wire:loading.attr' => 'disabled']); ?>
-                    <?php echo e(__('Log Out Other Browser Sessions')); ?>
+                    <?php echo e(__('Cerrar Sesión en Otras Sesiones del Navegador')); ?>
 
                  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

@@ -35,7 +35,7 @@
 <?php $attributes = $attributes->except(\Illuminate\View\AnonymousComponent::ignoredParameterNames()); ?>
 <?php endif; ?>
 <?php $component->withAttributes(['wire:click' => 'confirmUserDeletion','wire:loading.attr' => 'disabled']); ?>
-                <?php echo e(__('Eliminar cuenta.')); ?>
+                <?php echo e(__('Eliminar cuenta')); ?>
 
              <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
@@ -61,12 +61,12 @@
 <?php endif; ?>
 <?php $component->withAttributes(['wire:model.live' => 'confirmingUserDeletion']); ?>
              <?php $__env->slot('title', null, []); ?> 
-                <?php echo e(__('Delete Account')); ?>
+                <?php echo e(__('Eliminar Cuenta')); ?>
 
              <?php $__env->endSlot(); ?>
 
              <?php $__env->slot('content', null, []); ?> 
-                <?php echo e(__('Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.')); ?>
+                <?php echo e(__('¿Estás seguro de que deseas eliminar tu cuenta? Una vez que tu cuenta sea eliminada, todos sus recursos y datos serán eliminados de forma permanente. Por favor, ingresa tu contraseña para confirmar que deseas eliminar tu cuenta de forma permanente.')); ?>
 
 
                 <div class="mt-4" x-data="{}" x-on:confirming-delete-user.window="setTimeout(() => $refs.password.focus(), 250)">

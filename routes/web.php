@@ -136,3 +136,9 @@ Route::middleware(['auth'])->group(function () {
     Route::match(['post', 'put'], '/usuario/actualizar-perfil', [UsuarioController::class, 'actualizarPerfil'])->name('usuario.actualizarPerfil');
     Route::post('/usuario/actualizar-foto-perfil', [UsuarioController::class, 'actualizarFoto'])->name('usuario.actualizarFotoPerfil');
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard'); // Asegúrate de crear la vista `resources/views/dashboard.blade.php`
+    })->name('dashboard');
+});
