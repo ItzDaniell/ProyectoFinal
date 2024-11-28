@@ -24,121 +24,6 @@
             color: inherit;
         }
 
-        .sidebar-configuracion {
-            position: absolute;
-            top: 0px;
-            left: 250px;
-            width: 300px;
-            height: 100vh;
-            background: #0f1010;
-            overflow: hidden;
-            border-left: 4px solid #222;
-        }
-
-        .sidebar-configuracion .wrapper-configuracion {
-            width: 300px;
-            height: 100%;
-        }
-
-        .sidebar-configuracion .encabezado {
-            padding: 20px 0;
-            background: transparent;
-            margin-bottom: 20px;
-        }
-
-        .sidebar-configuracion .encabezado span {
-            padding: 0 12px;
-            font-size: 22px;
-            color: white;
-            font-weight: bold;
-            display: block;
-        }
-
-        .sidebar-configuracion .links {
-            padding: 0 5px;
-        }
-
-        .sidebar-configuracion .link {
-            margin: 8px 0;
-            height: 50px;
-            color: #888;
-            display: flex;
-            align-items: center;
-            padding: 0 12px;
-            border: none;
-            background: none;
-            text-align: left;
-            width: 100%;
-            cursor: pointer;
-            transition: all 300ms ease-in-out;
-            font-size: 17px;
-        }
-
-        .sidebar-configuracion .link ion-icon {
-            display: inline-block;
-            width: 22px;
-            height: 22px;
-            margin-right: 20px;
-        }
-
-        .sidebar-configuracion .link a {
-            color: inherit;
-            flex-grow: 1;
-            text-decoration: none;
-        }
-
-        .sidebar-configuracion .divider {
-            border-bottom: 1px solid #222;
-            margin: 20px 0;
-            width: 100%;
-        }
-
-        .sidebar-configuracion .link:hover {
-            background: #1f252d;
-            color: #fff;
-            border-radius: 5px;
-        }
-
-        .sidebar-configuracion .link:hover a {
-            color: #fff;
-        }
-
-        .content {
-            position: relative;
-            display: flex;
-            justify-content: space-around;
-            top: 0px;
-            left: 550px;
-            width: calc(100% - 550px);
-            overflow: hidden;
-        }
-
-        .contenedor .content-encabezado {
-            display: flex;
-            align-items: center;
-            justify-content: left;
-            height: 80px;
-            padding-left: 20px;
-        }
-
-        .content .foto-perfil {
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            width: 750px;
-            padding-top: 30px;
-        }
-
-        .foto-perfil img {
-            width: 100px;
-            height: 100px;
-        }
-
-        .foto-perfil span {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
         .boton {
             width: auto;
             height: auto;
@@ -173,6 +58,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
     <title>DevShare - <?php echo $__env->yieldContent('title'); ?></title>
+    <?php echo app('Illuminate\Foundation\Vite')(['resources/js/vista_previa.js', 'resources/js/mostrar_modal_busq_cat.js']); ?>
 </head>
 <body>
     <div class="flex flex-col lg:flex-row">
@@ -186,7 +72,7 @@
                     <ion-icon name="home-outline"></ion-icon>
                     <span>Inicio</span>
                 </a>
-                <a href="" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalButton">
                     <ion-icon name="search-outline"></ion-icon>
                     <span>Búsqueda</span>
                 </a>
@@ -206,98 +92,29 @@
                     <ion-icon name="create-outline"></ion-icon>
                     <span>Crear</span>
                 </a>
-                <div class="border-t border-gray-700 mt-4 pt-4"></div>
+                <div class="border-t border-gray-700 mt-1 pt-1"></div>
                 <a href="<?php echo e(route('PerfilUsuario')); ?>"
                     class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="person-circle-outline"></ion-icon>
                     <span>Perfil</span>
                 </a>
+                <?php if(auth()->user()->hasRole('Admin')): ?>
+                <a href="<?php echo e(route('usuarios.index')); ?>"
+                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                    <ion-icon name="settings-outline"></ion-icon>
+                    <span>Administrar</span>
+                </a>
+                <?php endif; ?>
                 <!-- Dropdown button -->
                 <div class="relative">
                     <a onclick="toggleMenu()" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                         <ion-icon name="menu-outline"></ion-icon>
-                        <span>Menú</span>
+                        <span>Más Opciones</span>
                     </a>
                     <!-- Dropdown menu (posicionado hacia arriba) -->
                     <div id="dropdownMenu" style="width: 270px;"
                         class="absolute bottom-full mb-2 bg-gray-800 border border-gray-700 p-2 rounded hidden">
                         <ul class="space-y-2">
-                            <?php if(auth()->user()->hasRole('Admin')): ?>
-                                <a href="<?php echo e(route('usuarios.index')); ?>"
-                                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                    <ion-icon name="settings-outline"></ion-icon>
-                                    <span>Gestionar Usuarios</span>
-                                </a>
-                                <a href="<?php echo e(route('publicacion.index')); ?>"
-                                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                    <ion-icon name="settings-outline"></ion-icon>
-                                    <span>Gestionar Publicaciones</span>
-                                </a>
-                                <a href="<?php echo e(route('categorias.index')); ?>"
-                                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                    <ion-icon name="settings-outline"></ion-icon>
-                                    <span>Gestionar Categorias</span>
-                                </a>
-                                <a href="<?php echo e(route('noticias.index')); ?>"
-                                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                    <ion-icon name="settings-outline"></ion-icon>
-                                    <span>Gestionar Noticias</span>
-                                </a>
-                                <a href="<?php echo e(route('conferencias.index')); ?>"
-                                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                    <ion-icon name="settings-outline"></ion-icon>
-                                    <span>Gestionar Conferencias</span>
-                                </a>
-                                <a href="<?php echo e(route('Configuracion')); ?>"
-                                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                    <ion-icon name="settings-outline"></ion-icon>
-                                    <span>Gestionar Reportes</span>
-                                </a>
-                                <a href="<?php echo e(route('Configuracion')); ?>"
-                                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                    <ion-icon name="settings-outline"></ion-icon>
-                                    <span>Gestionar Solicitudes</span>
-                                </a>
-                                <div class="border-t border-gray-700 pt-1 pb-1"></div>
-                            <?php endif; ?>
-
-                            <?php if(auth()->user()->hasRole('Gestor de Conferencias')): ?>
-                                <a href="<?php echo e(route('conferencias.index')); ?>"
-                                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                    <ion-icon name="settings-outline"></ion-icon>
-                                    <span>Gestionar Conferencias</span>
-                                </a>
-                                <div class="border-t border-gray-700 pt-1 pb-1"></div>
-                            <?php endif; ?>
-
-                            <?php if(auth()->user()->hasRole('Moderador')): ?>
-                                <a href="<?php echo e(route('Configuracion')); ?>"
-                                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                    <ion-icon name="settings-outline"></ion-icon>
-                                    <span>Gestionar Reportes</span>
-                                </a>
-                                <a href="<?php echo e(route('publicacion.index')); ?>"
-                                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                    <ion-icon name="settings-outline"></ion-icon>
-                                    <span>Gestionar Publicaciones</span>
-                                </a>
-                                <div class="border-t border-gray-700 pt-1 pb-1"></div>
-                            <?php endif; ?>
-
-                            <?php if(auth()->user()->hasRole('Servicio Tecnico')): ?>
-                                <a href="<?php echo e(route('noticias.index')); ?>"
-                                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                    <ion-icon name="settings-outline"></ion-icon>
-                                    <span>Gestionar Noticias</span>
-                                </a>
-                                <a href="<?php echo e(route('Configuracion')); ?>"
-                                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                    <ion-icon name="settings-outline"></ion-icon>
-                                    <span>Gestionar Solicitudes</span>
-                                </a>
-                                <div class="border-t border-gray-700 pt-1 pb-1"></div>
-                            <?php endif; ?>
-
                             <a href="<?php echo e(route('Configuracion')); ?>"
                                 class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                                 <ion-icon name="settings-outline"></ion-icon>
@@ -305,11 +122,10 @@
                             </a>
                             <form method="POST" action="<?php echo e(route('logout')); ?>">
                                 <?php echo csrf_field(); ?>
-                                <a href="" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded"><button
-                                        type="submit" class="flex items-center space-x-3 hover:bg-gray-700 rounded">
+                                <button type="submit" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                                         <ion-icon name="log-out-outline"></ion-icon>
                                         <span>Cerrar Sesión</span>
-                                    </button></a>
+                                </button>
                             </form>
                         </ul>
                     </div>
@@ -333,7 +149,6 @@
                                 Publicar
                             </button>
                         </div>
-
                         <!-- Contenido del modal -->
                         <div class="flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-6 mt-6">
                             <!-- Sección de imagen -->
@@ -372,9 +187,7 @@
                                     class="w-full p-3 border border-gray-300 rounded-lg mb-4" required>
                                     <option value="">[ SELECCIONE ]</option>
                                     <?php $__currentLoopData = $categorias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categoria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <option value="<?php echo e($categoria->id_categoria); ?>"><?php echo e($categoria->descripcion); ?>
-
-                                        </option>
+                                        <option value="<?php echo e($categoria->id_categoria); ?>"><?php echo e($categoria->descripcion); ?></option>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
@@ -383,65 +196,25 @@
                 </div>
             </div>
         </div>
-
-        <script>
-            const openModalButton = document.getElementById("openModalButton");
-            const closeModalButton = document.getElementById("closeModalButton");
-            const modal = document.getElementById("modal");
-            const imageInput = document.getElementById("imageInput");
-            const fileName = document.getElementById("fileName");
-
-            if (openModalButton && closeModalButton && modal) {
-                openModalButton.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    modal.classList.remove("hidden");
-                });
-
-                closeModalButton.addEventListener("click", () => {
-                    modal.classList.add("hidden");
-                    fileName.textContent = "Ningún archivo seleccionado";
-                });
-            }
-
-            if (imageInput) {
-                imageInput.addEventListener("change", (e) => {
-                    fileName.textContent = e.target.files[0]?.name || "Ningún archivo seleccionado";
-                });
-            }
-
-            function toggleMenu() {
-                const menu = document.getElementById('dropdownMenu');
-                if (menu) {
-                    menu.classList.toggle('hidden');
-                }
-            }
-
-            window.addEventListener("click", (e) => {
-                if (e.target === modal) {
-                    const menu = document.getElementById('dropdownMenu');
-                    if (menu) {
-                        menu.classList.add("hidden");
-                    }
-                }
-            });
-
-            document.addEventListener('DOMContentLoaded', function () {
-                const optionsButton = document.getElementById('optionsButton');
-                const optionsMenu = document.getElementById('optionsMenu');
-
-                if (optionsButton && optionsMenu) {
-                    optionsButton.addEventListener('click', function () {
-                        optionsMenu.classList.toggle('hidden');
-                    });
-
-                    document.addEventListener('click', function (event) {
-                        if (!optionsButton.contains(event.target) && !optionsMenu.contains(event.target)) {
-                            optionsMenu.classList.add('hidden');
-                        }
-                    });
-                }
-            });
-        </script>
+        <div id="searchModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden z-50">
+            <div class="bg-white w-96 p-6 rounded shadow-lg">
+                <div class="flex justify-between items-center border-b pb-2 mb-4">
+                    <h2 class="text-xl font-bold">Buscar Personas</h2>
+                    <button id="closeModalButton" class="text-gray-500 hover:text-gray-800">
+                        <ion-icon name="close-outline" size="large"></ion-icon>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <input type="text" placeholder="Escribe un nombre..." class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <div>
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                            Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const editarBiografiaButton = document.getElementById('editarBiografiaButton');
@@ -477,6 +250,6 @@
             <?php echo $__env->yieldContent('content'); ?>
         </div>
     </div>
+    <?php echo app('Illuminate\Foundation\Vite')('resources/js/mostrar_opciones.js'); ?>
 </body>
-
 </html><?php /**PATH C:\Users\ItzDaniel\Desktop\PHP\ProyectoFinal\resources\views/layouts/postiniciolayout.blade.php ENDPATH**/ ?>

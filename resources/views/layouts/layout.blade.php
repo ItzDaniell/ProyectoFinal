@@ -124,15 +124,30 @@
                                     <div>
                                         @if (Route::has('login'))
                                         @auth
-                                        <a href="{{ route('Home') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Pagina Principal</a>
-                                        <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Cerra Sesión</a>
+                                            <a href="{{ route('Home') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                                Página Principal
+                                            </a>
+                                            <form method="POST" action="{{ route('logout') }}" class="inline">
+                                                @csrf
+                                                <button 
+                                                    type="submit" 
+                                                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white focus:outline-none"
+                                                >
+                                                    Cerrar Sesión
+                                                </button>
+                                            </form>
                                         @else
-                                        <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Iniciar Sesión</a>
-                                        @if (Route::has('register'))
-                                        <a href="{{ route('Registrarse') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Registrarse</a>
-                                        @endif
+                                            <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                                Iniciar Sesión
+                                            </a>
+                                            @if (Route::has('register'))
+                                                <a href="{{ route('Registrarse') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                                    Registrarse
+                                                </a>
+                                            @endif
                                         @endauth
-                                        @endif
+                                    @endif
+                                    
                                     </div>
                                 </div>
                             </div>
@@ -163,15 +178,27 @@
                         <div class="mt-auto border-t border-gray-700 pt-4 pb-3">
                             @if (Route::has('login'))
                             @auth
-                            <a href="{{ route('Home') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Pagina Principal</a>
-                            <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Cerrar Sesión</a>
+                                <a href="{{ route('Home') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                                    Página Principal
+                                </a>
+                                <form method="POST" action="{{ route('logout') }}" class="mt-1">
+                                    @csrf
+                                    <button type="submit" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                                        Cerrar Sesión
+                                    </button>
+                                </form>
                             @else
-                            <a href="{{ route('login') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Iniciar Sesión</a>
-                            @if (Route::has('register'))
-                            <a href="{{ route('Registrarse') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Registrarse</a>
-                            @endif
+                                <a href="{{ route('login') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                                    Iniciar Sesión
+                                </a>
+                                @if (Route::has('register'))
+                                    <a href="{{ route('Registrarse') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                                        Registrarse
+                                    </a>
+                                @endif
                             @endauth
-                            @endif
+                        @endif
+                        
                         </div>
                     </div>
                 </div>

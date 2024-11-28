@@ -55,34 +55,8 @@
     
     <div class="flex space-x-4">
         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>
-        <button type="reset" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Limpiar</button>
+        <button id="clear-button" type="reset" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Limpiar</button>
         <a href="{{ route('noticias.index') }}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Regresar</a>
     </div>
-    
-    <script>
-        function previewImage(event) {
-            const file = event.target.files[0];
-            const preview = document.getElementById('preview');
-            
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.classList.remove('hidden');
-                };
-                reader.readAsDataURL(file);
-            } else {
-                preview.src = "#";
-                preview.classList.add('hidden');
-            }
-        }
-    
-        function clearPreview() {
-            const preview = document.getElementById('preview');
-            preview.src = "#";
-            preview.classList.add('hidden');
-            document.getElementById('imagen').value = "";
-        }
-    </script>
 </form>
 @endsection

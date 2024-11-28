@@ -42,30 +42,5 @@
         <a href="{{ route('ponentes.index') }}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Regresar</a>
     </div>
 </form>
-
-<script>
-    function previewImage(event) {
-        const file = event.target.files[0];
-        const preview = document.getElementById('preview');
-        
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                preview.src = e.target.result;
-                preview.classList.remove('hidden');
-            };
-            reader.readAsDataURL(file);
-        } else {
-            preview.src = "#";
-            preview.classList.add('hidden');
-        }
-    }
-
-    function clearPreview() {
-        const preview = document.getElementById('preview');
-        preview.src = "#";
-        preview.classList.add('hidden');
-        document.getElementById('foto').value = "";
-    }
-</script>
+@vite('resources/js/preview_image.js')
 @endsection
