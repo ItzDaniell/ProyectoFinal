@@ -124,15 +124,26 @@
                                     <div>
                                         <?php if(Route::has('login')): ?>
                                         <?php if(auth()->guard()->check()): ?>
-                                        <a href="<?php echo e(route('Home')); ?>" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Pagina Principal</a>
-                                        <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Cerra Sesión</a>
+                                            <a href="<?php echo e(route('Home')); ?>" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white focus:outline-none">
+                                                Página Principal
+                                            </a>
+                                            <form method="POST" action="<?php echo e(route('logout')); ?>" class="inline">
+                                                <?php echo csrf_field(); ?>
+                                                <button type="submit" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white focus:outline-none">
+                                                    Cerrar Sesión
+                                                </button>
+                                            </form>
                                         <?php else: ?>
-                                        <a href="<?php echo e(route('login')); ?>" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Iniciar Sesión</a>
-                                        <?php if(Route::has('register')): ?>
-                                        <a href="<?php echo e(route('Registrarse')); ?>" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Registrarse</a>
+                                            <a href="<?php echo e(route('login')); ?>" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white focus:outline-none">
+                                                Iniciar Sesión
+                                            </a>
+                                            <?php if(Route::has('register')): ?>
+                                                <a href="<?php echo e(route('Registrarse')); ?>" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white focus:outline-none">
+                                                    Registrarse
+                                                </a>
+                                            <?php endif; ?>
                                         <?php endif; ?>
-                                        <?php endif; ?>
-                                        <?php endif; ?>
+                                    <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
@@ -163,15 +174,27 @@
                         <div class="mt-auto border-t border-gray-700 pt-4 pb-3">
                             <?php if(Route::has('login')): ?>
                             <?php if(auth()->guard()->check()): ?>
-                            <a href="<?php echo e(route('Home')); ?>" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Pagina Principal</a>
-                            <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Cerrar Sesión</a>
+                                <a href="<?php echo e(route('Home')); ?>" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                                    Página Principal
+                                </a>
+                                <form method="POST" action="<?php echo e(route('logout')); ?>" class="mt-1">
+                                    <?php echo csrf_field(); ?>
+                                    <button type="submit" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                                        Cerrar Sesión
+                                    </button>
+                                </form>
                             <?php else: ?>
-                            <a href="<?php echo e(route('login')); ?>" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Iniciar Sesión</a>
-                            <?php if(Route::has('register')): ?>
-                            <a href="<?php echo e(route('Registrarse')); ?>" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Registrarse</a>
+                                <a href="<?php echo e(route('login')); ?>" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                                    Iniciar Sesión
+                                </a>
+                                <?php if(Route::has('register')): ?>
+                                    <a href="<?php echo e(route('Registrarse')); ?>" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">
+                                        Registrarse
+                                    </a>
+                                <?php endif; ?>
                             <?php endif; ?>
-                            <?php endif; ?>
-                            <?php endif; ?>
+                        <?php endif; ?>
+                        
                         </div>
                     </div>
                 </div>

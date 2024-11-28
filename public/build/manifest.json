@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-Dy9hjZ3l.css",
+    "file": "assets/app-CuBl7iYN.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -13,6 +13,30 @@
     "file": "assets/app-z-Rg4TxU.js",
     "name": "app",
     "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/mostrar_modal_busq_cat.js": {
+    "file": "assets/mostrar_modal_busq_cat-De_qm0-Z.js",
+    "name": "mostrar_modal_busq_cat",
+    "src": "resources/js/mostrar_modal_busq_cat.js",
+    "isEntry": true
+  },
+  "resources/js/mostrar_modal_crear.js": {
+    "file": "assets/mostrar_modal_crear-44e6I8vG.js",
+    "name": "mostrar_modal_crear",
+    "src": "resources/js/mostrar_modal_crear.js",
+    "isEntry": true
+  },
+  "resources/js/mostrar_opciones.js": {
+    "file": "assets/mostrar_opciones-KqLntG4R.js",
+    "name": "mostrar_opciones",
+    "src": "resources/js/mostrar_opciones.js",
+    "isEntry": true
+  },
+  "resources/js/vista_previa.js": {
+    "file": "assets/vista_previa-DQwI9s8Y.js",
+    "name": "vista_previa",
+    "src": "resources/js/vista_previa.js",
     "isEntry": true
   }
 }

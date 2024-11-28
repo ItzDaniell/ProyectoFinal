@@ -84,6 +84,13 @@ unset($__sessionArgs); ?>
                         Sesión</button>
                 </div>
 
+                <div class="mt-4">
+                    <a href="/google-auth/redirect"
+                        class="block w-full text-center bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition duration-300">
+                        Iniciar Sesión con Google
+                    </a>
+                </div>
+
                 <?php if(Route::has('password.request')): ?>
                  <!--   <p class="mt-4 text-center text-gray-600">
                         <a href="<?php echo e(route('OlvidasteContraseña')); ?>" class="text-blue-500 underline">¿Olvidaste tu
