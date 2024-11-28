@@ -376,7 +376,7 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'Gestionar'],
         [
             'text' => 'important',
             'icon_color' => 'red',

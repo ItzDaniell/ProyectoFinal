@@ -136,3 +136,7 @@ Route::middleware(['auth'])->group(function () {
     Route::match(['post', 'put'], '/usuario/actualizar-perfil', [UsuarioController::class, 'actualizarPerfil'])->name('usuario.actualizarPerfil');
     Route::post('/usuario/actualizar-foto-perfil', [UsuarioController::class, 'actualizarFoto'])->name('usuario.actualizarFotoPerfil');
 });
+
+Route::get('/administracion', function () {
+    return view('PostInicioSesion.Administracion');
+})->middleware(['auth', 'verified'])->name('Administracion');
