@@ -11,7 +11,8 @@ export default defineConfig({
                 'resources/js/mostrar_modal_crear.js',
                 'resources/js/mostrar_modal_busq_cat.js',
                 'resources/js/vista_previa.js',
-                'resources/js/mostrar_opciones.js'
+                'resources/js/mostrar_opciones.js',
+                'resources/js/opciones.js',
             ],
             refresh: true,
         }),

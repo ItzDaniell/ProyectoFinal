@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",function(){const n=document.getElementById("optionsButton"),t=document.getElementById("optionsMenu");n&&t&&(n.addEventListener("click",function(){t.classList.toggle("hidden")}),document.addEventListener("click",function(e){!n.contains(e.target)&&!t.contains(e.target)&&t.classList.add("hidden")}))});

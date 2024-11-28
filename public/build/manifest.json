@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-DvmSeHZV.css",
+    "file": "assets/app-Cl2A2yc4.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -22,7 +22,7 @@
     "isEntry": true
   },
   "resources/js/mostrar_modal_crear.js": {
-    "file": "assets/mostrar_modal_crear-44e6I8vG.js",
+    "file": "assets/mostrar_modal_crear-D6ZZA-pZ.js",
     "name": "mostrar_modal_crear",
     "src": "resources/js/mostrar_modal_crear.js",
     "isEntry": true
@@ -31,6 +31,12 @@
     "file": "assets/mostrar_opciones-KqLntG4R.js",
     "name": "mostrar_opciones",
     "src": "resources/js/mostrar_opciones.js",
+    "isEntry": true
+  },
+  "resources/js/opciones.js": {
+    "file": "assets/opciones-qMF2uJPD.js",
+    "name": "opciones",
+    "src": "resources/js/opciones.js",
     "isEntry": true
   },
   "resources/js/vista_previa.js": {

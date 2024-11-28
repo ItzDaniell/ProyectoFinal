@@ -57,8 +57,8 @@
     </style>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
-    <title>DevShare - @yield('title')</title>
-    @vite(['resources/js/vista_previa.js', 'resources/js/mostrar_modal_busq_cat.js'])
+    <title>DevShare - <?php echo $__env->yieldContent('title'); ?></title>
+    <?php echo app('Illuminate\Foundation\Vite')(['resources/js/vista_previa.js', 'resources/js/mostrar_modal_busq_cat.js']); ?>
 </head>
 <body>
     <div class="flex flex-col lg:flex-row">
@@ -68,7 +68,7 @@
                 <span class="text-2xl font-semibold">DevShare</span>
             </div>
             <nav class="space-y-4 mt-4">
-                <a href="{{ route('Home') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                <a href="<?php echo e(route('Home')); ?>" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="home-outline"></ion-icon>
                     <span>Inicio</span>
                 </a>
@@ -76,11 +76,11 @@
                     <ion-icon name="search-outline"></ion-icon>
                     <span>Búsqueda</span>
                 </a>
-                <a href="{{ route('Noticias') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                <a href="<?php echo e(route('Noticias')); ?>" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="newspaper-outline"></ion-icon>
                     <span>Noticias</span>
                 </a>
-                <a href="{{ route('Conferencias') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                <a href="<?php echo e(route('Conferencias')); ?>" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="laptop-outline"></ion-icon>
                     <span>Conferencias</span>
                 </a>
@@ -93,18 +93,18 @@
                     <span>Crear</span>
                 </a>
                 <div class="border-t border-gray-700 mt-1 pt-1"></div>
-                <a href="{{ route('PerfilUsuario') }}"
+                <a href="<?php echo e(route('PerfilUsuario')); ?>"
                     class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="person-circle-outline"></ion-icon>
                     <span>Perfil</span>
                 </a>
-                @if(auth()->user()->hasRole('Admin'))
-                <a href="{{ route('Administracion') }}"
+                <?php if(auth()->user()->hasRole('Admin')): ?>
+                <a href="<?php echo e(route('Administracion')); ?>"
                     class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="settings-outline"></ion-icon>
                     <span>Administrar</span>
                 </a>
-                @endif
+                <?php endif; ?>
                 <!-- Dropdown button -->
                 <div class="relative">
                     <a onclick="toggleMenu()" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
@@ -115,13 +115,13 @@
                     <div id="dropdownMenu" style="width: 270px;"
                         class="absolute bottom-full mb-2 bg-gray-800 border border-gray-700 p-2 rounded hidden">
                         <ul class="space-y-2">
-                            <a href="{{ route('Configuracion') }}"
+                            <a href="<?php echo e(route('Configuracion')); ?>"
                                 class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                                 <ion-icon name="settings-outline"></ion-icon>
                                 <span>Configuración</span>
                             </a>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
+                            <form method="POST" action="<?php echo e(route('logout')); ?>">
+                                <?php echo csrf_field(); ?>
                                 <button type="submit" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                                         <ion-icon name="log-out-outline"></ion-icon>
                                         <span>Cerrar Sesión</span>
@@ -135,9 +135,9 @@
         <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 hidden overflow-y-auto z-50">
             <div class="flex items-center justify-center min-h-screen p-4">
                 <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl relative">
-                    <form action="{{ route('publicacion.store') }}" method="POST" enctype="multipart/form-data"
+                    <form action="<?php echo e(route('publicacion.store')); ?>" method="POST" enctype="multipart/form-data"
                         class="mt-4">
-                        @csrf
+                        <?php echo csrf_field(); ?>
                         <!-- Encabezado -->
                         <div class="flex justify-between items-center pb-4 border-b border-gray-300">
                             <button type="button" id="closeModalButton" class="text-gray-500 hover:text-gray-700">
@@ -186,9 +186,9 @@
                                 <select name="id_categoria" id="id_categoria"
                                     class="w-full p-3 border border-gray-300 rounded-lg mb-4" required>
                                     <option value="">[ SELECCIONE ]</option>
-                                    @foreach ($categorias as $categoria)
-                                        <option value="{{ $categoria->id_categoria }}">{{ $categoria->descripcion }}</option>
-                                    @endforeach
+                                    <?php $__currentLoopData = $categorias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $categoria): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <option value="<?php echo e($categoria->id_categoria); ?>"><?php echo e($categoria->descripcion); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </select>
                             </div>
                         </div>
@@ -214,7 +214,7 @@
                 </div>
             </div>
         </div>
-        {{-- Otros Scripts --}}
+        
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 const editarBiografiaButton = document.getElementById('editarBiografiaButton');
@@ -247,9 +247,9 @@
             });
         </script>
         <div class="flex-1 bg-gray-100 p-4 overflow-y-auto h-screen">
-            @yield('content')
+            <?php echo $__env->yieldContent('content'); ?>
         </div>
     </div>
-    @vite(['resources/js/mostrar_opciones.js', 'resources/js/opciones.js'])
+    <?php echo app('Illuminate\Foundation\Vite')(['resources/js/mostrar_opciones.js', 'resources/js/opciones.js']); ?>
 </body>
-</html>
+</html><?php /**PATH C:\Users\ItzDaniel\Desktop\PHP\ProyectoFinal\resources\views/layouts/postiniciolayout.blade.php ENDPATH**/ ?>
