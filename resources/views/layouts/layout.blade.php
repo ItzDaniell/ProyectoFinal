@@ -124,30 +124,26 @@
                                     <div>
                                         @if (Route::has('login'))
                                         @auth
-                                            <a href="{{ route('Home') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                            <a href="{{ route('Home') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white focus:outline-none">
                                                 Página Principal
                                             </a>
                                             <form method="POST" action="{{ route('logout') }}" class="inline">
                                                 @csrf
-                                                <button 
-                                                    type="submit" 
-                                                    class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white focus:outline-none"
-                                                >
+                                                <button type="submit" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white focus:outline-none">
                                                     Cerrar Sesión
                                                 </button>
                                             </form>
                                         @else
-                                            <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                            <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white focus:outline-none">
                                                 Iniciar Sesión
                                             </a>
                                             @if (Route::has('register'))
-                                                <a href="{{ route('Registrarse') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">
+                                                <a href="{{ route('Registrarse') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white focus:outline-none">
                                                     Registrarse
                                                 </a>
                                             @endif
                                         @endauth
                                     @endif
-                                    
                                     </div>
                                 </div>
                             </div>
