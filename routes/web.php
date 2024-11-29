@@ -40,8 +40,9 @@ Route::middleware([
     'verified',
     ForbidBannedUser::class
 ])->group(function () {
-    Route::get('/home', [PostInicioSesionController::class, 'Home'])->name('Home');
-    Route::get('/noticias', [PostInicioSesionController::class, 'Noticias'])->name('Noticias');
+    Route::get('/home/{busqueda?}/{categoria?}', [PostInicioSesionController::class, 'Home'])->name('Home');
+    Route::get('/noticias/{busqueda?}/{categoria?}', [PostInicioSesionController::class, 'Noticias'])->name('Noticias');
+    Route::get('/noticia/{titulo}', [PostInicioSesionController::class, 'DetalleNoticia'])->name('DetalleNoticia');
     Route::get('/conferencias', [PostInicioSesionController::class, 'Conferencias'])->name('Conferencias');
     Route::prefix('/configuracion')->group(function () {
         Route::get('/', [PostInicioSesionController::class, 'ConfiguracionPerfil'])->name('Configuracion');

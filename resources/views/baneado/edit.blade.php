@@ -1,9 +1,12 @@
-@extends('layouts.postiniciolayout')
+@extends('adminlte::page')
+
+@section('title', 'DevShare - Usuarios Baneados')
+
+@section('content_header')
+    <h2 class="text-3xl font-bold">Desbanear Usuario</h2>
+@stop
 
 @section('content')
-
-@section('title', 'Desbanear Usuario')
-<h2 class="text-2xl font-bold mb-4">Desbanear Usuario</h2>
 <form action="{{ route('usuarios.desbanned', $usuario->id) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
     @csrf
     @method('PATCH')
@@ -17,7 +20,7 @@
         </div>
     @endif
     <div>
-        <label for="nombres" class="block text-sm font-medium text-gray-700">Nombres del Usuario</label>
+        <label for="nombres" class="block text-sm font-medium text-gray-700">Nombre del Usuario</label>
         <input type="text" name="nombres" value="{{ $usuario->name }}" class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1 " readonly>
     </div>
     
@@ -55,4 +58,13 @@
         <a href="{{ route('usuarios.bans') }}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Regresar</a>
     </div>
 </form>
-@endsection
+@stop
+
+@section('css')
+    {{-- Add here extra stylesheets --}}
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+@stop
+
+@section('js')
+    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+@stop
