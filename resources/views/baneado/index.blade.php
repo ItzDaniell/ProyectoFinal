@@ -8,37 +8,39 @@
 @stop
 
 @section('content')
-<div class="overflow-x-auto">
-    <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-sm">
-        <thead class="bg-gray-800 text-white">
-            <tr>
-                <th class="px-4 py-2 border">Nombre</th>
-                <th class="px-4 py-2 border">Correo Electrónico</th>
-                <th class="px-4 py-2 border">Foto de Perfil</th>
-                <th class="px-4 py-2 border">Estado</th>
-                <th class="px-4 py-2 border">Rol</th>
-                <th class="px-4 py-2 border">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($usuarios as $usuario)
-            <tr class="hover:bg-gray-100">
-                <td class="px-4 py-2 border">{{ $usuario->name }}</td>
-                <td class="px-4 py-2 border">{{ $usuario->email }}</td>
-                <td class="px-4 py-2 border">
-                    <a href="{{ asset('storage/' . $usuario->profile_photo_path) }}" target="_blank" class="text-blue-500 hover:underline">Ver Foto</a>
-                </td>
-                <td class="px-4 py-2 border">{{ Str::limit($usuario->estado, 12) }}</td>
-                <td class="px-4 py-2 border">{{ $usuario->rol }}</td>
-                <td class="px-4 py-2 border">
-                    <div class="flex justify-between gap-2">
-                        <a href="{{ route('usuarios.desban', $usuario->id) }}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 text-sm">Desbanear</a>
-                    </div>
-                </td>
-            </tr>             
-            @endforeach
-        </tbody>
-    </table>
+<div class="flex-1 bg-gray-100 overflow-y-auto h-screen">
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-sm">
+            <thead class="bg-gray-800 text-white">
+                <tr>
+                    <th class="px-4 py-2 border text-center">Nombre</th>
+                    <th class="px-4 py-2 border text-center">Correo Electrónico</th>
+                    <th class="px-4 py-2 border text-center">Foto de Perfil</th>
+                    <th class="px-4 py-2 border text-center">Estado</th>
+                    <th class="px-4 py-2 border text-center">Rol</th>
+                    <th class="px-4 py-2 border text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($usuarios as $usuario)
+                <tr class="hover:bg-gray-100">
+                    <td class="px-4 py-2 border text-center">{{ $usuario->name }}</td>
+                    <td class="px-4 py-2 border text-center">{{ $usuario->email }}</td>
+                    <td class="px-4 py-2 border text-center">
+                        <a href="{{ asset('storage/' . $usuario->profile_photo_path) }}" target="_blank" class="text-blue-500 hover:underline text-center">Ver Foto</a>
+                    </td>
+                    <td class="px-4 py-2 border text-center">{{ Str::limit($usuario->estado, 12) }}</td>
+                    <td class="px-4 py-2 border text-center">{{ $usuario->rol }}</td>
+                    <td class="px-4 py-2 border">
+                        <div class="flex justify-center gap-2">
+                            <a href="{{ route('usuarios.desban', $usuario->id) }}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 text-sm text-center">Desbanear</a>
+                        </div>
+                    </td>
+                </tr>             
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 <div>
     {{ $usuarios->links() }}

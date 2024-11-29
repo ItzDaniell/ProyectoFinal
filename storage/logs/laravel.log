@@ -3875,3 +3875,80 @@
 #53 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('C:\\\\Users\\\\ItzDan...')
 #54 {main}
 "} 
+[2024-11-29 03:24:16] local.ERROR: Call to undefined method Illuminate\View\Compilers\BladeCompiler::withoutComponentCache() {"exception":"[object] (Error(code: 0): Call to undefined method Illuminate\\View\\Compilers\\BladeCompiler::withoutComponentCache() at C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php:358)
+[stacktrace]
+#0 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\app\\Providers\\AppServiceProvider.php(27): Illuminate\\Support\\Facades\\Facade::__callStatic('withoutComponen...', Array)
+#1 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\AppServiceProvider->boot()
+#2 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#3 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#4 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#5 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(690): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#6 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1119): Illuminate\\Container\\Container->call(Array)
+#7 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1100): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\AppServiceProvider))
+#8 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\AppServiceProvider), 'App\\\\Providers\\\\A...')
+#9 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1099): array_walk(Array, Object(Closure))
+#10 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#11 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(316): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#12 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#13 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#14 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1203): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#16 {main}
+"} 
+[2024-11-29 03:24:45] local.ERROR: Call to undefined method Illuminate\View\Compilers\BladeCompiler::withoutComponentCache() {"exception":"[object] (Error(code: 0): Call to undefined method Illuminate\\View\\Compilers\\BladeCompiler::withoutComponentCache() at C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php:358)
+[stacktrace]
+#0 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\app\\Providers\\AppServiceProvider.php(26): Illuminate\\Support\\Facades\\Facade::__callStatic('withoutComponen...', Array)
+#1 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\AppServiceProvider->boot()
+#2 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#3 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#4 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#5 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(690): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#6 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1119): Illuminate\\Container\\Container->call(Array)
+#7 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1100): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\AppServiceProvider))
+#8 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\AppServiceProvider), 'App\\\\Providers\\\\A...')
+#9 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1099): array_walk(Array, Object(Closure))
+#10 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#11 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(316): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#12 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#13 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#14 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1203): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#16 {main}
+"} 
+[2024-11-29 03:25:59] local.ERROR: Call to undefined method Illuminate\View\Compilers\BladeCompiler::withoutComponentCache() {"exception":"[object] (Error(code: 0): Call to undefined method Illuminate\\View\\Compilers\\BladeCompiler::withoutComponentCache() at C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Facade.php:358)
+[stacktrace]
+#0 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\app\\Providers\\AppServiceProvider.php(26): Illuminate\\Support\\Facades\\Facade::__callStatic('withoutComponen...', Array)
+#1 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(36): App\\Providers\\AppServiceProvider->boot()
+#2 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(43): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#3 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(95): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#4 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#5 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(690): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#6 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1119): Illuminate\\Container\\Container->call(Array)
+#7 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1100): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\AppServiceProvider))
+#8 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\AppServiceProvider), 'App\\\\Providers\\\\A...')
+#9 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1099): array_walk(Array, Object(Closure))
+#10 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#11 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(316): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#12 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#13 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#14 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1203): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#15 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#16 {main}
+"} 
+[2024-11-29 03:26:14] local.ERROR: Command "view:off" is not defined.
+
+Did you mean one of these?
+    view:cache
+    view:clear {"exception":"[object] (Symfony\\Component\\Console\\Exception\\CommandNotFoundException(code: 0): Command \"view:off\" is not defined.
+
+Did you mean one of these?
+    view:cache
+    view:clear at C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\symfony\\console\\Application.php:702)
+[stacktrace]
+#0 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\symfony\\console\\Application.php(258): Symfony\\Component\\Console\\Application->find('view:off')
+#1 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\symfony\\console\\Application.php(167): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#2 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(197): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#3 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1203): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#4 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\artisan(13): Illuminate\\Foundation\\Application->handleCommand(Object(Symfony\\Component\\Console\\Input\\ArgvInput))
+#5 {main}
+"} 

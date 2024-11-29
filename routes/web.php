@@ -58,7 +58,7 @@ Route::middleware([
 
 //Rutas de Gestión (Protegidas con Permisos Específicos)
 // Noticias
-Route::middleware(['auth', 'can:manage-news'])->prefix('/noticias')->group(function () {
+Route::middleware(['auth', 'can:manage-news'])->prefix('/administracion/noticias')->group(function () {
     Route::get('/index', [NoticiaController::class, 'index'])->name('noticias.index');
     Route::get('/create', [NoticiaController::class, 'create'])->name('noticias.create');
     Route::post('/create', [NoticiaController::class, 'store'])->name('noticias.store');
@@ -67,7 +67,7 @@ Route::middleware(['auth', 'can:manage-news'])->prefix('/noticias')->group(funct
 });
 
 // Conferencias y Ponentes
-Route::middleware(['auth', 'can:manage-conferences'])->prefix('/conferencias')->group(function () {
+Route::middleware(['auth', 'can:manage-conferences'])->prefix('/administracion/conferencias')->group(function () {
     Route::get('/index', [ConferenciaController::class, 'index'])->name('conferencias.index');
     Route::prefix('/ponentes')->group(function () {
         Route::get('/index', [PonenteController::class, 'index'])->name('ponentes.index');
@@ -80,7 +80,7 @@ Route::middleware(['auth', 'can:manage-conferences'])->prefix('/conferencias')->
 });
 
 // Usuarios
-Route::middleware(['auth', 'can:manage-users'])->prefix('/usuarios')->group(function () {
+Route::middleware(['auth', 'can:manage-users'])->prefix('/administracion/usuarios')->group(function () {
     Route::get('/index', [UsuarioController::class, 'index'])->name('usuarios.index');
     Route::get('/{id}/edit', [UsuarioController::class, 'edit'])->name('usuarios.edit');
     Route::patch('/{id}/edit', [UsuarioController::class, 'update'])->name('usuarios.update');
@@ -92,14 +92,14 @@ Route::middleware(['auth', 'can:manage-users'])->prefix('/usuarios')->group(func
 });
 
 // Publicaciones
-Route::middleware(['auth', 'can:manage-publications'])->prefix('/publicaciones')->group(function () {
+Route::middleware(['auth', 'can:manage-publications'])->prefix('/administracion/publicaciones')->group(function () {
     Route::get('/index', [PublicacionController::class, 'index'])->name('publicacion.index');
     Route::get('/{id}/edit', [PublicacionController::class, 'edit'])->name('publicacion.edit');
     Route::patch('/{id}/edit', [PublicacionController::class, 'update'])->name('publicacion.update');
 });
 
 // Categorías
-Route::middleware(['auth', 'can:manage-category'])->prefix('/categorias')->group(function () {
+Route::middleware(['auth', 'can:manage-category'])->prefix('/administracion/categorias')->group(function () {
     Route::get('/index', [CategoriaController::class, 'index'])->name('categorias.index');
     Route::get('/create', [CategoriaController::class, 'create'])->name('categorias.create');
     Route::post('/create', [CategoriaController::class, 'store'])->name('categorias.store');

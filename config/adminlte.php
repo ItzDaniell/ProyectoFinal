@@ -329,47 +329,37 @@ return [
         ],*/
         ['header' => 'account_settings'],
         [
-            'text' => 'change_password',
-            'url' => '/usuarios/index',
+            'text' => 'Usuarios',
+            'url' => '/administracion/usuarios/index',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text' => 'change_password',
+            'text' => 'Publicaciones',
+            'url' => '/administracion/publicaciones/index',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'Noticias',
+            'url' => '/administracion/noticias/index',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'Conferencias',
+            'url' => '/administracion/conferencias/index',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'Categorias',
+            'url' => '/administracion/categorias/index',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
+            'text' => 'Reportes',
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text' => 'change_password',
+            'text' => 'Solicitudes',
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],

@@ -13,24 +13,24 @@
         <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-sm">
             <thead class="bg-gray-800 text-white">
                 <tr>
-                    <th class="px-4 py-2 border">Nombre</th>
-                    <th class="px-4 py-2 border">Correo Electrónico</th>
-                    <th class="px-4 py-2 border">Foto de Perfil</th>
-                    <th class="px-4 py-2 border">Estado</th>
-                    <th class="px-4 py-2 border">Rol</th>
+                    <th class="px-4 py-2 border text-center">Nombre</th>
+                    <th class="px-4 py-2 border text-center">Correo Electrónico</th>
+                    <th class="px-4 py-2 border text-center">Foto de Perfil</th>
+                    <th class="px-4 py-2 bordertext-center">Estado</th>
+                    <th class="px-4 py-2 border text-center">Rol</th>
                     <th class="px-4 py-2 border text-center">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($usuarios as $usuario)
                 <tr class="hover:bg-gray-100">
-                    <td class="px-4 py-2 border">{{ $usuario->name }}</td>
-                    <td class="px-4 py-2 border">{{ $usuario->email }}</td>
-                    <td class="px-4 py-2 border">
-                        <a href="{{ asset('storage/' . $usuario->profile_photo_path) }}" target="_blank" class="text-blue-500 hover:underline">Ver Foto</a>
+                    <td class="px-4 py-2 border text-center">{{ $usuario->name }}</td>
+                    <td class="px-4 py-2 border text-center">{{ $usuario->email }}</td>
+                    <td class="px-4 py-2 border text-center">
+                        <a href="{{ asset('storage/' . $usuario->profile_photo_path) }}" target="_blank" class="text-blue-500 hover:underline text-center">Ver Foto</a>
                     </td>
-                    <td class="px-4 py-2 border">{{ Str::limit($usuario->estado, 12) }}</td>
-                    <td class="px-4 py-2 border">{{ $usuario->rol }}</td>
+                    <td class="px-4 py-2 border text-center">{{ Str::limit($usuario->estado, 12) }}</td>
+                    <td class="px-4 py-2 border text-center">{{ $usuario->rol }}</td>
                     <td class="px-4 py-2 border">
                         <div class="flex justify-between gap-2">
                             <a href="{{ route('usuarios.edit', $usuario->id) }}" 
