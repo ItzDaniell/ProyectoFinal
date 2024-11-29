@@ -62,17 +62,9 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
     */
-
+    
     'logo' => '<b>DevShare</b>Admin',
-<<<<<<< HEAD
     'logo_img' => 'vendor/images/devshare.png',
-=======
-<<<<<<< HEAD
-    'logo_img' => 'vendor/images/devshare.png',
-=======
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
->>>>>>> 27a8ba70de8e69ba3dd31ef452aee8250f674677
->>>>>>> 2ebe04d02c031acca7bc36d44b9ba1303bcde8f8
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',

@@ -3875,3 +3875,28 @@
 #53 C:\\Users\\ItzDaniel\\Desktop\\PHP\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(23): require_once('C:\\\\Users\\\\ItzDan...')
 #54 {main}
 "} 
+[2024-11-29 04:43:16] laravel.EMERGENCY: Unable to create configured logger. Using emergency logger. {"exception":"[object] (InvalidArgumentException(code: 0): Log [] is not defined. at C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php:231)
+[stacktrace]
+#0 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(138): Illuminate\\Log\\LogManager->resolve()
+#1 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(125): Illuminate\\Log\\LogManager->get()
+#2 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(700): Illuminate\\Log\\LogManager->driver()
+#3 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Exceptions\\Handler.php(378): Illuminate\\Log\\LogManager->error()
+#4 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Exceptions\\Handler.php(341): Illuminate\\Foundation\\Exceptions\\Handler->reportThrowable()
+#5 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(620): Illuminate\\Foundation\\Exceptions\\Handler->report()
+#6 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(199): Illuminate\\Foundation\\Console\\Kernel->reportException()
+#7 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1203): Illuminate\\Foundation\\Console\\Kernel->handle()
+#8 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\artisan(13): Illuminate\\Foundation\\Application->handleCommand()
+#9 {main}
+"} 
+[2024-11-29 04:43:16] laravel.ERROR: syntax error, unexpected token "<<", expecting "]" {"exception":"[object] (ParseError(code: 0): syntax error, unexpected token \"<<\", expecting \"]\" at C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\config\\adminlte.php:67)
+[stacktrace]
+#0 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php(96): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->Illuminate\\Foundation\\Bootstrap\\{closure}()
+#1 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php(77): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->loadConfigurationFile()
+#2 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php(38): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->loadConfigurationFiles()
+#3 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(316): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->bootstrap()
+#4 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(473): Illuminate\\Foundation\\Application->bootstrapWith()
+#5 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(195): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#6 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(1203): Illuminate\\Foundation\\Console\\Kernel->handle()
+#7 C:\\Users\\davil\\OneDrive\\Desktop\\ProyectoFinal\\artisan(13): Illuminate\\Foundation\\Application->handleCommand()
+#8 {main}
+"} 
