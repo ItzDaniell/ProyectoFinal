@@ -40,7 +40,7 @@ class BanController extends Controller
     // Funcion para mostrar los usuarios baneados
     public function bans()
     {
-        $usuarios = User::onlyBanned()->get();
+        $usuarios = User::onlyBanned()->paginate(10);
         return view('baneado.index', compact('usuarios'));
     }
 

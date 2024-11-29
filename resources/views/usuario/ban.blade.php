@@ -1,7 +1,12 @@
-@extends('layouts.postiniciolayout')
+@extends('adminlte::page')
+
+@section('title', 'DevShare - Banear Usuario')
+
+@section('content_header')
+    <h2 class="text-3xl font-bold">Banear Usuario</h2>
+@stop
 
 @section('content')
-<h2 class="text-2xl font-bold mb-4">Banear Usuarios</h2>
 <form action="{{ route('usuarios.banned', $usuario->id)}}" method="POST" enctype="multipart/form-data" class="space-y-4">
     @method('PATCH')
     @if ($errors->any())
@@ -15,7 +20,7 @@
     @endif
     @csrf
     <div>
-        <label for="nombres" class="block text-sm font-medium text-gray-700">Nombres del Usuario</label>
+        <label for="nombres" class="block text-sm font-medium text-gray-700">Nombre del Usuario</label>
         <input type="text" name="nombres" value="{{ $usuario->name }}" class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1 " readonly>
     </div>
     
@@ -46,25 +51,33 @@
         <a href="{{ route('usuarios.index') }}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Regresar</a>
     </div>
 </form>
+@stop
 
-<script>
-    const banPermanenteCheckbox = document.querySelector('input[name="ban_permanente"]');
-    const banTemporalDiv = document.getElementById('ban_temporal');
-    const tiempo_ban = document.querySelector('input[name="fecha_baneo"]');
+@section('css')
+    {{-- Add here extra stylesheets --}}
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+@stop
 
-
-    if (!banPermanenteCheckbox.checked) {
-        banTemporalDiv.classList.remove('hidden');
-    }
-
-    banPermanenteCheckbox.addEventListener('change', function() {
-        if (this.checked) {
-            banTemporalDiv.classList.add('hidden');
-            tiempo_ban.required = false;
-        } else {
+@section('js')
+    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+    <script>
+        const banPermanenteCheckbox = document.querySelector('input[name="ban_permanente"]');
+        const banTemporalDiv = document.getElementById('ban_temporal');
+        const tiempo_ban = document.querySelector('input[name="fecha_baneo"]');
+    
+    
+        if (!banPermanenteCheckbox.checked) {
             banTemporalDiv.classList.remove('hidden');
-            tiempo_ban.required = true;
         }
-    });
-</script>
-@endsection
+    
+        banPermanenteCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                banTemporalDiv.classList.add('hidden');
+                tiempo_ban.required = false;
+            } else {
+                banTemporalDiv.classList.remove('hidden');
+                tiempo_ban.required = true;
+            }
+        });
+    </script>
+@stop
