@@ -1,10 +1,13 @@
-@extends('layouts.postiniciolayout')
+@extends('adminlte::page')
+
+@section('title', 'DevShare - Usuarios Baneados')
+
+@section('content_header')
+    <h2 class="text-3xl font-bold mb-4">Usuarios Baneados</h2>
+    <a href="{{ route('usuarios.index') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mb-1 inline-block">Lista de Usuarios</a>
+@stop
 
 @section('content')
-
-@section('title', 'Lista de Baneados')
-<h2 class="text-2xl font-bold mb-4">Lista de Usuarios Baneados</h2>
-<a href="{{ route('usuarios.index') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mb-4 inline-block">Lista de Usuarios</a>
 <div class="overflow-x-auto">
     <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-sm">
         <thead class="bg-gray-800 text-white">
@@ -37,4 +40,16 @@
         </tbody>
     </table>
 </div>
-@endsection
+<div>
+    {{ $usuarios->links() }}
+</div>
+@stop
+
+@section('css')
+    {{-- Add here extra stylesheets --}}
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+@stop
+
+@section('js')
+    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+@stop
