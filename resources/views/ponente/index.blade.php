@@ -4,7 +4,7 @@
 
 @section('content_header')
 <h2 class="text-3xl font-bold mb-4">Ponentes</h2>
-<div class="flex justify-between mb-1">
+<div class="flex justify-between mb-3">
     <a href="{{ route('ponentes.create') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Agregar Ponente</a>
     <a href="{{ route('conferencias.index') }}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Ver Conferencias</a>
 </div>

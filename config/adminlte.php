@@ -302,7 +302,7 @@ return [
         // Navbar items:
         [
             'type' => 'navbar-search',
-            'text' => 'search',
+            'text' => 'Buscar...',
             'topnav_right' => true,
         ],
         [
@@ -331,7 +331,7 @@ return [
         [
             'text' => 'Usuarios',
             'url' => '/administracion/usuarios/index',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => '<ion-icon name="settings-outline"></ion-icon>',
         ],
         [
             'text' => 'Publicaciones',
