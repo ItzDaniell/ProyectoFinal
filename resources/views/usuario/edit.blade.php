@@ -7,7 +7,6 @@
 @stop
 
 @section('content')
-<div class="flex-1 bg-gray-100 overflow-y-auto h-screen">
     <div class="overflow-x-auto">
         <form action="{{ route('usuarios.update', $usuario->id) }}" method="POST" enctype="multipart/form-data" class="space-y-4 w-full">
             @csrf
@@ -56,7 +55,6 @@
             </div>
         </form>
     </div>
-</div>
 @vite('resources/js/vista_previa.js')
 @stop
 

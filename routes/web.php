@@ -69,7 +69,7 @@ Route::middleware(['auth', 'can:manage-news'])->prefix('/administracion/noticias
 // Conferencias y Ponentes
 Route::middleware(['auth', 'can:manage-conferences'])->prefix('/administracion/conferencias')->group(function () {
     Route::get('/index', [ConferenciaController::class, 'index'])->name('conferencias.index');
-    Route::prefix('/ponentes')->group(function () {
+    Route::prefix('/administracion/ponentes')->group(function () {
         Route::get('/index', [PonenteController::class, 'index'])->name('ponentes.index');
         Route::get('/create', [PonenteController::class, 'create'])->name('ponentes.create');
         Route::post('/create', [PonenteController::class, 'store'])->name('ponentes.store');
@@ -142,9 +142,4 @@ Route::get('/administracion', function () {
     return view('PostInicioSesion.Administracion');
 })->middleware(['auth', 'verified'])->name('Administracion');
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard'); // Asegúrate de crear la vista `resources/views/dashboard.blade.php`
-    })->name('dashboard');
-});
 

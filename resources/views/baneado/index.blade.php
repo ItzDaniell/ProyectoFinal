@@ -4,7 +4,7 @@
 
 @section('content_header')
     <h2 class="text-3xl font-bold mb-4">Usuarios Baneados</h2>
-    <a href="{{ route('usuarios.index') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mb-1 inline-block">Lista de Usuarios</a>
+    <a href="{{ route('usuarios.index') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mb-1 inline-block">Ver Usuarios Registrados</a>
 @stop
 
 @section('content')
@@ -36,7 +36,7 @@
                             <a href="{{ route('usuarios.desban', $usuario->id) }}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 text-sm text-center">Desbanear</a>
                         </div>
                     </td>
-                </tr>             
+                </tr>
                 @endforeach
             </tbody>
         </table>

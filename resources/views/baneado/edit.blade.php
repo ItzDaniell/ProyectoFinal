@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'DevShare - Usuarios Baneados')
+@section('title', 'DevShare - Desbanear Usuario')
 
 @section('content_header')
     <h2 class="text-3xl font-bold">Desbanear Usuario</h2>
@@ -25,12 +25,12 @@
                 <label for="nombres" class="block text-sm font-medium text-gray-700">Nombre del Usuario</label>
                 <input type="text" name="nombres" value="{{ $usuario->name }}" class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1 " readonly>
             </div>
-            
+
             <div>
                 <label for="correo" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
                 <input type="email" name="correo" value="{{ $usuario->email }}" class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1" readonly>
             </div>
-            
+
             <div>
                 <label for="comment" class="block text-sm font-medium text-gray-700">Comentarios</label>
                 <textarea name="comment" rows="4" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1" readonly>{{ $ban ? $ban->comment : 'No hay comentarios disponibles' }}</textarea>
@@ -51,7 +51,7 @@
             <div>
                 <label for="desbanear" class="inline-flex items-center">
                     <input type="checkbox" name="CheckDesbaneo" value="1" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                    <span class="ml-2 text-sm font-medium text-gray-700">Confirme el desbaneo del usuario Usuario</span>
+                    <span class="ml-2 text-sm font-medium text-gray-700">Confirme el desbaneo del usuario</span>
                 </label>
             </div>
 

@@ -54,7 +54,7 @@ class BanController extends Controller
 
     // Funcion para registrar el desbaneo
     public function desbanned(Request $request, string $id)
-    {   
+    {
         $request->validate([
             'CheckDesbaneo' => 'required',
         ]);
@@ -66,9 +66,12 @@ class BanController extends Controller
         return redirect()->route('usuarios.bans');
     }
 
+
+
+
     public function showBan()
     {
-        $user = Auth::user(); 
+        $user = Auth::user();
     // Obtén al usuario autenticado
 
     // Verifica si el usuario está baneado

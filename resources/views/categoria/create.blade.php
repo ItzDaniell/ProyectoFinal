@@ -3,11 +3,10 @@
 @section('title', 'DevShare - Agregar Categoría')
 
 @section('content_header')
-    <h2 class="text-3xl font-bold">Agregar Categoria</h2>
+    <h2 class="text-3xl font-bold">Agregar Categoría</h2>
 @stop
 
 @section('content')
-<div class="flex-1 bg-gray-100 overflow-y-auto h-screen">
     <div class="overflow-x-auto">
         <form action="{{ route('categorias.store') }}" method="POST" class="space-y-4">
             @csrf
@@ -21,10 +20,10 @@
             </div>
             @endif
             <div>
-                <label for="descripcion" class="block text-sm font-medium text-gray-700">Descripcion de la Categoría</label>
+                <label for="descripcion" class="block text-sm font-medium text-gray-700">Descripción de la Categoría</label>
                 <input type="text" name="descripcion" required class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1">
             </div>
-            
+
             <div class="flex space-x-4">
                 <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>
                 <button type="reset" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Limpiar</button>
@@ -32,7 +31,6 @@
             </div>
         </form>
     </div>
-</div>
 @stop
 
 @section('css')
