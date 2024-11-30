@@ -106,11 +106,11 @@
                     <div class="flex items-center justify-between h-16">
                         <div class="flex items-center">
                             <div class="flex-shrink-0">
-                                <img src="{{ asset('images/devshare.png') }}" alt="grupo" class=" shadow-lg w-10 h-10">
+                                <img src="{{ asset('images/devshare.png') }}" alt="grupo" class=" shadow-lg w-10 h-15">
                             </div>
                             <!-- Menú desktop -->
                             <div class="hidden md:block">
-                                <div class="ml-10 flex items-baseline">
+                                <div class="ml-20 flex items-baseline">
                                     <a href="{{ route('Bienvenida') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Inicio</a>
                                     <a href="{{ route('Contactanos') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Contactanos</a>
                                     <a href="{{ route('SobreNosotros') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Sobre Nosotros</a>
