@@ -3,7 +3,7 @@
 @section('title', 'DevShare - Conferencias')
 
 @section('content_header')
-    <h2 class="text-2xl font-bold">Editar Noticia</h2>
+    <h2 class="text-3xl font-bold">Editar Noticia</h2>
 @stop
 
 @section('content')

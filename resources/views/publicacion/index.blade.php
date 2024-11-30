@@ -11,7 +11,7 @@
                 <ion-icon name="search-outline" class="text-2xl cursor-pointer" id="searchIcon"></ion-icon>
                 <div id="searchDropdown" class="hidden absolute right-0 w-96 mt-2 bg-white shadow-lg rounded-lg p-4">
                     <p class="text-sm pb-2">Buscar Publicación por título</p>
-                    <form action="{{ route('Home') }}" method="get" class="flex">
+                    <form action="{{ route('publicacion.index') }}" method="get" class="flex">
                         <input name="busqueda" type="text" placeholder="Buscar por Título..." class="w-full p-2 border rounded-md text-sm mr-4">
                         <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Enviar</button>
                     </form>
@@ -22,7 +22,7 @@
                 <div id="filterDropdown" class="hidden absolute right-0 w-80 mt-2 bg-white shadow-lg rounded-lg p-4">
                     <div class="flex flex-col space-y-2">
                         <p class="text-sm">Filtrar por Categoría</p>
-                        <form action="{{ route('Home') }}" method="get" class="flex flex-col space-y-3">
+                        <form action="{{ route('publicacion.index') }}" method="get" class="flex flex-col space-y-3">
                             <select name="categoria" class="p-2 border rounded-md text-sm">
                                 <option value="0">[ SELECCIONE ]</option>
                                 <option value="0">Mostrar Todo</option>
@@ -85,6 +85,7 @@
     <div class="mt-4">
         {{ $publicaciones->links() }}
     </div>
+    @vite('resources/js/mostrar_modal_busq_cat.js')
 @stop
 
 @section('css')

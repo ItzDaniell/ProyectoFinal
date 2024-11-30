@@ -26,10 +26,10 @@
         <h1 class="text-2xl font-bold mb-4">Acceso Restringido</h1>
         <p class="text-gray-700">Hola, {{ $user->name }}. Tu cuenta ha sido suspendida.</p>
         @if ($ban)
-            <p class="text-red-500">Razón: {{ $ban->reason }}</p>
-            <p class="text-gray-500">Fecha de baneo: {{ $ban->created_at->format('d/m/Y') }}</p>
+            <p class="text-red-500">Razón: {{ $ban->comment }}</p>
+            <p class="text-gray-500">Fecha de baneo: {{ $ban->created_at }}</p>
             @if ($ban->expires_at)
-                <p class="text-gray-500">Tu baneo expira el: {{ $ban->expires_at->format('d/m/Y') }}</p>
+                <p class="text-gray-500">Tu baneo expira el: {{ $ban->expires_at }}</p>
             @else
                 <p class="text-red-600">El baneo es permanente.</p>
             @endif
