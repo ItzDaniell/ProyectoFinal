@@ -8,8 +8,8 @@
 
     <!-- Sección de encabezado -->
     <header class="text-center my-20"> <!-- Margen superior e inferior ajustado -->
-      <h1 class="text-8xl font-bold text-gray-800 mb-4">La Web Perfecta Para</h1>
-      <h1 class="text-8xl font-bold text-gray-800 mb-20">Equipos de Desarrollo</h1>
+      <h1 class="text-7xl font-bold text-gray-800 mb-4">La Web Perfecta Para</h1>
+      <h1 class="text-7xl font-bold text-gray-800 mb-20">Equipos de Desarrollo</h1>
       <p class="text-gray-600 mb-6 text-lg max-w-5xl mx-auto">DevShare es tu solución integral para una colaboración activa. Con una interfaz amigable y distintas funcionalidades te ofrecemos un entorno de trabajo eficiente.</p>
       <button class="bg-orange-500 text-white py-2 px-6 rounded hover:bg-orange-600 transition duration-200">Comienza Ahora</button>
     </header>
@@ -17,9 +17,9 @@
     <!-- Sección de publicación -->
     <section class="grid grid-cols-0 md:grid-cols-2 items-center gap-2 md:gap-4 mx-40 my-2">
       <div class="flex flex-col justify-center items-center md:items-start py-2 text-center md:text-left">
-        <h2 class="text-6xl font-semibold text-gray-800 mb-1">La Mejor Manera De</h2>
-        <h2 class="text-8xl font-semibold text-gray-800 mb-1">Publicar</h2>
-        <h2 class="text-6xl font-semibold text-gray-800 mb-3">Tu Conocimiento</h2>
+        <h2 class="text-5xl font-semibold text-gray-800 mb-1">La Mejor Manera De</h2>
+        <h2 class="text-7xl font-semibold text-gray-800 mb-1">Publicar</h2>
+        <h2 class="text-5xl font-semibold text-gray-800 mb-3">Tu Conocimiento</h2>
         <p class="text-gray-600 max-w-3xl mb-1">Nuestra plataforma te permite publicar contenido</p>
         <p class="text-gray-600 max-w-3xl mb-1">de forma organizada, accesible, y destinado a personas</p>
         <p class="text-gray-600 max-w-3xl mb-5">interesadas en las áreas de especialización.</p>

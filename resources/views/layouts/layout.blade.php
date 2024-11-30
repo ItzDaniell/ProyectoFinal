@@ -23,22 +23,6 @@
           text-decoration: none;
       }
       
-      .boton{
-            width: auto;
-            height: auto;
-            padding-left: 24px;
-            padding-right: 24px;
-            padding-top: 8px;
-            padding-bottom: 8px;  
-            color: #ffffff;
-            background: #000000;
-            font-size: 16px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.5s;
-        }
         .boton{
             box-shadow: 0px 0px 0 #F3AF31;
         }
@@ -74,24 +58,17 @@
         .footer li {
         margin-bottom: 10px;
         }
-        .footer a {
-        color: white;
-        text-decoration: none;
-        transition: color 0.3s ease;
-        }
-        .footer a:hover {
-        color: #F3AF31;
-        }
+
         .footer-bottom {
         text-align: center;
         margin-top: 20px;
         padding-top: 20px;
-        border-top: 1px solid #333;
+        border-top: 1px solid #ff5b02;
         }
         .footer-bottom p {
         margin: 0;
         font-size: 0.9em;
-        color: #666;
+        color: #ffffff;
         }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">

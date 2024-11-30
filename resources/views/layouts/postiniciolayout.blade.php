@@ -32,7 +32,7 @@
             padding-top: 10px;
             padding-bottom: 10px;
             color: #ffffff;
-            background: #000000;
+            background: #F97316;
             font-size: 14px;
             text-decoration: none;
             display: flex;
@@ -41,12 +41,12 @@
             transition: 0.5s;
         }
 
-        .boton {
-            box-shadow: 0px 0px 0 #F3AF31;
+        .boton:hover {
+            box-shadow: 8px 10px 0 #FB923C; /* Naranja claro */
         }
 
-        .boton:hover {
-            box-shadow: 8px 10px 0 #F3AF31;
+        .bg-gray-800 {
+        background-color: #F97316; /* Naranja oscuro */
         }
 
         .enlace {
@@ -63,8 +63,8 @@
 <body>
     <div class="flex flex-col lg:flex-row">
         <!-- Sidebar con ancho fijo -->
-        <div class="bg-gray-800 text-white w-64 h-screen p-4">
-            <div class="flex items-center justify-center h-16 border-b border-gray-700">
+        <div class="bg-orange-600 text-white w-64 h-screen p-4">
+            <div class="flex items-center justify-center h-16 border-b border-orange-600">
                 <span class="text-2xl font-semibold">DevShare</span>
             </div>
             <nav class="space-y-4 mt-4">
