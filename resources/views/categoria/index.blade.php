@@ -8,7 +8,6 @@
 @stop
 
 @section('content')
-<div class="flex-1 bg-gray-100 overflow-y-auto h-screen">
     <div class="overflow-x-auto">
         <table class="min-w-full bg-white border border-gray-300">
             <thead class="bg-gray-800 text-white">
@@ -23,18 +22,17 @@
                     <td class="px-4 py-2 border text-center">{{ $categoria->descripcion }}</td>
                     <td class="px-4 py-2 border text-center">
                         <div class="flex justify-between gap-2">
-                            <a href="{{ route('categorias.edit', $categoria->id_categoria) }}" 
+                            <a href="{{ route('categorias.edit', $categoria->id_categoria) }}"
                                class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 text-sm text-center">
                                 Editar
                             </a>
                         </div>
                     </td>
-                </tr>             
+                </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-</div>
 @stop
 
 @section('css')

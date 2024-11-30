@@ -4,11 +4,10 @@
 
 @section('content_header')
     <h2 class="text-3xl font-bold mb-4">Usuarios Registrados</h2>
-    <a href="{{ route('usuarios.bans') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mb-1 inline-block">Lista de Usuarios Baneados</a>
+    <a href="{{ route('usuarios.bans') }}" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mb-1 inline-block">Ver Usuarios Baneados</a>
 @stop
 
 @section('content')
-<div class="flex-1 bg-gray-100 overflow-y-auto h-screen">
     <div class="overflow-x-auto">
         <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-sm">
             <thead class="bg-gray-800 text-white">
@@ -16,7 +15,7 @@
                     <th class="px-4 py-2 border text-center">Nombre</th>
                     <th class="px-4 py-2 border text-center">Correo Electrónico</th>
                     <th class="px-4 py-2 border text-center">Foto de Perfil</th>
-                    <th class="px-4 py-2 bordertext-center">Estado</th>
+                    <th class="px-4 py-2 border text-center">Estado</th>
                     <th class="px-4 py-2 border text-center">Rol</th>
                     <th class="px-4 py-2 border text-center">Acciones</th>
                 </tr>
@@ -33,25 +32,24 @@
                     <td class="px-4 py-2 border text-center">{{ $usuario->rol }}</td>
                     <td class="px-4 py-2 border">
                         <div class="flex justify-between gap-2">
-                            <a href="{{ route('usuarios.edit', $usuario->id) }}" 
+                            <a href="{{ route('usuarios.edit', $usuario->id) }}"
                             class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 text-sm text-center">
                                 Editar
                             </a>
-                            <a href="{{ route('usuarios.ban', $usuario->id) }}" 
+                            <a href="{{ route('usuarios.ban', $usuario->id) }}"
                             class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 text-sm text-center">
                                 Banear
                             </a>
                         </div>
                     </td>
-                </tr>             
+                </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-</div>
-<div>
-    {{ $usuarios->links() }}
-</div>
+    <div>
+        {{ $usuarios->links() }}
+    </div>
 @stop
 
 @section('css')
