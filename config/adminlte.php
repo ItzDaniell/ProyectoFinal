@@ -257,7 +257,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/administracion',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -302,7 +302,7 @@ return [
         // Navbar items:
         [
             'type' => 'navbar-search',
-            'text' => 'search',
+            'text' => 'Buscar...',
             'topnav_right' => true,
         ],
         [
@@ -327,11 +327,11 @@ return [
             'label' => 4,
             'label_color' => 'success',
         ],*/
-        ['header' => 'account_settings'],
+        ['header' => 'Registros'],
         [
             'text' => 'Usuarios',
             'url' => '/administracion/usuarios/index',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => '<ion-icon name="settings-outline"></ion-icon>',
         ],
         [
             'text' => 'Publicaciones',
@@ -353,7 +353,7 @@ return [
             'url' => '/administracion/categorias/index',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        [
+        /*[
             'text' => 'Reportes',
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
@@ -362,9 +362,9 @@ return [
             'text' => 'Solicitudes',
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
-        ],
+        ],*/
         [
-            'text' => 'Salir',
+            'text' => 'Volver',
             'url' => '/home',
             'icon' => 'fas fa-fw fa-lock',
         ],

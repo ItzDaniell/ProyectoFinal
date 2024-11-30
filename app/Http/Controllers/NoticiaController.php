@@ -12,10 +12,32 @@ class NoticiaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $noticias = Noticia::orderBy('id_noticia')->paginate(10);
-        return view('noticia.index', compact('noticias'));
+        $categorias = Categorias::all();
+        $categoria = $request->input('categoria', null);
+        $busqueda = $request->input('busqueda', null);
+
+        if ($busqueda) {
+            $noticias = Noticia::where('titulo', 'LIKE', '%' . $busqueda . '%')
+                ->orderBy('id_noticia', 'desc')
+                ->paginate(10);
+            return view('noticia.index', compact('noticias', 'categorias', 'busqueda', 'categoria'));
+        } elseif ($categoria) {
+            if ($categoria == '0') {
+                $noticias = Noticia::orderBy('id_noticias')->paginate(10);
+            } else {
+                $noticias = Noticia::join('categorias', 'noticias.id_categoria', '=', 'categorias.id_categoria')
+                    ->where('categorias.descripcion', $categoria)
+                    ->orderBy('id_noticia', 'desc')
+                    ->select('noticias.*', 'categorias.descripcion as categoria_descripcion')
+                    ->paginate(10);
+            }
+            return view('noticia.index', compact('noticias', 'categorias', 'busqueda', 'categoria'));
+        } else {
+            $noticias = Noticia::orderBy('id_noticia', 'desc')->paginate(10);
+            return view('noticia.index', compact('noticias', 'categorias', 'busqueda', 'categoria'));
+        }
     }
 
     /**
@@ -40,14 +62,14 @@ class NoticiaController extends Controller
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'URL' => 'nullable|url',
         ]);
-    
+
         // Procesar la carga del archivo de imagen si existe
         $requestData = $request->all();
         if ($request->hasFile('imagen')) {
             $path = $request->file('imagen')->store('imagenes', 'public');
             $requestData['imagen'] = $path;
         }
-    
+
         // Crear la noticia con los datos procesados
         Noticia::create($requestData);
         return redirect()->route('noticias.index')->with('success', 'Noticia agregada con éxito.');
@@ -65,7 +87,7 @@ class NoticiaController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id_noticia)
-    {   
+    {
         $categorias = Categorias::all();
         $noticia = Noticia::find($id_noticia);
         return view('noticia.edit', compact('noticia'),
@@ -88,9 +110,9 @@ class NoticiaController extends Controller
             'URL' => 'nullable|url',
             'estado' => 'required'
         ]);
-    
+
         $requestData = $request->all();
-    
+
         if ($request->hasFile('imagen')) {
 
             if ($noticia->imagen && Storage::exists('public/' . $noticia->imagen)) {
@@ -100,9 +122,9 @@ class NoticiaController extends Controller
             $path = $request->file('imagen')->store('imagenes', 'public');
             $requestData['imagen'] = $path;
         }
-    
+
         $noticia->update($requestData);
-    
+
         return redirect()->route('noticias.index')->with('success', 'Noticia actualizada con éxito.');
     }
 

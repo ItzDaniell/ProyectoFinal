@@ -5,7 +5,7 @@
 @section('content')
 <div class="flex-1 p-4">
     <div class="flex items-center justify-between mb-4">
-        <h1 class="text-3xl font-bold">Inicio</h1>
+        <h1 class="text-3xl font-bold">Página Principal</h1>
         <div class="flex space-x-4 relative">
             <div class="relative">
                 <ion-icon name="search-outline" class="text-2xl cursor-pointer" id="searchIcon"></ion-icon>
@@ -59,7 +59,7 @@
         </div>
         @if ($publicacion->imagen !== null)
         <div class="bg-gray-100">
-            <img src="{{ asset('storage/' . $publicacion->imagen) }}" alt="Imagen de la Publicación" 
+            <img src="{{ asset('storage/' . $publicacion->imagen) }}" alt="Imagen de la Publicación"
                 class="w-full max-h-96 object-cover border border-gray-300">
         </div>
         @endif

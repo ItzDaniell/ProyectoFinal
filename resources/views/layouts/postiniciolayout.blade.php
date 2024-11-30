@@ -70,7 +70,7 @@
             <nav class="space-y-4 mt-4">
                 <a href="{{ route('Home') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="home-outline"></ion-icon>
-                    <span>Inicio</span>
+                    <span>Página Principal</span>
                 </a>
                 <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalButton">
                     <ion-icon name="search-outline"></ion-icon>
