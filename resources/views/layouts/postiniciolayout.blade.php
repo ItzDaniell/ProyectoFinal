@@ -32,7 +32,7 @@
             padding-top: 10px;
             padding-bottom: 10px;
             color: #ffffff;
-            background: #F97316;
+            background: #000000;
             font-size: 14px;
             text-decoration: none;
             display: flex;
@@ -41,12 +41,12 @@
             transition: 0.5s;
         }
 
-        .boton:hover {
-            box-shadow: 8px 10px 0 #FB923C; /* Naranja claro */
+        .boton {
+            box-shadow: 0px 0px 0 #F3AF31;
         }
 
-        .bg-gray-800 {
-        background-color: #F97316; /* Naranja oscuro */
+        .boton:hover {
+            box-shadow: 8px 10px 0 #F3AF31;
         }
 
         .enlace {
@@ -63,14 +63,14 @@
 <body>
     <div class="flex flex-col lg:flex-row">
         <!-- Sidebar con ancho fijo -->
-        <div class="bg-orange-600 text-white w-64 h-screen p-4">
-            <div class="flex items-center justify-center h-16 border-b border-orange-600">
+        <div class="bg-gray-800 text-white w-64 h-screen p-4">
+            <div class="flex items-center justify-center h-16 border-b border-gray-700">
                 <span class="text-2xl font-semibold">DevShare</span>
             </div>
             <nav class="space-y-4 mt-4">
                 <a href="{{ route('Home') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="home-outline"></ion-icon>
-                    <span>Página Principal</span>
+                    <span>Inicio</span>
                 </a>
                 <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalBusquedaButton">
                     <ion-icon name="search-outline"></ion-icon>

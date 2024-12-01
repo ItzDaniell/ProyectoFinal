@@ -22,27 +22,7 @@
       a{
           text-decoration: none;
       }
-<<<<<<< HEAD
       
-=======
-
-      .boton{
-            width: auto;
-            height: auto;
-            padding-left: 24px;
-            padding-right: 24px;
-            padding-top: 8px;
-            padding-bottom: 8px;
-            color: #ffffff;
-            background: #000000;
-            font-size: 16px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.5s;
-        }
->>>>>>> 857bc3a7008d7062625b4931033ce557ca1bc976
         .boton{
             box-shadow: 0px 0px 0 #F3AF31;
         }
@@ -157,7 +137,7 @@
                     </div>
                 </div>
                 <!-- Menú móvil modificado -->
-                <div
+                <div 
                     :class="{'translate-x-0': open, '-translate-x-full': !open}"
                     class="md:hidden fixed inset-0 transform transition-transform duration-200 ease-in-out bg-gray-800"
                     style="top: 64px;"
@@ -167,7 +147,7 @@
                         <a href="{{ route('SobreNosotros') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Sobre Nosotros</a>
                         <a href="{{ route('Contactanos') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Contactanos</a>
                         <a href="{{ route('FAQ') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">FAQ</a>
-
+                        
                         <div class="mt-auto border-t border-gray-700 pt-4 pb-3">
                             @if (Route::has('login'))
                             @auth
@@ -191,7 +171,7 @@
                                 @endif
                             @endauth
                         @endif
-
+                        
                         </div>
                     </div>
                 </div>
