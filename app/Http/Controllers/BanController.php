@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Cog\Laravel\Ban\Models\Ban;
+use Cog\Laravel\Ban\Services\BanService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +14,7 @@ class BanController extends Controller
     public function ban(string $id)
     {
         $usuario = User::find($id);
+        app(BanService::class)->deleteExpiredBans();
         return view('usuario.ban', compact('usuario'));
     }
 
@@ -63,35 +64,12 @@ class BanController extends Controller
 
         $usuario->update(['estado' => 'Activo']);
         $usuario->unban();
+        $usuario->bans()->delete();
         return redirect()->route('usuarios.bans');
     }
 
-
-
-
     public function showBan()
     {
-        $user = Auth::user();
-    // Obtén al usuario autenticado
-
-    // Verifica si el usuario está baneado
-        if ($user && $user->isBanned()) {
-            // Obtén los detalles del baneo (por ejemplo, razón, fecha, etc.)
-            $banReason = $user->ban_reason; // Asegúrate de que este campo esté definido en tu base de datos
-            $banDate = $user->banned_at; // Si el paquete guarda la fecha de baneo
-
-            // Crea la vista de baneado pasando los datos del baneo
-            $view = view('baneado.banned')
-                ->with('message', 'This account is blocked.')
-                ->with('user', $user)
-                ->with('banReason', $banReason)
-                ->with('banDate', $banDate);
-
-            // Devuelve la vista con el código de respuesta 403
-            return response($view, 403);
-        }
-
-        // Si el usuario no está baneado, muestra la vista normal
-        return view('home'); // O cualquier otra vista que elijas
+        return view('baneado.banned');
     }
 }

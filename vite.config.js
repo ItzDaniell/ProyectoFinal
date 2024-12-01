@@ -13,6 +13,8 @@ export default defineConfig({
                 'resources/js/vista_previa.js',
                 'resources/js/mostrar_opciones.js',
                 'resources/js/opciones.js',
+                'resources/js/check_form_ban.js',
+                'resources/js/mostrar_busqueda_nombre.js'
             ],
             refresh: true,
         }),

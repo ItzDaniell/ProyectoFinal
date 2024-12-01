@@ -8,9 +8,12 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
-        // Ejecutar inmediatamente
         window.history.replaceState({}, '', '{{ route('baneado.banned') }}');
     </script>
+    <?php
+        $user = Auth::user();
+        $ban = $user->bans()->latest()->first();
+    ?>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=AR+One+Sans:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
         * {

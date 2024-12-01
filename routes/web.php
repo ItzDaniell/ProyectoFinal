@@ -44,6 +44,7 @@ Route::middleware([
     Route::get('/noticias/{busqueda?}/{categoria?}', [PostInicioSesionController::class, 'Noticias'])->name('Noticias');
     Route::get('/noticia/{titulo}', [PostInicioSesionController::class, 'DetalleNoticia'])->name('DetalleNoticia');
     Route::get('/conferencias', [PostInicioSesionController::class, 'Conferencias'])->name('Conferencias');
+    Route::get('/autocomplete', [PostInicioSesionController::class, 'autocomplete'])->name('autocomplete');
     Route::prefix('/configuracion')->group(function () {
         Route::get('/', [PostInicioSesionController::class, 'ConfiguracionPerfil'])->name('Configuracion');
         Route::get('/seguridad', [PostInicioSesionController::class, 'ConfiguracionSeguridad'])->name('ConfiguracionSeguridad');

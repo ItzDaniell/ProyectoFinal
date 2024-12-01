@@ -39,7 +39,7 @@
 
             <div>
                 <label for="foto" class="block text-sm font-medium text-gray-700">Foto</label>
-                <input type="file" id="foto" name="foto" accept="image/*" class="mt-1 block w-full h-12 text-sm text-gray-500 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-4" onchange="previewImage(event)">
+                <input type="file" id="imagen" name="foto" accept="image/*" class="mt-1 block w-full h-12 text-sm text-gray-500 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-4" onchange="previewImage(event)">
                 <div class="mt-4">
                     <img id="preview" src="{{ asset('storage/' . $ponente->foto) }}" alt="Foto del Ponente" class="w-32 h-32 object-cover border border-gray-300 rounded-full">
                 </div>
@@ -50,8 +50,8 @@
                 <a href="{{ route('ponentes.index') }}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Regresar</a>
             </div>
         </form>
-        @vite('resources/js/vista_previa.js')
     </div>
+    @vite('resources/js/vista_previa.js')
 @stop
 
 @section('css')

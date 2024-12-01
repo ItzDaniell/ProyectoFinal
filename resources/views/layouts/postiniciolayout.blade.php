@@ -72,7 +72,7 @@
                     <ion-icon name="home-outline"></ion-icon>
                     <span>Página Principal</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalButton">
+                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalBusquedaButton">
                     <ion-icon name="search-outline"></ion-icon>
                     <span>Búsqueda</span>
                 </a>
@@ -88,7 +88,7 @@
                     <ion-icon name="paper-plane-outline"></ion-icon>
                     <span>Mensajes</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalButton">
+                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalCrearButton">
                     <ion-icon name="create-outline"></ion-icon>
                     <span>Crear</span>
                 </a>
@@ -140,7 +140,7 @@
                         @csrf
                         <!-- Encabezado -->
                         <div class="flex justify-between items-center pb-4 border-b border-gray-300">
-                            <button type="button" id="closeModalButton" class="text-gray-500 hover:text-gray-700">
+                            <button type="button" id="closeModalCrearButton" class="text-gray-500 hover:text-gray-700">
                                 <ion-icon name="arrow-back-outline" size="large"></ion-icon>
                             </button>
                             <h2 class="text-2xl font-bold text-center flex-grow text-gray-800">Crear Nueva Publicación
@@ -200,16 +200,15 @@
             <div class="bg-white w-96 p-6 rounded shadow-lg">
                 <div class="flex justify-between items-center border-b pb-2 mb-4">
                     <h2 class="text-xl font-bold">Buscar Personas</h2>
-                    <button id="closeModalButton" class="text-gray-500 hover:text-gray-800">
+                    <button id="closeModalBusquedaButton" class="text-gray-500 hover:text-gray-800">
                         <ion-icon name="close-outline" size="large"></ion-icon>
                     </button>
                 </div>
                 <div class="space-y-4">
-                    <input type="text" placeholder="Escribe un nombre..." class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    <div>
-                        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                            Buscar
-                        </button>
+                    <input id="searchInput" type="text" placeholder="Escribe un nombre..." class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <!-- Resultados de búsqueda -->
+                    <div id="searchResults" class="mt-2 space-y-2">
+                        <!-- Los resultados del autocompletado se insertarán aquí -->
                     </div>
                 </div>
             </div>
@@ -246,10 +245,69 @@
                 });
             });
         </script>
+        <script>
+document.getElementById('searchInput').addEventListener('input', function () {
+    const query = this.value;
+
+    if (query.length <= 2) {
+        document.getElementById('searchResults').innerHTML = '';
+        return;
+    }
+
+    fetch(`/autocomplete?query=${encodeURIComponent(query)}`)
+        .then(response => response.json())
+        .then(data => {
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '';
+
+            if (data.length === 0) {
+                const noResultsMessage = document.createElement('div');
+                noResultsMessage.textContent = 'No se encontraron resultados.';
+                noResultsMessage.className = 'text-gray-500 text-center p-4';
+                resultsContainer.appendChild(noResultsMessage);
+                return;
+            }
+
+            // Renderizar resultados
+            data.forEach(user => {
+                const item = document.createElement('div');
+                item.className = 'flex items-center space-x-4 p-2 border-b hover:bg-gray-100 cursor-pointer';
+
+                const img = document.createElement('img');
+                if (user.profile_photo_path) {
+                    img.src = `/storage/${user.profile_photo_path}`;
+                } else if (user.avatar) {
+                    img.src = user.avatar;
+                } else {
+                    img.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+                }
+                img.alt = `${user.name}`;
+                img.className = 'w-12 h-12 rounded-full';
+
+                const name = document.createElement('span');
+                name.textContent = user.name;
+                name.className = 'text-gray-800 font-medium';
+
+                item.appendChild(img);
+                item.appendChild(name);
+
+                item.addEventListener('click', () => {
+                    document.getElementById('searchInput').value = user.name;
+                    resultsContainer.innerHTML = '';
+                });
+
+                resultsContainer.appendChild(item);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching autocomplete results:', error);
+        });
+});
+        </script>
         <div class="flex-1 bg-gray-100 p-4 overflow-y-auto h-screen">
             @yield('content')
         </div>
     </div>
-    @vite(['resources/js/mostrar_opciones.js', 'resources/js/opciones.js'])
+    @vite(['resources/js/mostrar_opciones.js', 'resources/js/opciones.js', 'resources/js/mostrar_modal_crear.js', 'resources/js/mostrar_busqueda_nombre.js'])
 </body>
 </html>

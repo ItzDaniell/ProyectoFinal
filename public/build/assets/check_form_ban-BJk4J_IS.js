@@ -1,0 +1,1 @@
+const t=document.querySelector('input[name="ban_permanente"]'),e=document.getElementById("ban_temporal"),n=document.querySelector('input[name="fecha_baneo"]');t.checked||e.classList.remove("hidden");t.addEventListener("change",function(){this.checked?(e.classList.add("hidden"),n.required=!1):(e.classList.remove("hidden"),n.required=!0)});

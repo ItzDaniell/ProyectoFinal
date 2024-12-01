@@ -55,7 +55,6 @@
             </div>
         </form>
     </div>
-@vite('resources/js/vista_previa.js')
 @stop
 
 @section('css')

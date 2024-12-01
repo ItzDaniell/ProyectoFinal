@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-Cl2A2yc4.css",
+    "file": "assets/app-CKgoUtXa.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -15,6 +15,18 @@
     "src": "resources/js/app.js",
     "isEntry": true
   },
+  "resources/js/check_form_ban.js": {
+    "file": "assets/check_form_ban-BJk4J_IS.js",
+    "name": "check_form_ban",
+    "src": "resources/js/check_form_ban.js",
+    "isEntry": true
+  },
+  "resources/js/mostrar_busqueda_nombre.js": {
+    "file": "assets/mostrar_busqueda_nombre-Bxv3MZVk.js",
+    "name": "mostrar_busqueda_nombre",
+    "src": "resources/js/mostrar_busqueda_nombre.js",
+    "isEntry": true
+  },
   "resources/js/mostrar_modal_busq_cat.js": {
     "file": "assets/mostrar_modal_busq_cat-De_qm0-Z.js",
     "name": "mostrar_modal_busq_cat",
@@ -22,7 +34,7 @@
     "isEntry": true
   },
   "resources/js/mostrar_modal_crear.js": {
-    "file": "assets/mostrar_modal_crear-D6ZZA-pZ.js",
+    "file": "assets/mostrar_modal_crear--ktX5Vyd.js",
     "name": "mostrar_modal_crear",
     "src": "resources/js/mostrar_modal_crear.js",
     "isEntry": true

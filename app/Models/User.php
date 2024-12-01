@@ -13,7 +13,9 @@ use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Cog\Contracts\Ban\Bannable as BannableInterface;
+use Cog\Laravel\Ban\Models\Ban;
 use Cog\Laravel\Ban\Traits\Bannable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable implements BannableInterface
 {
@@ -45,7 +47,7 @@ class User extends Authenticatable implements BannableInterface
         'google_id',
         'avatar',
     ];
-    
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -83,4 +85,5 @@ class User extends Authenticatable implements BannableInterface
     public function publicaciones(){
         return $this->hasMany('App\Models\Publicacion', 'id', 'id');
     }
+
 }
