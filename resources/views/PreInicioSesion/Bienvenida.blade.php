@@ -11,11 +11,11 @@
       <h1 class="text-7xl font-bold text-gray-800 mb-4">La Web Perfecta Para</h1>
       <h1 class="text-7xl font-bold text-gray-800 mb-20">Equipos de Desarrollo</h1>
       <p class="text-gray-600 mb-6 text-lg max-w-5xl mx-auto">DevShare es tu solución integral para una colaboración activa. Con una interfaz amigable y distintas funcionalidades te ofrecemos un entorno de trabajo eficiente.</p>
-      <button class="bg-orange-500 text-white py-2 px-6 rounded hover:bg-orange-600 transition duration-200">Comienza Ahora</button>
+      <button class="bg-gray-800 text-white py-2 px-6 rounded hover:bg-gray-800 transition duration-200">Comienza Ahora</button>
     </header>
 
     <!-- Sección de publicación -->
-    <section class="grid grid-cols-0 md:grid-cols-2 items-center gap-2 md:gap-4 mx-40 my-2">
+    <section class="grid grid-cols-0 md:grid-cols-2 items-center gap-2 md:gap-2 mx-40 my-2">
       <div class="flex flex-col justify-center items-center md:items-start py-2 text-center md:text-left">
         <h2 class="text-5xl font-semibold text-gray-800 mb-1">La Mejor Manera De</h2>
         <h2 class="text-7xl font-semibold text-gray-800 mb-1">Publicar</h2>
@@ -54,19 +54,63 @@
     <!-- Sección de funciones con carrusel -->
     <section class="my-20">
       <h3 class="text-2xl font-semibold text-gray-800 mb-8 text-center">Funciones que Ofrece DevShare</h3>
-      <div class="swiper w-full max-w-5xl mx-auto">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide flex justify-center">
-            <img src="/funcion1.jpg" alt="Función 1" class="rounded-lg shadow-md w-full max-w-md">
+      <div class="relative w-full">
+          <!-- Los controles del carrusel -->
+          <!-- Carrusel -->
+          <div class="relative w-full">
+            <!-- Controles de navegación -->
+            <div class="absolute inset-0 flex items-center justify-between px-4 z-10">
+              <button class="text-white bg-black bg-opacity-50 p-2 rounded-full" id="prevButton">
+                <span class="text-xl">&lt;</span>
+              </button>
+              <button class="text-white bg-black bg-opacity-50 p-2 rounded-full" id="nextButton">
+                <span class="text-xl">&gt;</span>
+              </button>
+            </div>
+
+            <!-- Las imágenes del carrusel -->
+            <div class="overflow-hidden">
+              <div class="flex transition-transform duration-500" id="carousel">
+                <div class="w-full flex-shrink-0 flex justify-center items-center">
+                  <img class="w-200 object-cover" src="{{ asset('images/compartir.jpg') }}" alt="Imagen 1">
+                </div>
+                <div class="w-full flex-shrink-0 flex justify-center items-center">
+                  <img class="w-200 object-cover" src="{{ asset('images/clinux.png') }}" alt="Imagen 2">
+                </div>
+                <div class="w-full flex-shrink-0 flex justify-center items-center">
+                  <img class="w-200 object-cover" src="{{ asset('images/cphyton.png') }}" alt="Imagen 3">
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="swiper-slide flex justify-center">
-            <img src="{{ asset('images/.jpg') }}" alt="Imagen de soporte" class="rounded-lg shadow-lg w-full h-120 object-cover">
-          </div>
-        </div>
-        <!-- Botones de navegación -->
-        <div class="swiper-button-prev text-gray-500 hover:text-gray-800"></div>
-        <div class="swiper-button-next text-gray-500 hover:text-gray-800"></div>
-      </div>
+
+          <script>
+            // JavaScript para controlar la navegación del carrusel
+            const carousel = document.getElementById('carousel');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+
+            let index = 0;
+            const totalSlides = carousel.children.length;
+
+            // Función para mover el carrusel
+            function moveCarousel() {
+              carousel.style.transform = `translateX(-${index * 100}%)`;
+            }
+
+            // Función para mover a la imagen anterior
+            prevButton.addEventListener('click', () => {
+              index = (index > 0) ? index - 1 : totalSlides - 1;
+              moveCarousel();
+            });
+
+            // Función para mover a la imagen siguiente
+            nextButton.addEventListener('click', () => {
+              index = (index < totalSlides - 1) ? index + 1 : 0;
+              moveCarousel();
+            });
+          </script>
+
     </section>
 
     <!-- Sección de soporte -->
