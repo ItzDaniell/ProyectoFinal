@@ -100,7 +100,7 @@ class UsuarioController extends Controller
         $user->save();
 
         // Redirigir con mensaje de éxito
-        return redirect()->back()->with('success', 'Tu perfil ha sido actualizado correctamente.');
+        return redirect()->back()->with('success');
     }
 
     public function actualizarFoto(Request $request)
@@ -108,7 +108,7 @@ class UsuarioController extends Controller
         // Validar y procesar la foto
         if ($request->hasFile('profile_photo')) {
             $fileName = Str::random(10) . '.' . $request->file('profile_photo')->getClientOriginalExtension();
-            $path = $request->file('profile_photo')->move(public_path('uploads'), $fileName);
+            $request->file('profile_photo')->move('uploads', $fileName);
 
             // Actualizar la información del usuario
             Auth::user()->update([
@@ -117,8 +117,9 @@ class UsuarioController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('success', 'Foto de perfil actualizada correctamente.');
+        return redirect()->back()->with('success');
     }
+
 
 
 }
