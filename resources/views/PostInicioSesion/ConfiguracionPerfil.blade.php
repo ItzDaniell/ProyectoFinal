@@ -7,22 +7,22 @@
     <div class="w-full max-w-4xl space-y-10">
 
         <!-- Formulario de Foto de Perfil -->
-        <form id="photo-form" action="{{ route('usuario.actualizarFotoPerfil') }}" method="POST" enctype="multipart/form-data">
+        <form id="photo-form" action="{{ route('usuario.actualizarFotoPerfil') }}" method="POST"
+            enctype="multipart/form-data">
             @csrf
-            <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-7xl mx-auto">
-                <!-- Foto de Perfil -->
-                <div class="mb-8 flex items-center justify-between w-full">
+            <div class="bg-white p-8 rounded-lg shadow-lg max-w-7xl mx-auto">
+                <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                        <label for="profile_photo" class="cursor-pointer">
-                            <img class="w-24 h-24 rounded-full object-cover mr-4 border-2 border-gray-300 hover:border-gray-500 transition"
-                                src="{{ Auth::user()->profile_photo_path ? asset('storage/' . Auth::user()->profile_photo_path) : (Auth::user()->avatar ?? 'https://via.placeholder.com/150') }}"
+                        <label for="profile_photo" class="cursor-pointer flex items-center">
+                            <img class="w-24 h-24 rounded-full object-cover mr-4 border-2 border-gray-300"
+                                src="{{ asset(Auth::user()->profile_photo_path ?? Auth::user()->avatar ?? 'https://cdn-icons-png.flaticon.com/512/149/149071.png') }}"
                                 alt="Foto de perfil">
                             <input type="file" id="profile_photo" name="profile_photo" class="hidden" accept="image/*"
                                 onchange="document.getElementById('photo-form').submit();">
                         </label>
                         <span class="text-xl font-semibold">{{ Auth::user()->name }}</span>
                     </div>
-                    <label for="profile_photo" class="boton">Cambiar Foto de Perfil</label>
+                    <label for="profile_photo" class="boton cursor-pointer">Cambiar Foto de Perfil</label>
                 </div>
             </div>
         </form>
