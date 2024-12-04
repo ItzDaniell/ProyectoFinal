@@ -15,16 +15,28 @@
                 <!-- Menú de opciones -->
                 <div id="optionsMenu" class="absolute right-0 mt-2 w-48 bg-gray-200 rounded-lg shadow-lg hidden">
                     <ul class="text-center">
-                        <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
-                            <a href="{{ route('Configuracion') }}" class="w-full block px-4 py-2 text-left">Configurar
-                                Cuenta</a>
-                        </li>
-                        <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="w-full text-left px-4 py-2">Cerrar Sesión</button>
-                            </form>
-                        </li>
+                        @if($usuario->id === Auth::id())
+                            <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
+                                <a href="{{ route('Configuracion') }}" class="w-full block px-4 py-2 text-left">Configurar
+                                    Cuenta</a>
+                            </li>
+                            <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="w-full text-left px-4 py-2">Cerrar Sesión</button>
+                                </form>
+                            </li>
+                        @else
+                            <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
+                                <a href="{{ route('Configuracion') }}" class="w-full block px-4 py-2 text-left">Reportar</a>
+                            </li>
+                            <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="w-full text-left px-4 py-2">Enviar Mensaje</button>
+                                </form>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -36,8 +48,8 @@
                 @if ($usuario->profile_photo_path)
                     <img class="w-full h-full object-cover" src="{{ asset('storage/' . $usuario->profile_photo_path) }}"
                         alt="Foto de perfil del usuario">
-                @elseif (Auth::check() && Auth::user()->avatar)
-                    <img class="w-full h-full object-cover" src="{{ Auth::user()->avatar }}"
+                @elseif ($usuario->avatar)
+                    <img class="w-full h-full object-cover" src="{{ $usuario->avatar }}"
                         alt="Foto de perfil del usuario">
                 @else
                     <img class="w-full h-full object-cover" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
@@ -56,13 +68,13 @@
             <!-- Presentación -->
             <div class="mb-6">
                 <h3 class="text-xl font-semibold mb-4">Presentación</h3>
-                <p class="text-gray-700">{{ Auth::user()->presentacion ?? 'No hay presentación disponible.' }}</p>
+                <p class="text-gray-700">{{ $usuario->presentacion ?? 'No hay presentación disponible.' }}</p>
             </div>
 
             <!-- Biografía -->
             <div>
                 <h3 class="text-xl font-semibold mb-4">Biografía</h3>
-                <p class="text-gray-700">{{ Auth::user()->biografia ?? 'No hay biografía disponible.' }}</p>
+                <p class="text-gray-700">{{ $usuario->biografia ?? 'No hay biografía disponible.' }}</p>
             </div>
         </div>
 
