@@ -10,6 +10,11 @@ use App\Http\Controllers\{
     PostInicioSesionController,
     PreInicioSesionController,
     PublicacionController,
+    ReporteController,
+    ReporteProcesado,
+    ReporteProcesadoController,
+    ReporteResueltoController,
+    ReportesController,
     UsuarioController
 };
 use Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser;
@@ -106,6 +111,15 @@ Route::middleware(['auth', 'can:manage-category'])->prefix('/administracion/cate
     Route::post('/create', [CategoriaController::class, 'store'])->name('categorias.store');
     Route::get('/{id}/edit', [CategoriaController::class, 'edit'])->name('categorias.edit');
     Route::patch('/{id}/edit', [CategoriaController::class, 'update'])->name('categorias.update');
+});
+
+Route::middleware(['auth', 'can:manage-reports'])->prefix('/administracion/reportes')->group(function () {
+    Route::get('/index', [ReporteController::class, 'index'])->name('reportes.index');
+    Route::post('/store/{slug}', [ReporteController::class, 'store'])->name('reportes.store');
+});
+
+Route::middleware(['auth', 'can:manage-reports'])->prefix('/administracion/reportes-resueltos')->group(function () {
+    Route::get('/index', [ReporteProcesadoController::class, 'index'])->name('reportes-procesados.index');
 });
 
  //Rutas de Google OAuth

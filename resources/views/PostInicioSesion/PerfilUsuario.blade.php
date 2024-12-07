@@ -15,7 +15,6 @@
                 </button>
                 <div id="optionsMenu" class="absolute right-0 mt-2 w-48 bg-gray-200 rounded-lg shadow-lg hidden">
                     <ul class="text-center">
-<<<<<<< HEAD
                         @if($usuario->id === Auth::id())
                             <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
                                 <a href="{{ route('Configuracion') }}" class="w-full block px-4 py-2 text-left">Configurar
@@ -29,7 +28,7 @@
                             </li>
                         @else
                             <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
-                                <a href="{{ route('Configuracion') }}" class="w-full block px-4 py-2 text-left">Reportar</a>
+                                <a href="#" onclick="openReportModal()" class="w-full block px-4 py-2 text-left">Reportar</a>
                             </li>
                             <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
@@ -38,17 +37,6 @@
                                 </form>
                             </li>
                         @endif
-=======
-                        <li class="border-b border-gray-300 py-2 hover:bg-gray-300">
-                            <a href="{{ route('Configuracion') }}" class="block px-4 py-2">Configurar Cuenta</a>
-                        </li>
-                        <li class="py-2 hover:bg-gray-300">
-                            <form action="{{ route('logout') }}" method="POST">
-                                @csrf
-                                <button type="submit" class="w-full text-left px-4 py-2">Cerrar Sesión</button>
-                            </form>
-                        </li>
->>>>>>> 2a39b17a0767a325119a21d2d8c466aa1e082be2
                     </ul>
                 </div>
             </div>
@@ -57,21 +45,13 @@
         <!-- Información del Usuario -->
         <div class="flex items-start space-x-6 mb-10">
             <div class="w-24 h-24 rounded-full overflow-hidden flex-shrink-0">
-                @if ($usuario->profile_photo_path && file_exists(public_path($usuario->profile_photo_path)))
-                    <!-- Cargar imagen desde profile_photo_path -->
-                    <img class="w-full h-full object-cover" src="{{ asset($usuario->profile_photo_path) }}"
+                @if ($usuario->profile_photo_path)
+                    <img class="w-full h-full object-cover" src="{{ asset('storage/' . $usuario->profile_photo_path) }}"
                         alt="Foto de perfil del usuario">
-<<<<<<< HEAD
                 @elseif ($usuario->avatar)
                     <img class="w-full h-full object-cover" src="{{ $usuario->avatar }}"
-=======
-                @elseif (Auth::check() && Auth::user()->avatar)
-                    <!-- Cargar imagen desde avatar -->
-                    <img class="w-full h-full object-cover" src="{{ Auth::user()->avatar }}"
->>>>>>> 2a39b17a0767a325119a21d2d8c466aa1e082be2
                         alt="Foto de perfil del usuario">
                 @else
-                    <!-- Imagen predeterminada -->
                     <img class="w-full h-full object-cover" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
                         alt="Foto de perfil predeterminada">
                 @endif
@@ -101,4 +81,39 @@
 
     </div>
 </div>
+<div id="reportModal" class="hidden fixed z-50 inset-0 overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg">
+            <h2 class="text-lg font-semibold mb-4">Reportar Usuario</h2>
+            <form id="reportForm" method="POST" enctype="multipart/form-data" action="{{ route('reportes.store', $usuario->slug)}}">
+                @csrf
+                <div class="mb-4">
+                    <label for="tipo" class="block text-sm font-medium text-gray-700">Tipo de Reporte</label>
+                    <input type="text" name="tipo" id="tipo" class="w-full border rounded-md p-2" maxlength="50" required>
+                </div>
+                <div class="mb-4">
+                    <label for="imagen" class="block text-sm font-medium text-gray-700">Subir Imagen (opcional)</label>
+                    <input type="file" name="imagen" id="imagen" class="w-full border rounded-md p-2">
+                </div>
+                <div class="mb-4">
+                    <label for="descripcion" class="block text-sm font-medium text-gray-700">Descripción</label>
+                    <textarea name="descripcion" id="descripcion" class="w-full border rounded-md p-2" rows="4" maxlength="2048" required></textarea>
+                </div>
+                <div class="flex justify-end">
+                    <button type="button" id="cancelReport" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md mr-2">Cancelar</button>
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function openReportModal() {
+        document.getElementById('reportModal').classList.remove('hidden');
+    }
+
+    document.getElementById('cancelReport').addEventListener('click', () => {
+        document.getElementById('reportModal').classList.add('hidden');
+    });
+</script>
 @endsection

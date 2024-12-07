@@ -86,7 +86,18 @@ class User extends Authenticatable implements BannableInterface
     public function publicaciones(){
         return $this->hasMany('App\Models\Publicacion', 'id', 'id');
     }
-
+    public function reporte(){
+        return $this->hasMany('App\Models\Reporte', 'id', 'id');
+    }
+    public function reportado(){
+        return $this->hasMany('App\Models\Reporte', 'id_reportado', 'id');
+    }
+    public function reporte_procesado(){
+        return $this->hasMany('App\Models\ReporteProcesado', 'id', 'id');
+    }
+    public function reporte_resuelto_procesado(){
+        return $this->hasMany('App\Models\ReporteProcesado', 'id', 'id_reportado');
+    }
     protected static function booted()
     {
         static::creating(function ($user) {

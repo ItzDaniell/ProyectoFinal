@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reporte;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReporteController extends Controller
 {
@@ -11,7 +14,8 @@ class ReporteController extends Controller
      */
     public function index()
     {
-        //
+        $reportes = Reporte::where('estado', '=', 'Activo')->orderBy('id_reporte', 'desc')->paginate(10);
+        return view('reporte.index', compact('reportes'));
     }
 
     /**
@@ -25,9 +29,26 @@ class ReporteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $slug)
     {
-        //
+        $request->validate([
+            'tipo' => 'required|max:50',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'descripcion' => 'required|max:2048',
+        ]);
+
+        $requestData = $request->except(['id', 'id_reportado']);
+        $requestData['id'] = Auth::id();
+        $reportado = User::where('slug','=', $slug)->first();
+        $requestData['id_reportado'] = $reportado->id;
+
+        if ($request->hasFile('imagen')) {
+            $path = $request->file('imagen')->store('imagenes', 'public');
+            $requestData['imagen'] = $path;
+        }
+
+        Reporte::create($requestData);
+        return redirect()->back();
     }
 
     /**
@@ -57,7 +78,7 @@ class ReporteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id_reporte)
     {
         //
     }

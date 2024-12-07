@@ -104,7 +104,7 @@
                 </a>
                 @endif
                 <!-- Dropdown button -->
-                <div class="relative">
+                <div class="relative cursor-pointer">
                     <a onclick="toggleMenu()" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                         <ion-icon name="menu-outline"></ion-icon>
                         <span>Más Opciones</span>
@@ -289,11 +289,6 @@ document.getElementById('searchInput').addEventListener('input', function () {
 
                 item.appendChild(img);
                 item.appendChild(name);
-
-                item.addEventListener('click', () => {
-                    document.getElementById('searchInput').value = user.name;
-                    resultsContainer.innerHTML = '';
-                });
 
                 resultsContainer.appendChild(item);
             });

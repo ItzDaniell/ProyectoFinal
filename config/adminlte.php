@@ -353,16 +353,16 @@ return [
             'url' => '/administracion/categorias/index',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        /*[
+        [
             'text' => 'Reportes',
-            'url' => 'admin/settings',
+            'url' => '/administracion/reportes/index',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
             'text' => 'Solicitudes',
             'url' => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
-        ],*/
+        ],
         [
             'text' => 'Volver',
             'url' => '/home',
