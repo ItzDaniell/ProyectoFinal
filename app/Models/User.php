@@ -15,6 +15,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Cog\Contracts\Ban\Bannable as BannableInterface;
 use Cog\Laravel\Ban\Models\Ban;
 use Cog\Laravel\Ban\Traits\Bannable;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable implements BannableInterface
@@ -86,4 +87,30 @@ class User extends Authenticatable implements BannableInterface
         return $this->hasMany('App\Models\Publicacion', 'id', 'id');
     }
 
+    protected static function booted()
+    {
+        static::creating(function ($user) {
+            $user->slug = self::generateUniqueSlug($user->name);
+        });
+
+        static::updating(function ($user) {
+            if ($user->isDirty('name')) {
+                $user->slug = self::generateUniqueSlug($user->name);
+            }
+        });
+    }
+
+    public static function generateUniqueSlug($name)
+    {
+        $slug = Str::slug($name);
+        $originalSlug = $slug;
+
+        $counter = 1;
+        while (self::where('slug', $slug)->exists()) {
+            $slug = "{$originalSlug}-{$counter}";
+            $counter++;
+        }
+
+        return $slug;
+    }
 }

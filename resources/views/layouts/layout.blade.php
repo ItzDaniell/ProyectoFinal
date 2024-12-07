@@ -22,7 +22,7 @@
       a{
           text-decoration: none;
       }
-      
+
         .boton{
             box-shadow: 0px 0px 0 #F3AF31;
         }
@@ -72,7 +72,6 @@
         }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
     <title>DevShare - @yield('title')</title>
 </head>
 <body>
@@ -137,7 +136,7 @@
                     </div>
                 </div>
                 <!-- Menú móvil modificado -->
-                <div 
+                <div
                     :class="{'translate-x-0': open, '-translate-x-full': !open}"
                     class="md:hidden fixed inset-0 transform transition-transform duration-200 ease-in-out bg-gray-800"
                     style="top: 64px;"
@@ -147,7 +146,7 @@
                         <a href="{{ route('SobreNosotros') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Sobre Nosotros</a>
                         <a href="{{ route('Contactanos') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Contactanos</a>
                         <a href="{{ route('FAQ') }}" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">FAQ</a>
-                        
+
                         <div class="mt-auto border-t border-gray-700 pt-4 pb-3">
                             @if (Route::has('login'))
                             @auth
@@ -171,7 +170,7 @@
                                 @endif
                             @endauth
                         @endif
-                        
+
                         </div>
                     </div>
                 </div>

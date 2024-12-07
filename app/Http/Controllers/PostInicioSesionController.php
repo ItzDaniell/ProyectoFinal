@@ -115,9 +115,13 @@ class PostInicioSesionController extends Controller
         return view('PostInicioSesion.ConfiguracionEliminarCuenta');
     }
 
-    public function PerfilUsuario()
+    public function PerfilUsuario($slug = null)
     {
-        $usuario = Auth::user();
+        if ($slug === null) {
+            $usuario = Auth::user();
+        } else {
+            $usuario = User::where('slug', $slug)->first();
+        }
         return view('PostInicioSesion.PerfilUsuario', compact('usuario'));
     }
 
@@ -127,10 +131,11 @@ class PostInicioSesionController extends Controller
 
         $resultado = User::where('name', 'LIKE', "%{$query}%")
                           ->where('id', '!=', Auth::id())
-                          ->select('name', 'profile_photo_path', 'avatar')
+                          ->select('name', 'profile_photo_path', 'avatar', 'slug')
                           ->limit(5)
                           ->get();
 
         return response()->json($resultado);
     }
+
 }

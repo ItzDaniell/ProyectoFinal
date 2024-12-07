@@ -15,6 +15,30 @@
                 </button>
                 <div id="optionsMenu" class="absolute right-0 mt-2 w-48 bg-gray-200 rounded-lg shadow-lg hidden">
                     <ul class="text-center">
+<<<<<<< HEAD
+                        @if($usuario->id === Auth::id())
+                            <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
+                                <a href="{{ route('Configuracion') }}" class="w-full block px-4 py-2 text-left">Configurar
+                                    Cuenta</a>
+                            </li>
+                            <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="w-full text-left px-4 py-2">Cerrar Sesión</button>
+                                </form>
+                            </li>
+                        @else
+                            <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
+                                <a href="{{ route('Configuracion') }}" class="w-full block px-4 py-2 text-left">Reportar</a>
+                            </li>
+                            <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="w-full text-left px-4 py-2">Enviar Mensaje</button>
+                                </form>
+                            </li>
+                        @endif
+=======
                         <li class="border-b border-gray-300 py-2 hover:bg-gray-300">
                             <a href="{{ route('Configuracion') }}" class="block px-4 py-2">Configurar Cuenta</a>
                         </li>
@@ -24,6 +48,7 @@
                                 <button type="submit" class="w-full text-left px-4 py-2">Cerrar Sesión</button>
                             </form>
                         </li>
+>>>>>>> 2a39b17a0767a325119a21d2d8c466aa1e082be2
                     </ul>
                 </div>
             </div>
@@ -36,9 +61,14 @@
                     <!-- Cargar imagen desde profile_photo_path -->
                     <img class="w-full h-full object-cover" src="{{ asset($usuario->profile_photo_path) }}"
                         alt="Foto de perfil del usuario">
+<<<<<<< HEAD
+                @elseif ($usuario->avatar)
+                    <img class="w-full h-full object-cover" src="{{ $usuario->avatar }}"
+=======
                 @elseif (Auth::check() && Auth::user()->avatar)
                     <!-- Cargar imagen desde avatar -->
                     <img class="w-full h-full object-cover" src="{{ Auth::user()->avatar }}"
+>>>>>>> 2a39b17a0767a325119a21d2d8c466aa1e082be2
                         alt="Foto de perfil del usuario">
                 @else
                     <!-- Imagen predeterminada -->
@@ -59,13 +89,13 @@
             <!-- Presentación -->
             <div class="mb-6">
                 <h3 class="text-xl font-semibold mb-4">Presentación</h3>
-                <p class="text-gray-700">{{ Auth::user()->presentacion ?? 'No hay presentación disponible.' }}</p>
+                <p class="text-gray-700">{{ $usuario->presentacion ?? 'No hay presentación disponible.' }}</p>
             </div>
 
             <!-- Biografía -->
             <div>
                 <h3 class="text-xl font-semibold mb-4">Biografía</h3>
-                <p class="text-gray-700">{{ Auth::user()->biografia ?? 'No hay biografía disponible.' }}</p>
+                <p class="text-gray-700">{{ $usuario->biografia ?? 'No hay biografía disponible.' }}</p>
             </div>
         </div>
 

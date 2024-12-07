@@ -52,7 +52,7 @@ Route::middleware([
         Route::get('/eliminar-cuenta', [PostInicioSesionController::class, 'ConfiguracionEliminarCuenta'])->name('ConfiguracionEliminarCuenta');
     });
 
-    Route::get('/perfil-usuario', [PostInicioSesionController::class, 'PerfilUsuario'])->name('PerfilUsuario');
+    Route::get('/perfil-usuario/{slug?}', [PostInicioSesionController::class, 'PerfilUsuario'])->name('PerfilUsuario');
     Route::post('/publicacion/store', [PublicacionController::class, 'store'])->name('publicacion.store');
 });
 

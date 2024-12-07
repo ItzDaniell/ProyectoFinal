@@ -68,7 +68,7 @@
             <nav class="space-y-4 mt-4">
                 <a href="{{ route('Home') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="home-outline"></ion-icon>
-                    <span>Inicio</span>
+                    <span>Página Principal</span>
                 </a>
                 <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalBusquedaButton">
                     <ion-icon name="search-outline"></ion-icon>
@@ -206,7 +206,7 @@
                     <input id="searchInput" type="text" placeholder="Escribe un nombre..." class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <!-- Resultados de búsqueda -->
                     <div id="searchResults" class="mt-2 space-y-2">
-                        <!-- Los resultados del autocompletado se insertarán aquí -->
+                        <!-- Resultados de búsqueda -->
                     </div>
                 </div>
             </div>
@@ -268,7 +268,8 @@ document.getElementById('searchInput').addEventListener('input', function () {
 
             // Renderizar resultados
             data.forEach(user => {
-                const item = document.createElement('div');
+                const item = document.createElement('a');
+                item.href = `/perfil-usuario/${user.slug}`;
                 item.className = 'flex items-center space-x-4 p-2 border-b hover:bg-gray-100 cursor-pointer';
 
                 const img = document.createElement('img');
