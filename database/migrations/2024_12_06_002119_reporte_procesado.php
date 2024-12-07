@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('reportes_procesados', function (Blueprint $table) {
             $table->id('id_reporte_procesado');
-            $table->integer('id_moderador');
+            $table->unsignedBigInteger('id_moderador');
             $table->unsignedBigInteger('id_reporte');
             $table->string('comentario',2048);
             $table->string('accion',2048);

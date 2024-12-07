@@ -131,11 +131,11 @@ class PostInicioSesionController extends Controller
 
         $resultado = User::where('name', 'LIKE', "%{$query}%")
                           ->where('id', '!=', Auth::id())
+                          ->where('rol', '!=', 'Administrador')
                           ->select('name', 'profile_photo_path', 'avatar', 'slug')
                           ->limit(5)
                           ->get();
 
         return response()->json($resultado);
     }
-
 }

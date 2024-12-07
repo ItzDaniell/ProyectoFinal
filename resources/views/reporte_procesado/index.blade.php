@@ -23,35 +23,26 @@
                     <th class="px-4 py-2 border text-center">Comentario</th>
                     <th class="px-4 py-2 border text-center">Acción</th>
                     <th class="px-4 py-2 border text-center">Estado</th>
-                    <th class="px-4 py-2 border text-center">Opciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($reportes as $reporte)
                 <tr class="hover:bg-gray-100">
-                    <td class="px-4 py-2 border text-center">{{ $reporte->moderador }}</td>
-                    <td class="px-4 py-2 border text-center">{{ $reporte->user->name ?? 'Usuario eliminado' }}</td>
-                    <td class="px-4 py-2 border text-center">{{ $reporte->reportado->name ?? 'Usuario eliminado' }}</td>
-                    <td class="px-4 py-2 border text-center">{{ $reporte->tipo }}</td>
+                    <td class="px-4 py-2 border text-center">{{ $reporte->moderador->name }}</td>
+                    <td class="px-4 py-2 border text-center">{{ $reporte->reporte->users->name ?? 'Usuario eliminado' }}</td>
+                    <td class="px-4 py-2 border text-center">{{ $reporte->reporte->reportado->name ?? 'Usuario eliminado' }}</td>
+                    <td class="px-4 py-2 border text-center">{{ $reporte->reporte->tipo }}</td>
                     <td class="px-4 py-2 border text-center">
-                        @if ($reporte->imagen)
-                            <a href="{{ asset('storage/' . $reporte->imagen) }}" target="_blank" class="text-blue-500 hover:underline">Ver Imagen</a>
+                        @if ($reporte->reporte->imagen)
+                            <a href="{{ asset('storage/' . $reporte->reporte->imagen) }}" target="_blank" class="text-blue-500 hover:underline">Ver Imagen</a>
                         @else
                             <span class="text-gray-500">Sin Imagen</span>
                         @endif
                     </td>
-                    <td class="px-4 py-2 border text-center">{{ Str::limit($reporte->descripcion, 30) }}</td>
+                    <td class="px-4 py-2 border text-center">{{ Str::limit($reporte->reporte->descripcion, 30) }}</td>
                     <td class="px-4 py-2 border text-center">{{ Str::limit($reporte->comentario, 30) }}</td>
                     <td class="px-4 py-2 border text-center">{{ $reporte->accion }}</td>
                     <td class="px-4 py-2 border text-center">{{ $reporte->estado }}</td>
-                    <td class="px-4 py-2 border">
-                        <div class="flex justify-center gap-4">
-                            <a href="{{ route('reporte-resuelto.edit', $reporte->id_reporte) }}"
-                               class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 text-sm text-center">
-                                Editar
-                            </a>
-                        </div>
-                    </td>
                 </tr>
                 @endforeach
             </tbody>

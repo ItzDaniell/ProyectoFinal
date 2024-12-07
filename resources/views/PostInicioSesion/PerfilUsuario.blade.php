@@ -81,15 +81,25 @@
 
     </div>
 </div>
-<div id="reportModal" class="hidden fixed z-50 inset-0 overflow-y-auto">
+<div id="reportModal" class="hidden fixed bg-gray-800 bg-opacity-75 z-50 inset-0 overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen">
         <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg">
-            <h2 class="text-lg font-semibold mb-4">Reportar Usuario</h2>
+            <h2 class="text-lg font-semibold mb-4 ">Reportar Usuario</h2>
             <form id="reportForm" method="POST" enctype="multipart/form-data" action="{{ route('reportes.store', $usuario->slug)}}">
                 @csrf
                 <div class="mb-4">
-                    <label for="tipo" class="block text-sm font-medium text-gray-700">Tipo de Reporte</label>
-                    <input type="text" name="tipo" id="tipo" class="w-full border rounded-md p-2" maxlength="50" required>
+                    <label for="tipo" class="block text-sm font-medium text-gray-700">Razón del Reporte</label>
+                    <select type="text" name="tipo" id="tipo" class="w-full border rounded-md p-2" required>
+                        <option value="">Seleccione la razón del reporte</option>
+                        <option value="Publicaciones Irrelevantes">Publicaciones irrelevantes</option>
+                        <option value="Suicidio o Autolesión">Suicidio o autolesión</option>
+                        <option value="Violencia, Odio o Explotación">Violencia, odio o explotación</option>
+                        <option value="Desnudos o Actividad Sexual">Desnudos o actividad sexual</option>
+                        @if ($usuario->rol == 'Empresa')
+                            <option value="Estafa, Fraude o Spam">Estafa, fraude o spam</option>
+                        @endif
+                        <option value="Foto de Perfil Inapropiado">Foto de perfil inapropiado</option>
+                    </select>
                 </div>
                 <div class="mb-4">
                     <label for="imagen" class="block text-sm font-medium text-gray-700">Subir Imagen (opcional)</label>
@@ -110,6 +120,7 @@
 <script>
     function openReportModal() {
         document.getElementById('reportModal').classList.remove('hidden');
+        document.getElementById('optionsMenu').classList.add('hidden');
     }
 
     document.getElementById('cancelReport').addEventListener('click', () => {

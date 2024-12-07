@@ -40,14 +40,10 @@
                     <td class="px-4 py-2 border text-center">{{ $reporte->estado }}</td>
                     <td class="px-4 py-2 border">
                         <div class="flex justify-center gap-4">
-                            <a href="{{ route('reporte_procesado.create', $reporte->id_reporte) }}"
-                               class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 text-sm text-center">
+                            <a href="{{ route('reportes-procesados.create', $reporte->id_reporte) }}"
+                                class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 text-sm text-center">
                                 Procesar
-                            </a>
-                            <a href="{{ route('reporte_procesado.destroy', $reporte->id_reporte) }}"
-                               class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 text-sm text-center">
-                                Denegar
-                            </a>
+                             </a>
                         </div>
                     </td>
                 </tr>

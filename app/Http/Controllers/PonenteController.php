@@ -37,14 +37,14 @@ class PonenteController extends Controller
             'biografia' => 'required|max:300',
             'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-    
+
 
         $requestData = $request->all();
         if ($request->hasFile('foto')) {
             $path = $request->file('foto')->store('imagenes', 'public');
             $requestData['foto'] = $path;
         }
-    
+
         Ponente::create($requestData);
         return redirect()->route('ponentes.index')->with('success', 'Ponente agregado con éxito.');
     }
@@ -80,9 +80,9 @@ class PonenteController extends Controller
             'biografia' => 'required|max:2048',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-    
+
         $requestData = $request->all();
-    
+
         if ($request->hasFile('foto')) {
 
             if ($ponente->foto && Storage::exists('public/' . $ponente->foto)) {
@@ -91,9 +91,9 @@ class PonenteController extends Controller
                 $path = $request->file('foto')->store('fotos', 'public');
                 $requestData['foto'] = $path;
             }
-        
+
             $ponente->update($requestData);
-        
+
             return redirect()->route('ponentes.index')->with('success', 'Ponente actualizado con éxito.');
     }
 

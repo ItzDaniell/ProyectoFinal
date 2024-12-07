@@ -58,6 +58,7 @@ Route::middleware([
     });
 
     Route::get('/perfil-usuario/{slug?}', [PostInicioSesionController::class, 'PerfilUsuario'])->name('PerfilUsuario');
+    Route::post('/reporte/{slug}/store', [ReporteController::class, 'store'])->name('reportes.store');
     Route::post('/publicacion/store', [PublicacionController::class, 'store'])->name('publicacion.store');
 });
 
@@ -115,11 +116,12 @@ Route::middleware(['auth', 'can:manage-category'])->prefix('/administracion/cate
 
 Route::middleware(['auth', 'can:manage-reports'])->prefix('/administracion/reportes')->group(function () {
     Route::get('/index', [ReporteController::class, 'index'])->name('reportes.index');
-    Route::post('/store/{slug}', [ReporteController::class, 'store'])->name('reportes.store');
 });
 
-Route::middleware(['auth', 'can:manage-reports'])->prefix('/administracion/reportes-resueltos')->group(function () {
+Route::middleware(['auth', 'can:manage-reports'])->prefix('/administracion/reportes-procesados')->group(function () {
     Route::get('/index', [ReporteProcesadoController::class, 'index'])->name('reportes-procesados.index');
+    Route::get('{id}/create', [ReporteProcesadoController::class, 'create'])->name('reportes-procesados.create');
+    Route::post('{id}/store', [ReporteProcesadoController::class, 'store'])->name('reportes-procesados.store');
 });
 
  //Rutas de Google OAuth

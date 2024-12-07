@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reporte;
 use App\Models\ReporteProcesado;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -20,9 +21,10 @@ class ReporteProcesadoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id_reporte)
     {
-        return view('reporte_procesado.create');
+        $reporte = Reporte::where('id_reporte', $id_reporte)->first();
+        return view('reporte_procesado.create', compact('reporte'));
     }
 
     /**
@@ -33,21 +35,25 @@ class ReporteProcesadoController extends Controller
         $request->validate([
             'comentario' => 'required|max:2048',
             'accion' => 'required|max:150',
-            'estado' => 'required|max:100'
         ]);
 
-        $reporte = Reporte::findOrFail($id_reporte);
-
-        $requestData = $request->except('id_moderador');
+        $requestData = $request->except(['id_moderador', 'id_reporte', 'estado']);
         $requestData['id_moderador'] = Auth::id();
+        $requestData['id_reporte'] = $id_reporte;
 
-        if ($request->hasFile('imagen')) {
-            $path = $request->file('imagen')->store('imagenes', 'public');
-            $requestData['imagen'] = $path;
+        $reporte = Reporte::find($id_reporte);
+
+        if($request->accion == 'Ninguna acción a realizar'){
+            $reporte->update(['estado' => 'Denegado']);
+            $requestData['estado'] = 'Denegado';
+        }
+        else{
+            $reporte->update(['estado' => 'Procesado']);
+            $requestData['estado'] = 'Procesado';
         }
 
         ReporteProcesado::create($requestData);
-        return redirect()->route('reporte_procesado.index');
+        return redirect()->route('reportes.index');
     }
 
     /**
@@ -77,7 +83,7 @@ class ReporteProcesadoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id_reporte)
     {
         //
     }
