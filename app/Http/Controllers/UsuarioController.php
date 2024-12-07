@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 
 class UsuarioController extends Controller
@@ -102,24 +103,27 @@ class UsuarioController extends Controller
         // Redirigir con mensaje de éxito
         return redirect()->back()->with('success');
     }
-
     public function actualizarFoto(Request $request)
     {
-        // Validar y procesar la foto
         if ($request->hasFile('profile_photo')) {
+            // Generar un nombre de archivo único
             $fileName = Str::random(10) . '.' . $request->file('profile_photo')->getClientOriginalExtension();
-            $request->file('profile_photo')->move('uploads', $fileName);
-
+            // Mover la foto a la carpeta publica 
+            $request->file('profile_photo')->move(public_path('storage/Foto_Usuario'), $fileName);
+            // Generar la URL pública
+            $publicUrl = asset('storage/Foto_Usuario/' . $fileName);
             // Actualizar la información del usuario
             Auth::user()->update([
-                'profile_photo_path' => 'uploads/' . $fileName,
-                'avatar' => asset('uploads/' . $fileName),
+                'profile_photo_path' => 'storage/Foto_Usuario/' . $fileName,
+                'avatar' => $publicUrl,
             ]);
         }
-
+    
         return redirect()->back()->with('success');
     }
-
+    
+    
+   
 
 
 }
