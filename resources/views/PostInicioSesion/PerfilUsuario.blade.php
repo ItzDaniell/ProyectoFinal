@@ -28,7 +28,7 @@
                             </li>
                         @else
                             <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
-                                <a href="#" onclick="openReportModal()" class="w-full block px-4 py-2 text-left">Reportar</a>
+                                <button id="openReportButton" class="w-full block px-4 py-2 text-left">Reportar</button>
                             </li>
                             <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST">
@@ -117,14 +117,5 @@
         </div>
     </div>
 </div>
-<script>
-    function openReportModal() {
-        document.getElementById('reportModal').classList.remove('hidden');
-        document.getElementById('optionsMenu').classList.add('hidden');
-    }
-
-    document.getElementById('cancelReport').addEventListener('click', () => {
-        document.getElementById('reportModal').classList.add('hidden');
-    });
-</script>
+@vite('resources/js/mostrar_modal_reporte.js')
 @endsection

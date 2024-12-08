@@ -76,6 +76,10 @@ Route::middleware(['auth', 'can:manage-news'])->prefix('/administracion/noticias
 // Conferencias y Ponentes
 Route::middleware(['auth', 'can:manage-conferences'])->prefix('/administracion/conferencias')->group(function () {
     Route::get('/index', [ConferenciaController::class, 'index'])->name('conferencias.index');
+    Route::get('/create', [ConferenciaController::class, 'create'])->name('conferencias.create');
+    Route::post('/create', [ConferenciaController::class, 'store'])->name('conferencias.store');
+    Route::get('/autocomplete-ponentes', [PonenteController::class, 'getPonentes'])->name('ponentes.list');
+
     Route::prefix('/administracion/ponentes')->group(function () {
         Route::get('/index', [PonenteController::class, 'index'])->name('ponentes.index');
         Route::get('/create', [PonenteController::class, 'create'])->name('ponentes.create');

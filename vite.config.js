@@ -14,7 +14,9 @@ export default defineConfig({
                 'resources/js/mostrar_opciones.js',
                 'resources/js/opciones.js',
                 'resources/js/check_form_ban.js',
-                'resources/js/mostrar_busqueda_nombre.js'
+                'resources/js/mostrar_busqueda_nombre.js',
+                'resources/js/mostrar_modal_reporte.js',
+                'resources/js/autocomplete.js'
             ],
             refresh: true,
         }),

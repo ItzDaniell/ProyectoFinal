@@ -105,4 +105,11 @@ class PonenteController extends Controller
         Ponente::find($id_ponente)->delete();
         return redirect()->route('ponentes.index');
     }
+
+    public function getPonentes(Request $request)
+    {
+        $ponentes = Ponente::select('id_ponente', 'nombres')->get();
+
+        return response()->json($ponentes);
+    }
 }

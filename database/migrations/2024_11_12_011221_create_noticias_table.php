@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id_noticia');
             $table->unsignedBigInteger('id_categoria');
             $table->string('titulo',100);
+            $table->string('slug')->unique();
             $table->string('autor',100);
             $table->string('descripcion',2048);
             $table->string('imagen',2048);

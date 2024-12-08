@@ -38,16 +38,19 @@
     </div>
     <p class="text-sm text-gray-700 pb-5">Conferencias Activas : {{ $conferencias->count() }} </p>
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        @foreach ($conferencias as $conferencia )
         <div class="bg-gray-200 shadow-md rounded-lg overflow-hidden">
-            <img src="https://via.placeholder.com/400x200" alt="SQL" class="w-full h-48 object-cover">
+            <img src="{{ asset('storage/' . $conferencia->imagen) }}" alt="Imagen de la Conferencia" class="w-full h-48 object-cover">
             <div class="p-4">
-                <h3 class="text-lg font-semibold mb-2">Fundamentos de SQL para Principiantes</h3>
-                <p class="text-sm text-gray-700">Ponente: <span class="font-medium">Por definir</span></p>
-                <p class="text-sm text-gray-700">Duración: <span class="font-medium">Por definir</span></p>
-                <p class="text-sm text-gray-700">Fecha: <span class="font-medium">Por definir</span></p>
+                <h3 class="text-lg font-semibold mb-2">{{ $conferencia->titulo }}</h3>
+                <p class="text-sm text-gray-700">Categoría: <span class="font-medium">{{ $conferencia->categoria->descripcion }}</span></p>
+                <p class="text-sm text-gray-700">Ponente: <span class="font-medium">{{ $conferencia->ponente->nombres }}</span></p>
+                <p class="text-sm text-gray-700">Duración: <span class="font-medium">{{ $conferencia->duracion }} Minutos</span></p>
+                <p class="text-sm text-gray-700">Fecha y Hora de Inicio: <span class="font-medium">{{ $conferencia->fecha_hora_inicio }}</span></p>
                 <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Ver Detalles</button>
             </div>
         </div>
+        @endforeach
     </div>
 @endsection
 @vite('resources/js/mostrar_modal_busq_cat.js')
