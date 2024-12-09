@@ -95,6 +95,9 @@ class User extends Authenticatable implements BannableInterface
     public function moderador(){
         return $this->hasMany('App\Models\ReporteProcesado', 'id_reportado', 'id');
     }
+    public function comentarios(){
+        return $this->hasMany('App\Models\Comentario', 'id', 'id');
+    }
     protected static function booted()
     {
         static::creating(function ($user) {

@@ -15,11 +15,11 @@ class PublicacionController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request)
-    {   
+    {
         $categorias = Categorias::all();
         $categoria = $request->input('categoria', null);
         $busqueda = $request->input('busqueda', null);
-        
+
         if ($busqueda) {
             $publicaciones = Publicacion::where('titulo', 'LIKE', '%' . $busqueda . '%')
                 ->orderBy('id_publicacion', 'desc')
@@ -39,7 +39,7 @@ class PublicacionController extends Controller
         } else {
             $publicaciones = Publicacion::orderBy('id_publicacion', 'desc')->paginate(10);
             return view('publicacion.index', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
-        }  
+        }
     }
 
 
@@ -55,26 +55,27 @@ class PublicacionController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {   
+    {
         if (!Auth::check()) {
             return redirect()->route('login');
         }
-        
+
         $request->validate([
-            'id_categoria' => 'required|integer',
-            'titulo' => 'required|max:150',
-            'descripcion' => 'nullable|max:2048',
-            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'titulo' => 'required|string|max:255',
+            'descripcion' => 'required|string',
+            'id_categoria' => 'required|exists:categorias,id_categoria',
+            'archivo' => 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx,rar,zip|max:10240',
+            'URL' => 'nullable|url',
         ]);
-        
-        $requestData = $request->except('id');
+
+        $requestData = $request->except(['id', 'archivo']);
         $requestData['id'] = Auth::id();
-        
-        if ($request->hasFile('imagen')) {
-            $path = $request->file('imagen')->store('imagenes', 'public');
-            $requestData['imagen'] = $path;
+
+        if ($request->hasFile('archivo')) {
+            $path = $request->file('archivo')->store('archivos', 'public');
+            $requestData['archivo'] = $path;
         }
-        
+
         Publicacion::create($requestData);
         return redirect()->back();
     }

@@ -46,7 +46,7 @@
         <div class="flex items-start space-x-6 mb-10">
             <div class="w-24 h-24 rounded-full overflow-hidden flex-shrink-0">
                 @if ($usuario->profile_photo_path)
-                    <img class="w-full h-full object-cover" src="{{ asset('storage/' . $usuario->profile_photo_path) }}"
+                    <img class="w-full h-full object-cover" src="{{ asset($usuario->profile_photo_path) }}"
                         alt="Foto de perfil del usuario">
                 @elseif ($usuario->avatar)
                     <img class="w-full h-full object-cover" src="{{ $usuario->avatar }}"

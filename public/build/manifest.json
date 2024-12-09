@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-LpK9eu4y.css",
+    "file": "assets/app-BlfC9mz9.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -13,6 +13,12 @@
     "file": "assets/app-z-Rg4TxU.js",
     "name": "app",
     "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/js/autocomplete-ponentes.js": {
+    "file": "assets/autocomplete-ponentes-OeLF4z7h.js",
+    "name": "autocomplete-ponentes",
+    "src": "resources/js/autocomplete-ponentes.js",
     "isEntry": true
   },
   "resources/js/autocomplete.js": {
@@ -61,6 +67,12 @@
     "file": "assets/opciones-qMF2uJPD.js",
     "name": "opciones",
     "src": "resources/js/opciones.js",
+    "isEntry": true
+  },
+  "resources/js/opciones_publicacion.js": {
+    "file": "assets/opciones_publicacion-L1aw0mzt.js",
+    "name": "opciones_publicacion",
+    "src": "resources/js/opciones_publicacion.js",
     "isEntry": true
   },
   "resources/js/vista_previa.js": {

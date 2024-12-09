@@ -27,7 +27,7 @@ class ComentarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**

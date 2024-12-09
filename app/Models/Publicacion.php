@@ -9,9 +9,9 @@ class Publicacion extends Model
 {
     protected $table = 'publicaciones';
     protected $primaryKey = 'id_publicacion';
-    protected $fillable = ['id', 'id_categoria', 'titulo', 'descripcion', 'imagen', 'estado', 'slug'];
+    protected $fillable = ['id', 'id_categoria', 'titulo', 'descripcion', 'archivo', 'URL', 'estado', 'slug'];
 
-    public function user()
+    public function users()
     {
         return $this->belongsTo('App\Models\User', 'id', 'id');
     }

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('duracion');
             $table->datetime('fecha_hora_inicio');
             $table->string('imagen', 2048);
+            $table->string('plataforma',150);
             $table->string('URL',500);
             $table->string('estado', 100)->default('Activo');
             $table->timestamps();

@@ -133,16 +133,14 @@
         <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 hidden overflow-y-auto z-50">
             <div class="flex items-center justify-center min-h-screen p-4">
                 <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl relative">
-                    <form action="{{ route('publicacion.store') }}" method="POST" enctype="multipart/form-data"
-                        class="mt-4">
+                    <form action="{{ route('publicacion.store') }}" method="POST" enctype="multipart/form-data" class="mt-2">
                         @csrf
                         <!-- Encabezado -->
                         <div class="flex justify-between items-center pb-4 border-b border-gray-300">
                             <button type="button" id="closeModalCrearButton" class="text-gray-500 hover:text-gray-700">
                                 <ion-icon name="arrow-back-outline" size="large"></ion-icon>
                             </button>
-                            <h2 class="text-2xl font-bold text-center flex-grow text-gray-800">Crear Nueva Publicación
-                            </h2>
+                            <h2 class="text-2xl font-bold text-center flex-grow text-gray-800">Crear Nueva Publicación</h2>
                             <button type="submit" class="text-blue-600 font-medium hover:text-blue-800">
                                 Publicar
                             </button>
@@ -151,43 +149,37 @@
                         <div class="flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-6 mt-6">
                             <!-- Sección de imagen -->
                             <div class="lg:w-1/3 flex-shrink-0">
-                                <label for="imageInput" class="block text-gray-700 font-medium mb-2">Imagen</label>
-                                <div
-                                    class="border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center h-60 sm:h-72 lg:h-80">
+                                <label for="imageInput" class="block text-gray-700 font-medium mb-2">Archivo</label>
+                                <div class="border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center h-60 sm:h-72 lg:h-80">
                                     <div class="bg-gray-100 p-6 rounded-lg mb-4">
                                         <ion-icon name="image-outline" class="text-6xl text-gray-400"></ion-icon>
                                     </div>
-                                    <input type="file" name="imagen" class="hidden" id="imageInput" accept="image/*" />
-                                    <button type="button" onclick="document.getElementById('imageInput').click();"
-                                        class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                                    <input type="file" name="archivo" class="hidden" id="imageInput" accept="image/*,application/pdf,.doc,.docx,.rar,.zip" />
+                                    <button type="button" onclick="document.getElementById('imageInput').click();" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
                                         Seleccionar archivo
                                     </button>
-                                    <p id="fileName" class="text-sm text-gray-500 mt-2 text-center">Ningún archivo
-                                        seleccionado</p>
+                                    <p id="fileName" class="text-sm text-gray-500 mt-2 text-center">Ningún archivo seleccionado</p>
                                 </div>
                             </div>
-
                             <!-- Sección de información -->
                             <div class="lg:w-2/3">
                                 <label for="titulo" class="block text-gray-700 font-medium mb-2">Título</label>
-                                <input type="text" name="titulo" id="titulo"
-                                    class="w-full p-3 border border-gray-300 rounded-lg mb-4"
-                                    placeholder="Ingresa un título" required>
+                                <input type="text" name="titulo" id="titulo" class="w-full p-3 border border-gray-300 rounded-lg mb-2" placeholder="Ingresa un título" required>
 
-                                <label for="descripcion"
-                                    class="block text-gray-700 font-medium mb-2">Descripción</label>
-                                <textarea name="descripcion" id="descripcion" rows="4"
-                                    class="w-full p-3 border border-gray-300 rounded-lg mb-4"
-                                    placeholder="Ingresa una descripción" required></textarea>
+                                <label for="descripcion" class="block text-gray-700 font-medium mb-2">Descripción</label>
+                                <textarea name="descripcion" id="descripcion" rows="4" class="w-full p-3 border border-gray-300 rounded-lg mb-2" placeholder="Ingresa una descripción" required></textarea>
 
                                 <label for="id_categoria" class="block text-gray-700 font-medium mb-2">Categoría</label>
-                                <select name="id_categoria" id="id_categoria"
-                                    class="w-full p-3 border border-gray-300 rounded-lg mb-4" required>
+                                <select name="id_categoria" id="id_categoria" class="w-full p-3 border border-gray-300 rounded-lg mb-2" required>
                                     <option value="">[ SELECCIONE ]</option>
                                     @foreach ($categorias as $categoria)
                                         <option value="{{ $categoria->id_categoria }}">{{ $categoria->descripcion }}</option>
                                     @endforeach
                                 </select>
+
+                                <!-- Campo opcional de enlace a proyecto -->
+                                <label for="URL" class="block text-gray-700 font-medium mb-2">Enlace al Proyecto (Opcional)</label>
+                                <input type="url" name="URL" id="URL" class="w-full p-3 border border-gray-300 rounded-lg mb-2" placeholder="Enlace a tu proyecto">
                             </div>
                         </div>
                     </form>
