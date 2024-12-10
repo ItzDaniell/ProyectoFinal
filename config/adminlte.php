@@ -360,7 +360,7 @@ return [
         ],
         [
             'text' => 'Solicitudes',
-            'url' => 'admin/settings',
+            'url' => '/administracion/informes-problemas/index',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [

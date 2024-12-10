@@ -37,14 +37,24 @@
 
             <div>
                 <label for="ban_permanente" class="inline-flex items-center">
-                    <input type="checkbox" name="ban_permanente" value="1" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                    <input type="checkbox" id="ban_permanente" name="ban_permanente" value="1" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
                     <span class="ml-2 text-sm font-medium text-gray-700">Banear Permanentemente</span>
                 </label>
             </div>
 
-            <div id="ban_temporal" class="hidden">
-                <label for="fecha_baneo" class="block text-sm font-medium text-gray-700">Fecha de Baneo Temporal</label>
-                <input type="date" name="fecha_baneo" class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1" required>
+            <div id="ban_temporal">
+                <label for="dias_baneo" class="block text-sm font-medium text-gray-700">Duración del Baneo (en días)</label>
+                <select name="dias_baneo" id="dias_baneo" class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1">
+                    <option value="">Selecciona una duración</option>
+                    <option value="1">1 día</option>
+                    <option value="3">3 días</option>
+                    <option value="5">5 días</option>
+                    <option value="7">7 días</option>
+                    <option value="15">15 días</option>
+                    <option value="30">30 días</option>
+                    <option value="45">45 días</option>
+                    <option value="60">60 días</option>
+                </select>
             </div>
 
             <div class="flex space-x-4">
@@ -63,4 +73,24 @@
 
 @section('js')
     <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const banPermanenteCheckbox = document.getElementById("ban_permanente");
+            const diasBaneoSelect = document.getElementById("dias_baneo");
+
+            // Función para manejar el cambio de estado del checkbox
+            const toggleRequired = () => {
+                if (banPermanenteCheckbox.checked) {
+                    diasBaneoSelect.removeAttribute("required");
+                } else {
+                    diasBaneoSelect.setAttribute("required", "required");
+                }
+            };
+
+            // Detecta el cambio del checkbox
+            banPermanenteCheckbox.addEventListener("change", toggleRequired);
+
+            toggleRequired();
+        });
+    </script>
 @stop

@@ -22,19 +22,29 @@ class BanController extends Controller
     public function banned(Request $request, string $id)
     {
         $usuario = User::findOrFail($id);
-
         $tipo_ban = $request->ban_permanente == 1;
         $comentario = $request->comment;
 
-        if ($tipo_ban){
+        if ($tipo_ban) {
             $usuario->update(['estado' => 'Baneado Permanentemente']);
-            $usuario->ban(['comment' => $comentario ])->isPermanent();
-        }
-        else{
+            $usuario->ban(['comment' => $comentario])->isPermanent();
+        } else {
             $usuario->update(['estado' => 'Baneado Temporalmente']);
-            $fecha_baneo = $request->input('fecha_baneo');
-            $usuario->ban(['expired_at' => $fecha_baneo, 'comment' => $comentario])->isTemporary();
+
+            $dias_baneo = intval($request->input('dias_baneo'));
+
+            if ($dias_baneo <= 0) {
+                return back()->withErrors(['message' => 'Debes seleccionar una duración válida en días.']);
+            }
+
+            $fecha_expiracion = now()->addDays($dias_baneo);
+
+            $usuario->ban([
+                'expired_at' => $fecha_expiracion,
+                'comment' => $comentario
+            ])->isTemporary();
         }
+
         return redirect()->route('usuarios.index');
     }
 

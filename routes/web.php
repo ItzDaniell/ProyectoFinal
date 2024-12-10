@@ -6,6 +6,8 @@ use App\Http\Controllers\{
     CategoriaController,
     ComentarioController,
     ConferenciaController,
+    InformarProblemaController,
+    InformeProcesadoController,
     NoticiaController,
     PonenteController,
     PostInicioSesionController,
@@ -64,6 +66,7 @@ Route::middleware([
     Route::post('/reporte/{slug}/store', [ReporteController::class, 'store'])->name('reportes.store');
     Route::post('/comentario/{slug}/store', [ComentarioController::class, 'store'])->name('comentarios.store');
     Route::post('/publicacion/store', [PublicacionController::class, 'store'])->name('publicacion.store');
+    Route::post('/informe-problema/store', [InformarProblemaController::class, 'store'])->name('informes.store');
 });
 
 
@@ -130,6 +133,16 @@ Route::middleware(['auth', 'can:manage-reports'])->prefix('/administracion/repor
     Route::get('/index', [ReporteProcesadoController::class, 'index'])->name('reportes-procesados.index');
     Route::get('{id}/create', [ReporteProcesadoController::class, 'create'])->name('reportes-procesados.create');
     Route::post('{id}/store', [ReporteProcesadoController::class, 'store'])->name('reportes-procesados.store');
+});
+
+Route::middleware(['auth', 'can:manage-requests'])->prefix('/administracion/informes-problemas')->group(function () {
+    Route::get('/index', [InformarProblemaController::class, 'index'])->name('informes-problemas.index');
+});
+
+Route::middleware(['auth', 'can:manage-requests'])->prefix('/administracion/informes-procesados')->group(function () {
+    Route::get('/index', [InformeProcesadoController::class, 'index'])->name('informes-procesados.index');
+    Route::get('{id}/create', [InformeProcesadoController::class, 'create'])->name('informes-procesados.create');
+    Route::post('{id}/store', [InformeProcesadoController::class, 'store'])->name('informes-procesados.store');
 });
 
  //Rutas de Google OAuth

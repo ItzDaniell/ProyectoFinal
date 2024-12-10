@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InformarProblema;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class InformarProblemaController extends Controller
 {
@@ -11,7 +14,8 @@ class InformarProblemaController extends Controller
      */
     public function index()
     {
-        //
+        $informes = InformarProblema::where('estado', 'Activo')->orderBy('id_informar_problema', 'desc')->paginate(10);
+        return view('informe_problema.index', compact('informes'));
     }
 
     /**
@@ -27,7 +31,24 @@ class InformarProblemaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tipo' => 'required|max:50',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'descripcion' => 'required|max:2048',
+        ]);
+
+        $requestData = $request->except(['id', 'id_reportado']);
+        $requestData['id'] = Auth::id();
+
+        if ($request->hasFile('imagen')) {
+            $path = $request->file('imagen')->store('imagenes', 'public');
+            $requestData['imagen'] = $path;
+        }else{
+            $requestData['imagen'] = 'Sin Imagen';
+        }
+
+        InformarProblema::create($requestData);
+        return redirect()->back();
     }
 
     /**
