@@ -10,10 +10,15 @@
         "jeroennoten/laravel-adminlte": "^3.14",
         "laravel/framework": "^11.9",
         "laravel/jetstream": "^5.3",
+        "laravel/reverb": "^1.0",
         "laravel/sanctum": "^4.0",
         "laravel/socialite": "*",
         "laravel/tinker": "^2.9",
-        "livewire/livewire": "^3.0",
+        "livewire/livewire": "^3.5",
+        "namu/wirechat": "^0.0.4",
+        "nikic/php-parser": "^5.0",
+        "psr/cache": "^3.0",
+        "pusher/pusher-php-server": "^7.2",
         "spatie/laravel-permission": "^6.10"
     },
     "require-dev": {
@@ -55,7 +60,7 @@
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",
-            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:work --queue=messages,default\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ]
     },
     "extra": {

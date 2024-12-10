@@ -16,6 +16,7 @@ use Cog\Contracts\Ban\Bannable as BannableInterface;
 use Cog\Laravel\Ban\Models\Ban;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Support\Str;
+use Namu\WireChat\Traits\Chatable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable implements BannableInterface
@@ -23,6 +24,7 @@ class User extends Authenticatable implements BannableInterface
     use HasRoles;
     use HasApiTokens;
     use Bannable;
+    use Chatable;
 
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
@@ -83,19 +85,24 @@ class User extends Authenticatable implements BannableInterface
             'password' => 'hashed',
         ];
     }
-    public function publicaciones(){
+    public function publicaciones()
+    {
         return $this->hasMany('App\Models\Publicacion', 'id', 'id');
     }
-    public function reporte(){
+    public function reporte()
+    {
         return $this->hasMany('App\Models\Reporte', 'id', 'id');
     }
-    public function reportado(){
+    public function reportado()
+    {
         return $this->hasMany('App\Models\Reporte', 'id_reportado', 'id');
     }
-    public function moderador(){
+    public function moderador()
+    {
         return $this->hasMany('App\Models\ReporteProcesado', 'id_reportado', 'id');
     }
-    public function comentarios(){
+    public function comentarios()
+    {
         return $this->hasMany('App\Models\Comentario', 'id', 'id');
     }
     protected static function booted()
@@ -124,4 +131,26 @@ class User extends Authenticatable implements BannableInterface
 
         return $slug;
     }
+
+
+    //CHAT
+    public function canCreateChats(): bool
+    {
+        return true;
+    }
+
+
+    public function canCreateGroups(): bool
+    {
+        return true;
+    }
+
+    public function getCoverUrlAttribute(): ?string
+    {
+        return $this->avatar ?? null; // Devuelve el valor del campo avatar directamente si existe, o null
+    }
+    
+    
+
+    
 }

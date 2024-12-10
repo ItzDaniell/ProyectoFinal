@@ -26,4 +26,7 @@ class AppServiceProvider extends ServiceProvider
             view()->share('categorias', Categorias::all());
         }
     }
+
+    
+    
 }

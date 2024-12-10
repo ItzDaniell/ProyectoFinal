@@ -49,8 +49,7 @@
                     <img class="w-full h-full object-cover" src="{{ asset($usuario->profile_photo_path) }}"
                         alt="Foto de perfil del usuario">
                 @elseif ($usuario->avatar)
-                    <img class="w-full h-full object-cover" src="{{ $usuario->avatar }}"
-                        alt="Foto de perfil del usuario">
+                    <img class="w-full h-full object-cover" src="{{ $usuario->avatar }}" alt="Foto de perfil del usuario">
                 @else
                     <img class="w-full h-full object-cover" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
                         alt="Foto de perfil predeterminada">
@@ -77,15 +76,22 @@
                 <h3 class="text-xl font-semibold mb-4">Biografía</h3>
                 <p class="text-gray-700">{{ $usuario->biografia ?? 'No hay biografía disponible.' }}</p>
             </div>
-        </div>
 
+            <div class="flex justify-end mt-10">
+                <a href="{{ route('empresa') }}" class="boton">
+                    Rol Empresa
+                </a>
+            </div>
+
+        </div>
     </div>
 </div>
 <div id="reportModal" class="hidden fixed bg-gray-800 bg-opacity-75 z-50 inset-0 overflow-y-auto">
     <div class="flex items-center justify-center min-h-screen">
         <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg">
             <h2 class="text-lg font-semibold mb-4 ">Reportar Usuario</h2>
-            <form id="reportForm" method="POST" enctype="multipart/form-data" action="{{ route('reportes.store', $usuario->slug)}}">
+            <form id="reportForm" method="POST" enctype="multipart/form-data"
+                action="{{ route('reportes.store', $usuario->slug)}}">
                 @csrf
                 <div class="mb-4">
                     <label for="tipo" class="block text-sm font-medium text-gray-700">Razón del Reporte</label>
@@ -107,10 +113,12 @@
                 </div>
                 <div class="mb-4">
                     <label for="descripcion" class="block text-sm font-medium text-gray-700">Descripción</label>
-                    <textarea name="descripcion" id="descripcion" class="w-full border rounded-md p-2" rows="4" maxlength="2048" required></textarea>
+                    <textarea name="descripcion" id="descripcion" class="w-full border rounded-md p-2" rows="4"
+                        maxlength="2048" required></textarea>
                 </div>
                 <div class="flex justify-end">
-                    <button type="button" id="cancelReport" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md mr-2">Cancelar</button>
+                    <button type="button" id="cancelReport"
+                        class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md mr-2">Cancelar</button>
                     <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Enviar</button>
                 </div>
             </form>

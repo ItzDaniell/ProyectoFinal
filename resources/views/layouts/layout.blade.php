@@ -73,6 +73,7 @@
     </style>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>DevShare - @yield('title')</title>
+    @livewireStyles
 </head>
 <body>
     <header>
@@ -200,5 +201,6 @@
           <p>DevShare 2024</p>
         </div>
       </footer>
+      @livewireScripts
 </body>
 </html>

@@ -57,7 +57,9 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>DevShare - @yield('title')</title>
     @vite(['resources/js/vista_previa.js', 'resources/js/mostrar_modal_busq_cat.js'])
+    @livewireStyles
 </head>
+
 <body>
     <div class="flex flex-col lg:flex-row">
         <!-- Sidebar con ancho fijo -->
@@ -70,7 +72,8 @@
                     <ion-icon name="home-outline"></ion-icon>
                     <span>Página Principal</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalBusquedaButton">
+                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded"
+                    id="openModalBusquedaButton">
                     <ion-icon name="search-outline"></ion-icon>
                     <span>Búsqueda</span>
                 </a>
@@ -82,7 +85,7 @@
                     <ion-icon name="laptop-outline"></ion-icon>
                     <span>Conferencias</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                <a href="{{ url('/chats') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="paper-plane-outline"></ion-icon>
                     <span>Mensajes</span>
                 </a>
@@ -97,11 +100,11 @@
                     <span>Perfil</span>
                 </a>
                 @if(auth()->user()->hasRole('Admin'))
-                <a href="{{ route('Administracion') }}"
-                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                    <ion-icon name="settings-outline"></ion-icon>
-                    <span>Administrar</span>
-                </a>
+                    <a href="{{ route('Administracion') }}"
+                        class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                        <ion-icon name="settings-outline"></ion-icon>
+                        <span>Administrar</span>
+                    </a>
                 @endif
                 <!-- Dropdown button -->
                 <div class="relative cursor-pointer">
@@ -121,8 +124,8 @@
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                        <ion-icon name="log-out-outline"></ion-icon>
-                                        <span>Cerrar Sesión</span>
+                                    <ion-icon name="log-out-outline"></ion-icon>
+                                    <span>Cerrar Sesión</span>
                                 </button>
                             </form>
                         </ul>
@@ -133,14 +136,16 @@
         <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 hidden overflow-y-auto z-50">
             <div class="flex items-center justify-center min-h-screen p-4">
                 <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl relative">
-                    <form action="{{ route('publicacion.store') }}" method="POST" enctype="multipart/form-data" class="mt-2">
+                    <form action="{{ route('publicacion.store') }}" method="POST" enctype="multipart/form-data"
+                        class="mt-2">
                         @csrf
                         <!-- Encabezado -->
                         <div class="flex justify-between items-center pb-4 border-b border-gray-300">
                             <button type="button" id="closeModalCrearButton" class="text-gray-500 hover:text-gray-700">
                                 <ion-icon name="arrow-back-outline" size="large"></ion-icon>
                             </button>
-                            <h2 class="text-2xl font-bold text-center flex-grow text-gray-800">Crear Nueva Publicación</h2>
+                            <h2 class="text-2xl font-bold text-center flex-grow text-gray-800">Crear Nueva Publicación
+                            </h2>
                             <button type="submit" class="text-blue-600 font-medium hover:text-blue-800">
                                 Publicar
                             </button>
@@ -150,43 +155,58 @@
                             <!-- Sección de imagen -->
                             <div class="lg:w-1/3 flex-shrink-0">
                                 <label for="imageInput" class="block text-gray-700 font-medium mb-2">Archivo</label>
-                                <div class="border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center h-60 sm:h-72 lg:h-80">
+                                <div
+                                    class="border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center h-60 sm:h-72 lg:h-80">
                                     <div class="bg-gray-100 p-6 rounded-lg mb-4">
                                         <ion-icon name="image-outline" class="text-6xl text-gray-400"></ion-icon>
                                     </div>
-                                    <input type="file" name="archivo" class="hidden" id="imageInput" accept="image/*,application/pdf,.doc,.docx,.rar,.zip" />
-                                    <button type="button" onclick="document.getElementById('imageInput').click();" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                                    <input type="file" name="archivo" class="hidden" id="imageInput"
+                                        accept="image/*,application/pdf,.doc,.docx,.rar,.zip" />
+                                    <button type="button" onclick="document.getElementById('imageInput').click();"
+                                        class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
                                         Seleccionar archivo
                                     </button>
-                                    <p id="fileName" class="text-sm text-gray-500 mt-2 text-center">Ningún archivo seleccionado</p>
+                                    <p id="fileName" class="text-sm text-gray-500 mt-2 text-center">Ningún archivo
+                                        seleccionado</p>
                                 </div>
                             </div>
                             <!-- Sección de información -->
                             <div class="lg:w-2/3">
                                 <label for="titulo" class="block text-gray-700 font-medium mb-2">Título</label>
-                                <input type="text" name="titulo" id="titulo" class="w-full p-3 border border-gray-300 rounded-lg mb-2" placeholder="Ingresa un título" required>
+                                <input type="text" name="titulo" id="titulo"
+                                    class="w-full p-3 border border-gray-300 rounded-lg mb-2"
+                                    placeholder="Ingresa un título" required>
 
-                                <label for="descripcion" class="block text-gray-700 font-medium mb-2">Descripción</label>
-                                <textarea name="descripcion" id="descripcion" rows="4" class="w-full p-3 border border-gray-300 rounded-lg mb-2" placeholder="Ingresa una descripción" required></textarea>
+                                <label for="descripcion"
+                                    class="block text-gray-700 font-medium mb-2">Descripción</label>
+                                <textarea name="descripcion" id="descripcion" rows="4"
+                                    class="w-full p-3 border border-gray-300 rounded-lg mb-2"
+                                    placeholder="Ingresa una descripción" required></textarea>
 
                                 <label for="id_categoria" class="block text-gray-700 font-medium mb-2">Categoría</label>
-                                <select name="id_categoria" id="id_categoria" class="w-full p-3 border border-gray-300 rounded-lg mb-2" required>
+                                <select name="id_categoria" id="id_categoria"
+                                    class="w-full p-3 border border-gray-300 rounded-lg mb-2" required>
                                     <option value="">[ SELECCIONE ]</option>
                                     @foreach ($categorias as $categoria)
-                                        <option value="{{ $categoria->id_categoria }}">{{ $categoria->descripcion }}</option>
+                                        <option value="{{ $categoria->id_categoria }}">{{ $categoria->descripcion }}
+                                        </option>
                                     @endforeach
                                 </select>
 
                                 <!-- Campo opcional de enlace a proyecto -->
-                                <label for="URL" class="block text-gray-700 font-medium mb-2">Enlace al Proyecto (Opcional)</label>
-                                <input type="url" name="URL" id="URL" class="w-full p-3 border border-gray-300 rounded-lg mb-2" placeholder="Enlace a tu proyecto">
+                                <label for="URL" class="block text-gray-700 font-medium mb-2">Enlace al Proyecto
+                                    (Opcional)</label>
+                                <input type="url" name="URL" id="URL"
+                                    class="w-full p-3 border border-gray-300 rounded-lg mb-2"
+                                    placeholder="Enlace a tu proyecto">
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <div id="searchModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div id="searchModal"
+            class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden z-50">
             <div class="bg-white w-96 p-6 rounded shadow-lg">
                 <div class="flex justify-between items-center border-b pb-2 mb-4">
                     <h2 class="text-xl font-bold">Buscar Personas</h2>
@@ -195,7 +215,8 @@
                     </button>
                 </div>
                 <div class="space-y-4">
-                    <input id="searchInput" type="text" placeholder="Escribe un nombre..." class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input id="searchInput" type="text" placeholder="Escribe un nombre..."
+                        class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <!-- Resultados de búsqueda -->
                     <div id="searchResults" class="mt-2 space-y-2">
                         <!-- Resultados de búsqueda -->
@@ -239,6 +260,8 @@
             @yield('content')
         </div>
     </div>
+    @livewireScripts
     @vite(['resources/js/mostrar_opciones.js', 'resources/js/opciones.js', 'resources/js/mostrar_modal_crear.js', 'resources/js/mostrar_busqueda_nombre.js', 'resources/js/autocomplete.js'])
 </body>
+
 </html>

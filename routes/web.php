@@ -164,3 +164,8 @@ Route::get('/administracion', function () {
 })->middleware(['auth', 'verified'])->name('Administracion');
 
 
+Route::get('/empresa', function () {
+    return view('PostInicioSesion.Empresa'); // Asegúrate de que "empresa" coincide con la ubicación de tu archivo Empresa.blade.php
+})->name('empresa');
+
+
