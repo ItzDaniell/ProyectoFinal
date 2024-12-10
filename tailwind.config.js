@@ -11,6 +11,9 @@ export default {
         './resources/views/**/*.blade.php',
         './vendor/namu/wirechat/resources/views/**/*.blade.php',
         './vendor/namu/wirechat/src/Livewire/**/*.php',
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './resources/**/*.vue',
     ],
 
     theme: {
