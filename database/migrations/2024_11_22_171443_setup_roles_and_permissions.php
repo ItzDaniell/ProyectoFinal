@@ -49,7 +49,7 @@ return new class extends Migration
 
 
         // Asignar permisos a cada rol
-        $admin->givePermissionTo(['manage-comments', 'manage-publications', 'manage-reports', 'manage-conferences', 'manage-requests', 'manage-news', 'manage-users', 'manage-category']);
+        $admin->givePermissionTo(['manage-comments', 'manage-publications', 'manage-reports', 'manage-conferences', 'manage-requests', 'post-promotions', 'manage-news', 'manage-users', 'manage-ponents', 'manage-category', 'manage-inscriptions']);
         $moderator->givePermissionTo(['manage-comments', 'manage-publications', 'manage-reports', 'manage-users']);
         $conferenceManager->givePermissionTo(['manage-conferences', 'manage-ponents', 'manage-inscriptions']);
         $techSupport->givePermissionTo(['manage-requests', 'manage-news']);

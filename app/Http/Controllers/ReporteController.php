@@ -14,7 +14,7 @@ class ReporteController extends Controller
      */
     public function index()
     {
-        $reportes = Reporte::where('estado', '=', 'Activo')->orderBy('id_reporte', 'desc')->paginate(10);
+        $reportes = Reporte::where('estado', 'Activo')->orderBy('id_reporte', 'desc')->paginate(10);
         return view('reporte.index', compact('reportes'));
     }
 

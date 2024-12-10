@@ -8,7 +8,7 @@ class InformarProblema extends Model
 {
     protected $table = 'informar_problemas';
     protected $primaryKey = 'id_informar_problema';
-    protected $fillable = ['id', 'tipo_problema', 'imagen', 'descripcion', 'estado'];
+    protected $fillable = ['id', 'tipo', 'imagen', 'descripcion', 'estado'];
 
     public function users(){
         return $this->belongsTo('App\Models\User', 'id', 'id');

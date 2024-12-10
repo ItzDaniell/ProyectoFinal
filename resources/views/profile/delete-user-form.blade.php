@@ -29,23 +29,22 @@
 
                 <div class="mt-4" x-data="{}" x-on:confirming-delete-user.window="setTimeout(() => $refs.password.focus(), 250)">
                     <x-input type="password" class="mt-1 block w-3/4"
+                                class="mt-1 block w-full h-8 bg-white text-black border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-700 pl-1"
                                 autocomplete="current-password"
                                 placeholder="{{ __('Password') }}"
                                 x-ref="password"
                                 wire:model="password"
                                 wire:keydown.enter="deleteUser" />
-
-                    <x-input-error for="password" class="mt-2" />
                 </div>
             </x-slot>
 
             <x-slot name="footer">
                 <x-secondary-button wire:click="$toggle('confirmingUserDeletion')" wire:loading.attr="disabled">
-                    {{ __('Cancel') }}
+                    {{ __('Cancelar') }}
                 </x-secondary-button>
 
-                <x-danger-button class="ms-3" wire:click="deleteUser" wire:loading.attr="disabled">
-                    {{ __('Delete Account') }}
+                <x-danger-button class="ms-3 ml-5" wire:click="deleteUser" wire:loading.attr="disabled">
+                    {{ __('Eliminar Cuenta') }}
                 </x-danger-button>
             </x-slot>
         </x-dialog-modal>

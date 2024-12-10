@@ -31,10 +31,9 @@
                                 <button id="openReportButton" class="w-full block px-4 py-2 text-left">Reportar</button>
                             </li>
                             <li class="border-b border-gray-300 py-2 cursor-pointer hover:bg-gray-300">
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="w-full text-left px-4 py-2">Enviar Mensaje</button>
-                                </form>
+                                <a href="{{ url('/chats', $usuario->id) }}" class="w-full block px-4 py-2 text-left">
+                                    Enviar Mensaje
+                                </a>
                             </li>
                         @endif
                     </ul>
@@ -76,13 +75,13 @@
                 <h3 class="text-xl font-semibold mb-4">Biografía</h3>
                 <p class="text-gray-700">{{ $usuario->biografia ?? 'No hay biografía disponible.' }}</p>
             </div>
-
+            @if ($usuario->id === Auth::id())
             <div class="flex justify-end mt-10">
                 <a href="{{ route('empresa') }}" class="boton">
                     Rol Empresa
                 </a>
             </div>
-
+            @endif
         </div>
     </div>
 </div>

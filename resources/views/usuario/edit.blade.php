@@ -33,7 +33,13 @@
             <div>
                 <label for="profile_photo_pat" class="block text-sm font-medium text-gray-700">Foto de Perfil</label>
                 <div class="mt-4">
-                    <img id="preview" src="{{ asset('storage/' . $usuario->profile_photo_path) }}" alt="Foto del Usuario" class="w-32 h-32 object-cover border border-gray-300 rounded-full">
+                    @if ($usuario->profile_photo_path)
+                        <img id="preview" src="{{ asset('storage/' . $usuario->profile_photo_path) }}" alt="Foto del Usuario" class="w-32 h-32 object-cover border border-gray-300 rounded-full">
+                    @elseif (!empty($usuario->avatar) && filter_var($usuario->avatar, FILTER_VALIDATE_URL))
+                        <img class="w-32 h-32 object-cover border border-gray-300 rounded-full" src="{{ preg_match('/^https?:\/\//', $usuario->avatar) ? $usuario->avatar : 'https://' . ltrim($usuario->avatar, '/') }}" alt="Foto de perfil del usuario">
+                    @else
+                        <img class="w-32 h-32 object-cover border border-gray-300 rounded-full" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Foto de perfil predeterminada">
+                    @endif
                 </div>
             </div>
 

@@ -63,7 +63,7 @@
 <body>
     <div class="flex flex-col lg:flex-row">
         <!-- Sidebar con ancho fijo -->
-        <div class="bg-gray-800 text-white w-64 h-screen p-4">
+        <div class="bg-zinc-900 text-white w-64 h-screen p-4">
             <div class="flex items-center justify-center h-16 border-b border-gray-700">
                 <span class="text-2xl font-semibold">DevShare</span>
             </div>
@@ -73,7 +73,7 @@
                     <span>Página Principal</span>
                 </a>
                 <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalBusquedaButton">
-                    <ion-icon name="search-outline"></ion-icon>
+                    <ion-icon name="search-outline" class="text-2xl"></ion-icon>
                     <span>Búsqueda</span>
                 </a>
                 <a href="{{ route('Noticias') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
@@ -84,8 +84,8 @@
                     <ion-icon name="laptop-outline" class="text-2xl"></ion-icon>
                     <span>Conferencias</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                    <ion-icon name="paper-plane-outline"></ion-icon>
+                <a href="{{ url('/chats') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                    <ion-icon name="paper-plane-outline" class="text-2xl"></ion-icon>
                     <span>Mensajes</span>
                 </a>
                 <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalCrearButton">
@@ -101,8 +101,15 @@
                 @if(auth()->user()->hasRole('Admin'))
                 <a href="{{ route('Administracion') }}"
                     class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                    <ion-icon name="settings-outline"></ion-icon>
+                    <ion-icon name="settings-outline" class="text-2xl"></ion-icon>
                     <span>Administrar</span>
+                </a>
+                @endif
+                @if(auth()->user()->hasRole('Usuario'))
+                <a href="#" id="openModal"
+                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                    <ion-icon name="information-circle-outline" class="text-2xl"></ion-icon>
+                    <span>Informar Problema</span>
                 </a>
                 @endif
                 <!-- Dropdown button -->
@@ -123,8 +130,8 @@
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                        <ion-icon name="log-out-outline"></ion-icon>
-                                        <span>Cerrar Sesión</span>
+                                    <ion-icon name="log-out-outline" class="text-2xl"></ion-icon>
+                                    <span>Cerrar Sesión</span>
                                 </button>
                             </form>
                         </ul>
@@ -154,19 +161,17 @@
                             <!-- Sección de imagen -->
                             <div class="lg:w-1/3 flex-shrink-0">
                                 <label for="imageInput" class="block text-gray-700 font-medium mb-2">Archivo</label>
-                                <div
-                                    class="border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center h-60 sm:h-72 lg:h-80">
+                                <div class="border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center h-96 sm:h-96 lg:h-96">
                                     <div class="bg-gray-100 p-6 rounded-lg mb-4">
                                         <ion-icon name="image-outline" class="text-6xl text-gray-400"></ion-icon>
                                     </div>
-                                    <input type="file" name="archivo" class="hidden" id="imageInput"
-                                        accept="image/*,application/pdf,.doc,.docx,.rar,.zip" />
-                                    <button type="button" onclick="document.getElementById('imageInput').click();"
-                                        class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                                    <input type="file" name="archivo" class="hidden" id="imageInput" accept="image/*,application/pdf,.doc,.docx,.rar,.zip" />
+                                    <button type="button" onclick="document.getElementById('imageInput').click();" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 w-48">
                                         Seleccionar archivo
                                     </button>
-                                    <p id="fileName" class="text-sm text-gray-500 mt-2 text-center">Ningún archivo
-                                        seleccionado</p>
+                                    <p id="fileName" class="text-sm text-gray-500 mt-2 text-center truncate max-w-full overflow-hidden text-ellipsis">
+                                        Ningún archivo seleccionado
+                                    </p>
                                 </div>
                             </div>
                             <!-- Sección de información -->
@@ -204,8 +209,7 @@
                 </div>
             </div>
         </div>
-        <div id="searchModal"
-            class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden z-50">
+        <div id="searchModal" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center hidden z-50">
             <div class="bg-white w-96 p-6 rounded shadow-lg">
                 <div class="flex justify-between items-center border-b pb-2 mb-4">
                     <h2 class="text-xl font-bold">Buscar Personas</h2>
@@ -227,7 +231,7 @@
             <div class="flex items-center justify-center min-h-screen">
                 <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg">
                     <h2 class="text-lg font-semibold mb-4 ">Informar Problema</h2>
-                    <form id="problemForm" method="POST" enctype="multipart/form-data" action="">
+                    <form id="problemForm" method="POST" enctype="multipart/form-data" action="{{ route('informes.store') }}">
                         @csrf
                         <div class="mb-4">
                             <label for="tipo" class="block text-sm font-medium text-gray-700">Tipo de problema que presenta</label>
@@ -292,26 +296,26 @@
         </script>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-            const openModalButton = document.getElementById('openModal'); // Botón para abrir el modal
-            const modal = document.getElementById('problemModal'); // El modal
-            const cancelButton = document.getElementById('cancelProblem'); // Botón para cancelar
-            const problemForm = document.getElementById('problemForm'); // Formulario del modal
+                const openModalButton = document.getElementById('openModal'); // Botón para abrir el modal
+                const modal = document.getElementById('problemModal'); // El modal
+                const cancelButton = document.getElementById('cancelProblem'); // Botón para cancelar
+                const problemForm = document.getElementById('problemForm'); // Formulario del modal
 
-            // Abrir modal
-            openModalButton.addEventListener('click', function () {
-                modal.classList.remove('hidden'); // Muestra el modal
-            });
+                // Abrir modal
+                openModalButton.addEventListener('click', function () {
+                    modal.classList.remove('hidden'); // Muestra el modal
+                });
 
-            // Cerrar modal cuando se hace clic en "Cancelar"
-            cancelButton.addEventListener('click', function () {
-                modal.classList.add('hidden'); // Oculta el modal
-            });
+                // Cerrar modal cuando se hace clic en "Cancelar"
+                cancelButton.addEventListener('click', function () {
+                    modal.classList.add('hidden'); // Oculta el modal
+                });
 
-            // Cerrar modal al enviar el formulario
-            problemForm.addEventListener('submit', function () {
-                modal.classList.add('hidden'); // Oculta el modal después de enviar
+                // Cerrar modal al enviar el formulario
+                problemForm.addEventListener('submit', function () {
+                    modal.classList.add('hidden'); // Oculta el modal después de enviar
+                });
             });
-        });
         </script>
         <div class="flex-1 bg-gray-100 p-4 overflow-y-auto h-screen">
             @yield('content')
@@ -320,5 +324,4 @@
     @livewireScripts
     @vite(['resources/js/mostrar_opciones.js', 'resources/js/opciones.js', 'resources/js/mostrar_modal_crear.js', 'resources/js/mostrar_busqueda_nombre.js', 'resources/js/autocomplete.js'])
 </body>
-
 </html>

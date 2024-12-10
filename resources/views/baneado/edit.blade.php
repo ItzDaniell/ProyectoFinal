@@ -38,7 +38,7 @@
 
             <div>
                 <label for="estado" class="block text-sm font-medium text-gray-700">Estado</label>
-                <input type="text" name="estado" value="{{ $usuario->estado }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1" readonly></input>
+                <input type="text" name="estado" value="{{ $usuario->estado }}" class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1" readonly></input>
             </div>
 
             @if ($usuario->estado == 'Baneado Temporalmente')

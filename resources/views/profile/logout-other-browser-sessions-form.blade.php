@@ -52,17 +52,13 @@
         @endif
 
         <div class="flex items-center mt-5">
-            <button class="boton">
-                {{ __('Cerrar sesión en otras sesiones de navegador.') }}
-            </button>
-
-            <x-action-message class="ms-3" on="loggedOut">
-                {{ __('Done.') }}
-            </x-action-message>
+            <x-button wire:click="confirmLogout" wire:loading.attr="disabled">
+                {{ __('Cerrar Sesión en Otras Sesiones del Navegador') }}
+            </x-button>
         </div>
 
         <!-- Log Out Other Devices Confirmation Modal -->
-        <x-dialog-modal wire:model.live="confirmingLogout">
+        <x-dialog-modal wire:model="confirmingLogout">
             <x-slot name="title">
                 {{ __('Cerrar Sesión en Otras Sesiones del Navegador') }}
             </x-slot>
@@ -71,25 +67,24 @@
                 {{ __('Por favor, ingresa tu contraseña para confirmar que deseas cerrar sesión en tus otras sesiones de navegador en todos tus dispositivos.') }}
 
                 <div class="mt-4" x-data="{}" x-on:confirming-logout-other-browser-sessions.window="setTimeout(() => $refs.password.focus(), 250)">
-                    <x-input type="password" class="mt-1 block w-3/4"
-                                autocomplete="current-password"
-                                placeholder="{{ __('Password') }}"
-                                x-ref="password"
-                                wire:model="password"
-                                wire:keydown.enter="logoutOtherBrowserSessions" />
-
-                    <x-input-error for="password" class="mt-2" />
+                    <x-input
+                    type="password"
+                    class="mt-1 block w-full h-8 bg-white text-black border-gray-600 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-700 pl-1"
+                    autocomplete="current-password"
+                    placeholder="{{ __('Password') }}"
+                    x-ref="password"
+                    wire:model="password" /> <!-- wire:model actualiza el valor automáticamente -->
                 </div>
             </x-slot>
 
             <x-slot name="footer">
                 <x-secondary-button wire:click="$toggle('confirmingLogout')" wire:loading.attr="disabled">
-                    {{ __('Cancel') }}
+                    {{ __('Cancelar') }}
                 </x-secondary-button>
 
-                <x-button class="ms-3"
-                            wire:click="logoutOtherBrowserSessions"
-                            wire:loading.attr="disabled">
+                <x-button class="ml-5 ms-3"
+                          wire:click="logoutOtherBrowserSessions"
+                          wire:loading.attr="disabled">
                     {{ __('Cerrar Sesión en Otras Sesiones del Navegador') }}
                 </x-button>
             </x-slot>
