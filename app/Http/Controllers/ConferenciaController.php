@@ -35,13 +35,23 @@ class ConferenciaController extends Controller
     {
         $request->validate([
             'titulo' => 'required|max:300',
-            'id_categoria' => 'required',
-            'id_ponente' => 'required',
-            'descripcion' => 'required',
-            'duracion' => 'required',
-            'fecha_hora_inicio' => 'required',
+            'id_categoria' => 'required|exists:categorias,id_categoria',
+            'id_ponente' => 'required|exists:ponentes,id_ponente',
+            'descripcion' => 'required|max:2048',
+            'duracion' => 'required|integer|gte:60',
+            'fecha_hora_inicio' => 'required|date|after_or_equal:today',
             'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'plataforma' => 'required',
             'URL' => 'required|url',
+        ], [
+            'id_categoria.required' => 'La categoría es obligatoria.',
+            'id_categoria.exists' => 'La categoría seleccionada no es válida.',
+            'id_ponente.required' => 'El ponente es obligatorio.',
+            'id_ponente.exists' => 'El ponente seleccionado no es válido.',
+            'duracion.required' => 'La duración es obligatoria.',
+            'duracion.gte' => 'La duración debe ser al menos de 60 minutos.',
+            'fecha_hora_inicio.required' => 'La fecha de inicio es obligatoria.',
+            'fecha_hora_inicio.after_or_equal' => 'La fecha de inicio no puede ser una fecha pasada.',
         ]);
 
         $requestData = $request->all();

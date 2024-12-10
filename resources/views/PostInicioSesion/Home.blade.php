@@ -137,76 +137,12 @@
             @endif
         </div>
         <div class="p-4 bg-gray-200 rounded-b-lg flex justify-center align-middle">
-            <button class="btn-comentar flex items-center align-middle space-x-2 text-gray-800 hover:text-gray-600 hover:bg-gray-300 px-3 py-2 rounded transition duration-200" data-id="{{ $publicacion->slug }}">
+            <a href="{{ route('PublicacionComentarios', $publicacion->slug)  }}" class="btn-comentar flex items-center align-middle space-x-2 text-gray-800 hover:text-gray-600 hover:bg-gray-300 px-3 py-2 rounded transition duration-200" data-id="{{ $publicacion->id }}">
                 <ion-icon class="text-2xl text-gray-600" name="paper-plane-outline"></ion-icon>
                 <span>Comentar Publicación</span>
-            </button>
-        </div>
-    </div>
-    <div id="modal-comentarios" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-        <div class="bg-white rounded-lg shadow-lg max-w-lg w-full">
-            <div class="flex justify-between items-center p-4 border-b">
-                <h2 class="text-xl font-semibold">Comentarios</h2>
-                <button id="cerrar-modal" class="text-gray-600 hover:text-gray-800 flex items-center">
-                    <ion-icon class="text-2xl text-gray-600" name="close-outline"></ion-icon>
-                </button>
-            </div>
-            <div class="p-4">
-                <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-                        @if ($publicacion->users->profile_photo_path)
-                            <img class="w-full h-full object-cover rounded-full" src="{{ asset($publicacion->users->profile_photo_path) }}"alt="Foto de perfil del usuario">
-                        @elseif ($publicacion->users->avatar)
-                            <img class="w-full h-full object-cover rounded-full" src="{{ $publicacion->users->avatar }}" alt="Foto de perfil del usuario">
-                        @else
-                            <img class="w-full h-full object-cover" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Foto de perfil predeterminada">
-                        @endif
-                    </div>
-                    <textarea class="w-4/5 p-2 border rounded-md text-sm" rows="2" placeholder="Escribe tu comentario..."></textarea>
-                    <ion-icon class="text-2xl text-gray-600 cursor-pointer" name="paper-plane-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="p-4 border-t">
-                <div class="space-y-4">
-                    <div class="flex items-start space-x-3">
-                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-                            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Foto de perfil" class="rounded-full w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <p class="text-sm font-medium">Nombre del Usuario</p>
-                            <p class="text-xs text-gray-600">Hace 1 día</p>
-                            <p class="text-sm text-gray-800">Este es un comentario de ejemplo.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </a>
         </div>
     </div>
     @endforeach
-    <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('modal-comentarios');
-    const cerrarModal = document.getElementById('cerrar-modal');
-    const botonesComentar = document.querySelectorAll('.btn-comentar');
-
-    // Mostrar el modal al presionar el botón
-    botonesComentar.forEach((boton) => {
-        boton.addEventListener('click', () => {
-            const publicacionId = boton.dataset.id;
-            console.log(`ID de la publicación: ${publicacionId}`); // Puedes usar este ID para cargar los comentarios desde el backend.
-
-            // Mostrar modal y deshabilitar scroll en el fondo
-            modal.classList.remove('hidden');
-            document.body.classList.add('overflow-hidden');
-        });
-    });
-
-    // Ocultar el modal
-    cerrarModal.addEventListener('click', () => {
-        modal.classList.add('hidden');
-        document.body.classList.remove('overflow-hidden'); // Habilitar scroll nuevamente
-    });
-});
-    </script>
-    @vite(['resources/js/opciones_publicacion.js'])
+@vite(['resources/js/opciones_publicacion.js'])
 @endsection

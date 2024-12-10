@@ -61,10 +61,10 @@
                     <td class="px-4 py-2 border text-center">{{ $publicacion->titulo }}</td>
                     <td class="px-4 py-2 border text-center">{{ Str::limit($publicacion->descripcion, 50)  ?? 'No disponible'}}</td>
                     <td class="px-4 py-2 border text-center">
-                        @if ($publicacion->imagen)
-                            <a href="{{ asset('storage/' . $publicacion->imagen) }}" target="_blank" class="text-blue-500 hover:underline text-center">Ver Imagen</a>
+                        @if ($publicacion->archivo)
+                            <a href="{{ asset('storage/' . $publicacion->archivo) }}" target="_blank" class="text-blue-500 hover:underline">Ver Archivo</a>
                         @else
-                            Sin Imagen
+                            Sin Archivo
                         @endif
                     </td>
                     <td class="px-4 py-2 border text-center">{{ $publicacion->estado }}</td>
@@ -76,7 +76,6 @@
                             </a>
                         </div>
                     </td>
-
                 </tr>
                 @endforeach
             </tbody>

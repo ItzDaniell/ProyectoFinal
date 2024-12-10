@@ -1,6 +1,10 @@
 {
   "resources/css/app.css": {
+<<<<<<< HEAD
     "file": "assets/app-BXmI8Kvc.css",
+=======
+    "file": "assets/app-FmrWwG5q.css",
+>>>>>>> 50b6e34963475cbb5ec564575885681c4b4f1355
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -43,6 +47,12 @@
     "file": "assets/mostrar_modal_busq_cat-De_qm0-Z.js",
     "name": "mostrar_modal_busq_cat",
     "src": "resources/js/mostrar_modal_busq_cat.js",
+    "isEntry": true
+  },
+  "resources/js/mostrar_modal_comentario.js": {
+    "file": "assets/mostrar_modal_comentario-D8ldHOgi.js",
+    "name": "mostrar_modal_comentario",
+    "src": "resources/js/mostrar_modal_comentario.js",
     "isEntry": true
   },
   "resources/js/mostrar_modal_crear.js": {

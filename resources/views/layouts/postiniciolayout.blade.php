@@ -69,47 +69,46 @@
             </div>
             <nav class="space-y-4 mt-4">
                 <a href="{{ route('Home') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                    <ion-icon name="home-outline"></ion-icon>
+                    <ion-icon name="home-outline" class="text-2xl"></ion-icon>
                     <span>Página Principal</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded"
-                    id="openModalBusquedaButton">
+                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalBusquedaButton">
                     <ion-icon name="search-outline"></ion-icon>
                     <span>Búsqueda</span>
                 </a>
                 <a href="{{ route('Noticias') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                    <ion-icon name="newspaper-outline"></ion-icon>
+                    <ion-icon name="newspaper-outline" class="text-2xl"></ion-icon>
                     <span>Noticias</span>
                 </a>
                 <a href="{{ route('Conferencias') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                    <ion-icon name="laptop-outline"></ion-icon>
+                    <ion-icon name="laptop-outline" class="text-2xl"></ion-icon>
                     <span>Conferencias</span>
                 </a>
-                <a href="{{ url('/chats') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
                     <ion-icon name="paper-plane-outline"></ion-icon>
                     <span>Mensajes</span>
                 </a>
                 <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalCrearButton">
-                    <ion-icon name="create-outline"></ion-icon>
+                    <ion-icon name="create-outline" class="text-2xl"></ion-icon>
                     <span>Crear</span>
                 </a>
                 <div class="border-t border-gray-700 mt-1 pt-1"></div>
                 <a href="{{ route('PerfilUsuario') }}"
                     class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                    <ion-icon name="person-circle-outline"></ion-icon>
+                    <ion-icon name="person-circle-outline" class="text-2xl"></ion-icon>
                     <span>Perfil</span>
                 </a>
                 @if(auth()->user()->hasRole('Admin'))
-                    <a href="{{ route('Administracion') }}"
-                        class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                        <ion-icon name="settings-outline"></ion-icon>
-                        <span>Administrar</span>
-                    </a>
+                <a href="{{ route('Administracion') }}"
+                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                    <ion-icon name="settings-outline"></ion-icon>
+                    <span>Administrar</span>
+                </a>
                 @endif
                 <!-- Dropdown button -->
                 <div class="relative cursor-pointer">
                     <a onclick="toggleMenu()" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                        <ion-icon name="menu-outline"></ion-icon>
+                        <ion-icon name="menu-outline" class="text-2xl"></ion-icon>
                         <span>Más Opciones</span>
                     </a>
                     <!-- Dropdown menu (posicionado hacia arriba) -->
@@ -118,14 +117,14 @@
                         <ul class="space-y-2">
                             <a href="{{ route('Configuracion') }}"
                                 class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                <ion-icon name="settings-outline"></ion-icon>
+                                <ion-icon name="settings-outline" class="text-2xl"></ion-icon>
                                 <span>Configuración</span>
                             </a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <button type="submit" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
-                                    <ion-icon name="log-out-outline"></ion-icon>
-                                    <span>Cerrar Sesión</span>
+                                        <ion-icon name="log-out-outline"></ion-icon>
+                                        <span>Cerrar Sesión</span>
                                 </button>
                             </form>
                         </ul>
@@ -224,6 +223,41 @@
                 </div>
             </div>
         </div>
+        <div id="problemModal" class="hidden fixed bg-gray-800 bg-opacity-75 z-50 inset-0 overflow-y-auto">
+            <div class="flex items-center justify-center min-h-screen">
+                <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg">
+                    <h2 class="text-lg font-semibold mb-4 ">Informar Problema</h2>
+                    <form id="problemForm" method="POST" enctype="multipart/form-data" action="">
+                        @csrf
+                        <div class="mb-4">
+                            <label for="tipo" class="block text-sm font-medium text-gray-700">Tipo de problema que presenta</label>
+                            <select type="text" name="tipo" id="tipo" class="w-full border rounded-md p-2" required>
+                                <option value="">Seleccione el problema</option>
+                                <option value="Errores de Carga Lenta">Errores de carga lenta</option>
+                                <option value="Enlaces Rotos">Enlaces rotos</option>
+                                <option value="Problemas de Compatibilidad entre Navegadores">Problemas de compatibilidad entre navegadores</option>
+                                <option value="Errores en Formularios">Errores en formularios</option>
+                                <option value="Problemas de Seguridad">Problemas de seguridad</option>
+                                <option value="Falta de Accesibilidad">Falta de accesibilidad</option>
+                                <option value="Otro problema">Otro problema</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label for="imagen" class="block text-sm font-medium text-gray-700">Subir Imagen (opcional)</label>
+                            <input type="file" name="imagen" id="imagen" class="w-full border rounded-md p-2">
+                        </div>
+                        <div class="mb-4">
+                            <label for="descripcion" class="block text-sm font-medium text-gray-700">Descripción</label>
+                            <textarea name="descripcion" id="descripcion" class="w-full border rounded-md p-2" rows="4" maxlength="2048" required></textarea>
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="button" id="cancelProblem" class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md mr-2">Cancelar</button>
+                            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         {{-- Otros Scripts --}}
         <script>
             document.addEventListener('DOMContentLoaded', function () {
@@ -255,6 +289,29 @@
                     }, 100); // Ajustar el tiempo según sea necesario
                 });
             });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+            const openModalButton = document.getElementById('openModal'); // Botón para abrir el modal
+            const modal = document.getElementById('problemModal'); // El modal
+            const cancelButton = document.getElementById('cancelProblem'); // Botón para cancelar
+            const problemForm = document.getElementById('problemForm'); // Formulario del modal
+
+            // Abrir modal
+            openModalButton.addEventListener('click', function () {
+                modal.classList.remove('hidden'); // Muestra el modal
+            });
+
+            // Cerrar modal cuando se hace clic en "Cancelar"
+            cancelButton.addEventListener('click', function () {
+                modal.classList.add('hidden'); // Oculta el modal
+            });
+
+            // Cerrar modal al enviar el formulario
+            problemForm.addEventListener('submit', function () {
+                modal.classList.add('hidden'); // Oculta el modal después de enviar
+            });
+        });
         </script>
         <div class="flex-1 bg-gray-100 p-4 overflow-y-auto h-screen">
             @yield('content')

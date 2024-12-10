@@ -11,7 +11,7 @@
             <h1 class="text-4xl font-bold text-black">Perfil de Usuario</h1>
             <div class="relative">
                 <button id="optionsButton" class="text-gray-500 text-xl">
-                    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                    <ion-icon class="text-2xl" name="ellipsis-horizontal"></ion-icon>
                 </button>
                 <div id="optionsMenu" class="absolute right-0 mt-2 w-48 bg-gray-200 rounded-lg shadow-lg hidden">
                     <ul class="text-center">

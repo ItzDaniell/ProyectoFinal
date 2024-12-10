@@ -60,6 +60,16 @@
                     <img id="preview" src="#" alt="Imagen de la conferencia" class="hidden w-64 h-64 object-cover border border-gray-300">
                 </div>
             </div>
+            <label for="plataforma" class="block text-sm font-medium text-gray-700">Plataforma de la Conferencia</label>
+            <select name="plataforma" id="plataforma" required class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-2">
+                <option value="">[ SELECCIONE ]</option>
+                <option value="Google Meet">Google Meet</option>
+                <option value="Zoom">Zoom</option>
+                <option value="Microsoft Teams">Microsoft Teams</option>
+                <option value="Webex">Webex</option>
+                <option value="Skype">Skype</option>
+                <option value="Discord">Discord</option>
+            </select>
             <div>
                 <label for="url" class="block text-sm font-medium text-gray-700">URL</label>
                 <input type="url" name="URL" id="url" required class="mt-1 block w-full h-10 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-2">
