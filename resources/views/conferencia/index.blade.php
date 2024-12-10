@@ -22,6 +22,7 @@
                     <th class="px-4 py-2 border text-center">Duración (Min)</th>
                     <th class="px-4 py-2 border text-center">Fecha/Hora</th>
                     <th class="px-4 py-2 border text-center">Imagen</th>
+                    <th class="px-4 py-2 border text-center">Plataforma</th>
                     <th class="px-4 py-2 border text-center">URL</th>
                     <th class="px-4 py-2 border text-center">Estado</th>
                     <th class="px-4 py-2 border text-center">Acciones</th>
@@ -39,6 +40,7 @@
                     <td class="px-4 py-2 border text-center">
                         <a href="{{ asset('storage/' . $conferencia->imagen) }}" target="_blank" class="text-blue-500 hover:underline text-center">Ver Imagen</a>
                     </td>
+                    <td class="px-4 py-2 border text-center">{{ $conferencia->plataforma }}</td>
                     <td class="px-4 py-2 border text-center">
                         <a href="{{ $conferencia->URL }}" class="text-blue-500 hover:underline" target="_blank">Ver enlace</a>
                     </td>

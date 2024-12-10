@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     BanController,
     CategoriaController,
+    ComentarioController,
     ConferenciaController,
     NoticiaController,
     PonenteController,
@@ -21,7 +22,7 @@ use Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-
+use Spatie\Permission\Models\Role;
 
 //Rutas Públicas (No requieren autenticación)
 Route::get('/', [PreInicioSesionController::class, 'Bienvenida'])->name('Bienvenida');
@@ -57,8 +58,11 @@ Route::middleware([
         Route::get('/eliminar-cuenta', [PostInicioSesionController::class, 'ConfiguracionEliminarCuenta'])->name('ConfiguracionEliminarCuenta');
     });
 
+    Route::get('/conferencia/{slug}', [PostInicioSesionController::class, 'DetalleConferencia'])->name('DetalleConferencia');
+    Route::get('/publicacion/{slug}/comentarios', [PostInicioSesionController::class, 'PublicacionComentarios'])->name('PublicacionComentarios');
     Route::get('/perfil-usuario/{slug?}', [PostInicioSesionController::class, 'PerfilUsuario'])->name('PerfilUsuario');
     Route::post('/reporte/{slug}/store', [ReporteController::class, 'store'])->name('reportes.store');
+    Route::post('/comentario/{slug}/store', [ComentarioController::class, 'store'])->name('comentarios.store');
     Route::post('/publicacion/store', [PublicacionController::class, 'store'])->name('publicacion.store');
 });
 
@@ -145,8 +149,11 @@ Route::prefix('/google-auth')->group(function () {
                 'email' => $user_google->email,
                 'avatar' => $user_google->avatar,
                 'password' => bcrypt(str()->random(16)),
+
             ]
         );
+        $role = Role::where('name', 'Usuario')->first();
+        $user->assignRole($role);
         Auth::login($user);
         return redirect('/home');
     });

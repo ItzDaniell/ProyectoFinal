@@ -46,8 +46,9 @@
                 <p class="text-sm text-gray-700">Categoría: <span class="font-medium">{{ $conferencia->categoria->descripcion }}</span></p>
                 <p class="text-sm text-gray-700">Ponente: <span class="font-medium">{{ $conferencia->ponente->nombres }}</span></p>
                 <p class="text-sm text-gray-700">Duración: <span class="font-medium">{{ $conferencia->duracion }} Minutos</span></p>
+                <p class="text-sm text-gray-700">Plataforma: <span class="font-medium">{{ $conferencia->plataforma }} </span></p>
                 <p class="text-sm text-gray-700">Fecha y Hora de Inicio: <span class="font-medium">{{ $conferencia->fecha_hora_inicio }}</span></p>
-                <button class="mt-4 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Ver Detalles</button>
+                <a href="{{ route('DetalleConferencia', $conferencia->slug) }}"><button class="mt-4 w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600">Ver Detalles</button></a>
             </div>
         </div>
         @endforeach

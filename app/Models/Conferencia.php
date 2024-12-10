@@ -9,7 +9,7 @@ class Conferencia extends Model
 {
     protected $table = 'conferencias';
     protected $primaryKey = 'id_conferencia';
-    protected $fillable = ['id_ponente', 'id_categoria', 'titulo', 'descripcion', 'duracion', 'fecha_hora_inicio', 'imagen', 'URL', 'estado', 'slug'];
+    protected $fillable = ['id_ponente', 'id_categoria', 'titulo', 'descripcion', 'duracion', 'fecha_hora_inicio', 'imagen', 'plataforma', 'URL', 'estado', 'slug'];
     public function categoria(){
         return $this->belongsTo('App\Models\Categorias', 'id_categoria', 'id_categoria');
     }

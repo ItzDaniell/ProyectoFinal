@@ -41,12 +41,12 @@
             </div>
 
             <div>
-                <label for="imagen" class="block text-sm font-medium text-gray-700">Imagen de la Publicación</label>
-                @if ($publicacion->imagen == 'Sin Imagen')
-                    <input type="text" name="imagen" required value="{{ $publicacion->imagen }}" class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1" readonly>
+                <label for="archivo" class="block text-sm font-medium text-gray-700">Archivo de la Publicación</label>
+                @if ($publicacion->archivo == 'Sin Archivo')
+                    <input type="text" name="archivo" value="{{ $publicacion->archivo }}" class="mt-1 block w-full h-8 border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-1" readonly>
                 @else
                     <div class="mt-4">
-                        <img src="{{ asset('storage/' . $publicacion->imagen) }}" alt="Imagen de la Publicación" class="w-64 h-64 object-cover border border-gray-300">
+                        <a href="{{ asset('storage/' . $publicacion->archivo) }}" target="_blank" class="text-blue-500 hover:underline">Ver archivo</a>
                     </div>
                 @endif
             </div>
@@ -68,10 +68,49 @@
 @stop
 
 @section('css')
-    {{-- Add here extra stylesheets --}}
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 @stop
 
 @section('js')
-    <script> console.log("Hi, I'm using the Laravel-AdminLTE package!"); </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const fileInput = document.querySelector('input[name="archivo"]');
+            const previewContainer = document.createElement('div');
+            const previewElement = document.createElement('div');
+
+            previewContainer.classList.add('mt-4');
+            previewElement.id = 'archivo-preview';
+            previewContainer.appendChild(previewElement);
+            fileInput.parentElement.appendChild(previewContainer);
+
+            fileInput.addEventListener('change', function (event) {
+                const file = event.target.files[0];
+                previewElement.innerHTML = '';
+
+                if (file) {
+                    const fileExtension = file.name.split('.').pop().toLowerCase();
+
+                    if (['jpg', 'jpeg', 'png', 'gif'].includes(fileExtension)) {
+                        const img = document.createElement('img');
+                        img.src = URL.createObjectURL(file);
+                        img.alt = 'Vista previa de la imagen';
+                        img.classList.add('w-64', 'h-64', 'object-cover', 'border', 'border-gray-300');
+                        previewElement.appendChild(img);
+                    } else {
+                        const fileInfo = document.createElement('p');
+                        fileInfo.textContent = `Archivo seleccionado: ${file.name}`;
+                        fileInfo.classList.add('text-gray-600', 'text-sm', 'mt-2');
+                        previewElement.appendChild(fileInfo);
+
+                        const fileLink = document.createElement('a');
+                        fileLink.href = URL.createObjectURL(file);
+                        fileLink.target = '_blank';
+                        fileLink.textContent = 'Abrir archivo';
+                        fileLink.classList.add('text-blue-500', 'hover:underline', 'mt-2', 'block');
+                        previewElement.appendChild(fileLink);
+                    }
+                }
+            });
+        });
+    </script>
 @stop

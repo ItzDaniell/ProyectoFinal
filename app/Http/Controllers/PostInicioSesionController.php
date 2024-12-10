@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categorias;
+use App\Models\Comentario;
 use App\Models\Conferencia;
 use App\Models\Noticia;
 use App\Models\Publicacion;
@@ -17,13 +18,14 @@ class PostInicioSesionController extends Controller
         $categorias = Categorias::all();
         $categoria = $request->input('categoria', null);
         $busqueda = $request->input('busqueda', null);
+        $comentarios = Comentario::where('estado', 'Activo')->orderBy('id_publicacion, desc');
 
         if ($busqueda) {
             $publicaciones = Publicacion::where('titulo', 'LIKE', '%' . $busqueda . '%')
                 ->where('estado', 'Activo')
                 ->orderBy('id_publicacion', 'desc')
                 ->paginate(10);
-            return view('PostInicioSesion.Home', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
+            return view('PostInicioSesion.Home', compact('publicaciones', 'categorias', 'busqueda', 'categoria', 'comentarios'));
         } elseif ($categoria) {
             if ($categoria == '0') {
                 $publicaciones = Publicacion::orderBy('id_publicacion')->paginate(10);
@@ -35,10 +37,10 @@ class PostInicioSesionController extends Controller
                     ->select('publicaciones.*', 'categorias.descripcion as categoria_descripcion')
                     ->paginate(10);
             }
-            return view('PostInicioSesion.Home', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
+            return view('PostInicioSesion.Home', compact('publicaciones', 'categorias', 'busqueda', 'categoria', 'comentarios'));
         } else {
             $publicaciones = Publicacion::orderBy('id_publicacion', 'desc')->where('estado', 'Activo')->paginate(10);
-            return view('PostInicioSesion.Home', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
+            return view('PostInicioSesion.Home', compact('publicaciones', 'categorias', 'busqueda', 'categoria', 'comentarios'));
         }
     }
 
@@ -100,6 +102,22 @@ class PostInicioSesionController extends Controller
         $conferencias = $query->orderBy('id_conferencia', 'desc')->paginate(10);
 
         return view('PostInicioSesion.Conferencias', compact('conferencias', 'categorias', 'busqueda', 'categoria'));
+    }
+
+
+    public function PublicacionComentarios($slug)
+    {
+        $publicacion = Publicacion::where('slug', $slug)->first();
+
+        $comentarios = Comentario::where('id_publicacion', $publicacion->id_publicacion)->get();
+
+        return view('PostInicioSesion.PublicacionComentarios', compact('publicacion', 'comentarios'));
+    }
+
+    public function DetalleConferencia($slug)
+    {
+        $conferencia = Conferencia::where('slug', $slug)->first();
+        return view('PostInicioSesion.DetallesConferencia', compact('conferencia'));
     }
 
     public function ConfiguracionPerfil(){

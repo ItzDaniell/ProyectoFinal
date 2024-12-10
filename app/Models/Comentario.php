@@ -13,6 +13,6 @@ class Comentario extends Model
         return $this->belongsTo('App\Models\Publicacion', 'id_publicacion', 'id_publicacion');
     }
     public function users(){
-        return $this->belongsTo('App\Models\Publicacion', 'id', 'id');
+        return $this->belongsTo('App\Models\User', 'id', 'id');
     }
 }

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comentario;
+use App\Models\Publicacion;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ComentarioController extends Controller
 {
@@ -25,17 +28,29 @@ class ComentarioController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $slug)
     {
+        $request->validate([
+            'contenido' => 'required|max:300',
+        ]);
 
+        $publicacion = Publicacion::where('slug','=', $slug)->first();
+
+        $requestData = $request->except(['id', 'id_publicacion']);
+        $requestData['id'] = Auth::id();
+        $requestData['id_publicacion'] = $publicacion->id_publicacion;
+
+        Comentario::create($requestData);
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Publicacion $publicacion)
     {
-        //
+        $comentarios = $publicacion->comentarios()->with('users')->get();  // Traemos todos los comentarios con la relación de usuario
+        return response()->json($comentarios);
     }
 
     /**
@@ -61,4 +76,5 @@ class ComentarioController extends Controller
     {
         //
     }
+
 }
