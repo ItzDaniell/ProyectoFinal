@@ -56,15 +56,13 @@
     </style>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>DevShare - @yield('title')</title>
-    @vite(['resources/js/vista_previa.js', 'resources/js/mostrar_modal_busq_cat.js'])
-    @livewireStyles
+    @vite(['resources/js/vista_previa.js', 'resources/js/mostrar_modal_busq_cat.js', 'resources/css/app.css'])
 </head>
-
 <body>
     <div class="flex flex-col lg:flex-row">
         <!-- Sidebar con ancho fijo -->
         <div class="bg-zinc-900 text-white w-64 h-screen p-4">
-            <div class="flex items-center justify-center h-16 border-b border-gray-700">
+            <div class="flex items-center justify-center h-16 border-b border-zinc-700">
                 <span class="text-2xl font-semibold">DevShare</span>
             </div>
             <nav class="space-y-4 mt-4">
