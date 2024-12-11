@@ -69,7 +69,7 @@
         <div id="responsiveDiv">
             <div
                 class="bg-gray-800 text-white md:w-64 md:h-screen md:relative p-1 fixed bottom-0 left-0 right-0 flex md:flex-col md:justify-start md:items-start md:space-y-2 items-center">
-                <nav class="space-y-4 w-full md:w-auto flex md:flex-col justify-around">
+                <nav class="space-y-4 w-full md:w-auto flex md:flex-col justify-around pl-8 pr-8 pt-4">
                     <!-- Encabezado (visible solo en pantallas grandes) -->
                     <div class="flex items-center justify-center h-16 border-b border-white w-full">
                         <span class="text-2xl font-semibold">DevShare</span>
@@ -109,7 +109,7 @@
                         <span class="block md:inline">Perfil</span>
                     </a>
 
-                    @if(auth()->user()->hasRole('Admin'))
+                    @if(Auth::user()->rol != 'Usuario')
                         <a href="{{ route('Administracion') }}"
                             class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded">
                             <ion-icon name="settings-outline" class="text-2xl"></ion-icon>
@@ -123,37 +123,14 @@
                             <span class="block md:inline">Informar Problema</span>
                         </a>
                     @endif
-
-                    <!-- Más Opciones -->
-                    <div class="relative">
-                        <a onclick="toggleMenu()"
-                            class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded cursor-pointer">
-                            <ion-icon name="menu-outline" class="text-2xl"></ion-icon>
-                            <span class="block md:inline">Más Opciones</span>
-                        </a>
-                        <div id="dropdownMenu"
-                            class="absolute hidden mt-2 bg-zinc-800 border border-zinc-700 p-2 rounded w-64">
-                            <ul class="space-y-2">
-                                <li>
-                                    <a href="{{ route('Configuracion') }}"
-                                        class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded">
-                                        <ion-icon name="settings-outline" class="text-2xl"></ion-icon>
-                                        <span>Configuración</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <button type="submit"
-                                            class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded w-full text-left">
-                                            <ion-icon name="log-out-outline" class="text-2xl"></ion-icon>
-                                            <span>Cerrar Sesión</span>
-                                        </button>
-                                    </form>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit"
+                                class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded w-full text-left">
+                                <ion-icon name="log-out-outline" class="text-2xl"></ion-icon>
+                                <span>Cerrar Sesión</span>
+                            </button>
+                        </form>
                 </nav>
             </div>
         </div>

@@ -32,14 +32,10 @@
                         <a href="{{ asset('storage/' . $ponente->foto) }}" target="_blank" class="text-blue-500 hover:underline">Ver Foto</a>
                     </td>
                     <td class="px-4 py-2 border">
-                        <div class="flex justify-between gap-2">
+                        <div class="flex justify-center gap-2">
                             <a href="{{ route('ponentes.edit', $ponente->id_ponente) }}"
                                class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 text-sm text-center">
                                 Editar
-                            </a>
-                            <a href="{{ route('ponentes.show', $ponente->id_ponente) }}"
-                               class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 text-sm text-center">
-                                Ver
                             </a>
                         </div>
                     </td>

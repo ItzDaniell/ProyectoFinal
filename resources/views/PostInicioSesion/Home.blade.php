@@ -88,11 +88,19 @@
                     </div>
                 </div>
             </div>
+
             <div class="p-4">
                 <h3 class="text-lg font-bold">{{ $publicacion->titulo }}</h3>
                 <p class="text-sm text-gray-600">{{ $publicacion->descripcion }}</p>
                 <p class="text-sm text-gray-600">Categoría : {{ $publicacion->categoria->descripcion }}</p>
-
+                @if (pathinfo($publicacion->archivo, PATHINFO_EXTENSION) === 'pdf')
+                <div class="mt-4 h-full" style="height: 550px;">
+                    <h3 class="font-semibold text-lg text-blue-500 mb-5">Archivo PDF publicado</h3>
+                    <div class="relative w-full h-5/6 overflow-hidden">
+                        <iframe src="{{ asset('storage/'.$publicacion->archivo) }}" width="100%" height="100%"></iframe>
+                    </div>
+                </div>
+            @endif
                 {{-- Comentado: Archivos adicionales --}}
                 {{-- <div class="mt-4" style="height: 500px;">
                     <p class="text-sm text-gray-600">Archivo adjunto:</p>
