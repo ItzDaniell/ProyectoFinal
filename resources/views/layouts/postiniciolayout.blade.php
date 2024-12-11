@@ -156,7 +156,6 @@
                 </nav>
             </div>
         </div>
-
         <div id="modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 hidden overflow-y-auto z-50">
             <div class="flex items-center justify-center min-h-screen p-4">
                 <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-4xl relative">
@@ -178,7 +177,6 @@
                         <div class="flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-6 mt-6">
                             <!-- Sección de imagen -->
                             <div class="lg:w-1/3 flex-shrink-0">
-<<<<<<< HEAD
                                 <label for="imageInput" class="block text-gray-700 font-medium mb-2">Archivo (Obligotorio)</label>
                                 <div class="border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center h-96 sm:h-96 lg:h-96">
                                     <div class="bg-gray-100 p-6 rounded-lg mb-4">
@@ -186,18 +184,6 @@
                                     </div>
                                     <input type="file" name="archivo" class="hidden" id="imageInput" required accept="image/*,application/pdf,.doc,.docx,.rar,.zip" />
                                     <button type="button" onclick="document.getElementById('imageInput').click();" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 w-48">
-=======
-                                <label for="imageInput" class="block text-gray-700 font-medium mb-2">Archivo</label>
-                                <div
-                                    class="border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center h-96 sm:h-96 lg:h-96">
-                                    <div class="bg-gray-100 p-6 rounded-lg mb-4">
-                                        <ion-icon name="image-outline" class="text-6xl text-gray-400"></ion-icon>
-                                    </div>
-                                    <input type="file" name="archivo" class="hidden" id="imageInput"
-                                        accept="image/*,application/pdf,.doc,.docx,.rar,.zip" />
-                                    <button type="button" onclick="document.getElementById('imageInput').click();"
-                                        class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 w-48">
->>>>>>> 360299770e71f1bc6e9294ba595fb859c66b90ea
                                         Seleccionar archivo
                                     </button>
                                     <p id="fileName"
@@ -224,8 +210,7 @@
                                     class="w-full p-3 border border-gray-300 rounded-lg mb-2" required>
                                     <option value="">[ SELECCIONE ]</option>
                                     @foreach ($categorias as $categoria)
-                                        <option value="{{ $categoria->id_categoria }}">{{ $categoria->descripcion }}
-                                        </option>
+                                        <option value="{{ $categoria->id_categoria }}">{{ $categoria->descripcion }}</option>
                                     @endforeach
                                 </select>
 

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\Features;
 
 return [
@@ -73,7 +74,15 @@ return [
     |
     */
 
-    'home' => '/home',
+    'home' => function () {
+        $user = Auth::user();
+
+        if ($user->rol == 'Administrador' || $user->rol == 'Moderador' || $user->rol == 'Gestor de Conferencias' || $user->rol == 'Servicio Tecnico') {
+            return '/administracion';
+        }
+
+        return '/home';
+    },
 
     /*
     |--------------------------------------------------------------------------

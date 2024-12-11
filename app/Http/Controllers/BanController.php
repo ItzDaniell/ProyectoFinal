@@ -82,4 +82,5 @@ class BanController extends Controller
     {
         return view('baneado.banned');
     }
+
 }

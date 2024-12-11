@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'DevShare - Usuarios')
+@section('title', 'DevShare - Editar Estado de Publicación')
 
 @section('content_header')
     <h2 class="text-3xl font-bold mb-4">Editar Estado de Publicación</h2>

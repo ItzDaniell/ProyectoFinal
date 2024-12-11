@@ -111,6 +111,9 @@ class User extends Authenticatable implements BannableInterface
     public function servicio_tecnico(){
         return $this->hasMany('App\Models\InformeProcesado', 'id', 'id');
     }
+    public function inscripcion(){
+        return $this->belongsTo('App\Models\Inscripcion', 'id', 'id');
+    }
 
     protected static function booted()
     {
@@ -156,8 +159,8 @@ class User extends Authenticatable implements BannableInterface
     {
         return $this->avatar ?? null; // Devuelve el valor del campo avatar directamente si existe, o null
     }
-    
-    
 
-    
+
+
+
 }

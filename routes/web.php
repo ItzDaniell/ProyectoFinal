@@ -8,6 +8,7 @@ use App\Http\Controllers\{
     ConferenciaController,
     InformarProblemaController,
     InformeProcesadoController,
+    InscripcionesController,
     NoticiaController,
     PonenteController,
     PostInicioSesionController,
@@ -67,6 +68,7 @@ Route::middleware([
     Route::post('/comentario/{slug}/store', [ComentarioController::class, 'store'])->name('comentarios.store');
     Route::post('/publicacion/store', [PublicacionController::class, 'store'])->name('publicacion.store');
     Route::post('/informe-problema/store', [InformarProblemaController::class, 'store'])->name('informes.store');
+    Route::post('/inscripcion/{slug}', [InscripcionesController::class, 'store'])->name('inscripcion.store');
 });
 
 
@@ -144,6 +146,16 @@ Route::middleware(['auth', 'can:manage-requests'])->prefix('/administracion/info
     Route::get('/index', [InformeProcesadoController::class, 'index'])->name('informes-procesados.index');
     Route::get('{id}/create', [InformeProcesadoController::class, 'create'])->name('informes-procesados.create');
     Route::post('{id}/store', [InformeProcesadoController::class, 'store'])->name('informes-procesados.store');
+});
+
+Route::middleware(['auth', 'can:manage-inscriptions'])->prefix('/administracion/inscripciones')->group(function () {
+    Route::get('/index', [InscripcionesController::class, 'index'])->name('informes-problemas.index');
+});
+
+Route::middleware(['auth', 'can:manage-comments'])->prefix('/administracion/comentarios')->group(function () {
+    Route::get('/index', [ComentarioController::class, 'index'])->name('comentarios.index');
+    Route::get('/{id}/edit', [ComentarioController::class, 'edit'])->name('comentarios.edit');
+    Route::patch('/{id}/edit', [ComentarioController::class, 'update'])->name('comentarios.update');
 });
 
  //Rutas de Google OAuth

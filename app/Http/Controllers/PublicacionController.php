@@ -21,7 +21,7 @@ class PublicacionController extends Controller
         $busqueda = $request->input('busqueda', null);
 
         if ($busqueda) {
-            $publicaciones = Publicacion::where('titulo', 'LIKE', '%' . $busqueda . '%')
+            $publicaciones = Publicacion::where('slug', 'LIKE', '%' . $busqueda . '%')
                 ->orderBy('id_publicacion', 'desc')
                 ->paginate(10);
             return view('publicacion.index', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
@@ -41,7 +41,6 @@ class PublicacionController extends Controller
             return view('publicacion.index', compact('publicaciones', 'categorias', 'busqueda', 'categoria'));
         }
     }
-
 
     /**
      * Show the form for creating a new resource.

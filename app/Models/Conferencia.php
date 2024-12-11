@@ -16,6 +16,9 @@ class Conferencia extends Model
     public function ponente(){
         return $this->belongsTo('App\Models\Ponente', 'id_ponente', 'id_ponente');
     }
+    public function inscripcion(){
+        return $this->hasMany('App\Models\Inscripcion', 'id_conferencia', 'id_conferencia');
+    }
     protected static function booted()
     {
         static::creating(function ($conferencia) {

@@ -31,7 +31,6 @@ return new class extends Migration
         Permission::create(['name' => 'manage-reports']); // Control de reportes
         Permission::create(['name' => 'manage-conferences']); // Control de conferencias
         Permission::create(['name' => 'manage-requests']); // Control de solicitudes (soporte técnico)
-        Permission::create(['name' => 'post-promotions']); // Publicación de promociones (rol empresa)
         Permission::create(['name' => 'manage-news']); // Control de noticias
         Permission::create(['name' => 'manage-users']); // Control de usuarios
         Permission::create(['name' => 'manage-ponents']); // Control de usuarios
@@ -44,7 +43,6 @@ return new class extends Migration
         $moderator = Role::create(['name' => 'Moderador']);
         $conferenceManager = Role::create(['name' => 'Gestor de Conferencias']);
         $techSupport = Role::create(['name' => 'Servicio Tecnico']);
-        $company = Role::create(['name' => 'Empresa']);
         $user = Role::create(['name' => 'Usuario']);
 
 
@@ -53,7 +51,6 @@ return new class extends Migration
         $moderator->givePermissionTo(['manage-comments', 'manage-publications', 'manage-reports', 'manage-users']);
         $conferenceManager->givePermissionTo(['manage-conferences', 'manage-ponents', 'manage-inscriptions']);
         $techSupport->givePermissionTo(['manage-requests', 'manage-news']);
-        $company->givePermissionTo('post-promotions');
         $user->givePermissionTo('user');
     }
 

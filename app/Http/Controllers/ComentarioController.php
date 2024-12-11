@@ -14,8 +14,10 @@ class ComentarioController extends Controller
      */
     public function index()
     {
-        //
+        $comentarios = Comentario::where('estado', 'Activo')->orderBy('id_comentario', 'desc')->paginate(10);
+        return view('comentario.index', compact('comentarios'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -49,8 +51,7 @@ class ComentarioController extends Controller
      */
     public function show(Publicacion $publicacion)
     {
-        $comentarios = $publicacion->comentarios()->with('users')->get();  // Traemos todos los comentarios con la relación de usuario
-        return response()->json($comentarios);
+        //
     }
 
     /**

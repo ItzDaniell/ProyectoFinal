@@ -349,6 +349,11 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
+            'text' => 'Inscripciones',
+            'url' => '/administracion/inscripciones/index',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+        [
             'text' => 'Categorias',
             'url' => '/administracion/categorias/index',
             'icon' => 'fas fa-fw fa-lock',
@@ -359,7 +364,7 @@ return [
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text' => 'Solicitudes',
+            'text' => 'Informes de Problemas',
             'url' => '/administracion/informes-problemas/index',
             'icon' => 'fas fa-fw fa-lock',
         ],
