@@ -27,13 +27,13 @@ return [
      * Theme Color:
      * The primary color used in the chat interface.
      */
-    'color' => '#eab308',
+    'color' => '#a855f7',
 
     /**
      * Home Route:
      * The route users are redirected to when they exit the chat.
      */
-    'home_route' => '/home',
+    'home_route' => '/',
 
     /**
      * Routes:

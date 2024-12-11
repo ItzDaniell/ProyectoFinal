@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "14ca26f9f0f858effaabead23a51b20c",
+    "content-hash": "dad48ed1866c6a7e0baeaf76de34a239",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -3207,16 +3207,16 @@
         },
         {
             "name": "namu/wirechat",
-            "version": "v0.0.4",
+            "version": "v0.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/namumakwembo/wirechat.git",
-                "reference": "9479b5cca842f0dd6e2a5d3c1cad7a95a8f7230b"
+                "reference": "d7bde8580620ad0307656a5d0c4b56afc0499306"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/namumakwembo/wirechat/zipball/9479b5cca842f0dd6e2a5d3c1cad7a95a8f7230b",
-                "reference": "9479b5cca842f0dd6e2a5d3c1cad7a95a8f7230b",
+                "url": "https://api.github.com/repos/namumakwembo/wirechat/zipball/d7bde8580620ad0307656a5d0c4b56afc0499306",
+                "reference": "d7bde8580620ad0307656a5d0c4b56afc0499306",
                 "shasum": ""
             },
             "require": {
@@ -3256,9 +3256,15 @@
             "description": "A Laravel Livewire messaging app for teams with private chats and group conversations.",
             "support": {
                 "issues": "https://github.com/namumakwembo/wirechat/issues",
-                "source": "https://github.com/namumakwembo/wirechat/tree/v0.0.4"
+                "source": "https://github.com/namumakwembo/wirechat/tree/v0.0.5"
             },
-            "time": "2024-12-05T14:24:45+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/namumakwembo",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-12-10T14:40:56+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -10373,12 +10379,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }

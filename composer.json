@@ -15,7 +15,7 @@
         "laravel/socialite": "*",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
-        "namu/wirechat": "^0.0.4",
+        "namu/wirechat": "^0.0.5",
         "nikic/php-parser": "^5.0",
         "psr/cache": "^3.0",
         "pusher/pusher-php-server": "^7.2",
