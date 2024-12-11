@@ -30,7 +30,7 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'descripcion' => 'required|max:150',
+            'descripcion' => 'required|max:150|unique:categorias,descripcion',
         ]);
 
         $requestData = $request->all();
@@ -50,7 +50,7 @@ class CategoriaController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id_categoria)
-    {   
+    {
         $categoria = Categorias::find($id_categoria);
         return view('categoria.edit', compact('categoria'));
     }
@@ -68,15 +68,23 @@ class CategoriaController extends Controller
         $requestData = $request->all();
 
         $categoria->update($requestData);
-        
+
         return redirect()->route('categorias.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id_categoria)
     {
-        //
+        $categoria = Categorias::find($id_categoria);
+
+        if ($categoria) {
+            $categoria->delete();
+
+            return redirect()->route('categorias.index')->with('success', 'Categoría eliminada exitosamente');
+        }
+
+        return redirect()->route('categorias.index')->with('error', 'Categoría no encontrada');
     }
 }

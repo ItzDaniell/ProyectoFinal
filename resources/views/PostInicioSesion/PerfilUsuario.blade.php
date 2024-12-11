@@ -5,7 +5,6 @@
 @section('content')
 <div class="min-h-screen bg-gray-50 flex items-start p-8">
     <div class="w-full max-w-7xl bg-white p-8 rounded-lg shadow-lg relative">
-
         <!-- Encabezado del Perfil -->
         <div class="content-encabezado mb-8 flex justify-between items-center">
             <h1 class="text-4xl font-bold text-black">Perfil de Usuario</h1>

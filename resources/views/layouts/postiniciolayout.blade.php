@@ -56,78 +56,82 @@
     </style>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>DevShare - @yield('title')</title>
-    @vite(['resources/js/vista_previa.js', 'resources/js/mostrar_modal_busq_cat.js', 'resources/css/app.css'])
+    @vite(['resources/js/vista_previa.js', 'resources/js/mostrar_modal_busq_cat.js'])
+    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @endif
 </head>
+
 <body>
     <div class="flex flex-col lg:flex-row">
         <!-- Sidebar con ancho fijo -->
-        <div class="bg-zinc-900 text-white w-64 h-screen p-4">
-            <div class="flex items-center justify-center h-16 border-b border-zinc-700">
+        <div class="bg-orange-700 text-white w-64 h-screen p-4">
+            <div class="flex items-center justify-center h-16 border-b border-white-700">
                 <span class="text-2xl font-semibold">DevShare</span>
             </div>
             <nav class="space-y-4 mt-4">
-                <a href="{{ route('Home') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                <a href="{{ route('Home') }}" class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded">
                     <ion-icon name="home-outline" class="text-2xl"></ion-icon>
                     <span>Página Principal</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalBusquedaButton">
+                <a href="#" class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded" id="openModalBusquedaButton">
                     <ion-icon name="search-outline" class="text-2xl"></ion-icon>
                     <span>Búsqueda</span>
                 </a>
-                <a href="{{ route('Noticias') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                <a href="{{ route('Noticias') }}" class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded">
                     <ion-icon name="newspaper-outline" class="text-2xl"></ion-icon>
                     <span>Noticias</span>
                 </a>
-                <a href="{{ route('Conferencias') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                <a href="{{ route('Conferencias') }}" class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded">
                     <ion-icon name="laptop-outline" class="text-2xl"></ion-icon>
                     <span>Conferencias</span>
                 </a>
-                <a href="{{ url('/chats') }}" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                <a href="{{ url('/chats') }}" class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded">
                     <ion-icon name="paper-plane-outline" class="text-2xl"></ion-icon>
                     <span>Mensajes</span>
                 </a>
-                <a href="#" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded" id="openModalCrearButton">
+                <a href="#" class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded" id="openModalCrearButton">
                     <ion-icon name="create-outline" class="text-2xl"></ion-icon>
                     <span>Crear</span>
                 </a>
-                <div class="border-t border-gray-700 mt-1 pt-1"></div>
+                <div class="border-t border-white-700 mt-1 pt-1"></div>
                 <a href="{{ route('PerfilUsuario') }}"
-                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                    class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded">
                     <ion-icon name="person-circle-outline" class="text-2xl"></ion-icon>
                     <span>Perfil</span>
                 </a>
                 @if(auth()->user()->hasRole('Admin'))
                 <a href="{{ route('Administracion') }}"
-                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                    class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded">
                     <ion-icon name="settings-outline" class="text-2xl"></ion-icon>
                     <span>Administrar</span>
                 </a>
                 @endif
                 @if(auth()->user()->hasRole('Usuario'))
                 <a href="#" id="openModal"
-                    class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                    class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded">
                     <ion-icon name="information-circle-outline" class="text-2xl"></ion-icon>
                     <span>Informar Problema</span>
                 </a>
                 @endif
                 <!-- Dropdown button -->
                 <div class="relative cursor-pointer">
-                    <a onclick="toggleMenu()" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                    <a onclick="toggleMenu()" class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded">
                         <ion-icon name="menu-outline" class="text-2xl"></ion-icon>
                         <span>Más Opciones</span>
                     </a>
                     <!-- Dropdown menu (posicionado hacia arriba) -->
                     <div id="dropdownMenu" style="width: 270px;"
-                        class="absolute bottom-full mb-2 bg-gray-800 border border-gray-700 p-2 rounded hidden">
+                        class="absolute bottom-full mb-2 bg-zinc-800 border border-zinc-700 p-2 rounded hidden">
                         <ul class="space-y-2">
                             <a href="{{ route('Configuracion') }}"
-                                class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                                class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded">
                                 <ion-icon name="settings-outline" class="text-2xl"></ion-icon>
                                 <span>Configuración</span>
                             </a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button type="submit" class="flex items-center space-x-3 hover:bg-gray-700 p-2 rounded">
+                                <button type="submit" class="flex items-center space-x-3 hover:bg-zinc-700 p-2 rounded">
                                     <ion-icon name="log-out-outline" class="text-2xl"></ion-icon>
                                     <span>Cerrar Sesión</span>
                                 </button>
@@ -319,7 +323,6 @@
             @yield('content')
         </div>
     </div>
-    @livewireScripts
     @vite(['resources/js/mostrar_opciones.js', 'resources/js/opciones.js', 'resources/js/mostrar_modal_crear.js', 'resources/js/mostrar_busqueda_nombre.js', 'resources/js/autocomplete.js'])
 </body>
 </html>

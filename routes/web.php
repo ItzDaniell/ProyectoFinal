@@ -123,6 +123,7 @@ Route::middleware(['auth', 'can:manage-category'])->prefix('/administracion/cate
     Route::post('/create', [CategoriaController::class, 'store'])->name('categorias.store');
     Route::get('/{id}/edit', [CategoriaController::class, 'edit'])->name('categorias.edit');
     Route::patch('/{id}/edit', [CategoriaController::class, 'update'])->name('categorias.update');
+    Route::delete('/categorias/{id_categoria}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
 });
 
 Route::middleware(['auth', 'can:manage-reports'])->prefix('/administracion/reportes')->group(function () {
