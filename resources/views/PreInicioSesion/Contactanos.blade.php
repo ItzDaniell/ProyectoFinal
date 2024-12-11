@@ -3,15 +3,15 @@
 @section('title', 'Contáctanos')
 
 @section('content')
-<div class="min-h-screen flex flex-col items-center justify-center bg-gray-50 pt-16 p-8">
+<div class="min-h-screen flex flex-col items-center justify-center bg-gray-50 pt-16 p-4">
     <!-- Encabezado -->
     <div class="text-center mb-16 mt-12">
-        <h1 class="text-7xl font-extrabold text-black">Contáctanos</h1>
-        <p class="text-lg text-gray-700 mt-4">¿Necesitas asistencia técnica o deseas compartir tus comentarios? Estamos aquí para ayudarte.</p>
+        <h1 class="text-4xl md:text-7xl font-extrabold text-black">Contáctanos</h1>
+        <p class="text-lg text-gray-700 mt-4 max-w-3xl mx-auto">¿Necesitas asistencia técnica o deseas compartir tus comentarios? Estamos aquí para ayudarte.</p>
     </div>
 
     <!-- Contenedor principal -->
-    <div class="max-w-4xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white p-8 rounded-lg shadow-xl">
+    <div class="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-8 rounded-lg shadow-xl">
         <!-- Texto informativo a la izquierda -->
         <div class="flex flex-col justify-center space-y-6 text-gray-600">
             <p class="text-lg leading-relaxed">

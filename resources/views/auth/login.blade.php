@@ -8,12 +8,12 @@
     <div
         class="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6 md:p-8 flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-8">
         <div
-            class="w-full md:w-1/2 bg-yellow-500 text-white p-6 md:p-8 rounded-lg flex flex-col items-center justify-center text-center">
+            class="w-full md:w-1/2 bg-gray-800 text-white p-6 md:p-8 rounded-lg flex flex-col items-center justify-center text-center">
             <h1 class="text-3xl font-bold mb-4">¡Bienvenido!</h1>
             <p class="mb-6">Ingresa tus datos personales para ingresar a la plataforma. Si no tienes registrada una
                 cuenta, ¡Hazlo Ahora!</p>
             <a href="{{ route('Registrarse') }}"
-                class="bg-white text-yellow-500 py-2 px-4 rounded hover:bg-yellow-600 ">Registrarse</a>
+                class="bg-white text-gray-800 py-2 px-4 rounded  hover:text-white hover:bg-gray-500 ">Registrarse</a>
         </div>
 
         <div class="w-full md:w-1/2">
@@ -55,7 +55,7 @@
 
                 <div class="mt-6">
                     <button type="submit"
-                        class="w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition">Iniciar
+                        class="w-full bg-gray-800 text-white py-2 rounded hover:bg-gray-500 transition">Iniciar
                         Sesión</button>
                 </div>
 

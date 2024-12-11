@@ -1,7 +1,10 @@
 <x-guest-layout>
     <x-authentication-card>
-        <x-slot name="logo">
-            <x-authentication-card-logo />
+    <x-slot name="logo">
+            <!-- Logo personalizado -->
+            <img src="{{ asset('images/devshare.png') }}" alt="DevShare Logo" class="w-32 mx-auto mb-2">
+            <!-- Texto "DevShare" debajo del logo -->
+            <p class="text-center text-2xl font-bold text-[#162d72]">DevShare</p>
         </x-slot>
 
         <x-validation-errors class="mb-4" />
