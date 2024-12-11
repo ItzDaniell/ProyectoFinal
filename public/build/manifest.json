@@ -1,10 +1,6 @@
 {
   "resources/css/app.css": {
-<<<<<<< HEAD
-    "file": "assets/app-h0FCkskn.css",
-=======
-    "file": "assets/app-cBvZw3OQ.css",
->>>>>>> 360299770e71f1bc6e9294ba595fb859c66b90ea
+    "file": "assets/app-CFVN5s0s.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
@@ -14,11 +10,7 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-<<<<<<< HEAD
-    "file": "assets/app-BReIDNTR.js",
-=======
     "file": "assets/app-CiV9u6L8.js",
->>>>>>> 360299770e71f1bc6e9294ba595fb859c66b90ea
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
@@ -54,7 +46,7 @@
     "isEntry": true
   },
   "resources/js/mostrar_modal_crear.js": {
-    "file": "assets/mostrar_modal_crear-l0sNRNKZ.js",
+    "file": "assets/mostrar_modal_crear--ktX5Vyd.js",
     "name": "mostrar_modal_crear",
     "src": "resources/js/mostrar_modal_crear.js",
     "isEntry": true
