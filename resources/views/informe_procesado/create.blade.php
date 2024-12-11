@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto mb-4">
         <form action="{{ route('informes-procesados.store', $informe->id_informar_problema) }}" method="POST" enctype="multipart/form-data" class="space-y-4">
             @csrf
             @if ($errors->any())

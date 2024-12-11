@@ -74,15 +74,7 @@ return [
     |
     */
 
-    'home' => function () {
-        $user = Auth::user();
-
-        if ($user->rol == 'Administrador' || $user->rol == 'Moderador' || $user->rol == 'Gestor de Conferencias' || $user->rol == 'Servicio Tecnico') {
-            return '/administracion';
-        }
-
-        return '/home';
-    },
+    'home' => '/home',
 
     /*
     |--------------------------------------------------------------------------

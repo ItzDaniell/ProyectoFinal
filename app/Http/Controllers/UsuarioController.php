@@ -19,9 +19,10 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios = User::where('rol', '!=', 'Administrador')
-            ->where('estado', 'Activo')
-            ->orderBy('id')->paginate(10);
+        $usuarios = User::where('id', '!=', Auth::id())
+                        ->where('rol', '!=', 'Administrador')
+        ->paginate(10);
+
         return view('usuario.index', compact('usuarios'));
     }
 
@@ -67,14 +68,21 @@ class UsuarioController extends Controller
     {
         $usuario = User::findOrFail($id);
 
+        // Valida que el rol sea obligatorio y exista en la tabla de roles
         $request->validate([
             'rol' => 'required|exists:roles,name',
         ]);
 
-        $rol = $request->rol;
-        $usuario->update(['rol' => $request->input('rol')]);
-        $usuario->syncRoles($rol);
+        // Obtén el rol del request
+        $rol = $request->input('rol');
 
+        // Actualiza el rol en Spatie Permission
+        $usuario->syncRoles($rol); // Esto asegura que el rol sea sincronizado correctamente
+
+        // Opcional: si tienes un campo 'rol' en tu tabla 'users', actualízalo manualmente
+        $usuario->update(['rol' => $rol]);
+
+        // Redirige con éxito
         return redirect()->route('usuarios.index')->with('success', 'El rol del usuario ha sido actualizado correctamente.');
     }
 
@@ -110,7 +118,7 @@ class UsuarioController extends Controller
         if ($request->hasFile('profile_photo')) {
             // Generar un nombre de archivo único
             $fileName = Str::random(10) . '.' . $request->file('profile_photo')->getClientOriginalExtension();
-            // Mover la foto a la carpeta publica 
+            // Mover la foto a la carpeta publica
             $request->file('profile_photo')->move(public_path('storage/Foto_Usuario'), $fileName);
             // Generar la URL pública
             $publicUrl = asset('storage/Foto_Usuario/' . $fileName);
@@ -120,7 +128,7 @@ class UsuarioController extends Controller
                 'avatar' => $publicUrl,
             ]);
         }
-    
+
         return redirect()->back()->with('success');
     }
 

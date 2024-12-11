@@ -45,7 +45,7 @@
                     <td class="px-4 py-2 border text-center">{{ $comentario->estado }}</td>
                     <td class="px-4 py-2 border">
                         <div class="flex justify-between gap-2">
-                            <a href="{{ route('comentarios.edit', $comentario->id_noticia) }}"
+                            <a href="{{ route('comentarios.edit', $comentario->id_comentario) }}"
                             class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 text-sm text-center">
                                 Editar
                             </a>

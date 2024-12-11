@@ -331,102 +331,43 @@ return [
         [
             'text' => 'Usuarios',
             'url' => '/administracion/usuarios/index',
-            'icon' => '<ion-icon name="settings-outline"></ion-icon>',
+            'icon' => '',
         ],
         [
             'text' => 'Publicaciones',
             'url' => '/administracion/publicaciones/index',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => '',
         ],
         [
             'text' => 'Noticias',
             'url' => '/administracion/noticias/index',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => '',
         ],
         [
             'text' => 'Conferencias',
             'url' => '/administracion/conferencias/index',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => '',
         ],
         [
             'text' => 'Inscripciones',
             'url' => '/administracion/inscripciones/index',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => '',
         ],
         [
             'text' => 'Categorias',
             'url' => '/administracion/categorias/index',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => '',
         ],
         [
             'text' => 'Reportes',
             'url' => '/administracion/reportes/index',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => '',
         ],
         [
             'text' => 'Informes de Problemas',
             'url' => '/administracion/informes-problemas/index',
-            'icon' => 'fas fa-fw fa-lock',
+            'icon' => '',
         ],
-        [
-            'text' => 'Volver',
-            'url' => '/home',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        /*[
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-            ],
-        ],
-        ['header' => 'Gestionar'],
-        [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
-        ],
-        [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
-        ],
-        [
-            'text' => 'information',
-            'icon_color' => 'cyan',
-            'url' => '#',
-        ],*/
     ],
 
     /*

@@ -31,22 +31,30 @@ class InscripcionesController extends Controller
      */
     public function store(Request $request, $slug)
     {
-        // Exclude 'id_conferencia' and 'id' from the request data
         $requestData = $request->except(['id_conferencia', 'id']);
 
-        // Set the 'id' to the authenticated user's ID
+        // Asigna el ID del usuario autenticado
         $requestData['id'] = Auth::id();
 
-        // Retrieve the conference by its slug (fetch the first result)
-        $conferencia = Conferencia::where('slug', $slug)->firstOrFail();  // Use firstOrFail() to ensure conference exists
+        // Recupera la conferencia usando el slug
+        $conferencia = Conferencia::where('slug', $slug)->firstOrFail();
 
-        // Set the 'id_conferencia' in the request data
+        // Asigna el ID de la conferencia
         $requestData['id_conferencia'] = $conferencia->id_conferencia;
 
-        // Create the new Inscripcion record
+        // Verifica si ya está inscrito en esta conferencia
+        $existingInscription = Inscripcion::where('id', $requestData['id'])
+            ->where('id_conferencia', $requestData['id_conferencia'])
+            ->exists(); // Usamos exists() en vez de first() para una verificación más eficiente
+
+        if ($existingInscription) {
+            return redirect()->back()->with('error', 'Ya estás inscrito en esta conferencia.');
+        }
+
+        // Crea la nueva inscripción
         Inscripcion::create($requestData);
 
-        // Redirect back to the previous page, passing the conference URL
+        // Redirige al usuario con el enlace de la conferencia
         return redirect()->back()->with('urlConferencia', $conferencia->URL);
     }
 

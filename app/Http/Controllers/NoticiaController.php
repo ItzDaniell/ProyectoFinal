@@ -15,14 +15,14 @@ class NoticiaController extends Controller
     public function index(Request $request)
     {
         $categorias = Categorias::all();
-        $categoria = $request->input('categoria', null);
-        $busqueda = $request->input('busqueda', null);
+        $categoria = $request->input('categoria', null); //null
+        $busqueda = $request->input('busqueda', null); //null
 
         if ($busqueda) {
-            $noticias = Noticia::where('titulo', 'LIKE', '%' . $busqueda . '%')
+            $noticias = Noticia::where('slug', 'LIKE', '%' . $busqueda . '%')
                 ->orderBy('id_noticia', 'desc')
                 ->paginate(10);
-            return view('noticia.index', compact('noticias', 'categorias', 'busqueda', 'categoria'));
+            return view('noticia.index', data: compact('noticias', 'categorias', 'busqueda', 'categoria'));
         } elseif ($categoria) {
             if ($categoria == '0') {
                 $noticias = Noticia::orderBy('id_noticias')->paginate(10);

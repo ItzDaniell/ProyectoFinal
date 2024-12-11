@@ -75,17 +75,59 @@ class ConferenciaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id_conferencia)
     {
-        //
+
+        $conferencia = Conferencia::findOrFail($id_conferencia);
+
+        $categorias = Categorias::all();
+        $ponentes = Ponente::all();
+
+        return view('conferencia.edit', compact('conferencia', 'categorias', 'ponentes'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id_conferencia)
     {
-        //
+        $request->validate([
+            'titulo' => 'required|max:300',
+            'id_categoria' => 'required|exists:categorias,id_categoria',
+            'id_ponente' => 'required|exists:ponentes,id_ponente',
+            'descripcion' => 'required|max:2048',
+            'duracion' => 'required|integer|gte:60',
+            'fecha_hora_inicio' => 'required|date|after_or_equal:today',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'plataforma' => 'required',
+            'URL' => 'required|url',
+        ], [
+            'id_categoria.required' => 'La categoría es obligatoria.',
+            'id_categoria.exists' => 'La categoría seleccionada no es válida.',
+            'id_ponente.required' => 'El ponente es obligatorio.',
+            'id_ponente.exists' => 'El ponente seleccionado no es válido.',
+            'duracion.required' => 'La duración es obligatoria.',
+            'duracion.gte' => 'La duración debe ser al menos de 60 minutos.',
+            'fecha_hora_inicio.required' => 'La fecha de inicio es obligatoria.',
+            'fecha_hora_inicio.after_or_equal' => 'La fecha de inicio no puede ser una fecha pasada.',
+        ]);
+
+        $conferencia = Conferencia::findOrFail($id_conferencia);
+
+        $requestData = $request->all();
+
+        if ($request->hasFile('imagen')) {
+            if ($conferencia->imagen && file_exists(storage_path('app/public/' . $conferencia->imagen))) {
+                unlink(storage_path('app/public/' . $conferencia->imagen));
+            }
+
+            $path = $request->file('imagen')->store('imagenes', 'public');
+            $requestData['imagen'] = $path;
+        }
+
+        $conferencia->update($requestData);
+
+        return redirect()->route('conferencias.index')->with('success', 'Conferencia actualizada correctamente.');
     }
 
     /**

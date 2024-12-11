@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto mb-4">
         <form action="{{ route('usuarios.update', $usuario->id) }}" method="POST" enctype="multipart/form-data" class="space-y-4 w-full">
             @csrf
             @method('PATCH')

@@ -14,7 +14,7 @@ class ComentarioController extends Controller
      */
     public function index()
     {
-        $comentarios = Comentario::where('estado', 'Activo')->orderBy('id_comentario', 'desc')->paginate(10);
+        $comentarios = Comentario::orderBy('id_comentario', 'desc')->paginate(10);
         return view('comentario.index', compact('comentarios'));
     }
 
@@ -57,17 +57,25 @@ class ComentarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id_comentario)
     {
-        //
+        $comentario = Comentario::findOrFail($id_comentario);
+        return view('comentario.edit', compact('comentario'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id_comentario)
     {
-        //
+        $comentario = Comentario::findOrFail($id_comentario);
+
+        $request->validate([
+            'estado' => 'required',
+        ]);
+
+        $comentario->update(['estado' => $request->input('estado')]);
+        return redirect()->route('comentarios.index')->with('success');
     }
 
     /**

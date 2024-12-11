@@ -37,6 +37,7 @@ return new class extends Migration
         Permission::create(['name' => 'manage-category']); // Control de usuarios
         Permission::create(['name' => 'manage-inscriptions']); // Control de usuarios
         Permission::create(['name' => 'user']); // Usuario
+        Permission::create(['name' => 'gestion']);
 
         // Crear roles
         $admin = Role::create(['name' => 'Admin']);
@@ -47,10 +48,10 @@ return new class extends Migration
 
 
         // Asignar permisos a cada rol
-        $admin->givePermissionTo(['manage-comments', 'manage-publications', 'manage-reports', 'manage-conferences', 'manage-requests', 'post-promotions', 'manage-news', 'manage-users', 'manage-ponents', 'manage-category', 'manage-inscriptions']);
-        $moderator->givePermissionTo(['manage-comments', 'manage-publications', 'manage-reports', 'manage-users']);
-        $conferenceManager->givePermissionTo(['manage-conferences', 'manage-ponents', 'manage-inscriptions']);
-        $techSupport->givePermissionTo(['manage-requests', 'manage-news']);
+        $admin->givePermissionTo(['manage-comments', 'manage-publications', 'manage-reports', 'manage-conferences', 'manage-requests', 'manage-news', 'manage-users', 'manage-ponents', 'manage-category', 'manage-inscriptions', 'gestion']);
+        $moderator->givePermissionTo(['manage-comments', 'manage-publications', 'manage-reports', 'manage-users', 'gestion']);
+        $conferenceManager->givePermissionTo(['manage-conferences', 'manage-ponents', 'manage-inscriptions', 'gestion']);
+        $techSupport->givePermissionTo(['manage-requests', 'manage-news', 'gestion']);
         $user->givePermissionTo('user');
     }
 

@@ -45,6 +45,14 @@
                         <a href="{{ $conferencia->URL }}" class="text-blue-500 hover:underline" target="_blank">Ver enlace</a>
                     </td>
                     <td class="px-4 py-2 border text-center">{{ $conferencia->estado }}</td>
+                    <td class="px-4 py-2 border">
+                        <div class="flex justify-between gap-2">
+                            <a href="{{ route('conferencias.edit', $conferencia->id_conferencia) }}"
+                            class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 text-sm text-center">
+                                Editar
+                            </a>
+                        </div>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

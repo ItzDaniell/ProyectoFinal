@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto pb-4">
         <form action="{{ route('conferencias.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
             @csrf
             @if ($errors->any())
@@ -43,7 +43,7 @@
 
             <div>
                 <label for="descripcion" class="block text-sm font-medium text-gray-700">Descripción</label>
-                <textarea name="descripcion" id="descripcion" rows="4" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-2"></textarea>
+                <textarea name="descripcion" id="descripcion" rows="4" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 pl-2" maxlength="300"></textarea>
             </div>
             <div>
                 <label for="duracion" class="block text-sm font-medium text-gray-700">Duración (En Minutos)</label>

@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Categorias;
 use App\Models\Comentario;
 use App\Models\Conferencia;
+use App\Models\InformarProblema;
+use App\Models\Inscripcion;
 use App\Models\Noticia;
+use App\Models\Ponente;
 use App\Models\Publicacion;
+use App\Models\Reporte;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -110,23 +114,18 @@ class PostInicioSesionController extends Controller
     public function PublicacionComentarios($slug)
     {
         $publicacion = Publicacion::where('slug', $slug)->first();
-
-        $comentarios = Comentario::where('id_publicacion', $publicacion->id_publicacion)->get();
-
+        $comentarios = Comentario::where('id_publicacion', $publicacion->id_publicacion)->where('estado', 'Activo')->get();
         return view('PostInicioSesion.PublicacionComentarios', compact('publicacion', 'comentarios'));
     }
 
     public function DetalleConferencia($slug)
     {
         $conferencia = Conferencia::where('slug', $slug)->first();
-
         $usuario = Auth::user();
         $yaInscrito = false;
-
         if ($usuario) {
             $yaInscrito = $conferencia->inscripcion()->where('id', $usuario->id)->exists();
         }
-
         return view('PostInicioSesion.DetallesConferencia', compact('conferencia', 'yaInscrito'));
     }
 
@@ -142,9 +141,7 @@ class PostInicioSesionController extends Controller
     public function ConfiguracionEliminarCuenta(){
         return view('PostInicioSesion.ConfiguracionEliminarCuenta');
     }
-
-    public function PerfilUsuario($slug = null)
-    {
+    public function PerfilUsuario($slug = null){
         if ($slug === null) {
             $usuario = Auth::user();
         } else {
@@ -153,17 +150,38 @@ class PostInicioSesionController extends Controller
         return view('PostInicioSesion.PerfilUsuario', compact('usuario'));
     }
 
-    public function autocomplete(Request $request)
-    {
+    public function autocomplete(Request $request){
         $query = $request->input('query');
-
         $resultado = User::where('name', 'LIKE', "%{$query}%")
                           ->where('id', '!=', Auth::id())
                           ->where('rol', '!=', 'Administrador')
                           ->select('name', 'profile_photo_path', 'avatar', 'slug')
                           ->limit(5)
                           ->get();
-
         return response()->json($resultado);
+    }
+    public function administracion()
+    {
+        $usuariosCount = User::count();
+        $publicacionesCount = Publicacion::count();
+        $comentariosCount = Comentario::count();
+        $noticiasCount = Noticia::count();
+        $conferenciasCount = Conferencia::count();
+        $ponentesCount = Ponente::count();
+        $inscripcionesCount = Inscripcion::count();
+        $reportesCount = Reporte::count();
+        $informesProblemasCount = InformarProblema::count();
+
+        return view('PostInicioSesion.Administracion', compact(
+            'usuariosCount',
+            'publicacionesCount',
+            'comentariosCount',
+            'noticiasCount',
+            'conferenciasCount',
+            'ponentesCount',
+            'inscripcionesCount',
+            'reportesCount',
+            'informesProblemasCount'
+        ));
     }
 }

@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('inscripciones', function (Blueprint $table) {
             $table->id('id_inscripcion');
-            $table->unsignedBigInteger('id')->unique();
-            $table->unsignedBigInteger('id_conferencia');
+            $table->unsignedBigInteger('id')->index();
+            $table->unsignedBigInteger('id_conferencia')->index();
             $table->string('estado')->default('Activo');
             $table->timestamps();
 
-            $table->foreign('id')->references('id')->on('users');
-            $table->foreign('id_conferencia')->references('id_conferencia')->on('conferencias');
+            $table->unique(['id', 'id_conferencia'], 'unique_id_conferencia');
         });
     }
 

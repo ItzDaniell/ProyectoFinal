@@ -79,7 +79,7 @@ Route::middleware([
 
 //Rutas de Gestión (Protegidas con Permisos Específicos)
 // Noticias
-Route::middleware(['auth', 'can:manage-news'])->prefix('/administracion/noticias')->group(function () {
+Route::middleware(['auth', 'can:manage-news', ForbidBannedUser::class])->prefix('/administracion/noticias')->group(function () {
     Route::get('/index', [NoticiaController::class, 'index'])->name('noticias.index');
     Route::get('/create', [NoticiaController::class, 'create'])->name('noticias.create');
     Route::post('/create', [NoticiaController::class, 'store'])->name('noticias.store');
@@ -88,24 +88,26 @@ Route::middleware(['auth', 'can:manage-news'])->prefix('/administracion/noticias
 });
 
 // Conferencias y Ponentes
-Route::middleware(['auth', 'can:manage-conferences'])->prefix('/administracion/conferencias')->group(function () {
+Route::middleware(['auth', 'can:manage-conferences', ForbidBannedUser::class])->prefix('/administracion/conferencias')->group(function () {
     Route::get('/index', [ConferenciaController::class, 'index'])->name('conferencias.index');
     Route::get('/create', [ConferenciaController::class, 'create'])->name('conferencias.create');
     Route::post('/create', [ConferenciaController::class, 'store'])->name('conferencias.store');
-    Route::get('/autocomplete-ponentes', [PonenteController::class, 'getPonentes'])->name('ponentes.list');
-
-    Route::prefix('/administracion/ponentes')->group(function () {
-        Route::get('/index', [PonenteController::class, 'index'])->name('ponentes.index');
-        Route::get('/create', [PonenteController::class, 'create'])->name('ponentes.create');
-        Route::post('/create', [PonenteController::class, 'store'])->name('ponentes.store');
-        Route::get('/{id}/edit', [PonenteController::class, 'edit'])->name('ponentes.edit');
-        Route::patch('/{id}/edit', [PonenteController::class, 'update'])->name('ponentes.update');
-        Route::get('/{id}', [PonenteController::class, 'show'])->name('ponentes.show');
-    });
+    Route::get('/{id}/edit', [ConferenciaController::class, 'edit'])->name('conferencias.edit');
+    Route::patch('/{id}/edit', [ConferenciaController::class, 'update'])->name('conferencias.update');
 });
 
+Route::middleware(['auth', 'can:manage-conferences', ForbidBannedUser::class])->prefix('/administracion/ponentes')->group(function () {
+    Route::get('/index', [PonenteController::class, 'index'])->name('ponentes.index');
+    Route::get('/create', [PonenteController::class, 'create'])->name('ponentes.create');
+    Route::post('/create', [PonenteController::class, 'store'])->name('ponentes.store');
+    Route::get('/{id}/edit', [PonenteController::class, 'edit'])->name('ponentes.edit');
+    Route::patch('/{id}/edit', [PonenteController::class, 'update'])->name('ponentes.update');
+    Route::get('/autocomplete-ponentes', [PonenteController::class, 'getPonentes'])->name('ponentes.list');
+});
+
+
 // Usuarios
-Route::middleware(['auth', 'can:manage-users'])->prefix('/administracion/usuarios')->group(function () {
+Route::middleware(['auth', 'can:manage-users', ForbidBannedUser::class])->prefix('/administracion/usuarios')->group(function () {
     Route::get('/index', [UsuarioController::class, 'index'])->name('usuarios.index');
     Route::get('/{id}/edit', [UsuarioController::class, 'edit'])->name('usuarios.edit');
     Route::patch('/{id}/edit', [UsuarioController::class, 'update'])->name('usuarios.update');
@@ -117,14 +119,14 @@ Route::middleware(['auth', 'can:manage-users'])->prefix('/administracion/usuario
 });
 
 // Publicaciones
-Route::middleware(['auth', 'can:manage-publications'])->prefix('/administracion/publicaciones')->group(function () {
+Route::middleware(['auth', 'can:manage-publications', ForbidBannedUser::class])->prefix('/administracion/publicaciones')->group(function () {
     Route::get('/index', [PublicacionController::class, 'index'])->name('publicacion.index');
     Route::get('/{id}/edit', [PublicacionController::class, 'edit'])->name('publicacion.edit');
     Route::patch('/{id}/edit', [PublicacionController::class, 'update'])->name('publicacion.update');
 });
 
 // Categorías
-Route::middleware(['auth', 'can:manage-category'])->prefix('/administracion/categorias')->group(function () {
+Route::middleware(['auth', 'can:manage-category', ForbidBannedUser::class])->prefix('/administracion/categorias')->group(function () {
     Route::get('/index', [CategoriaController::class, 'index'])->name('categorias.index');
     Route::get('/create', [CategoriaController::class, 'create'])->name('categorias.create');
     Route::post('/create', [CategoriaController::class, 'store'])->name('categorias.store');
@@ -133,11 +135,11 @@ Route::middleware(['auth', 'can:manage-category'])->prefix('/administracion/cate
     Route::delete('/categorias/{id_categoria}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
 });
 
-Route::middleware(['auth', 'can:manage-reports'])->prefix('/administracion/reportes')->group(function () {
+Route::middleware(['auth', 'can:manage-reports', ForbidBannedUser::class])->prefix('/administracion/reportes')->group(function () {
     Route::get('/index', [ReporteController::class, 'index'])->name('reportes.index');
 });
 
-Route::middleware(['auth', 'can:manage-reports'])->prefix('/administracion/reportes-procesados')->group(function () {
+Route::middleware(['auth', 'can:manage-reports', ForbidBannedUser::class])->prefix('/administracion/reportes-procesados')->group(function () {
     Route::get('/index', [ReporteProcesadoController::class, 'index'])->name('reportes-procesados.index');
     Route::get('{id}/create', [ReporteProcesadoController::class, 'create'])->name('reportes-procesados.create');
     Route::post('{id}/store', [ReporteProcesadoController::class, 'store'])->name('reportes-procesados.store');
@@ -147,17 +149,17 @@ Route::middleware(['auth', 'can:manage-requests'])->prefix('/administracion/info
     Route::get('/index', [InformarProblemaController::class, 'index'])->name('informes-problemas.index');
 });
 
-Route::middleware(['auth', 'can:manage-requests'])->prefix('/administracion/informes-procesados')->group(function () {
+Route::middleware(['auth', 'can:manage-requests', ForbidBannedUser::class])->prefix('/administracion/informes-procesados')->group(function () {
     Route::get('/index', [InformeProcesadoController::class, 'index'])->name('informes-procesados.index');
     Route::get('{id}/create', [InformeProcesadoController::class, 'create'])->name('informes-procesados.create');
     Route::post('{id}/store', [InformeProcesadoController::class, 'store'])->name('informes-procesados.store');
 });
 
-Route::middleware(['auth', 'can:manage-inscriptions'])->prefix('/administracion/inscripciones')->group(function () {
+Route::middleware(['auth', 'can:manage-inscriptions', ForbidBannedUser::class])->prefix('/administracion/inscripciones')->group(function () {
     Route::get('/index', [InscripcionesController::class, 'index'])->name('informes-problemas.index');
 });
 
-Route::middleware(['auth', 'can:manage-comments'])->prefix('/administracion/comentarios')->group(function () {
+Route::middleware(['auth', 'can:manage-comments', ForbidBannedUser::class])->prefix('/administracion/comentarios')->group(function () {
     Route::get('/index', [ComentarioController::class, 'index'])->name('comentarios.index');
     Route::get('/{id}/edit', [ComentarioController::class, 'edit'])->name('comentarios.edit');
     Route::patch('/{id}/edit', [ComentarioController::class, 'update'])->name('comentarios.update');
@@ -168,17 +170,18 @@ Route::middleware(['auth', 'can:manage-comments'])->prefix('/administracion/come
      Route::get('/redirect', [GoogleAuthController::class, 'redirectToGoogle'])->name('google.redirect');
      Route::get('/callback', [GoogleAuthController::class, 'handleGoogleCallback'])->name('google.callback');
  });
- 
+
 
 //Rutas de Actualización de Usuario
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', ForbidBannedUser::class])->group(function () {
     Route::match(['post', 'put'], '/usuario/actualizar-perfil', [UsuarioController::class, 'actualizarPerfil'])->name('usuario.actualizarPerfil');
     Route::post('/usuario/actualizar-foto-perfil', [UsuarioController::class, 'actualizarFoto'])->name('usuario.actualizarFotoPerfil');
 });
 
-Route::get('/administracion', function () {
-    return view('PostInicioSesion.Administracion');
-})->middleware(['auth', 'verified'])->name('Administracion');
+Route::middleware(['auth', 'can:gestion', ForbidBannedUser::class])->group(function () {
+    Route::get('/administracion', [PostInicioSesionController::class, 'administracion'])->name('Administracion');
+});
+
 
 
 Route::post('/enviar-solicitud', [UsuarioController::class, 'enviarSolicitud'])->name('enviar.solicitud');
