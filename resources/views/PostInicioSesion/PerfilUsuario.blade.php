@@ -74,13 +74,6 @@
                 <h3 class="text-xl font-semibold mb-4">Biografía</h3>
                 <p class="text-gray-700">{{ $usuario->biografia ?? 'No hay biografía disponible.' }}</p>
             </div>
-            @if ($usuario->id === Auth::id())
-            <div class="flex justify-end mt-10">
-                <a href="{{ route('empresa') }}" class="boton">
-                    Rol Empresa
-                </a>
-            </div>
-            @endif
         </div>
     </div>
 </div>

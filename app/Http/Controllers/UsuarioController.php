@@ -8,6 +8,8 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
+
 
 
 class UsuarioController extends Controller
@@ -121,9 +123,26 @@ class UsuarioController extends Controller
     
         return redirect()->back()->with('success');
     }
-    
-    
-   
 
+    public function savePassword(Request $request)
+    {
+        // Validar la entrada
+        $request->validate([
+            'password' => 'required|confirmed|min:8',
+        ]);
+
+        // Obtener el usuario autenticado
+        $user = Auth::user();
+
+        // Actualizar la contraseña
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        // Reautenticar al usuario para evitar que lo redirija al login
+        Auth::login($user);
+
+        // Redirigir al home con un mensaje de éxito
+        return redirect()->route('home')->with('success', 'Contraseña configurada correctamente.');
+    }
 
 }

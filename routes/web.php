@@ -18,8 +18,13 @@ use App\Http\Controllers\{
     ReporteProcesadoController,
     ReporteResueltoController,
     ReportesController,
-    UsuarioController
+    UsuarioController,
+    EnviarSolicitudController,
+    HomeController,
 };
+
+use App\Http\Controllers\Auth\SetPasswordController;
+use App\Http\Controllers\Auth\GoogleAuthController;
 use Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
@@ -147,32 +152,11 @@ Route::middleware(['auth', 'can:manage-requests'])->prefix('/administracion/info
 });
 
  //Rutas de Google OAuth
-Route::prefix('/google-auth')->group(function () {
-    Route::get('/redirect', function () {
-        return Socialite::driver('google')->redirect();
-    });
-    Route::get('/callback', function () {
-        $user_google = Socialite::driver('google')
-            ->stateless()
-            ->setHttpClient(new \GuzzleHttp\Client(['verify' => false]))
-            ->user();
-        $user = User::updateOrCreate(
-            ['google_id' => $user_google->id],
-            [
-                'name' => $user_google->name,
-                'email' => $user_google->email,
-                'avatar' => $user_google->avatar,
-                'password' => bcrypt(str()->random(16)),
-
-            ]
-        );
-        $role = Role::where('name', 'Usuario')->first();
-        $user->assignRole($role);
-        Auth::login($user);
-        return redirect('/home');
-    });
-});
-
+ Route::prefix('/google-auth')->group(function () {
+     Route::get('/redirect', [GoogleAuthController::class, 'redirectToGoogle'])->name('google.redirect');
+     Route::get('/callback', [GoogleAuthController::class, 'handleGoogleCallback'])->name('google.callback');
+ });
+ 
 
 //Rutas de Actualización de Usuario
 Route::middleware(['auth'])->group(function () {
@@ -185,8 +169,6 @@ Route::get('/administracion', function () {
 })->middleware(['auth', 'verified'])->name('Administracion');
 
 
-Route::get('/empresa', function () {
-    return view('PostInicioSesion.Empresa'); // Asegúrate de que "empresa" coincide con la ubicación de tu archivo Empresa.blade.php
-})->name('empresa');
-
-
+Route::post('/enviar-solicitud', [UsuarioController::class, 'enviarSolicitud'])->name('enviar.solicitud');
+Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
+Route::post('/save-password', [UsuarioController::class, 'savePassword'])->name('password.save')->middleware('auth');
