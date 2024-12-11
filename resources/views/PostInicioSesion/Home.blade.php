@@ -100,31 +100,25 @@
                         <iframe src="{{ asset('storage/'.$publicacion->archivo) }}" width="100%" height="100%"></iframe>
                     </div>
                 </div>
-            @endif
-                {{-- Comentado: Archivos adicionales --}}
-                {{-- <div class="mt-4" style="height: 500px;">
-                    <p class="text-sm text-gray-600">Archivo adjunto:</p>
-                    @php
-                    $extension = pathinfo($publicacion->archivo, PATHINFO_EXTENSION);
-                    @endphp
-                    @if(in_array($extension, ['rar', 'zip']))
-                    <div class="flex items-center space-x-2">
-                        <ion-icon name="archive-outline" class="text-2xl text-gray-600"></ion-icon>
-                        <a href="{{ asset('storage/' . $publicacion->archivo) }}" class="text-blue-600 hover:text-blue-800"
-                            download>
-                            Descargar archivo ({{ strtoupper($extension) }})
-                        </a>
+                @elseif(in_array(pathinfo($publicacion->archivo, PATHINFO_EXTENSION), ['rar', 'zip']))
+                    <div class="mt-4">
+                        <p class="text-sm text-gray-600 pb-2">Archivo adjunto:</p>
+                        <div class="flex items-center space-x-2">
+                            <ion-icon name="archive-outline" class="text-2xl text-gray-600"></ion-icon>
+                            <a href="{{ asset('storage/' . $publicacion->archivo) }}" class="text-blue-600 hover:text-blue-800" download>
+                                Descargar archivo ({{ strtoupper(pathinfo($publicacion->archivo, PATHINFO_EXTENSION)) }})
+                            </a>
+                        </div>
                     </div>
-                    @else
-                    <div class="flex items-center space-x-2">
-                        <ion-icon name="image-outline" class="text-2xl text-gray-600"></ion-icon>
-                        <a href="{{ asset('storage/' . $publicacion->archivo) }}" class="text-blue-600 hover:text-blue-800"
-                            download>
-                            Descargar archivo
-                        </a>
+                @elseif(in_array(pathinfo($publicacion->archivo, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg']))
+                    <div class="mt-4">
+                        <p class="text-sm text-gray-600 pb-2">Imagen adjunta:</p>
+                        <div class="flex items-center space-x-2">
+                            <ion-icon name="image-outline" class="text-2xl text-gray-600"></ion-icon>
+                            <img src="{{ asset('storage/' . $publicacion->archivo) }}" alt="Imagen adjunta" class="w-full h-auto max-h-96 object-cover">
+                        </div>
                     </div>
-                    @endif
-                </div> --}}
+                @endif
             </div>
             <div class="p-4 bg-gray-200 rounded-b-lg flex justify-center align-middle">
                 <a href="{{ route('PublicacionComentarios', $publicacion->slug) }}"

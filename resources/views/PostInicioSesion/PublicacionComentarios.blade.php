@@ -17,6 +17,14 @@
                         </div>
                     </div>
                 @endif
+                @if (in_array(pathinfo($publicacion->archivo, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg']))
+                    <div class="mt-4">
+                        <h3 class="font-semibold text-lg text-blue-500 mb-5">Imagen publicada</h3>
+                        <div class="relative w-full h-5/6 overflow-hidden">
+                            <img src="{{ asset('storage/'.$publicacion->archivo) }}" alt="Imagen publicada" class="w-full h-auto object-cover">
+                        </div>
+                    </div>
+                @endif
             </div>
             <!-- Sección de comentarios a la derecha -->
             <div class="flex flex-col w-full">

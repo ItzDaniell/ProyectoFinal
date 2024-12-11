@@ -3,11 +3,14 @@
 @section('title', 'Detalles de La Conferencia')
 
 @section('content')
-    <div class="flex flex-wrap-reverse md:flex-nowrap bg-white shadow-lg rounded-lg p-6 space-y-6 md:space-y-0 md:space-x-6">
+    <div class="flex flex-wrap-reverse md:flex-nowrap bg-white shadow-lg rounded-lg p-8 space-y-6 md:space-y-0 md:space-x-6 min-h-[500px]"> <!-- Increased padding and min-height -->
         <div class="w-full md:w-7/10">
             <h2 class="text-2xl font-bold text-gray-800">{{ $conferencia->titulo }}</h2>
-            <p class="text-gray-600"><strong>Categoría:</strong> {{ $conferencia->categoria->nombre }}</p>
-            <p class="text-gray-600"><strong>Fecha de Publicación:</strong> {{ $conferencia->fecha_hora_inicio }}</p>
+            <p class="text-gray-600"><strong>Categoría:</strong> {{ $conferencia->categoria->descripcion }}</p>
+            <p class="text-gray-600"><strong>Fecha de Publicación:</strong> {{ \Carbon\Carbon::parse($conferencia->fecha_hora_inicio)->subHours(5)->format('d M Y, h:i A') }}</p>
+            <p class="mt-4 text-gray-700">
+                Descripción de la Conferencia
+            </p>
             <p class="mt-4 text-gray-700">
                 {{ $conferencia->descripcion }}
             </p>
@@ -22,13 +25,10 @@
                         Ir al Enlace
                     </a>
                 @endif
-                <a class="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded" href="{{ route('Conferencias') }}">
-                    Volver
-                </a>
             </div>
         </div>
-        <div class="w-full md:w-3/10 flex flex-col items-center justify-center space-x-4">
-            <img src="{{ asset('storage/'.$conferencia->ponente->foto) }}" alt="Foto del ponente" class="w-32 h-32 rounded-full shadow-lg object-cover" />
+        <div class="w-full md:w-3/10 flex flex-col items-center justify-center space-y-6"> <!-- Changed space-x-4 to space-y-6 for vertical spacing -->
+            <img src="{{ asset('storage/'.$conferencia->ponente->foto) }}" alt="Foto del ponente" class="w-32 h-32 rounded-full shadow-lg object-cover mb-4" /> <!-- Added mb-4 for margin-bottom -->
             <div class="text-left">
                 <p class="text-lg font-semibold text-gray-800">{{ $conferencia->ponente->nombres }}</p>
                 <p class="text-gray-600"><strong>Biografía:</strong> {{ $conferencia->ponente->biografia }}</p>
@@ -52,7 +52,10 @@
             <form action="{{ route('inscripcion.store', $conferencia->slug) }}" method="POST">
                 @csrf
                 <div class="flex justify-center mb-4">
-                    <img src="ruta/a/tu/imagen.jpg" alt="Inscripción" class="w-24 h-24 object-contain">
+                    <img src="https://png.pngtree.com/png-clipart/20190925/original/pngtree-vector-question-icon-png-image_4973806.jpg" alt="Inscripción" class="w-24 h-24 object-contain">
+                </div>
+                <div class="flex justify-center mb-4">
+                    <p class="text-lg font-medium">¿Deseas inscribirte a esta conferencia?</p>
                 </div>
                 <!-- Botones de acción -->
                 <div class="flex justify-end space-x-2">
