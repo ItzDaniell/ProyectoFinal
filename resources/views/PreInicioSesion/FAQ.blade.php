@@ -27,7 +27,7 @@
                     <span class="text-gray-500 text-xl" :class="{'rotate-45': open}">+</span>
                 </div>
                 <div x-show="open" class="mt-2 text-gray-600">
-                    <p>DevShare es una plataforma donde puedes divulgar tus conocimientos y compartirlos con personas y/o empresas pertenecientes al rubro de la tecnología</p>
+                    <p>DevShare es una plataforma donde puedes divulgar tus conocimientos y compartirlos con personas y/o empresas pertenecientes al rubro de la tecnología.</p>
                 </div>
             </div>
 
@@ -38,7 +38,7 @@
                     <span class="text-gray-500 text-xl" :class="{'rotate-45': open}">+</span>
                 </div>
                 <div x-show="open" class="mt-2 text-gray-600">
-                    <p>DevShare ofrece una variedad de herramientas...</p>
+                    <p>DevShare ofrece una variedad de herramientas que permiten colaborar, compartir conocimientos, gestionar proyectos y mucho más.</p>
                 </div>
             </div>
 
@@ -49,7 +49,7 @@
                     <span class="text-gray-500 text-xl" :class="{'rotate-45': open}">+</span>
                 </div>
                 <div x-show="open" class="mt-2 text-gray-600">
-                    <p>Para crear una cuenta, simplemente...</p>
+                    <p>Para crear una cuenta, simplemente dirígete a la página de registro y sigue los pasos indicados.</p>
                 </div>
             </div>
 
@@ -60,7 +60,7 @@
                     <span class="text-gray-500 text-xl" :class="{'rotate-45': open}">+</span>
                 </div>
                 <div x-show="open" class="mt-2 text-gray-600">
-                    <p>Para reportar un problema, puedes...</p>
+                    <p>Para reportar un problema, puedes usar el formulario de soporte disponible en la página de contacto.</p>
                 </div>
             </div>
 
@@ -71,7 +71,7 @@
                     <span class="text-gray-500 text-xl" :class="{'rotate-45': open}">+</span>
                 </div>
                 <div x-show="open" class="mt-2 text-gray-600">
-                    <p>La colaboración es fácil. Solo debes...</p>
+                    <p>La colaboración es fácil. Solo debes unirte a grupos o equipos dentro de la plataforma y compartir tu conocimiento.</p>
                 </div>
             </div>
         </div>

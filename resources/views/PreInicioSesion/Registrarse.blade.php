@@ -11,10 +11,10 @@
 <div class="flex justify-center items-center min-h-screen bg-gray-100 p-4 mt-16">
     <div class="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6 md:p-8 flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-8">
         <!-- Sección de bienvenida centrada -->
-        <div class="w-full md:w-1/2 bg-yellow-500 text-white p-6 md:p-8 rounded-lg flex flex-col items-center justify-center text-center">
+        <div class="w-full md:w-1/2 bg-gray-800 text-white p-6 md:p-8 rounded-lg flex flex-col items-center justify-center text-center">
             <h1 class="text-3xl font-bold mb-4">¡Hola!</h1>
             <p class="mb-6">Regístrate con tus datos personales para disfrutar de todo el contenido de nuestra plataforma. Si ya tienes una cuenta registrada, inicia sesión.</p>
-            <a href="{{ route('login') }}" class="bg-white text-yellow-500 py-2 px-4 rounded hover:bg-yellow-600 hover:text-white transition">Iniciar Sesión</a>
+            <a href="{{ route('login') }}" class="bg-white text-gray-900 py-2 px-4 rounded hover:bg-gray-500 hover:text-white transition">Iniciar Sesión</a>
         </div>
 
         <!-- Formulario de registro -->
@@ -77,7 +77,7 @@
                 @endif
 
                 <div class="mt-6">
-                    <button type="submit" class="w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition">Registrar</button>
+                    <button type="submit" class="w-full bg-gray-800 text-white py-2 rounded hover:bg-gray-500 transition">Registrar</button>
                 </div>
                 <div class="mt-4">
                     <a href="/google-auth/redirect"

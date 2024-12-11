@@ -32,7 +32,7 @@
             padding-top: 10px;
             padding-bottom: 10px;
             color: #ffffff;
-            background: #000000;
+            background: #162d72 ;
             font-size: 14px;
             text-decoration: none;
             display: flex;
@@ -42,11 +42,11 @@
         }
 
         .boton {
-            box-shadow: 0px 0px 0 #F3AF31;
+            box-shadow: 0px 0px 0 #2f2f2f;
         }
 
         .boton:hover {
-            box-shadow: 8px 10px 0 #F3AF31;
+            box-shadow: 8px 10px 0 #2f2f2f;
         }
 
         .enlace {
@@ -68,7 +68,7 @@
         <!-- Sidebar con ancho fijo -->
         <div id="responsiveDiv">
             <div
-                class="bg-orange-700 text-white md:w-64 md:h-screen md:relative p-1 fixed bottom-0 left-0 right-0 flex md:flex-col md:justify-start md:items-start md:space-y-2 items-center">
+                class="bg-gray-800 text-white md:w-64 md:h-screen md:relative p-1 fixed bottom-0 left-0 right-0 flex md:flex-col md:justify-start md:items-start md:space-y-2 items-center">
                 <nav class="space-y-4 w-full md:w-auto flex md:flex-col justify-around">
                     <!-- Encabezado (visible solo en pantallas grandes) -->
                     <div class="flex items-center justify-center h-16 border-b border-white w-full">

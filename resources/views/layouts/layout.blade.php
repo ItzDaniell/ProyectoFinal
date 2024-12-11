@@ -36,40 +36,73 @@
         }
 
         .footer {
-        background-color: #1a1a1a;
-        color: white;
-        padding: 20px 0;
-        }
-        .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 20px;
-        }
-        .footer h3 {
-        color: white;
-        margin-bottom: 15px;
-        }
-        .footer ul {
-        list-style: none;
-        padding: 0;
-        }
-        .footer li {
-        margin-bottom: 10px;
-        }
+    background-color: #1a1a1a;
+    color: white;
+    padding: 40px 20px;
+    border-top: 2px solid #ff5b02; /* Añadir borde superior sutil */
+}
 
-        .footer-bottom {
-        text-align: center;
-        margin-top: 20px;
-        padding-top: 20px;
-        border-top: 1px solid #ff5b02;
-        }
-        .footer-bottom p {
-        margin: 0;
-        font-size: 0.9em;
-        color: #ffffff;
-        }
+.footer {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 3rem 1rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-left, .footer-right {
+    flex: 1;
+}
+
+.footer-left h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.footer li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer li a:hover {
+    color: #ff5b02;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ff5b02;
+}
+
+.footer-bottom p {
+    font-size: 0.9rem;
+    color: #ffffff;
+    opacity: 0.8;
+}
+
+
     </style>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <title>DevShare - @yield('title')</title>
@@ -82,13 +115,19 @@
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex items-center justify-between h-16">
                         <div class="flex items-center">
+                            <div class="flex items-center">
+                            <!-- Logo -->
                             <div class="flex-shrink-0">
-                                <img src="{{ asset('images/devshare.png') }}" alt="grupo" class=" shadow-lg w-10 h-15">
+                                <img src="{{ asset('images/devshare.png') }}" alt="DevShare Logo" class="shadow-lg w-10 h-15">
                             </div>
+                            <!-- Nombre -->
+                            <div class="ml-4 text-white text-2xl font-semibold">DevShare</div>
+                        </div>
+
                             <!-- Menú desktop -->
                             <div class="hidden md:block">
                                 <div class="ml-20 flex items-baseline">
-                                    <a href="{{ route('Bienvenida') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Inicio</a>
+                                    <a href="{{ route('Bienvenida') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Bienvenida</a>
                                     <a href="{{ route('Contactanos') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Contactanos</a>
                                     <a href="{{ route('SobreNosotros') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Sobre Nosotros</a>
                                     <a href="{{ route('FAQ') }}" class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">FAQ</a>
@@ -179,28 +218,32 @@
         </div>
     </header>
     @yield('content')
-    <footer class="footer">
-        <div class="footer-content">
-          <div class="footer-left">
-            <h3>DevShare</h3>
-            <ul>
-              <li><a href="{{ route('Bienvenida') }}">Inicio</a></li>
-              <li><a href="{{ route('Contactanos') }}">Contactanos</a></li>
-              <li><a href="{{ route('SobreNosotros') }}">Sobre Nosotros</a></li>
-              <li><a href="{{ route('FAQ') }}">Preguntas Frecuentes</a></li>
+    <footer class="footer bg-[#1a1a1a] text-white py-12">
+    <div class="footer-content max-w-7xl mx-auto px-6 md:px-8">
+        <div class="footer-left mb-6 md:mb-0 flex flex-col md:flex-row justify-between items-center md:items-start">
+            <h3 class="text-2xl font-bold mb-4 md:mb-0 text-center md:text-left">DevShare</h3>
+            <ul class="space-y-2 text-center md:text-left">
+                <li><a href="{{ route('Bienvenida') }}" class="hover:text-[#ff5b02]">Inicio</a></li>
+                <li><a href="{{ route('Contactanos') }}" class="hover:text-[#ff5b02]">Contactanos</a></li>
+                <li><a href="{{ route('SobreNosotros') }}" class="hover:text-[#ff5b02]">Sobre Nosotros</a></li>
+                <li><a href="{{ route('FAQ') }}" class="hover:text-[#ff5b02]">Preguntas Frecuentes</a></li>
             </ul>
-          </div>
-          <div class="footer-right">
-            <ul>
-              <li><a href="{{ route('Registrarse') }}">Registrarse</a></li>
-              <li><a href="{{ route('login') }}">Iniciar Sesión</a></li>
+        </div>
+
+        <!-- Aquí está el cambio para alinear a la derecha -->
+        <div class="footer-right text-center md:text-right">
+            <ul class="space-y-2">
+                <li><a href="{{ route('Registrarse') }}" class="hover:text-[#ff5b02]">Registrarse</a></li>
+                <li><a href="{{ route('login') }}" class="hover:text-[#ff5b02]">Iniciar Sesión</a></li>
             </ul>
-          </div>
         </div>
-        <div class="footer-bottom">
-          <p>DevShare 2024</p>
-        </div>
-      </footer>
+    </div>
+
+    <div class="footer-bottom text-center py-4 border-t border-[#ff5b02] mt-8">
+        <p class="text-sm opacity-75">DevShare 2024 - Todos los derechos reservados</p>
+    </div>
+</footer>
+
       @livewireScripts
 </body>
 </html>
