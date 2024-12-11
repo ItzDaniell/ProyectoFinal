@@ -8,10 +8,12 @@
 
     <!-- Sección de encabezado -->
     <header class="text-center my-10 md:my-20">
-      <h1 class="text-4xl md:text-7xl font-bold text-gray-800 mb-4">La Web Perfecta Para</h1>
-      <h1 class="text-4xl md:text-7xl font-bold text-gray-800 mb-8">Equipos de Desarrollo</h1>
-      <p class="text-gray-600 mb-6 text-lg max-w-5xl mx-auto">DevShare es tu solución integral para una colaboración
-        activa. Con una interfaz amigable y distintas funcionalidades, te ofrecemos un entorno de trabajo eficiente.</p>
+      <h1 class="text-4xl md:text-6xl font-bold text-[#1e3a8a] mb-4">La Web Ideal Para</h1>
+      <h1 class="text-4xl md:text-6xl font-extrabold text-[#ff5b02] mb-8">Equipos de Desarrollo</h1>
+      <p class="text-gray-600 mb-6 text-lg md:text-xl max-w-5xl mx-auto font-medium">
+        DevShare es tu plataforma definitiva para colaborar de manera efectiva. Ofrecemos herramientas intuitivas y
+        potentes que impulsan la productividad de tu equipo.
+      </p>
       <a href="http://127.0.0.1:8000/login">
         <button class="bg-gray-800 text-white py-2 px-6 rounded hover:bg-gray-700 transition duration-200">
           Comienza Ahora
@@ -36,10 +38,9 @@
 
     <!-- Sección de ventajas -->
     <section class="text-center my-10 md:my-20 mx-auto">
-      <h3 class="text-2xl font-semibold text-gray-800 mb-6">Ventajas De Usar DevShare</h3>
+      <h3 class="text-3xl md:text-4xl font-semibold text-gray-800 mb-6">Ventajas De Usar DevShare</h3>
       <p class="text-gray-600 mb-8">DevShare es la solución ideal para equipos de desarrollo que buscan mejorar la
         colaboración y la eficiencia.</p>
-
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 justify-items-center mx-auto">
         <div class="flex flex-col items-center">
           <img src="{{ asset('images/mano.png') }}" alt="mano"
