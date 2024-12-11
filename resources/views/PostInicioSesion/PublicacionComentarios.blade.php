@@ -5,20 +5,23 @@
 @section('content')
     <div class="max-w-6xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
         <!-- Contenedor principal en dos columnas -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6" style="min-height: 95vh;">
-            <!-- Publicación a la izquierda -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6" style="min-height: 94vh;">
             <div class="bg-gray-100 p-6 rounded-lg shadow-md">
                 <h2 class="text-xl font-bold text-blue-600 mb-4">{{ $publicacion->titulo }}</h2>
-                <p class="text-gray-800 mb-4">{{ $publicacion->descripcion }}</p>
-                <span class="text-gray-400 text-sm">
-                    Publicado por: {{ $publicacion->users->name }} | {{ $publicacion->created_at->diffForHumans() }}
-                </span>
+                <!-- Mostrar portada del archivo PDF -->
+                @if (pathinfo($publicacion->archivo, PATHINFO_EXTENSION) === 'pdf')
+                    <div class="mt-4 h-full">
+                        <h3 class="font-semibold text-lg text-blue-500 mb-5">Archivo PDF publicado</h3>
+                        <div class="relative w-full h-5/6 overflow-hidden">
+                            <iframe src="{{ asset('storage/'.$publicacion->archivo) }}" width="100%" height="100%"></iframe>
+                        </div>
+                    </div>
+                @endif
             </div>
-
             <!-- Sección de comentarios a la derecha -->
             <div class="flex flex-col w-full">
                 <!-- Encabezado del autor -->
-                <div class="flex items-center justify-between p-4 bg-gray-50 rounded-t-lg">
+                <div class="flex items-center justify-between pl-4 pr-4 pt-4 pb-2 bg-gray-50 rounded-t-lg">
                     <div class="flex items-center space-x-3">
                         <div class="w-12 h-12 bg-gray-400 rounded-full flex items-center justify-center">
                             @if ($publicacion->users->profile_photo_path)
@@ -36,8 +39,11 @@
                             @endif
                         </div>
                         <div>
-                            <p class="text-sm font-medium">{{ $publicacion->users->name }}</p>
-                            <p class="text-xs text-gray-600">Publicado: {{ $publicacion->created_at->diffForHumans() }}</p>
+                            <!-- Bloque combinado de nombre de usuario, fecha de publicación y descripción -->
+                            <div class="space-y-1">
+                                <p class="text-sm font-medium">{{ $publicacion->users->name }}</p>
+                                <p class="text-xs text-gray-600">Publicado: {{ $publicacion->created_at->diffForHumans() }}</p>
+                            </div>
                         </div>
                     </div>
                     <div class="relative">
@@ -66,9 +72,11 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="flex items-center justify-between pl-4 pr-4 pb-2 bg-gray-50 rounded-t-lg">
+                    <p class="text-gray-800 text-xs max-w-full md:max-w-lg">{{ $publicacion->descripcion }}</p>
+                </div>
                 <!-- Lista de comentarios con scroll -->
-                <div class="space-y-4 overflow-y-auto max-h-[60vh] p-4 bg-white flex-grow">
+                <div class="space-y-4 overflow-y-auto max-h-[50vh] p-4 mt-2 mb-4 bg-white flex-grow">
                     @foreach ($comentarios as $comentario)
                     <div class="bg-gray-100 p-4 rounded-lg shadow-sm flex space-x-4">
                         <!-- Foto de perfil a la izquierda -->
@@ -87,19 +95,17 @@
                                      alt="Foto de perfil predeterminada">
                             @endif
                         </div>
-
                         <!-- Contenido del comentario -->
                         <div class="flex-1">
                             <p class="text-gray-800 font-semibold">{{ $comentario->users->name }}</p>
-                            <p class="text-gray-600">{{ $comentario->contenido }}</p>
-                            <span class="text-gray-400 text-sm">{{ $comentario->created_at->diffForHumans() }}</span>
+                            <p class="text-gray-600 text-xs">{{ $comentario->contenido }}</p>
+                            <span class="text-gray-400 text-xs">{{ $comentario->created_at->diffForHumans() }}</span>
                         </div>
                     </div>
-                    @endforeach
+                @endforeach
                 </div>
-
                 <!-- Input para añadir comentario (al pie del div) -->
-                <div class="flex p-4 bg-white mt-auto items-center justify-center">
+                <div class="flex pr-4 pl-4 bg-white mt-auto items-center justify-center">
                     <form action="{{ route('comentarios.store', $publicacion->slug) }}" method="POST" class="flex space-x-4 w-full max-w-3xl">
                         <div class="w-12 h-12 bg-gray-400 rounded-full flex items-center justify-center">
                             @if (Auth::user()->profile_photo_path)
@@ -123,10 +129,8 @@
                         </button>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>
-
     @vite('resources/js/opciones_publicacion.js')
 @endsection

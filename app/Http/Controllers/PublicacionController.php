@@ -61,10 +61,10 @@ class PublicacionController extends Controller
         }
 
         $request->validate([
-            'titulo' => 'required|string|max:255',
-            'descripcion' => 'required|string',
+            'titulo' => 'required|string|max:150',
+            'descripcion' => 'required|string|max:301',
             'id_categoria' => 'required|exists:categorias,id_categoria',
-            'archivo' => 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx,rar,zip|max:10240',
+            'archivo' => 'required|file|mimes:jpg,jpeg,png,pdf,rar,zip|max:10240',
             'URL' => 'nullable|url',
         ]);
 

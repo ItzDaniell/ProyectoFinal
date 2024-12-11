@@ -77,23 +77,30 @@
                 </div>
             </div>
         </div>
-        @if ($publicacion->imagen !== null)
-        <div class="bg-gray-100">
-            <img src="{{ asset('storage/' . $publicacion->imagen) }}" alt="Imagen de la Publicación"
-                class="w-full max-h-96 object-cover border border-gray-300">
-        </div>
-        @endif
         <div class="p-4">
             <h3 class="text-lg font-bold">{{ $publicacion->titulo}}</h3>
-            <p class="text-sm text-gray-600">
-                {{ $publicacion->categoria->descripcion }}
-            </p>
-            <p class="text-sm text-gray-600">
-                {{ $publicacion->descripcion }}
-            </p>
-            <!-- Mostrar archivo adjunto si existe -->
-            @if ($publicacion->imagen === null && $publicacion->archivo !== null)
-            <div class="mt-4">
+            <p class="text-sm text-gray-600">{{ $publicacion->descripcion }}</p>
+            <p class="text-sm text-gray-600">Categoría : {{ $publicacion->categoria->descripcion }}</p>
+
+            @if (pathinfo($publicacion->archivo, PATHINFO_EXTENSION) === 'pdf')
+            <div class="h-full">
+                <p class="text-sm text-gray-600">Archivo adjunto:</p>
+                <div class="mt-4" style="height:450px">
+                    <div class="relative w-full h-full overflow-hidden">
+                        <iframe src="{{ asset('storage/' . $publicacion->archivo) }}" width="100%" height="100%"></iframe>
+                    </div>
+                </div>
+            </div>
+                @if ($publicacion->URL)
+                <div>
+                    <p class="mt-4 text-sm text-gray-600">Link del proyecto:</p>
+                    <a href="{{ $publicacion->URL }}" class="text-blue-600 hover:text-blue-800" download>
+                        Ir al enlace
+                    </a>
+                </div>
+                @endif
+            @endif
+            {{--             <div class="mt-4" style="height: 500px;">
                 <p class="text-sm text-gray-600">Archivo adjunto:</p>
                 @php
                     $extension = pathinfo($publicacion->archivo, PATHINFO_EXTENSION);
@@ -103,20 +110,6 @@
                         <ion-icon name="archive-outline" class="text-2xl text-gray-600"></ion-icon>
                         <a href="{{ asset('storage/' . $publicacion->archivo) }}" class="text-blue-600 hover:text-blue-800" download>
                             Descargar archivo ({{ strtoupper($extension) }})
-                        </a>
-                    </div>
-                @elseif(in_array($extension, ['doc', 'docx']))
-                    <div class="flex items-center space-x-2">
-                        <ion-icon name="document-outline" class="text-2xl text-gray-600"></ion-icon>
-                        <a href="{{ asset('storage/' . $publicacion->archivo) }}" class="text-blue-600 hover:text-blue-800" download>
-                            Descargar documento ({{ strtoupper($extension) }})
-                        </a>
-                    </div>
-                @elseif($extension == 'pdf')
-                    <div class="flex items-center space-x-2">
-                        <ion-icon name="document-pdf-outline" class="text-2xl text-red-600"></ion-icon>
-                        <a href="{{ asset('storage/' . $publicacion->archivo) }}" class="text-blue-600 hover:text-blue-800" download>
-                            Descargar PDF
                         </a>
                     </div>
                 @else
@@ -133,8 +126,8 @@
                 <a href="{{ $publicacion->URL }}" class="text-blue-600 hover:text-blue-800" download>
                     Ir al enlace
                 </a>
-            </div>
-            @endif
+            </div> --}}
+
         </div>
         <div class="p-4 bg-gray-200 rounded-b-lg flex justify-center align-middle">
             <a href="{{ route('PublicacionComentarios', $publicacion->slug)  }}" class="btn-comentar flex items-center align-middle space-x-2 text-gray-800 hover:text-gray-600 hover:bg-gray-300 px-3 py-2 rounded transition duration-200" data-id="{{ $publicacion->id }}">
