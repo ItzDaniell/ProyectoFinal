@@ -368,6 +368,11 @@ return [
             'url' => '/administracion/informes-problemas/index',
             'icon' => '',
         ],
+        [
+            'text' => 'Ir a la página principal',
+            'url' => '/home',
+            'icon' => '',
+        ],
     ],
 
     /*
